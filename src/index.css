@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Deals */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.input-group {
+  display: inline-flex;
+}
+
+.btn-width {
+  min-width: 180px;
+}
+
+.filterbutton {
+  padding: 25px;
+}
+
+
+/* ALL DEALS */
+.img-fluid {
+  max-width: 90%;
+}
+.figure-caption {
+  padding-right: 5px;
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container2-item-btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 0px 15px;
+}
+.col-lg-3 {
+  padding-bottom: 30px;
+}
+
+.dropdown-padding-bottom {
+  padding-top: 37px;
+}
+
