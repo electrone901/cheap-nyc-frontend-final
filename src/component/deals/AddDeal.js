@@ -8,10 +8,14 @@ class AddDeal extends Component{
     constructor(){
         super();
         this.state = {
-            email: '',
-            password: '',
-            errors: {},
-            selectValue: ''
+            company: '',
+            name: '',
+            price: '',
+            image: '',
+            address: '',
+            city: '',
+            description: '',
+            errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -34,29 +38,48 @@ class AddDeal extends Component{
     // }
     
     onChange(e){
-        
+
         this.setState({[e.target.name]: e.target.value});
     }
     handleChange(e) {
         console.log('city', e.target.value)
         this.setState({city: e.target.value});
     }
+    // allows to append data to obj
+    
     
     onSubmit(e){
         e.preventDefault();
-        const userData  = {
-            company: this.state.company,
-            name: this.state.name,
-            price: this.state.price,
-            image: this.state.image,
-            address: this.state.address,
-            city: this.state.city,
-            description: this.state.description
-        };
-        console.log('userData', userData)
-        
-        // this.props.loginUser(userData);
+        const formData = new FormData();
+        formData.append ('company', this.state.company);
+        formData.append ('price', this.state.price);
+        formData.append ('name', this.state.name);
+        formData.append ('image', this.state.image);
+        formData.append ('address', this.state.address);
+        formData.append ('city', this.state.city);
+        formData.append ('description', this.state.description);
+        formData.append ('author', "Luis Carbajal");
+
+        console.log('formData', formData, this.state.company);
+
+        // let url = 'https://cnycserver.herokuapp.com/items';
+        // let method = 'POST';
+
+        // fetch(url, {
+        //     method: method,
+        //     body: formData
+        // })
+        // .then(res => {
+        // if (res.status !== 200 && res.status !== 201) {
+        //     throw new Error('Creating or editing a post failed!');
+        // }
+        // return res.json();
+        // })
+        // .then(resData => {
+        //     console.log(resData)
+        // })
     }
+    
     
     render(){
         const {errors} = this.state;
@@ -82,6 +105,7 @@ class AddDeal extends Component{
                             />
                             {errors.company && (<div className="invalid-feedback">{errors.company}</div>)}
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="text">Item name</label>
                             <input
@@ -124,21 +148,6 @@ class AddDeal extends Component{
                             </div>
                         </div>
 
-                        <div className="form-group">
-                                <select
-                                    value={this.state.selectValue}
-                                    onChange={this.handleChange}
-                                >
-                                    <option value="Manhattan">Manhattan</option>
-                                    <option value="Queens">Queens</option>
-                                    <option value="Bronx">Bronx</option>
-                                    <option value="Brooklyn">Brooklyn</option>
-                                    <option value="Staten Island">Staten Island</option>
-
-                                </select>
-                        </div>
-
-
                         <div className="form-group row"> 
                             <div className="col-md-8">
                                 <label htmlFor="text">Address</label>
@@ -158,26 +167,13 @@ class AddDeal extends Component{
 
                             <div className="form-group col-sm-12 col-md-4">
                                 <div className="dropdown dropdown-padding-bottom">
-                                    {/* <button onChange={this.onChange}  className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        City
-                                    </button> */}
-                                    {/* <div  onChange={this.onChange} className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a className="dropdown-item" value="Manhattan">Manhattan</a>
-                                        <a className="dropdown-item" value="Queens">Queens</a>
-                                        <a className="dropdown-item" value="Bronx">Bronx</a>
-                                        <a className="dropdown-item" value="Brooklyn">Brooklyn</a>
-                                        <a className="dropdown-item" value="Staten Island">Staten Island</a>
-                                    </div> */}
-
-                                    <button onChange={this.onChange}  className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        City
-                                    </button>
                                     <select
                                     value={this.state.selectValue}
                                     onChange={this.handleChange}
                                     className="btn btn-secondary dropdown-toggle"
                                     
                                 >
+                                    <option value=" ">City</option>
                                     <option value="Manhattan">Manhattan</option>
                                     <option value="Queens">Queens</option>
                                     <option value="Bronx">Bronx</option>
