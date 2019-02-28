@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter   } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import Spinner from '../common/Spinner';
+
 class AllDeals extends Component{
     constructor(){
         super();
@@ -59,7 +61,7 @@ class AllDeals extends Component{
                                         <figure className="figure">
                                             <img src={item.image ? item.image : 'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/90V03Q5Y60.jpg'} className="figure-img img-fluid rounded" alt="deal"/>
                                             <div className="container2">
-                                                <figcaption className="figure-caption container2-item">Location: Manhattan</figcaption>
+                                                <figcaption className="figure-caption container2-item">Location: {item.city ? item.city : "None"}</figcaption>
                                                 <Link to="/portfolio" className="container2-item-btn">
                                                     Details
                                                 </Link>
@@ -67,8 +69,8 @@ class AllDeals extends Component{
                                         </figure>
                                     </div>
                                 </div> 
-                            )
-                        }): console.log('wait')
+                            );
+                        }): <Spinner />
                     }
 
                     </div>
