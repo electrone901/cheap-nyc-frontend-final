@@ -62,7 +62,7 @@ class AllDeals extends Component{
                                             <img src={item.image ? item.image : 'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/90V03Q5Y60.jpg'} className="figure-img img-fluid rounded" alt="deal"/>
                                             <div className="container2">
                                                 <figcaption className="figure-caption container2-item">Location: {item.city ? item.city : "None"}</figcaption>
-                                                <Link to="/portfolio" className="container2-item-btn">
+                                                <Link to={`/deal/${item._id}`} className="container2-item-btn">
                                                     Details
                                                 </Link>
                                             </div>

@@ -13,6 +13,7 @@ import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
+import Deal from './component/deals/Deal';
 
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
@@ -49,6 +50,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                  <PrivateRoute exact path="/portfolio" component={Portfolio} />
+                 <Route exact path="/deal/:id" component={Deal} />
                  <PrivateRoute exact path="/transactions" component={Transactions} />
                  <PrivateRoute exact path="/stocks" component={Stocks} />
               </Switch>
