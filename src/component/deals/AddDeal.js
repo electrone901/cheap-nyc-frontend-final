@@ -12,6 +12,7 @@ class AddDeal extends Component{
             name: '',
             price: '',
             image: null,
+            imageName: 'Choose file',
             address: '',
             city: '',
             description: '',
@@ -32,7 +33,10 @@ class AddDeal extends Component{
     // allows to append data to obj
     
     fileSelectedHandler = e => {
-        this.setState({ image: e.target.files[0] });
+        if(e.target.files[0]){
+            this.setState({ image: e.target.files[0] });
+            this.setState({ imageName: e.target.files[0].name });
+        }
     }
     
     
@@ -135,7 +139,7 @@ class AddDeal extends Component{
                                         className="custom-file-input"
                                         id="inputGroupFile01"
                                         onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
                                 </div>
                             </div>
                         </div>
