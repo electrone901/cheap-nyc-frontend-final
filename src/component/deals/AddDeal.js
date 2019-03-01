@@ -43,16 +43,15 @@ class AddDeal extends Component{
     onSubmit(e){
         e.preventDefault();
         const formData = new FormData();
-        /*formData.append ('company', this.state.company);
-        formData.append ('price', this.state.price);
-        formData.append ('name', this.state.name);
-        
-        formData.append ('address', this.state.address);
-        formData.append ('city', this.state.city);
-        formData.append ('description', this.state.description);
-        formData.append ('author', this.state.name);*/
-        
+        formData.append('company', this.state.company);
+        formData.append('price', this.state.price);
+        formData.append('name', this.state.name);
+        formData.append('category', "food");
         formData.append('image', this.state.image);
+        formData.append('location', this.state.address);
+        formData.append('city', "brooklyn");
+        formData.append('description', this.state.description);
+        formData.append('author', this.state.name);
 
         console.log('formData', formData);
 
