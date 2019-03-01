@@ -10,6 +10,9 @@ class AllDeals extends Component{
     constructor(){
         super();
         this.state = {
+            category: '',
+            price: '',
+            city: '',
             stocks: [],
             name: '',
             error: '',
@@ -55,7 +58,7 @@ class AllDeals extends Component{
                     {
                         this.state.data ? this.state.data.map((item, key) => {
                             return (
-                                <div className="col-lg-3 col-12 text-center">
+                                <div className="col-lg-3 col-12 text-center" key={key}>
                                     <div className="border">
                                         <h5>{item.name}  ${item.price} </h5> 
                                         <figure className="figure">

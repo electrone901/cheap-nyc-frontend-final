@@ -14,12 +14,14 @@ class AddDeal extends Component{
             image: '',
             address: '',
             city: '',
+            category: '',
             description: '',
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeCity = this.handleChangeCity.bind(this);
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
     
     // componentDidMount(){
@@ -41,9 +43,14 @@ class AddDeal extends Component{
 
         this.setState({[e.target.name]: e.target.value});
     }
-    handleChange(e) {
+    handleChangeCity(e) {
         console.log('city', e.target.value)
         this.setState({city: e.target.value});
+    }
+
+    handleChangeCategory(e) {
+        console.log('category', e.target.value)
+        this.setState({category: e.target.value});
     }
     // allows to append data to obj
     
@@ -106,19 +113,50 @@ class AddDeal extends Component{
                             {errors.company && (<div className="invalid-feedback">{errors.company}</div>)}
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="text">Item name</label>
-                            <input
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.name
-                                })}
-                                name="name"
-                                value={this.state.name}
-                                onChange={this.onChange} 
-                            />
-                            {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                        <div className="form-group row"> 
+                            <div className="col-md-8">
+                                <label htmlFor="text">Item name</label>
+                                <input
+                                    type="text"
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-text': errors.name
+                                    })}
+                                    name="name"
+                                    value={this.state.name}
+                                    onChange={this.onChange} 
+                                />
+                                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                            </div>
+
+                            <div className="form-group col-sm-12 col-md-4">
+                                <div className="dropdown dropdown-padding-bottom">
+                                    <select
+                                    value={this.state.selectValue}
+                                    onChange={this.handleChangeCategory}
+                                    className="btn btn-secondary dropdown-toggle"
+                                    
+                                >
+                                    <option value=" ">Category</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Drinks">Drinks</option>
+                                    <option value="Activities">Activities</option>
+                                    <option value="Events">Events</option>
+                                    <option value="Arts">Arts</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Outdoor">Outdoor</option>
+                                    <option value="Indoor">Indoor</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Classes">Classes</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Social">Social</option>
+                                    <option value="Others">Others</option>
+
+                                </select>
+                                
+                                </div>
+                            </div>
                         </div>
+
                         <div className="form-group">
                             <label htmlFor="text">Item price</label>
                             <input
@@ -169,7 +207,7 @@ class AddDeal extends Component{
                                 <div className="dropdown dropdown-padding-bottom">
                                     <select
                                     value={this.state.selectValue}
-                                    onChange={this.handleChange}
+                                    onChange={this.handleChangeCity}
                                     className="btn btn-secondary dropdown-toggle"
                                     
                                 >

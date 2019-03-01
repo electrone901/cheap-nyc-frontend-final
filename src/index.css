@@ -21,7 +21,20 @@ body {
 .filterbutton {
   padding: 25px;
 }
+.background {
+  background-color: black;
+}
 
+.img-thumbnail {
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0px;
+  background-color: #fff0;
+  border: 1px solid #fff0;
+  border-radius: 0rem;
+}
 
 /* ALL DEALS */
 .img-fluid {
@@ -49,5 +62,86 @@ body {
 
 .dropdown-padding-bottom {
   padding-top: 37px;
+}
+
+/* FILTER */
+.btn-height {
+  height: 40px;
+}
+
+
+/* DEAL */
+.field-name {
+  font-weight: 600;
+} 
+.font-content {
+  font-size: 1.25rem;
+}
+.space-top {
+  padding-top: 35px;
+}
+
+.thumbnail-review{        
+  width : 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+
+/* REVIEWS */
+.authorRating {
+  font-size: 2em;
+  display: flex;
+  padding-bottom: 7px;
+}
+.back-stars {
+  display: flex;
+  color: #ff004e;
+  position: relative;
+  text-shadow: 4px 4px 10px #843a3a;
+}
+.front-stars {
+  color: #FFBC0B;
+  overflow: hidden;
+  position: absolute;
+  text-shadow: 2px 2px 5px #d29b09;
+  top: 0;
+  display: flex;
+}
+
+.btn-reaction {
+  text-transform: uppercase;
+  /* background-color: #4CAF50; Green */
+  background-color: #00baba; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-info-helpful {
+  text-transform: uppercase;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  background-color: #e2e7eb;
+  color: #686F7A;
+  font-weight: 800;
+  border: 1px solid #CACBCC;
+}
+.date {
+  flex: 0 0 auto;
+  min-width: 1px;
+  color: #686F7A;
+  font-size: 15px;
+}
+.author-div {
+  padding-left:50px;
+}
+.author-name {
+  margin-top: -15px;
 }
 
