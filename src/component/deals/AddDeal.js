@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-// import { loginUser } from '../../actions/authActions';
-
 class AddDeal extends Component{
     constructor(){
         super();
@@ -71,13 +69,14 @@ class AddDeal extends Component{
         })
          .then(resData => {
              console.log(resData);
+             this.props.history.push('/');
          });
     }
     
     
     render(){
         const {errors} = this.state;
-        console.log('state', this.state)
+        
         return(
             <div className="login">
                 <div className="container">
