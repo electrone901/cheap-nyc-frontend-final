@@ -11,7 +11,7 @@ class AddDeal extends Component{
             company: '',
             name: '',
             price: '',
-            image: '',
+            image: null,
             address: '',
             city: '',
             description: '',
@@ -22,62 +22,50 @@ class AddDeal extends Component{
         this.handleChange = this.handleChange.bind(this);
     }
     
-    // componentDidMount(){
-    //   if(this.props.auth.isAuthenticated){
-    //     this.props.history.push('/portfolio');
-    //   }
-    // }
-    
-    // componentWillReceiveProps(nextProps){
-    //   if(nextProps.auth.isAuthenticated){
-    //     this.props.history.push('/portfolio');
-    //   }
-    //   if(nextProps.errors){
-    //     this.setState({errors: nextProps.errors});
-    //   }
-    // }
-    
     onChange(e){
 
         this.setState({[e.target.name]: e.target.value});
     }
     handleChange(e) {
-        console.log('city', e.target.value)
         this.setState({city: e.target.value});
     }
     // allows to append data to obj
+    
+    fileSelectedHandler = e => {
+        this.setState({ image: e.target.files[0] });
+    }
     
     
     onSubmit(e){
         e.preventDefault();
         const formData = new FormData();
-        formData.append ('company', this.state.company);
+        /*formData.append ('company', this.state.company);
         formData.append ('price', this.state.price);
         formData.append ('name', this.state.name);
-        formData.append ('image', this.state.image);
+        
         formData.append ('address', this.state.address);
         formData.append ('city', this.state.city);
         formData.append ('description', this.state.description);
-        formData.append ('author', "Luis Carbajal");
+        formData.append ('author', this.state.name);*/
+        
+        formData.append('image', this.state.image);
 
-        console.log('formData', formData, this.state.company);
+        console.log('formData', formData);
 
-        // let url = 'https://cnycserver.herokuapp.com/items';
-        // let method = 'POST';
+        let url = 'https://cnycserver.herokuapp.com/items';
+        let method = 'POST';
 
-        // fetch(url, {
-        //     method: method,
-        //     body: formData
-        // })
-        // .then(res => {
-        // if (res.status !== 200 && res.status !== 201) {
-        //     throw new Error('Creating or editing a post failed!');
-        // }
-        // return res.json();
-        // })
-        // .then(resData => {
-        //     console.log(resData)
-        // })
+        fetch(url, {
+            method: method,
+            body: formData
+        })
+        .then(res => {
+            console.log(res);
+            return res.json();
+        })
+         .then(resData => {
+             console.log(resData);
+         });
     }
     
     
@@ -142,7 +130,11 @@ class AddDeal extends Component{
                                     <span className="input-group-text"></span>
                                 </div>
                                 <div className="custom-file">
-                                    <input type="file" className="custom-file-input" id="inputGroupFile01" />
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
                                     <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
