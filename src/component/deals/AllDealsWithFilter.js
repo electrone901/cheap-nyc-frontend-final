@@ -82,7 +82,8 @@ class AllDealsWithFilter extends Component{
       url = 'https://cnycserver.herokuapp.com/items';
     }
     else {
-      url = `https://cnycserver.herokuapp.com/items?type=city&cityName=`+price;
+             
+      url = `https://cnycserver.herokuapp.com/items?type=price&`+ price;
     }
     console.log('url',url)
     fetch(url)
@@ -149,16 +150,14 @@ class AllDealsWithFilter extends Component{
                     className="btn btn-secondary dropdown-toggle btn-width btn-height"
                   >
                     <option value="All Prices">All Prices</option>
-                    <option value="price&price1=0&price2=0">Free</option>
-                    <option value="under $ 1">under $ 1</option>
-                    <option value="under $ 5">under $ 5</option>
-                    <option value="under $ 10">under $ 10</option>
-                    <option value="under $ 20">under $ 20</option>
-                    <option value="under $ 30">under $ 30</option>
-                    <option value="under $ 50">under $ 50</option>
-                    <option value="over $ 50">over $ 50</option>
-                    <option value="Best Deals">Best Deals</option>
-                    <option value="Overated">Overated</option>
+                    <option value="price1=0&price2=0">Free</option>
+                    <option value="price1=0&price2=1">under $ 1</option>
+                    <option value="price1=1&price2=5">under $ 5</option>
+                    <option value="price1=5&price2=10">under $ 10</option>
+                    <option value="price1=10&price2=20">under $ 20</option>
+                    <option value="price1=20&price2=30">under $ 30</option>
+                    <option value="price1=30&price2=50">under $ 50</option>
+                    <option value="price1=50&price2=1000">over $ 50</option>
                   </select>
                 </div>
 

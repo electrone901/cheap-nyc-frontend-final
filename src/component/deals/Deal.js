@@ -53,7 +53,7 @@ class Deals extends Component{
                     
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction">{} (0) Flag This Post</button>
+                    <button className="btn-reaction">{} (0) Flag it</button>
                 </div>
             </div>
 
