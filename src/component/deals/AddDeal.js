@@ -8,7 +8,7 @@ class AddDeal extends Component{
         this.state = {
             company: '',
             name: '',
-            price: '',
+            price: 0,
             category: '',
             image: null,
             imageName: 'Choose file',
@@ -67,10 +67,13 @@ class AddDeal extends Component{
             console.log(res);
             return res.json();
         })
-         .then(resData => {
+        .then(resData => {
              console.log(resData);
              this.props.history.push('/');
-         });
+        })
+        .catch(err => {
+            console.log("error: " + err);
+        });
     }
     
     
