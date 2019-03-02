@@ -188,12 +188,12 @@ class AddDeal extends Component{
                                     className="btn btn-secondary dropdown-toggle"
                                     
                                 >
-                                    <option value=" ">City</option>
-                                    <option value="manhattan">Manhattan</option>
-                                    <option value="queens">Queens</option>
-                                    <option value="bronx">Bronx</option>
-                                    <option value="brooklyn">Brooklyn</option>
-                                    <option value="staten island">Staten Island</option>
+                                    <option value="All Cities">All Cities</option>
+                                    <option value="Manhattan">Manhattan</option>
+                                    <option value="Queens">Queens</option>
+                                    <option value="Bronx">Bronx</option>
+                                    <option value="Brooklyn">Brooklyn</option>
+                                    <option value="Staten Island">Staten Island</option>
 
                                 </select>
                                 
