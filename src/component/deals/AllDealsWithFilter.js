@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import Spinner from '../common/Spinner';
+import AllDealsTry from './AllDeals';
 
-class FilterDeals extends Component{
+class AllDealsWithFilter extends Component{
   constructor() {
     super();
     this.state = {
@@ -12,6 +13,21 @@ class FilterDeals extends Component{
     this.handleChangeCity = this.handleChangeCity.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
+  componentDidMount() {
+    let url = "https://cnycserver.herokuapp.com/items";
+    fetch(url)
+    .then(res => {
+        console.log('res', res);
+        return res.json();
+    })
+    .then((data) => {
+        this.setState({data: data.items});
+    })
+    .catch((err) => {
+        console.log('There was a problem with your fetch request' + err.message);
+    });
+}
+
   handleChangeCategory(e) {
     let url;
     let category = e.target.value;
@@ -81,7 +97,7 @@ class FilterDeals extends Component{
     })
   }
   render(){
-    console.log('data', this.state.data);
+    console.log('data', this.state.data)
       return(
           <div className="">
             <h1>NY Best Deals - Las Mejores ofertas</h1>
@@ -133,7 +149,7 @@ class FilterDeals extends Component{
                     className="btn btn-secondary dropdown-toggle btn-width btn-height"
                   >
                     <option value="All Prices">All Prices</option>
-                    <option value="Free">Free</option>
+                    <option value="price&price1=0&price2=0">Free</option>
                     <option value="under $ 1">under $ 1</option>
                     <option value="under $ 5">under $ 5</option>
                     <option value="under $ 10">under $ 10</option>
@@ -152,13 +168,15 @@ class FilterDeals extends Component{
 
               </div>
             </div>
+
+            <div>
+              <AllDealsTry data={this.state.data} />
+            </div>
+
+
           </div>
       );
   }
 }
 
-const mapStateToProps = (state) => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps)(FilterDeals);
+export default AllDealsWithFilter;
