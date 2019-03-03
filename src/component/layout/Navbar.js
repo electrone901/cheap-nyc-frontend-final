@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import logo from '../../img/l3.png';
 
 import { logoutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
+
+  // To logout implement in the future
   onLogoutClick(e){
       e.preventDefault();
       this.props.logoutUser();
@@ -16,7 +19,7 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to="/" className="nav-link">
+          <Link to="/profile" className="nav-link">
               Welcome, {user.name}
           </Link>
         </li>
@@ -27,13 +30,11 @@ class Navbar extends Component {
         </li>
       </ul>
     );
+
     
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        <Link className="navbar-brand" to="/categories">
-          Creat a post
-        </Link>
-        {/* <li className="nav-item">
+        <li className="nav-item">
           <Link className="nav-link" to="/register">
             Sign Up
           </Link>
@@ -42,44 +43,15 @@ class Navbar extends Component {
           <Link className="nav-link" to="/login">
             Login
           </Link>
-        </li> */}
-      </ul>
-    );
-    
-    const authLinks2 = (
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/portfolio">
-            {' '}
-            Portfolio
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/transactions">
-            {' '}
-            Transaction
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/stocks">
-            {' '}
-            Stock
-          </Link>
         </li>
       </ul>
     );
-    
+
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-sm navbar-light btn-light">
         <div className="container">
-          <Link className="navbar-brand" to="/">
-            Cheap NY
-          </Link>
-          <Link className="navbar-brand" to="/">
-            Deals
-          </Link>
-          <Link className="navbar-brand" to="/categories">
-            Categories
+          <Link className="navbar-brand logo" to="/">
+            <img src={logo} alt="logo"/>
           </Link>
           <button
             className="navbar-toggler"
@@ -87,13 +59,28 @@ class Navbar extends Component {
             data-toggle="collapse"
             data-target="#mobile-nav"
           >
-            <span className="navbar-toggler-icon" />
+            <span className="navbar-toggler-icon"/>
           </button>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
-            {isAuthenticated ? authLinks2 : null}
+          <div className="collapse navbar-collapse" id="mobile-nav"> 
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                  {' '}
+                  <Link className="nav-link" to="/addDeal">
+                    Create a post
+                  </Link>
+                </li>
+
+              {/* <li className="nav-item">
+                <Link className="nav-link" to="/categories">
+                  {' '}
+                  How it works
+                </Link>
+              </li> */}
+            </ul>
             {isAuthenticated ? authLinks : guestLinks}
           </div>
+          
         </div>
       </nav>
     );
@@ -105,3 +92,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {logoutUser})(Navbar);
+

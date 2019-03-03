@@ -53,7 +53,7 @@ class Deals extends Component{
                     
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction">{} (0) Flag This Post</button>
+                    <button className="btn-reaction">{} (0) Flag</button>
                 </div>
             </div>
 
@@ -64,20 +64,77 @@ class Deals extends Component{
                 <p> <span className="field-name"> Category:</span> {this.state.data.category}</p>
                 <p> <span className="field-name"> Product Description:</span>{this.state.data.description}</p>          
             </div>
-
-            <br/><br/>
+            <br/>
             {/* REVIEWS */}
-            <div className="row justify-content-center">
+            <div className="row">
                 <div className="col-8 col-sm-8 col-md-8">
                     <h3>Reviews</h3>
                 </div>
-                <div className="col-4 col-sm-4 col-md-4 text-right">
+                <div className="col-4 col-sm-4 col-md-4 text-right addReview">
                     <Link to="/addReview" className="btn btn-info">+ Add Review</Link>
                 </div>
             </div>
 
             <hr/>
             
+            {/* trying*/}
+
+            {/* <div className="row justify-content-center">
+
+                <div className="col-sm-6 col-md-4 col-lg-4">
+                    <div className="img-reviewer">
+                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
+                    </div>
+                    <div className="author-div">
+                        <p className="date">5 months ago</p>
+                        <p className="author-name">Luis Carbajal</p>
+                    </div>
+                </div>
+
+
+                <div className="col-sm-6 col-md-8 col-lg-8">
+
+                    <div className="authorRating">
+                        <div className="back-stars">
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            <i className="fa fa-star" aria-hidden="true"></i>
+                            
+                            <div className="front-stars" style={{width: "70%" }}>
+                                <i className="fa fa-star" aria-hidden="true"></i>
+                                <i className="fa fa-star" aria-hidden="true"></i>
+                                <i className="fa fa-star" aria-hidden="true"></i>
+                                <i className="fa fa-star" aria-hidden="true"></i>
+                                <i className="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div className="comment">
+                        <p>Must take course for anyone who has no prior programming language experience / is a beginner in python. Very informative and comprehensive course. Easy to understand.</p>
+                    </div>
+
+                    <div className="helpful flex-container">
+                        <div className="date">
+                            <p>Was this review helpful?</p>
+                        </div>
+
+                        <button className="btn btn-info-helpful">{} (0) Yes</button>
+
+                        <button className="btn btn-info-helpful">{} (0) No</button>
+                    
+                        <button className="date">Report</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr/> */}
+            
+
+
             {/* REVIEW  1 */}
             <div className="row justify-content-center">
 

@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
+// import { loginUser } from '../../actions/authActions';
+
 class AddDeal extends Component{
     constructor(){
         super();
         this.state = {
             company: '',
             name: '',
-            price: 0,
-            category: '',
-            image: null,
-            imageName: 'Choose file',
+            price: '',
+            image: '',
             address: '',
             city: '',
             category: '',
             description: '',
-            author: '',
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -24,63 +23,37 @@ class AddDeal extends Component{
         this.handleChangeCity = this.handleChangeCity.bind(this);
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
+
     
     onChange(e){
+
         this.setState({[e.target.name]: e.target.value});
     }
     handleChangeCity(e) {
-        console.log('city', e.target.value);
+        console.log('city', e.target.value)
         this.setState({city: e.target.value});
     }
 
     handleChangeCategory(e) {
-        console.log('category', e.target.value);
+        console.log('category', e.target.value)
         this.setState({category: e.target.value});
     }
     // allows to append data to obj
     
-    fileSelectedHandler = e => {
-        if(e.target.files[0]){
-            this.setState({ image: e.target.files[0] });
-            this.setState({ imageName: e.target.files[0].name });
-        }
-    }
-    
     
     onSubmit(e){
         e.preventDefault();
-        
         const formData = new FormData();
-        formData.append('company', this.state.company);
-        formData.append('price', this.state.price);
-        formData.append('name', this.state.name);
-        formData.append('category', this.state.category);
-        formData.append('image', this.state.image);
-        formData.append('location', this.state.address);
-        formData.append('city', this.state.city);
-        formData.append('description', this.state.description);
-        formData.append('author', this.state.author);
+        formData.append ('company', this.state.company);
+        formData.append ('price', this.state.price);
+        formData.append ('name', this.state.name);
+        formData.append ('image', this.state.image);
+        formData.append ('address', this.state.address);
+        formData.append ('city', this.state.city);
+        formData.append ('description', this.state.description);
+        formData.append ('author', "Luis Carbajal");
 
-        console.log('formData', formData);
-
-        let url = 'https://cnycserver.herokuapp.com/items';
-        let method = 'POST';
-
-        fetch(url, {
-            method: method,
-            body: formData
-        })
-        .then(res => {
-            console.log(res);
-            return res.json();
-        })
-        .then(resData => {
-             console.log(resData);
-             this.props.history.push('/');
-        })
-        .catch(err => {
-            console.log("error: " + err);
-        });
+        console.log('formData', formData, this.state.company);
     }
     
     
@@ -125,11 +98,11 @@ class AddDeal extends Component{
                             </div>
 
                             <div className="form-group col-sm-12 col-md-4">
-                                <div className="dropdown dropdown-padding-bottom">
+                                <div className="dropdown dropdown-padding-bottom col-sm-12">
                                     <select
                                     value={this.state.selectValue}
                                     onChange={this.handleChangeCategory}
-                                    className="btn btn-secondary dropdown-toggle"
+                                    className="btn btn-outline-primary dropdown-toggle col-sm-12"
                                     
                                 >
                                     <option value=" ">Category</option>
@@ -176,12 +149,8 @@ class AddDeal extends Component{
                                     <span className="input-group-text"></span>
                                 </div>
                                 <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                    <input type="file" className="custom-file-input" id="inputGroupFile01" />
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
                                 </div>
                             </div>
                         </div>
@@ -204,14 +173,14 @@ class AddDeal extends Component{
                             </div>
 
                             <div className="form-group col-sm-12 col-md-4">
-                                <div className="dropdown dropdown-padding-bottom">
+                                <div className="dropdown dropdown-padding-bottom col-sm-12">
                                     <select
                                     value={this.state.selectValue}
                                     onChange={this.handleChangeCity}
-                                    className="btn btn-secondary dropdown-toggle"
+                                    className="btn btn-outline-primary dropdown-toggle col-sm-12"
                                     
                                 >
-                                    <option value="All Cities">All Cities</option>
+                                    <option value=" ">City</option>
                                     <option value="Manhattan">Manhattan</option>
                                     <option value="Queens">Queens</option>
                                     <option value="Bronx">Bronx</option>
@@ -243,20 +212,7 @@ class AddDeal extends Component{
                             </textarea>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="text">Author</label>
-                            <input
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.author
-                                })}
-                                name="author"
-                                value={this.state.author}
-                                onChange={this.onChange} 
-                            />
-                            {errors.author && (<div className="invalid-feedback">{errors.author}</div>)}
-                        </div>
-                        
+
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>
                     </div>

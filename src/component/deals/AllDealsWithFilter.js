@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import Spinner from '../common/Spinner';
+import AllDeals from './AllDeals';
 
-class FilterDeals extends Component{
+class AllDealsWithFilter extends Component{
   constructor() {
     super();
     this.state = {
@@ -12,6 +13,21 @@ class FilterDeals extends Component{
     this.handleChangeCity = this.handleChangeCity.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
+  componentDidMount() {
+    let url = "https://cnycserver.herokuapp.com/items";
+    fetch(url)
+    .then(res => {
+        console.log('res', res);
+        return res.json();
+    })
+    .then((data) => {
+        this.setState({data: data.items});
+    })
+    .catch((err) => {
+        console.log('There was a problem with your fetch request' + err.message);
+    });
+}
+
   handleChangeCategory(e) {
     let url;
     let category = e.target.value;
@@ -66,7 +82,8 @@ class FilterDeals extends Component{
       url = 'https://cnycserver.herokuapp.com/items';
     }
     else {
-      url = `https://cnycserver.herokuapp.com/items?type=city&cityName=`+price;
+             
+      url = `https://cnycserver.herokuapp.com/items?type=price&`+ price;
     }
     console.log('url',url)
     fetch(url)
@@ -81,18 +98,20 @@ class FilterDeals extends Component{
     })
   }
   render(){
-    console.log('data', this.state.data);
+    console.log('data', this.state.data)
       return(
-          <div className="">
-            <h1>NY Best Deals - Las Mejores ofertas</h1>
-            <div className="filterbutton">
-              <div className="row">
+          <div>
+            <h1 className="title">Explore by category</h1>
 
-                <div className="dropdown col-sm">
+            {/* <h1>NY Best Deals - Las Mejores ofertas</h1> */}
+            <div className="filterbutton">
+              <div className="row text-center">
+
+                <div className="dropdown col-lg-3 col-md-3 col-sm-6">
                   <select
                     value={this.state.selectValue}
                     onChange={this.handleChangeCategory}
-                    className="btn btn-secondary dropdown-toggle btn-width btn-height"
+                    className="btn btn-light dropdown-toggle btn-width btn-height"
                   >
                     <option value="All categories">All categories</option>
                     <option value="Food">Food</option>
@@ -111,11 +130,11 @@ class FilterDeals extends Component{
                   </select>
                 </div>
 
-                <div className="dropdown col-sm">
+                <div className="dropdown col-lg-3 col-md-3 col-sm-6">
                   <select
                     value={this.state.selectValue}
                     onChange={this.handleChangeCity}
-                    className="btn btn-secondary dropdown-toggle btn-width btn-height"
+                    className="btn btn-light dropdown-toggle btn-width btn-height"
                   > 
                     <option value="All Cities">All Cities</option>
                     <option value="Manhattan">Manhattan</option>
@@ -126,39 +145,39 @@ class FilterDeals extends Component{
                   </select>
                 </div>
 
-                <div className="dropdown col-sm">
+                <div className="dropdown col-lg-3 col-md-3 col-sm-6">
                   <select
                     value={this.state.value}
                     onChange={this.handleChangePrice}
-                    className="btn btn-secondary dropdown-toggle btn-width btn-height"
+                    className="btn btn-light dropdown-toggle btn-width btn-height"
                   >
                     <option value="All Prices">All Prices</option>
-                    <option value="Free">Free</option>
-                    <option value="under $ 1">under $ 1</option>
-                    <option value="under $ 5">under $ 5</option>
-                    <option value="under $ 10">under $ 10</option>
-                    <option value="under $ 20">under $ 20</option>
-                    <option value="under $ 30">under $ 30</option>
-                    <option value="under $ 50">under $ 50</option>
-                    <option value="over $ 50">over $ 50</option>
-                    <option value="Best Deals">Best Deals</option>
-                    <option value="Overated">Overated</option>
+                    <option value="price1=0&price2=0">Free</option>
+                    <option value="price1=0&price2=1">under $ 1</option>
+                    <option value="price1=1&price2=5">under $ 5</option>
+                    <option value="price1=5&price2=10">under $ 10</option>
+                    <option value="price1=10&price2=20">under $ 20</option>
+                    <option value="price1=20&price2=30">under $ 30</option>
+                    <option value="price1=30&price2=50">under $ 50</option>
+                    <option value="price1=50&price2=1000">over $ 50</option>
                   </select>
                 </div>
 
-                <div className="col-xl"> 
+                <div className="dropdown col-lg-3 col-md-3 col-sm-6">
                   <Link to="/addDeal" className="btn btn-primary btn-width">Add Deal</Link>
                 </div>
 
               </div>
             </div>
+
+            <div>
+              <AllDeals data={this.state.data} />
+            </div>
+
+
           </div>
       );
   }
 }
 
-const mapStateToProps = (state) => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps)(FilterDeals);
+export default AllDealsWithFilter;
