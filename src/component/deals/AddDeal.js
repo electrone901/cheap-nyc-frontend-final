@@ -10,12 +10,14 @@ class AddDeal extends Component{
         this.state = {
             company: '',
             name: '',
-            price: '',
-            image: '',
+            price: 0,
+            category: '',
+            image: null,
+            imageName: 'Choose file',
             address: '',
             city: '',
-            category: '',
             description: '',
+            author: '',
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -38,22 +40,50 @@ class AddDeal extends Component{
         console.log('category', e.target.value)
         this.setState({category: e.target.value});
     }
-    // allows to append data to obj
     
+    fileSelectedHandler = e => {
+        if(e.target.files[0]){
+            this.setState({ image: e.target.files[0] });
+            this.setState({ imageName: e.target.files[0].name });
+        }
+    }
+    
+    // allows to append data to obj
     
     onSubmit(e){
         e.preventDefault();
+        
         const formData = new FormData();
-        formData.append ('company', this.state.company);
-        formData.append ('price', this.state.price);
-        formData.append ('name', this.state.name);
-        formData.append ('image', this.state.image);
-        formData.append ('address', this.state.address);
-        formData.append ('city', this.state.city);
-        formData.append ('description', this.state.description);
-        formData.append ('author', "Luis Carbajal");
+        formData.append('company', this.state.company);
+        formData.append('price', this.state.price);
+        formData.append('name', this.state.name);
+        formData.append('category', this.state.category);
+        formData.append('image', this.state.image);
+        formData.append('location', this.state.address);
+        formData.append('city', this.state.city);
+        formData.append('description', this.state.description);
+        formData.append('author', this.state.author);
 
-        console.log('formData', formData, this.state.company);
+        console.log('formData', formData);
+
+        let url = 'https://cnycserver.herokuapp.com/items';
+        let method = 'POST';
+
+        fetch(url, {
+            method: method,
+            body: formData
+        })
+        .then(res => {
+            console.log(res);
+            return res.json();
+        })
+        .then(resData => {
+             console.log(resData);
+             this.props.history.push('/');
+        })
+        .catch(err => {
+            console.log("error: " + err);
+        });
     }
     
     
@@ -149,8 +179,12 @@ class AddDeal extends Component{
                                     <span className="input-group-text"></span>
                                 </div>
                                 <div className="custom-file">
-                                    <input type="file" className="custom-file-input" id="inputGroupFile01" />
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
                                 </div>
                             </div>
                         </div>
@@ -210,6 +244,20 @@ class AddDeal extends Component{
                                 rows="3"
                                 className="form-control">
                             </textarea>
+                        </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="text">Author</label>
+                            <input
+                                type="text"
+                                className={classnames('form-control form-control-lg', {
+                                    'is-text': errors.author
+                                })}
+                                name="author"
+                                value={this.state.author}
+                                onChange={this.onChange} 
+                            />
+                            {errors.author && (<div className="invalid-feedback">{errors.author}</div>)}
                         </div>
 
 
