@@ -7,9 +7,13 @@ class Deals extends Component{
         super();
         this.state = {
             data: '',
+            ad:'1200 Broadway Ave Manhattan'   
+            //  Number Street Borougth, state, ZipCode
+            // ad:'300 Jay St Brooklyn, NY 11201'
         }
     }
     componentDidMount() {
+        window.scrollTo(0,0);
         let id = this.props.match.params.id;
         console.log('id', id);
         let url = `https://cnycserver.herokuapp.com/items/${id}`;
@@ -28,6 +32,7 @@ class Deals extends Component{
     }
     
     render(){
+        console.log('id',this.state.data._id)
       return(
           <div className="container">
 
@@ -36,12 +41,12 @@ class Deals extends Component{
                     <h1>{this.state.data.name}  <span className="detail__price"> $ {this.state.data.price}</span></h1>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right">
-                    <Link to="/productDetails" className="directions ">Get Directions</Link>
+                    <a href={`http://maps.google.com/?q=`+ this.state.ad} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
             
             <div className="text-center background">
-                <img src={image2} className="img-thumbnail" alt="Responsive" />
+                <img src={this.state.data.image ? this.state.data.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
 
             <div className="row space-top">
@@ -59,10 +64,10 @@ class Deals extends Component{
 
 
             <div className="space-top">
-                <p> <span className="field-name"> Company Name:</span>{this.state.data.company}</p>
-                <p> <span className="field-name"> Location:</span>{this.state.data.location}</p>
-                <p> <span className="field-name"> Category:</span> {this.state.data.category}</p>
-                <p> <span className="field-name"> Product Description:</span>{this.state.data.description}</p>          
+                <p> <span className="field-name"> Company Name: </span>{this.state.data.company}</p>
+                <p> <span className="field-name"> Location: </span>{this.state.data.location}</p>
+                <p> <span className="field-name"> Category: </span> {this.state.data.category}</p>
+                <p> <span className="field-name"> Product Description: </span>{this.state.data.description}</p>          
             </div>
             <br/>
             {/* REVIEWS */}
@@ -71,7 +76,7 @@ class Deals extends Component{
                     <h3>Reviews</h3>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right addReview">
-                    <Link to="/addReview" className="btn btn-info">+ Add Review</Link>
+                    <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link>
                 </div>
             </div>
 

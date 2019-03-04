@@ -249,6 +249,60 @@ Description     : A file that contains all styles for Carousel.js.
   color:hsla(0,0%,100%,.7);
 }
 
+.spinner {
+  width: 500px;
+  margin: auto;
+  display: block;
+  margin-top: -10px;
+}
+
+/* ADD REVIEW */
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.clear {
+  float: none;
+  clear: both;
+}
+.rating {
+    width: 40%;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+.rating > label {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    color: #000;
+    font-size: xx-large;
+}
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+
+
+
+
+
 
 /* MEDIA QUERIES */
 @media (mAX-width:600px)  {
@@ -273,13 +327,14 @@ Description     : A file that contains all styles for Carousel.js.
   /* Deal */
   .img-thumbnail {
     height: 300px;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0px;
-    background-color: #fff0;
     border-radius: 0rem;
   }
+  .background {
+    background-color: #fffefe;
+  }
+
   .space-top {
     padding-top: 10px;
     padding-bottom: 17px;
@@ -312,12 +367,23 @@ Description     : A file that contains all styles for Carousel.js.
     padding: 0px;
     height: 100px;
     width: 112px;
-    /* height: auto; */
   }
 
   .helpful {
     padding-top: 5px;
     padding-bottom: 5px;
   }
+  .spinner {
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+
+  /* ADD REVIEW */
+  .rating {
+    width: 61%;
+  }
 
 }
+
+

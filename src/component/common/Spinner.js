@@ -3,11 +3,11 @@ import spinner from './spinner.gif';
 
 export default () => {
     return(
-        <div>
+        <div className="col-lg-12 col-md-12 col-sm-12">
             <img
                 src={spinner}
-                style={{width: '500px', margin: 'auto', display: 'block'}}
                 alt="Loading..."
+                className="spinner"
             />
         </div>
     );

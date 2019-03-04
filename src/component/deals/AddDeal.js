@@ -173,7 +173,7 @@ class AddDeal extends Component{
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="text">Upload an image (Optional but recommended)</label>
+                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"></span>
@@ -191,7 +191,7 @@ class AddDeal extends Component{
 
                         <div className="form-group row"> 
                             <div className="col-md-8">
-                                <label htmlFor="text">Address</label>
+                                <label htmlFor="text">Address:  <span className="small">(eg:123 StreetName, Borough, NY ZipCode)</span> </label>
                                 <input
                                     type="text" 
                                     id="address" 

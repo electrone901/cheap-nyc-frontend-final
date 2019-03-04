@@ -14,6 +14,7 @@ import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
 import Deal from './component/deals/Deal';
+import AddReview from './component/review/AddReview';
 
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
@@ -47,7 +48,8 @@ class App extends Component {
               <Route exact path="/" component={Deals} />
               <Route exact path="/addDeal" component={AddDeal} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/addReview/:id" component={AddReview} />
               <Switch>
                  <PrivateRoute exact path="/portfolio" component={Portfolio} />
                  <Route exact path="/deal/:id" component={Deal} />
