@@ -1,12 +1,24 @@
 import React, {Component} from 'react';
 import  { Link } from 'react-router-dom';
 import image2 from '../../img/stocks.png';
+import Spinner from '../common/Spinner';
+import { 
+    FacebookShareButton, 
+    WhatsappShareButton,
+    GooglePlusShareButton,
+    TwitterShareButton,
+    WhatsappIcon,
+    TwitterIcon,
+    GooglePlusIcon,
 
+    FacebookIcon, } from 'react-share';
+ 
 class Deals extends Component{
     constructor() {
         super();
         this.state = {
             data: '',
+            reviews: null,
             ad:'1200 Broadway Ave Manhattan'   
             //  Number Street Borougth, state, ZipCode
             // ad:'300 Jay St Brooklyn, NY 11201'
@@ -32,7 +44,9 @@ class Deals extends Component{
     }
     
     render(){
-        console.log('id',this.state.data._id)
+        const shareUrl = 'http://lazona.herokuapp.com/';
+        const title = 'CheapNY: Best Deals of NY';
+        console.log('this.state', this.state)        
       return(
           <div className="container">
 
@@ -54,7 +68,48 @@ class Deals extends Component{
                     <button className="btn-reaction">{} (0) Likes</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
+                    
                     <button className="btn-reaction"><i className="fa fa-facebook-square fa"></i> Share</button>
+                    <FacebookShareButton
+                        url={shareUrl}
+                        quote={title}
+                        className="Demo__some-network__share-button">
+                        <FacebookIcon
+                        size={32}
+                        round />
+                    </FacebookShareButton>
+
+                    <WhatsappShareButton
+                        url={shareUrl}
+                        title={title}
+                        separator=":: "
+                        className="Demo__some-network__share-button">
+                        <WhatsappIcon size={32} round />
+                    </WhatsappShareButton>
+
+                    <GooglePlusShareButton
+                        url={shareUrl}
+                        className="Demo__some-network__share-button">
+                        <GooglePlusIcon
+                        size={32}
+                        round />
+                    </GooglePlusShareButton>
+
+                    <div className="Demo__some-network">
+                    <TwitterShareButton
+                        url={shareUrl}
+                        title={title}
+                        className="Demo__some-network__share-button">
+                        <TwitterIcon
+                        size={32}
+                        round />
+                    </TwitterShareButton>
+
+          <div className="Demo__some-network__share-count">
+            &nbsp;
+          </div>
+        </div>
+
                     
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
@@ -79,175 +134,70 @@ class Deals extends Component{
                     <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link>
                 </div>
             </div>
-
             <hr/>
-            
-            {/* trying*/}
+             
+             {/* REVIEWS INFO FROM API */}
+            {   
+                this.state.data.reviews ? this.state.data.reviews.map((review, key) => {
+                    var percentage = (review.rating * 20) + '%'; //calculate % rating 
+                    return( 
+                        <div>
+                            <div className="row justify-content-center">
 
-            {/* <div className="row justify-content-center">
-
-                <div className="col-sm-6 col-md-4 col-lg-4">
-                    <div className="img-reviewer">
-                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
-                    </div>
-                    <div className="author-div">
-                        <p className="date">5 months ago</p>
-                        <p className="author-name">Luis Carbajal</p>
-                    </div>
-                </div>
-
-
-                <div className="col-sm-6 col-md-8 col-lg-8">
-
-                    <div className="authorRating">
-                        <div className="back-stars">
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            
-                            <div className="front-stars" style={{width: "70%" }}>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div className="comment">
-                        <p>Must take course for anyone who has no prior programming language experience / is a beginner in python. Very informative and comprehensive course. Easy to understand.</p>
-                    </div>
-
-                    <div className="helpful flex-container">
-                        <div className="date">
-                            <p>Was this review helpful?</p>
-                        </div>
-
-                        <button className="btn btn-info-helpful">{} (0) Yes</button>
-
-                        <button className="btn btn-info-helpful">{} (0) No</button>
-                    
-                        <button className="date">Report</button>
-                    </div>
-
-                </div>
-
-            </div>
-            <hr/> */}
-            
-
-
-            {/* REVIEW  1 */}
-            <div className="row justify-content-center">
-
-                <div className="col-4 col-sm-4 col-md-4">
-                    <div className="">
-                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
-                    </div>
-                    <div className="author-div">
-                        <p className="date">5 months ago</p>
-                        <p className="author-name">Luis Carbajal</p>
-                    </div>
-                </div>
-
-                <div className="col-8 col-sm-8 col-md-8">
-
-                    <div className="authorRating">
-                        <div className="back-stars">
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            
-                            <div className="front-stars" style={{width: "70%" }}>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div className="comment">
-                        <p>Must take course for anyone who has no prior programming language experience / is a beginner in python. Very informative and comprehensive course. Easy to understand.</p>
-                    </div>
-
-                    <div className="helpful flex-container">
-                        <div className="date">
-                            <p>Was this review helpful?</p>
-                        </div>
-
-                        <button className="btn btn-info-helpful">{} (0) Yes</button>
+                                <div className="col-4 col-sm-4 col-md-4">
+                                    <div className="">
+                                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
+                                    </div>
+                                    <div className="author-div">
+                                        <p className="date"></p>
+                                        <p className="author-name">{review.name}</p>
+                                    </div>
+                                </div>
                 
-                        <button className="btn btn-info-helpful">{} (0) No</button>
-                    
-                        <button className="date">Report</button>
-                    </div>
-
-                </div>
-
-            </div>
-            <hr/>
-
-
-            {/* REVIEW  2 */}
-            <div className="row justify-content-center">
-
-                <div className="col-4 col-sm-4 col-md-4">
-                    <div className="">
-                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
-                    </div>
-                    <div className="author-div">
-                        <p className="date">5 months ago</p>
-                        <p className="author-name">Luis Carbajal</p>
-                    </div>
-                </div>
-
-                <div className="col-8 col-sm-8 col-md-8">
-
-                    <div className="authorRating">
-                        <div className="back-stars">
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
-                            <i className="fa fa-star" aria-hidden="true"></i>
+                                <div className="col-8 col-sm-8 col-md-8">
+            
+                                <div className="authorRating">
+                                    <div className="back-stars">
+                                        <i className="fa fa-star" aria-hidden="true"></i>
+                                        <i className="fa fa-star" aria-hidden="true"></i>
+                                        <i className="fa fa-star" aria-hidden="true"></i>
+                                        <i className="fa fa-star" aria-hidden="true"></i>
+                                        <i className="fa fa-star" aria-hidden="true"></i>
+                                        
+                                        <div className="front-stars" style={{width : percentage}}>
+                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                            <i className="fa fa-star" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div> 
+            
+                                <div className="comment">
+                                    <p>{review.text}</p>
+                                </div>
+            
+                                <div className="helpful flex-container">
+                                    <div className="date">
+                                        <p>Was this review helpful?</p>
+                                    </div>
+            
+                                    <button className="btn btn-info-helpful">{} (0) Yes</button>
                             
-                            <div className="front-stars" style={{width: "70%" }}>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
-                                <i className="fa fa-star" aria-hidden="true"></i>
+                                    <button className="btn btn-info-helpful">{} (0) No</button>
+                                
+                                    <button className="date">Report</button>
+                                </div>
+            
                             </div>
+                            
+                            </div>
+                            <hr/>
                         </div>
-                    </div> 
-
-                    <div className="comment">
-                        <p>Must take course for anyone who has no prior programming language experience / is a beginner in python. Very informative and comprehensive course. Easy to understand.</p>
-                    </div>
-
-                    <div className="helpful flex-container">
-                        <div className="date">
-                            <p>Was this review helpful?</p>
-                        </div>
-
-                        <button className="btn btn-info-helpful">{} (0) Yes</button>
-                
-                        <button className="btn btn-info-helpful">{} (0) No</button>
-                    
-                        <button className="date">Report</button>
-                    </div>
-
-                </div>
-
-            </div>
-            <hr/>
+                    )
+                }):<Spinner />
+            }
 
             {/* MORE REVIEWS */}
             <div className="row justify-content-center">

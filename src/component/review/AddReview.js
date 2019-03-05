@@ -42,7 +42,10 @@ class AddReview extends Component {
             }
         }) 
         .then(response => response.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
+        .then(response => {
+            console.log('Success:', JSON.stringify(response))
+            this.props.history.push( `/deal/${itemId}`);
+        })
         .catch(error => console.error('Error:', error));
 
         // .then(resData => {

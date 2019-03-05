@@ -141,7 +141,7 @@ body {
   font-size: 15px;
 }
 .author-div {
-  padding-left:50px;
+  padding-left: 20%;
 }
 .author-name {
   margin-top: -15px;
@@ -387,3 +387,7 @@ Description     : A file that contains all styles for Carousel.js.
 }
 
 
+.what {
+  font-size: 50px;
+  color: black;
+}
