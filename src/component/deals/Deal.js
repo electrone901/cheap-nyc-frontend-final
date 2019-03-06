@@ -5,12 +5,11 @@ import Spinner from '../common/Spinner';
 import { 
     FacebookShareButton, 
     WhatsappShareButton,
-    GooglePlusShareButton,
     TwitterShareButton,
+    EmailShareButton,
     WhatsappIcon,
     TwitterIcon,
-    GooglePlusIcon,
-
+    EmailIcon,
     FacebookIcon, } from 'react-share';
  
 class Deals extends Component{
@@ -67,13 +66,13 @@ class Deals extends Component{
                 <div className="col-4 col-sm-4 col-md-4 text-center">
                     <button className="btn-reaction">{} (0) Likes</button>
                 </div>
-                <div className="col-4 col-sm-4 col-md-4 text-center">
+                <div className="col-4 col-sm-4 col-md-4 text-center container2">
                     
-                    <button className="btn-reaction"><i className="fa fa-facebook-square fa"></i> Share</button>
+                    <button className="btn-reaction"> Share</button>
                     <FacebookShareButton
                         url={shareUrl}
                         quote={title}
-                        className="Demo__some-network__share-button">
+                        className="btn-social">
                         <FacebookIcon
                         size={32}
                         round />
@@ -83,34 +82,29 @@ class Deals extends Component{
                         url={shareUrl}
                         title={title}
                         separator=":: "
-                        className="Demo__some-network__share-button">
+                        className="btn-social">
                         <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
 
-                    <GooglePlusShareButton
+                    <EmailShareButton
                         url={shareUrl}
-                        className="Demo__some-network__share-button">
-                        <GooglePlusIcon
+                        subject={title}
+                        body={this.state.data.description}
+                        className="btn-social">
+                        <EmailIcon
                         size={32}
                         round />
-                    </GooglePlusShareButton>
+                    </EmailShareButton>
 
-                    <div className="Demo__some-network">
                     <TwitterShareButton
                         url={shareUrl}
                         title={title}
-                        className="Demo__some-network__share-button">
+                        className="btn-social">
                         <TwitterIcon
                         size={32}
                         round />
                     </TwitterShareButton>
 
-          <div className="Demo__some-network__share-count">
-            &nbsp;
-          </div>
-        </div>
-
-                    
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
                     <button className="btn-reaction">{} (0) Flag</button>

@@ -123,6 +123,18 @@ body {
   border-radius: 3px;
 }
 
+.btn-social {
+  text-transform: uppercase;
+  /* background-color: #4CAF50; Green */
+  background-color: #00baba; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
 .btn-info-helpful {
   text-transform: uppercase;
   padding: 5px 24px;
@@ -239,6 +251,11 @@ Description     : A file that contains all styles for Carousel.js.
   font-size: 24px;
   line-height: 1.1;
   padding-top: 10px;
+}
+
+/* SOCIAL SHARING */
+.social-sharing {
+  border: #000
 }
 
 /* FOOTER */
@@ -386,8 +403,3 @@ Description     : A file that contains all styles for Carousel.js.
 
 }
 
-
-.what {
-  font-size: 50px;
-  color: black;
-}
