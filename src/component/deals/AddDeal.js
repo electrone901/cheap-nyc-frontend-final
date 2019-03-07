@@ -26,6 +26,30 @@ class AddDeal extends Component{
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log("error componentWillReceiveProps: ",this.state.errors);
+        if(nextProps.errors){
+          this.setState({errors: nextProps.errors});
+          console.log("it error change")
+        }
+    }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log("error componentDidUpdate: ",this.state.errors);
+        // if(this.state.errors) {
+        //     this.state.errors.map((ele) => {
+        //         this.setState({what: ele.msg})
+        //         // console.log('ele', ele)
+        //     })
+        //     console.log('luis', this.state.errors) 
+        // }
+        // if(this.state.containerWidth !== prevState.containerWidth) { 
+        //     this.getNumberOfItems();
+        // }
+    }
+      
+
     
     onChange(e){
 
@@ -48,11 +72,9 @@ class AddDeal extends Component{
         }
     }
     
-    // allows to append data to obj
-    
+    // formData allows to append data to obj
     onSubmit(e){
         e.preventDefault();
-        
         const formData = new FormData();
         formData.append('company', this.state.company);
         formData.append('price', this.state.price);
@@ -63,8 +85,6 @@ class AddDeal extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('author', this.state.author);
-
-        console.log('formData', formData);
 
         let url = 'https://cnycserver.herokuapp.com/items';
         let method = 'POST';
@@ -77,21 +97,27 @@ class AddDeal extends Component{
             console.log(res);
             return res.json();
         })
-        .then(resData => {
-             console.log(resData);
-             this.props.history.push('/');
+        .then(res => {
+            console.log("error", res);
+             if (res.status !== 200 && res.status !== 201) {
+                this.setState({errors: res});
+                console.log("state", this.state.errors);
+                throw new Error('Creating or editing a post failed!');
+              }
+            //  this.props.history.push('/');
         })
         .catch(err => {
-            console.log("error: " + err);
+            console.log("error: from cathch" + err);
         });
     }
     
     
     render(){
+        console.log("state", this.state);
+        // console.log("msg ",  this.state.errors['0'].msg);
         const {errors} = this.state;
-        
         return(
-            <div className="login">
+            <div className="addDeal">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 m-auto">

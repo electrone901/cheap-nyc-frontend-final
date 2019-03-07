@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { postReview } from '../../actions/addReview'
 
 class AddReview extends Component {
     constructor() {
@@ -42,10 +44,7 @@ class AddReview extends Component {
             }
         }) 
         .then(response => response.json())
-        .then(response => {
-            console.log('Success:', JSON.stringify(response))
-            this.props.history.push( `/deal/${itemId}`);
-        })
+        .then(response => console.log('Success:', JSON.stringify(response)))
         .catch(error => console.error('Error:', error));
 
         // .then(resData => {
@@ -138,7 +137,11 @@ class AddReview extends Component {
 
 }
 
-export default AddReview;
+const mapStateTpProps = state => ({
+    errors: state.errors
+})
+export default connect(mapStateTpProps, {postReview})(AddReview);
+
 
 // Link - https://cnycserver.herokuapp.com/items/:itemId/reviews
 // Request - POST

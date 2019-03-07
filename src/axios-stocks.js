@@ -1,9 +1,10 @@
+
 import axios from 'axios';
 
-let serverURL = 'https://stocksite-ysongh.c9users.io:8081';
+let serverURL = 'http://localhost:5000';
 
 if(process.env.NODE_ENV === 'production'){
-    serverURL = 'https://songstocksite.herokuapp.com/';
+    serverURL = 'https://cnycserver.herokuapp.com/';
 }
 
 const instance = axios.create({

@@ -48,7 +48,7 @@ class App extends Component {
               <Route exact path="/" component={Deals} />
               <Route exact path="/addDeal" component={AddDeal} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/addReview/:id" component={AddReview} />
               <Switch>
                  <PrivateRoute exact path="/portfolio" component={Portfolio} />
