@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-let serverURL = 'http://localhost:5000';
+let serverURL = 'https://cnycserver.herokuapp.com/';
 
 if(process.env.NODE_ENV === 'production'){
     serverURL = 'https://cnycserver.herokuapp.com/';

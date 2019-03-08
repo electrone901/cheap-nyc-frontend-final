@@ -1,5 +1,8 @@
 export const GET_ERRORS = 'GET_ERRORS';
 
+export const SET_REVIEW = 'SET_REVIEW';
+export const POST_DEAL = 'POST_DEAL';
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_USER = 'GET_USER';
 

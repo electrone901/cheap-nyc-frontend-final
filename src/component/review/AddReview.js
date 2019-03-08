@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { postReview } from '../../actions/addReview'
+import { postReview } from '../../actions/addReview';
 
 class AddReview extends Component {
     constructor() {

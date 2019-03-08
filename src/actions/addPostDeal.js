@@ -1,5 +1,5 @@
 import axios from '../axios-stocks';
-import { GET_ERRORS } from './types';
+import { GET_ERRORS, POST_DEAL } from './types';
 
 
 //         const formData = new FormData();
@@ -7,15 +7,21 @@ import { GET_ERRORS } from './types';
 //         let urlBase = "https://cnycserver.herokuapp.com/items/";
 //         
 
-export const postReview = (reviewData, history) => {
-    console.log('action postReview')
-    let itemId = this.props.match.params.id;
-    axios.post('/items/' + itemId + '/reviews', reviewData)
-    .then(res => history.push('/'))
-    .catch(err => 
-        dispatchEvent({
+export const postDeal = (postData) => dispatch => {
+    axios.post('/items/', postData)
+    .then(res => {
+        dispatch({
+            type: POST_DEAL,
+            payload: res.data
+        })
+      }  
+    )
+    .catch(err => {
+        dispatch({
             type: GET_ERRORS,
             payload: err.response.data
         })
+      }
     );
 }
+

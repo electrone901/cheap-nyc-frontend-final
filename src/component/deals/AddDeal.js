@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-// import { loginUser } from '../../actions/authActions';
+import { postDeal } from '../../actions/addPostDeal';
 
 class AddDeal extends Component{
     constructor(){
@@ -10,7 +10,7 @@ class AddDeal extends Component{
         this.state = {
             company: '',
             name: '',
-            price: 0,
+            price: '',
             category: '',
             image: null,
             imageName: 'Choose file',
@@ -18,7 +18,8 @@ class AddDeal extends Component{
             city: '',
             description: '',
             author: '',
-            errors: {}
+            errors: {},
+            err : {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -26,28 +27,49 @@ class AddDeal extends Component{
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
-    componentWillReceiveProps(nextProps){
-        console.log("error componentWillReceiveProps: ",this.state.errors);
-        if(nextProps.errors){
-          this.setState({errors: nextProps.errors});
-          console.log("it error change")
+    componentDidMount(){
+        if(this.props.auth.isAuthenticated){
+            this.props.history.push('/portfolio');
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log("nextProps: ",nextProps.errors);
+        // console.log("Item name: ",nextProps.errors[0].msg);
+        if(nextProps.errors){
+            const {err} = this.state;
+            err.name = nextProps.errors[0].msg;
+            err.category = nextProps.errors[1].msg;
+            err.price = nextProps.errors[2].msg;
+            err.location = nextProps.errors[3].msg;
+            err.city = nextProps.errors[4].msg;
+            err.description = nextProps.errors[5].msg;
+            err.company = nextProps.errors[6].msg;
+            err.author = nextProps.errors[7].msg;
+            // this.setState({err: nextProps.errors});
+        } 
+        else {
+        // this.props.history.push('/portfolio');
+        console.log('Deal was Posted!!!')
+        }
 
-    componentDidUpdate(prevProps, prevState) {
-        console.log("error componentDidUpdate: ",this.state.errors);
-        // if(this.state.errors) {
-        //     this.state.errors.map((ele) => {
-        //         this.setState({what: ele.msg})
-        //         // console.log('ele', ele)
-        //     })
-        //     console.log('luis', this.state.errors) 
-        // }
-        // if(this.state.containerWidth !== prevState.containerWidth) { 
-        //     this.getNumberOfItems();
-        // }
+
     }
+
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log("error componentDidUpdate: ",this.state.errors);
+    //     if(this.state.errors) {
+    //         this.state.errors.map((ele) => {
+    //             this.setState({what: ele.msg})
+    //             // console.log('ele', ele)
+    //         })
+    //         console.log('luis', this.state.errors) 
+    //     }
+    //     if(this.state.containerWidth !== prevState.containerWidth) { 
+    //         this.getNumberOfItems();
+    //     }
+    // }
       
 
     
@@ -85,37 +107,53 @@ class AddDeal extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('author', this.state.author);
+        
+        // const postData = {
+        //     body: formData
+        // }
+        // console.log("this.props.postDeal ", this.props);
+        this.props.postDeal(formData);
 
-        let url = 'https://cnycserver.herokuapp.com/items';
-        let method = 'POST';
 
-        fetch(url, {
-            method: method,
-            body: formData
-        })
-        .then(res => {
-            console.log(res);
-            return res.json();
-        })
-        .then(res => {
-            console.log("error", res);
-             if (res.status !== 200 && res.status !== 201) {
-                this.setState({errors: res});
-                console.log("state", this.state.errors);
-                throw new Error('Creating or editing a post failed!');
-              }
-            //  this.props.history.push('/');
-        })
-        .catch(err => {
-            console.log("error: from cathch" + err);
-        });
+        // let url = 'https://cnycserver.herokuapp.com/items';
+        // let method = 'POST';
+
+        // fetch(url, {
+        //     method: method,
+        //     body: formData
+        // })
+        // .then(res => {
+        //     console.log(res);
+        //     return res.json();
+        // })
+        // .then(res => {
+        //     console.log("error", res);
+        //      if (res.status !== 200 && res.status !== 201) {
+        //         this.setState({errors: res});
+        //         console.log("state", this.state.errors);
+        //         throw new Error('Creating or editing a post failed!');
+        //       }
+        //     //  this.props.history.push('/');
+        // })
+        // .catch(err => {
+        //     console.log("error: from cathch" + err);
+        // });
     }
     
     
     render(){
+        const {err} = this.state;
+        // if(this.state.errors.length > 0) {
+        //     err.name = this.state.errors[0].msg;
+        //     err.category = this.state.errors[1].msg;
+        //     err.location = this.state.errors[2].msg;
+        //     err.city = this.state.errors[3].msg;
+        //     err.description = this.state.errors[4].msg;
+        //     err.company = this.state.errors[5].msg;
+        //     err.author = this.state.errors[6].msg;
+        // }
+
         console.log("state", this.state);
-        // console.log("msg ",  this.state.errors['0'].msg);
-        const {errors} = this.state;
         return(
             <div className="addDeal">
                 <div className="container">
@@ -123,45 +161,48 @@ class AddDeal extends Component{
                     <div className="col-md-8 m-auto">
                       <h1 className="display-4 text-center">Create a post</h1>
                       <form onSubmit={this.onSubmit}>
-                        
+
                         <div className="form-group">
                             <label htmlFor="text">Company name</label>
                             <input
                                 type="text"
                                 className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.name
+                                    'is-invalid': err.company
                                 })}
                                 name="company"
                                 value={this.state.company}
                                 onChange={this.onChange} 
                             />
-                            {errors.company && (<div className="invalid-feedback">{errors.company}</div>)}
+                            {err.company && (<div className="invalid-feedback">{err.company}</div>)}
                         </div>
 
                         <div className="form-group row"> 
+
                             <div className="col-md-8">
                                 <label htmlFor="text">Item name</label>
                                 <input
                                     type="text"
                                     className={classnames('form-control form-control-lg', {
-                                        'is-text': errors.name
+                                        'is-invalid': err.name
                                     })}
                                     name="name"
                                     value={this.state.name}
                                     onChange={this.onChange} 
                                 />
-                                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                                {err.name && (<div className="invalid-feedback">{err.name}</div>)}
                             </div>
 
                             <div className="form-group col-sm-12 col-md-4">
-                                <div className="dropdown dropdown-padding-bottom col-sm-12">
-                                    <select
+                                <label htmlFor="text">Category</label>
+                                <select
+                                    name="category"
                                     value={this.state.selectValue}
                                     onChange={this.handleChangeCategory}
-                                    className="btn btn-outline-primary dropdown-toggle col-sm-12"
-                                    
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': err.category
+                                    })}
                                 >
-                                    <option value=" ">Category</option>
+                                    <option value="">Category</option>
                                     <option value="Food">Food</option>
                                     <option value="Drinks">Drinks</option>
                                     <option value="Activities">Activities</option>
@@ -175,11 +216,10 @@ class AddDeal extends Component{
                                     <option value="Travel">Travel</option>
                                     <option value="Social">Social</option>
                                     <option value="Others">Others</option>
-
                                 </select>
-                                
-                                </div>
+                                {err.category && (<div className="invalid-feedback">{err.category}</div>)}
                             </div>
+
                         </div>
 
                         <div className="form-group">
@@ -189,13 +229,13 @@ class AddDeal extends Component{
                                 id="price" 
                                 min="0" 
                                 className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.price
+                                    'is-invalid': err.price
                                 })}
                                 name="price"
                                 value={this.state.price}
                                 onChange={this.onChange} 
                             />
-                            {errors.price && (<div className="invalid-feedback">{errors.price}</div>)}
+                            {err.price && (<div className="invalid-feedback">{err.price}</div>)}
                         </div>
 
                         <div className="form-group">
@@ -223,36 +263,38 @@ class AddDeal extends Component{
                                     id="address" 
                                     min="5" 
                                     className={classnames('form-control form-control-lg', {
-                                        'is-text': errors.address
+                                        'is-invalid': err.location
                                     })}
                                     name="address"
-                                    value={this.state.address}
+                                    value={this.state.location}
                                     onChange={this.onChange} 
                                 />
-                                {errors.address && (<div className="invalid-feedback">{errors.address}</div>)}
+                                {err.location && (<div className="invalid-feedback">{err.location}</div>)}
                             </div>
 
-                            <div className="form-group col-sm-12 col-md-4">
-                                <div className="dropdown dropdown-padding-bottom col-sm-12">
-                                    <select
+                            <div className="col-sm-12 col-md-4"> 
+                                <label htmlFor="text">City</label>
+                                <select
+                                    name="city"
                                     value={this.state.selectValue}
                                     onChange={this.handleChangeCity}
-                                    className="btn btn-outline-primary dropdown-toggle col-sm-12"
-                                    
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': err.city
+                                    })}
                                 >
-                                    <option value=" ">City</option>
+                                    <option value="">City</option>
                                     <option value="Manhattan">Manhattan</option>
                                     <option value="Queens">Queens</option>
                                     <option value="Bronx">Bronx</option>
                                     <option value="Brooklyn">Brooklyn</option>
                                     <option value="Staten Island">Staten Island</option>
-
                                 </select>
-                                
-                                </div>
+                                {err.city && (<div className="invalid-feedback">{err.city}</div>)}
                             </div>
+                            
                         </div>
                         
+
 
                         <div className="form-group">
                             <label htmlFor="text">Item Description</label>
@@ -261,29 +303,31 @@ class AddDeal extends Component{
                                 id="description" 
                                 min="5" 
                                 className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.description
+                                    'is-invalid': err.description
                                 })}
                                 name="description"
                                 value={this.state.description}
                                 onChange={this.onChange} 
                                 id="description" 
-                                rows="3"
-                                className="form-control">
+                                rows="3">
                             </textarea>
+                            {err.description && (<div className="invalid-feedback">{err.description}</div>)}
                         </div>
+                        
+
                         
                         <div className="form-group">
                             <label htmlFor="text">Author</label>
                             <input
                                 type="text"
                                 className={classnames('form-control form-control-lg', {
-                                    'is-text': errors.author
+                                    'is-invalid': err.author
                                 })}
                                 name="author"
                                 value={this.state.author}
                                 onChange={this.onChange} 
                             />
-                            {errors.author && (<div className="invalid-feedback">{errors.author}</div>)}
+                            {err.author && (<div className="invalid-feedback">{err.author}</div>)}
                         </div>
 
 
@@ -302,4 +346,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default AddDeal;
+export default connect(mapStateToProps, {postDeal})(AddDeal);

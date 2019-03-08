@@ -321,7 +321,10 @@ Description     : A file that contains all styles for Carousel.js.
 
 
 /* MEDIA QUERIES */
-@media (mAX-width:600px)  {
+@media (max-width:600px)  {
+  .col-md-8 {
+    margin-bottom: 1rem;
+  }
   .col-lg-3 {
     padding-bottom: 5px;
   }
