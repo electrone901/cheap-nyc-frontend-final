@@ -105,7 +105,7 @@ class AddDeal extends Component{
         //     body: formData
         // }
         // console.log("this.props.postDeal ", this.props);
-        this.props.postDeal(formData);
+        this.props.postDeal(formData, this.props.history);
 
 
         // let url = 'https://cnycserver.herokuapp.com/items';

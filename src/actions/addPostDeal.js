@@ -7,7 +7,7 @@ import { GET_ERRORS, POST_DEAL } from './types';
 //         let urlBase = "https://cnycserver.herokuapp.com/items/";
 //         
 
-export const postDeal = (postData) => dispatch => {
+export const postDeal = (postData, history) => dispatch => {
     axios.post('/items/', postData)
     .then(res => {
         dispatch({
@@ -16,6 +16,7 @@ export const postDeal = (postData) => dispatch => {
         })
       }  
     )
+    .then(res => history.push('/'))
     .catch(err => {
         dispatch({
             type: GET_ERRORS,
