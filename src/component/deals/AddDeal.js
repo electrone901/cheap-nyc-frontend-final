@@ -38,22 +38,15 @@ class AddDeal extends Component{
         // console.log("Item name: ",nextProps.errors[0].msg);
         if(nextProps.errors){
             const {err} = this.state;
-            err.name = nextProps.errors[0].msg;
-            err.category = nextProps.errors[1].msg;
-            err.price = nextProps.errors[2].msg;
-            err.location = nextProps.errors[3].msg;
-            err.city = nextProps.errors[4].msg;
-            err.description = nextProps.errors[5].msg;
-            err.company = nextProps.errors[6].msg;
-            err.author = nextProps.errors[7].msg;
-            // this.setState({err: nextProps.errors});
+            for(let error in nextProps.errors){
+                let field = nextProps.errors[error].param;
+                err[field] = nextProps.errors[error].msg;
+            }
         } 
         else {
         // this.props.history.push('/portfolio');
-        console.log('Deal was Posted!!!')
+        console.log('Deal was Posted!!!');
         }
-
-
     }
 
 
