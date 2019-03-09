@@ -6,7 +6,9 @@ const initialState = {};
 
 const middleware = [thunk];
 
-let reduxTools = compose(applyMiddleware(...middleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//let reduxTools = compose(applyMiddleware(...middleware),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+let reduxTools = compose(applyMiddleware(...middleware));
 
 if(process.env.NODE_ENV === 'production'){
     reduxTools = compose(applyMiddleware(...middleware));
