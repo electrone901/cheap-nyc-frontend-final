@@ -45,6 +45,7 @@ class AddReview extends Component {
         }) 
         .then(response => response.json())
         .then(response => console.log('Success:', JSON.stringify(response)))
+        .then(this.props.history.push(`/`))
         .catch(error => console.error('Error:', error));
 
         // .then(resData => {
