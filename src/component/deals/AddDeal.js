@@ -18,8 +18,7 @@ class AddDeal extends Component{
             city: '',
             description: '',
             author: '',
-            errors: {},
-            err : {}
+            err: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -29,41 +28,24 @@ class AddDeal extends Component{
 
     componentDidMount(){
         if(this.props.auth.isAuthenticated){
-            this.props.history.push('/portfolio');
+            this.props.history.push('/addDeal');
+        }
+        else {
+            // this.props.history.push('/register');
+            this.props.history.push('/addDeal');
         }
     }
 
     componentWillReceiveProps(nextProps){
-        console.log("nextProps: ",nextProps.errors);
-        // console.log("Item name: ",nextProps.errors[0].msg);
-        if(nextProps.errors){
-            const {err} = this.state;
-            for(let error in nextProps.errors){
-                let field = nextProps.errors[error].param;
-                err[field] = nextProps.errors[error].msg;
-            }
-        } 
+        console.log("nextProps Luis: ",nextProps.errors);
+        if(nextProps.errors) {
+            this.setState({err: nextProps.errors})
+        }
         else {
-        // this.props.history.push('/portfolio');
-        console.log('Deal was Posted!!!');
+            console.log('Deal was Posted!!!');
+            // this.props.history.push()
         }
     }
-
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log("error componentDidUpdate: ",this.state.errors);
-    //     if(this.state.errors) {
-    //         this.state.errors.map((ele) => {
-    //             this.setState({what: ele.msg})
-    //             // console.log('ele', ele)
-    //         })
-    //         console.log('luis', this.state.errors) 
-    //     }
-    //     if(this.state.containerWidth !== prevState.containerWidth) { 
-    //         this.getNumberOfItems();
-    //     }
-    // }
-      
 
     
     onChange(e){
@@ -100,53 +82,13 @@ class AddDeal extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('author', this.state.author);
-        
-        // const postData = {
-        //     body: formData
-        // }
-        // console.log("this.props.postDeal ", this.props);
         this.props.postDeal(formData, this.props.history);
-
-
-        // let url = 'https://cnycserver.herokuapp.com/items';
-        // let method = 'POST';
-
-        // fetch(url, {
-        //     method: method,
-        //     body: formData
-        // })
-        // .then(res => {
-        //     console.log(res);
-        //     return res.json();
-        // })
-        // .then(res => {
-        //     console.log("error", res);
-        //      if (res.status !== 200 && res.status !== 201) {
-        //         this.setState({errors: res});
-        //         console.log("state", this.state.errors);
-        //         throw new Error('Creating or editing a post failed!');
-        //       }
-        //     //  this.props.history.push('/');
-        // })
-        // .catch(err => {
-        //     console.log("error: from cathch" + err);
-        // });
     }
     
     
     render(){
-        const {err} = this.state;
-        // if(this.state.errors.length > 0) {
-        //     err.name = this.state.errors[0].msg;
-        //     err.category = this.state.errors[1].msg;
-        //     err.location = this.state.errors[2].msg;
-        //     err.city = this.state.errors[3].msg;
-        //     err.description = this.state.errors[4].msg;
-        //     err.company = this.state.errors[5].msg;
-        //     err.author = this.state.errors[6].msg;
-        // }
-
-        console.log("state", this.state);
+        const { err } = this.state
+        console.log("err", err);
         return(
             <div className="addDeal">
                 <div className="container">

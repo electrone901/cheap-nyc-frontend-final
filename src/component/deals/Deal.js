@@ -17,10 +17,7 @@ class Deals extends Component{
         super();
         this.state = {
             data: '',
-            reviews: null,
-            ad:'1200 Broadway Ave Manhattan'   
-            //  Number Street Borougth, state, ZipCode
-            // ad:'300 Jay St Brooklyn, NY 11201'
+            reviews: null
         }
     }
     componentDidMount() {
@@ -54,7 +51,7 @@ class Deals extends Component{
                     <h1>{this.state.data.name}  <span className="detail__price"> $ {this.state.data.price}</span></h1>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right">
-                    <a href={`http://maps.google.com/?q=`+ this.state.ad} target="_blank" className="direcions">Get Directions</a>
+                    <a href={`http://maps.google.com/?q=`+ this.state.data.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
             

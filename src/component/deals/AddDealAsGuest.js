@@ -22,8 +22,7 @@ class AddDealAsGuest extends Component{
             city: '',
             description: '',
             author: '',
-            errors: {},
-            err : {}
+            err: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -31,50 +30,16 @@ class AddDealAsGuest extends Component{
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
-    componentDidMount(){
-        if(this.props.auth.isAuthenticated){
-            this.props.history.push('/portfolio');
-        }
-    }
-
     componentWillReceiveProps(nextProps){
-        console.log("nextProps: ",nextProps.errors);
-        // console.log("Item name: ",nextProps.errors[0].msg);
-        if(nextProps.errors){
-            const {err} = this.state;
-            err.name = nextProps.errors[0].msg;
-            err.category = nextProps.errors[1].msg;
-            err.price = nextProps.errors[2].msg;
-            err.location = nextProps.errors[3].msg;
-            err.city = nextProps.errors[4].msg;
-            err.description = nextProps.errors[5].msg;
-            err.company = nextProps.errors[6].msg;
-            err.author = nextProps.errors[7].msg;
-            // this.setState({err: nextProps.errors});
-        } 
-        else {
-        // this.props.history.push('/portfolio');
-        console.log('Deal was Posted!!!')
+        console.log("nextProps Luis: ",nextProps.errors);
+        if(nextProps.errors) {
+            this.setState({err: nextProps.errors})
         }
-
-
+        else {
+            console.log('Deal was Posted!!!');
+            // this.props.history.push()
+        }
     }
-
-
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log("error componentDidUpdate: ",this.state.errors);
-    //     if(this.state.errors) {
-    //         this.state.errors.map((ele) => {
-    //             this.setState({what: ele.msg})
-    //             // console.log('ele', ele)
-    //         })
-    //         console.log('luis', this.state.errors) 
-    //     }
-    //     if(this.state.containerWidth !== prevState.containerWidth) { 
-    //         this.getNumberOfItems();
-    //     }
-    // }
-      
 
     
     onChange(e){
@@ -111,59 +76,19 @@ class AddDealAsGuest extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('author', this.state.author);
-        
-        // const postData = {
-        //     body: formData
-        // }
-        // console.log("this.props.postDeal ", this.props);
-        this.props.postDeal(formData);
-
-
-        // let url = 'https://cnycserver.herokuapp.com/items';
-        // let method = 'POST';
-
-        // fetch(url, {
-        //     method: method,
-        //     body: formData
-        // })
-        // .then(res => {
-        //     console.log(res);
-        //     return res.json();
-        // })
-        // .then(res => {
-        //     console.log("error", res);
-        //      if (res.status !== 200 && res.status !== 201) {
-        //         this.setState({errors: res});
-        //         console.log("state", this.state.errors);
-        //         throw new Error('Creating or editing a post failed!');
-        //       }
-        //     //  this.props.history.push('/');
-        // })
-        // .catch(err => {
-        //     console.log("error: from cathch" + err);
-        // });
+        this.props.postDeal(formData, this.props.history);
     }
     
     
     render(){
-        const {err} = this.state;
-        // if(this.state.errors.length > 0) {
-        //     err.name = this.state.errors[0].msg;
-        //     err.category = this.state.errors[1].msg;
-        //     err.location = this.state.errors[2].msg;
-        //     err.city = this.state.errors[3].msg;
-        //     err.description = this.state.errors[4].msg;
-        //     err.company = this.state.errors[5].msg;
-        //     err.author = this.state.errors[6].msg;
-        // }
-
-        console.log("state", this.state);
+        const { err } = this.state
+        console.log("err", err);
         return(
             <div className="addDeal">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 m-auto">
-                      <h1 className="display-4 text-center">Create a post as Guest</h1>
+                      <h1 className="display-4 text-center">Posting as Guest</h1>
                       <form onSubmit={this.onSubmit}>
 
                         <div className="form-group">
@@ -349,7 +274,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-
 
 export default connect(mapStateToProps, {postDeal})(AddDealAsGuest);
 
