@@ -163,7 +163,7 @@ class AddDealAsGuest extends Component{
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 m-auto">
-                      <h1 className="display-4 text-center">Create a post</h1>
+                      <h1 className="display-4 text-center">Create a post as Guest</h1>
                       <form onSubmit={this.onSubmit}>
 
                         <div className="form-group">
@@ -350,4 +350,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
+
 export default connect(mapStateToProps, {postDeal})(AddDealAsGuest);
+
+

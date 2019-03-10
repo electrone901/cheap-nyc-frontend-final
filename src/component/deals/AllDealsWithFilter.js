@@ -13,6 +13,13 @@ class AllDealsWithFilter extends Component{
     this.handleChangeCity = this.handleChangeCity.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
   }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   componentDidMount() {
     let url = "https://cnycserver.herokuapp.com/items";
     fetch(url)
@@ -102,8 +109,6 @@ class AllDealsWithFilter extends Component{
       return(
           <div>
             <h1 className="title">Explore by category</h1>
-
-            {/* <h1>NY Best Deals - Las Mejores ofertas</h1> */}
             <div className="filterbutton">
               <div className="row text-center">
 
@@ -164,9 +169,21 @@ class AllDealsWithFilter extends Component{
                 </div>
 
                 <div className="dropdown col-lg-3 col-md-3 col-sm-6">
-                  <Link to="/addDeal" className="btn btn-primary btn-width">Add Deal</Link>
+                  <button className="btn btn-primary btn-width" onClick={this.togglePopup.bind(this)}>Add Deal</button>
                 </div>
 
+
+                <div className='container'>
+                  {
+                    this.state.showPopup ? 
+                      <Popup
+                      title='POST AS'
+                      text='Post as a member is recommend'
+                      closePopup={this.togglePopup.bind(this)}
+                      />
+                      : null
+                  }
+                </div>
               </div>
             </div>
 
@@ -174,10 +191,34 @@ class AllDealsWithFilter extends Component{
               <AllDeals data={this.state.data} />
             </div>
 
-
           </div>
       );
   }
 }
+
+class Popup extends React.Component {
+    render() {
+      return (
+        <div className='popup'>
+          <div className='popup_inner'>
+            <h1 className="padding-top">{this.props.title}</h1>
+            <p className="small">{this.props.text}</p>
+            
+            <div className="row text-center">
+              <div className="col-lg-6 col-md-6 col-sm-4 padding-top">
+                <Link to="/addDeal" className="btn btn-primary btn-width">As Member <i className="fa fa-check" aria-hidden="true"></i></Link>
+              </div>
+              <div className="col-lg-6 col-md-6 col-sm-4 padding-top">
+                <Link to="/addDeal-guest" className="btn btn-primary btn-width">As Guest</Link>
+              </div>
+            </div>
+            <div className="padding-top">
+              <button className="btn-info-helpful" onClick={this.props.closePopup}>Close me</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
 
 export default AllDealsWithFilter;
