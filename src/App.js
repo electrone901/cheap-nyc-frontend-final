@@ -14,6 +14,7 @@ import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
 import Deal from './component/deals/Deal';
+import AddDealAsGuest from './component/deals/AddDealAsGuest';
 import AddReview from './component/review/AddReview';
 
 import Register from './component/auth/Register';
@@ -36,7 +37,6 @@ if(localStorage.jwtToken){
 }
 
 
-
 class App extends Component {
   render() {
     return (
@@ -47,6 +47,7 @@ class App extends Component {
             <div>
               <Route exact path="/" component={Deals} />
               <Route exact path="/addDeal" component={AddDeal} />
+              <Route exact path="/AddDeal-guest" component={AddDealAsGuest} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/addReview/:id" component={AddReview} />
