@@ -23,9 +23,11 @@ class Login extends Component{
     }
     
     componentWillReceiveProps(nextProps){
-      if(nextProps.auth.isAuthenticated){
-        this.props.history.push('/portfolio');
-      }
+      console.log('nextProps.errors', nextProps.errors)
+
+      // if(nextProps.auth.isAuthenticated){
+      //   this.props.history.push('/portfolio');
+      // }
       if(nextProps.errors){
         this.setState({errors: nextProps.errors});
       }
@@ -47,7 +49,7 @@ class Login extends Component{
     
     render(){
         const {errors} = this.state;
-        
+        console.log('state', this.state)
         return(
             <div className="login">
                 <div className="container">

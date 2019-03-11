@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Spinner from '../common/Spinner';
 import AllDeals from './AllDeals';
 
 class AllDealsWithFilter extends Component{
@@ -44,7 +43,6 @@ class AllDealsWithFilter extends Component{
     else {
       url = `https://cnycserver.herokuapp.com/items?type=category&categoryName=`+category;
     }
-    console.log('url', url);
     fetch(url)
     .then(res => {
       return res.json();
@@ -58,7 +56,6 @@ class AllDealsWithFilter extends Component{
   }
 
   handleChangeCity(e) {
-    console.log('city', e.target.value);
     let url;
     let city = e.target.value;
     if(city === 'All Cities') {
@@ -67,7 +64,6 @@ class AllDealsWithFilter extends Component{
     else {
       url = `https://cnycserver.herokuapp.com/items?type=city&cityName=`+city;
     }
-    console.log('url',url)
     fetch(url)
     .then(res => {
       return res.json()
@@ -82,7 +78,6 @@ class AllDealsWithFilter extends Component{
 
 
   handleChangePrice(e) {
-    console.log('price', e.target.value);
     let url;
     let price = e.target.value;
     if(price === 'All Prices') {
@@ -92,7 +87,6 @@ class AllDealsWithFilter extends Component{
              
       url = `https://cnycserver.herokuapp.com/items?type=price&`+ price;
     }
-    console.log('url',url)
     fetch(url)
     .then(res => {
       return res.json()
@@ -105,7 +99,6 @@ class AllDealsWithFilter extends Component{
     })
   }
   render(){
-    console.log('data', this.state.data)
       return(
           <div>
             <h1 className="title">Explore by category</h1>

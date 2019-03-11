@@ -12,7 +12,7 @@ class Register extends Component{
             name: '',
             email: '',
             password: '',
-            password2: '',
+            confirmPassword: '',
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -26,6 +26,7 @@ class Register extends Component{
     }
     
     componentWillReceiveProps(nextProps){
+      console.log('nextProps registe component', nextProps.errors)
         if(nextProps.errors){
             this.setState({errors: nextProps.errors});
         }
@@ -41,7 +42,8 @@ class Register extends Component{
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
+            // password2: this.state.confirmPassword
+            confirmPassword: this.state.confirmPassword
         };
         
         this.props.registerUser(newUser, this.props.history);
@@ -49,7 +51,7 @@ class Register extends Component{
     
     render(){
         const {errors} = this.state;
-        
+        console.log('state', this.state)
         return(
             <div className="register">
                 <div className="container">
@@ -90,16 +92,17 @@ class Register extends Component{
                             onChange={this.onChange} />
                             {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                         </div>
+
                         <div className="form-group">
                           <input type="password"
                             className={classnames('form-control form-control-lg', {
-                              'is-invalid': errors.password2
+                              'is-invalid': errors.confirmPassword
                             })}
                             placeholder="Confirm Password"
-                            name="password2"
-                            value={this.state.password2}
+                            name="confirmPassword"
+                            value={this.state.confirmPassword}
                             onChange={this.onChange} />
-                            {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
+                            {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
                         </div>
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>

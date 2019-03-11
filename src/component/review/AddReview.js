@@ -11,60 +11,32 @@ class AddReview extends Component {
             rating: null,
             description: '',
             errors: {}
-            
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({errors: nextProps.errors});
+        }
+    }
+
     onChange(e){
-        console.log('rating', e.target.value)
         this.setState({[e.target.name]: e.target.value});
     }
+
     onSubmit(e) {
         e.preventDefault();
-        let itemId = this.props.match.params.id;
-        const formData = new FormData();
-                    //    https://cnycserver.herokuapp.com/items/:itemId/reviews
-        let urlBase = "https://cnycserver.herokuapp.com/items/";
-        let url = urlBase + itemId + '/reviews';
-        
-        let data = {
+        const reviewData = {
             name: this.state.author,
             rating: this.state.rating,
             text: this.state.description,
         };
-        console.log('this.state', this.state);
-        console.log('data', data);
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data), 
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }) 
-        .then(response => response.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
-        .then(this.props.history.push(`/`))
-        .catch(error => console.error('Error:', error));
-
-        // .then(resData => {
-        //     console.log(resData);
-        //     return resData.json();
-        // })
-        // .then(resData => {
-        //     this.props.history.push( `/deal/${itemId}`);
-        //     // /deal/5c6b8d9da52f412971081dab
-        // })
-        // .catch(err => {
-        //     console.log("error: " + err);
-        // });
+        this.props.postReview(reviewData, this.props.match.params.id, this.props.history);
     }
-
-
+ 
     render() {
-        console.log('this.state',this.state.id)
-        
         const {errors} = this.state;
         return(
             <div className="container">
@@ -78,33 +50,34 @@ class AddReview extends Component {
                                 <input
                                     type="text"
                                     className={classnames('form-control form-control-lg', {
-                                        'is-text': errors.author
+                                        'is-invalid': errors.name
                                     })}
                                     name="author"
                                     value={this.state.author}
                                     onChange={this.onChange} 
                                 />
-                                {errors.author && (<div className="invalid-feedback">{errors.author}</div>)}
+                                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="text">Rating</label>
-                                <div class="rating">
+                                <div  className={classnames('form-control form-control-lg rating', {
+                                        'is-invalid': errors.rating
+                                    })}>
                                     <input onChange={this.onChange} value={this.state.rating} id="star5" name="rating" type="radio" value="5" className="radio-btn hide"  />
-                                    <label for="star5" >☆</label>
+                                    <label htmlFor="star5" >☆</label>
                                     <input onChange={this.onChange} value={this.state.rating} id="star4" name="rating" type="radio" value="4" className="radio-btn hide" />
-                                    <label for="star4" >☆</label>
+                                    <label htmlFor="star4" >☆</label>
                                     <input  onChange={this.onChange} value={this.state.rating}id="star3" name="rating" type="radio" value="3" className="radio-btn hide" />
-                                    <label for="star3" >☆</label>
+                                    <label htmlFor="star3" >☆</label>
                                     <input onChange={this.onChange} value={this.state.rating} id="star2" name="rating" type="radio" value="2" className="radio-btn hide" />
-                                    <label for="star2" >☆</label>
+                                    <label htmlFor="star2" >☆</label>
                                     <input onChange={this.onChange} value={this.state.rating} id="star1" name="rating" type="radio" value="1" className="radio-btn hide" />
-                                    <label for="star1" >☆</label>
-                                    <div class="clear"></div>
+                                    <label htmlFor="star1" >☆</label>
+                                    <div className="clear"></div>
                                 </div>
                                 {errors.rating && (<div className="invalid-feedback">{errors.rating}</div>)}
                             </div>
-
 
                             <div className="form-group">
                                 <label htmlFor="text">Review</label>
@@ -113,16 +86,15 @@ class AddReview extends Component {
                                     id="description" 
                                     min="5" 
                                     className={classnames('form-control form-control-lg', {
-                                        'is-text': errors.description
+                                        'is-invalid': errors.text
                                     })}
                                     name="description"
                                     value={this.state.description}
                                     onChange={this.onChange} 
-                                    id="description" 
                                     rows="3"
-                                    className="form-control">
+                                    >
                                 </textarea>
-                                {errors.description && (<div className="invalid-feedback">{errors.description}</div>)}
+                                {errors.text && (<div className="invalid-feedback">{errors.text}</div>)}
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" />
                         </form>

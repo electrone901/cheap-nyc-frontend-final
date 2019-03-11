@@ -243,7 +243,6 @@ class AddDeal extends Component{
                                 name="description"
                                 value={this.state.description}
                                 onChange={this.onChange} 
-                                id="description" 
                                 rows="3">
                             </textarea>
                             {err.description && (<div className="invalid-feedback">{err.description}</div>)}

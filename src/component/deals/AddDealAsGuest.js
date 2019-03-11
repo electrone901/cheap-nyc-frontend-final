@@ -35,10 +35,6 @@ class AddDealAsGuest extends Component{
         if(nextProps.errors) {
             this.setState({err: nextProps.errors})
         }
-        else {
-            console.log('Deal was Posted!!!');
-            // this.props.history.push()
-        }
     }
 
     
@@ -229,7 +225,6 @@ class AddDealAsGuest extends Component{
                             <label htmlFor="text">Item Description</label>
                             <textarea 
                                 type="text" 
-                                id="description" 
                                 min="5" 
                                 className={classnames('form-control form-control-lg', {
                                     'is-invalid': err.description
@@ -237,7 +232,6 @@ class AddDealAsGuest extends Component{
                                 name="description"
                                 value={this.state.description}
                                 onChange={this.onChange} 
-                                id="description" 
                                 rows="3">
                             </textarea>
                             {err.description && (<div className="invalid-feedback">{err.description}</div>)}

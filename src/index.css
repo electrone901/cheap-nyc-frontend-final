@@ -425,7 +425,7 @@ Description     : A file that contains all styles for Carousel.js.
 
   /* ADD REVIEW */
   .rating {
-    width: 61%;
+    width: 100%;
   }
 
 }

@@ -23,9 +23,7 @@ class Deals extends Component{
     componentDidMount() {
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
-        console.log('id', id);
         let url = `https://cnycserver.herokuapp.com/items/${id}`;
-        console.log('url', url);
         fetch(url)
         .then(res => {
             console.log('res', res);
@@ -41,8 +39,7 @@ class Deals extends Component{
     
     render(){
         const shareUrl = 'http://lazona.herokuapp.com/';
-        const title = 'CheapNY: Best Deals of NY';
-        console.log('this.state', this.state)        
+        const title = 'CheapNY: Best Deals of NY';   
       return(
           <div className="container">
 
@@ -132,7 +129,7 @@ class Deals extends Component{
                 this.state.data.reviews ? this.state.data.reviews.map((review, key) => {
                     var percentage = (review.rating * 20) + '%'; //calculate % rating 
                     return( 
-                        <div>
+                        <div key={key}>
                             <div className="row justify-content-center">
 
                                 <div className="col-4 col-sm-4 col-md-4">

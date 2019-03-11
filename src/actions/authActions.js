@@ -5,7 +5,8 @@ import setAuthToken from '../utilis/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER, GET_USER } from './types';
 
 export const registerUser = (userData, history) => dispatch => {
-    axios.post('/api/users/register', userData)
+  console.log('action registerUser', userData, history)
+    axios.post('/users/signup', userData)
       .then(res => history.push('/login'))
       .catch(err =>
         dispatch({
@@ -16,7 +17,7 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 export const loginUser = (userData) => dispatch => {
-  axios.post('/api/users/login', userData)
+  axios.post('/users/login', userData)
     .then(res => {
       const { token } = res.data;
       localStorage.setItem('jwtToken', token);
