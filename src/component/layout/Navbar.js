@@ -2,15 +2,28 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../../img/l3.png';
+import Popup from '../deals/Popup';
 
 import { logoutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showPopup: ''
+    };
+  }
 
   // To logout implement in the future
   onLogoutClick(e){
       e.preventDefault();
       this.props.logoutUser();
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
   
   render() {
@@ -64,12 +77,28 @@ class Navbar extends Component {
 
           <div className="collapse navbar-collapse" id="mobile-nav"> 
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                   {' '}
                   <Link className="nav-link" to="/addDeal">
                     Create a post
                   </Link>
-                </li>
+                </li> */}
+
+              <li className="nav-item nav-link" onClick={this.togglePopup.bind(this)}>
+                  {' '}
+                    Create a post
+              </li>
+              <li className="nav-item nav-link row text-center">
+                {
+                    this.state.showPopup ? 
+                      <Popup
+                      title='POST AS'
+                      text='Post as a member is recommend'
+                      closePopup={this.togglePopup.bind(this)}
+                      />
+                      : null
+                  }
+              </li>
 
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/categories">

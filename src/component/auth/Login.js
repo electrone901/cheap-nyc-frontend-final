@@ -17,6 +17,7 @@ class Login extends Component{
     }
     
     componentDidMount(){
+      console.log('this.props.auth.isAuthenticated',this.props.auth.isAuthenticated)
       if(this.props.auth.isAuthenticated){
         this.props.history.push('/portfolio');
       }

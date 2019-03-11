@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
+import Popup from './Popup';
 
 class AllDealsWithFilter extends Component{
   constructor() {
@@ -14,9 +16,16 @@ class AllDealsWithFilter extends Component{
   }
 
   togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
+    if(this.props.auth.isAuthenticated) {
+      console.log(' YES user logged this.props.auth.isAuthenticated', this.props)
+      this.props.history.push('/addDeal');
+    }
+    else {
+      console.log('user NOT logged!!!!!', this.props)
+      this.setState({
+        showPopup: !this.state.showPopup
+      });
+    }
   }
 
   componentDidMount() {
@@ -99,6 +108,7 @@ class AllDealsWithFilter extends Component{
     })
   }
   render(){
+    console.log('ALLDEALS this.props', this.props)
       return(
           <div>
             <h1 className="title">Explore by category</h1>
@@ -189,29 +199,9 @@ class AllDealsWithFilter extends Component{
   }
 }
 
-class Popup extends React.Component {
-    render() {
-      return (
-        <div className='popup'>
-          <div className='popup_inner'>
-            <h1 className="padding-top">{this.props.title}</h1>
-            <p className="small">{this.props.text}</p>
-            
-            <div className="row text-center">
-              <div className="col-lg-6 col-md-6 col-sm-4 padding-top">
-                <Link to="/addDeal" className="btn btn-primary btn-width">As Member <i className="fa fa-check" aria-hidden="true"></i></Link>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-4 padding-top">
-                <Link to="/addDeal-guest" className="btn btn-primary btn-width">As Guest</Link>
-              </div>
-            </div>
-            <div className="padding-top">
-              <button className="btn-info-helpful" onClick={this.props.closePopup}>Close me</button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-  }
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
 
-export default AllDealsWithFilter;
+export default connect(mapStateToProps) (withRouter(AllDealsWithFilter));

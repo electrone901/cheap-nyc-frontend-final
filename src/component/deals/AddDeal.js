@@ -27,7 +27,10 @@ class AddDeal extends Component{
     }
 
     componentDidMount(){
+        console.log('user.id', this.props.auth.user.name);
+       
         if(this.props.auth.isAuthenticated){
+            this.setState({author: this.props.auth.user.name})
             this.props.history.push('/addDeal');
         }
         else {
@@ -88,13 +91,13 @@ class AddDeal extends Component{
     
     render(){
         const { err } = this.state
-        console.log("err", err);
+        console.log("Add deal this.props.auth.user.id", this.props.auth.user);
         return(
             <div className="addDeal">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 m-auto">
-                      <h1 className="display-4 text-center">Create a post</h1>
+                      <h1 className="display-4 text-center">Posting as Member</h1>
                       <form onSubmit={this.onSubmit}>
 
                         <div className="form-group">
@@ -250,7 +253,7 @@ class AddDeal extends Component{
                         
 
                         
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="text">Author</label>
                             <input
                                 type="text"
@@ -262,7 +265,7 @@ class AddDeal extends Component{
                                 onChange={this.onChange} 
                             />
                             {err.author && (<div className="invalid-feedback">{err.author}</div>)}
-                        </div>
+                        </div> */}
 
 
                         <input type="submit" className="btn btn-info btn-block mt-4" />
