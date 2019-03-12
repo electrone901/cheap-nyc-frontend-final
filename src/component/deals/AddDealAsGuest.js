@@ -21,7 +21,6 @@ class AddDealAsGuest extends Component{
             address: '',
             city: '',
             description: '',
-            author: '',
             err: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -71,7 +70,6 @@ class AddDealAsGuest extends Component{
         formData.append('location', this.state.address);
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
-        formData.append('author', this.state.author);
         this.props.postDeal(formData, this.props.history);
     }
     
@@ -237,23 +235,6 @@ class AddDealAsGuest extends Component{
                             {err.description && (<div className="invalid-feedback">{err.description}</div>)}
                         </div>
                         
-
-                        
-                        <div className="form-group">
-                            <label htmlFor="text">Author</label>
-                            <input
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': err.author
-                                })}
-                                name="author"
-                                value={this.state.author}
-                                onChange={this.onChange} 
-                            />
-                            {err.author && (<div className="invalid-feedback">{err.author}</div>)}
-                        </div>
-
-
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>
                     </div>
