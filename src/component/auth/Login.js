@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { loginUser } from '../../actions/authActions';
 
 class Login extends Component{
@@ -16,10 +19,17 @@ class Login extends Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
     
+    notify = () => {
+      toast.error("Please login first to continue 😀")
+    }
     componentDidMount(){
       console.log('this.props.auth.isAuthenticated',this.props.auth.isAuthenticated)
       if(this.props.auth.isAuthenticated){
         this.props.history.push('/portfolio');
+      }
+      else {
+        console.log('calling notify')
+        this.notify();
       }
     }
     
@@ -56,6 +66,7 @@ class Login extends Component{
                 <div className="container">
                   <div className="row">
                     <div className="col-md-8 m-auto">
+                      <ToastContainer />
                       <h1 className="display-4 text-center">Log In</h1>
                       <form onSubmit={this.onSubmit}>
                         <div className="form-group">

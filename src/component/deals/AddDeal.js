@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { postDeal } from '../../actions/addPostDeal';
 
@@ -26,17 +28,25 @@ class AddDeal extends Component{
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
+    
     componentDidMount(){
-        console.log('user.id', this.props.auth.user.name);
-       
-        if(this.props.auth.isAuthenticated){
+        // console.log('isAuthenticated: ', this.props.auth.isAuthenticated);
+        // console.log('user.id', this.props.auth.user.name);
+        if(!this.props.auth.isAuthenticated){
+            console.log('NO AUTHENTICATED ')
             this.setState({author: this.props.auth.user.name})
-            this.props.history.push('/addDeal');
+            this.props.history.push('/login');
         }
-        else {
-            // this.props.history.push('/register');
-            this.props.history.push('/addDeal');
-        }
+       
+        // if(this.props.auth.isAuthenticated){
+        //     console.log('YES IS AUTHENTICATED ')
+        //     this.setState({author: this.props.auth.user.name})
+        //     this.props.history.push('/addDeal');
+        // }
+        // else {
+        //     // this.props.history.push('/register');
+        //     this.props.history.push('/addDeal');
+        // }
     }
 
     componentWillReceiveProps(nextProps){
@@ -91,7 +101,7 @@ class AddDeal extends Component{
     
     render(){
         const { err } = this.state
-        console.log("Add deal this.props.auth.user.id", this.props.auth.user);
+        console.log("Add deal this.props.auth.user.id what", this.props.auth.isAuthenticated);
         return(
             <div className="addDeal">
                 <div className="container">
