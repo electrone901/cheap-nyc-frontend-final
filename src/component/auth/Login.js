@@ -22,23 +22,25 @@ class Login extends Component{
     notify = () => {
       toast.error("Please login first to continue 😀")
     }
+
+    successfulLogin = () => {
+      toast.success(`🚀  Login Successful!`)
+    }
     componentDidMount(){
       console.log('this.props.auth.isAuthenticated',this.props.auth.isAuthenticated)
       if(this.props.auth.isAuthenticated){
-        this.props.history.push('/portfolio');
+        this.props.history.push('/');
       }
       else {
-        console.log('calling notify')
         this.notify();
       }
     }
     
     componentWillReceiveProps(nextProps){
-      console.log('nextProps.errors', nextProps.errors)
-
-      // if(nextProps.auth.isAuthenticated){
-      //   this.props.history.push('/portfolio');
-      // }
+      if(nextProps.auth.isAuthenticated){
+        this.successfulLogin();
+        this.props.history.push('/');
+      }
       if(nextProps.errors){
         this.setState({errors: nextProps.errors});
       }
@@ -59,7 +61,9 @@ class Login extends Component{
     }
     
     render(){
-        const {errors} = this.state;
+      console.log('this.props.auth.user.name', this.props.auth.user.name)
+
+        const { errors } = this.state;
         console.log('state', this.state)
         return(
             <div className="login">
