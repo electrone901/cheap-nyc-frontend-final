@@ -33,6 +33,7 @@ export const loginUser = (userData) => dispatch => {
     }));
 };
 
+
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import  { Link } from 'react-router-dom';
+import  { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import image2 from '../../img/stocks.png';
 import Spinner from '../common/Spinner';
 import { 
@@ -11,6 +12,10 @@ import {
     TwitterIcon,
     EmailIcon,
     FacebookIcon, } from 'react-share';
+import { stat } from 'fs';
+import ReviewPopup from '../review/ReviewPopup';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
  
 class Deals extends Component{
     constructor() {
@@ -20,6 +25,20 @@ class Deals extends Component{
             reviews: null
         }
     }
+
+    togglePopup() {
+        let userId =  this.props.match.params.id
+        if(this.props.auth.isAuthenticated) {
+            console.log('YES is Authenticated');
+            this.props.history.push(`/addReview/${userId}`)
+        }
+        else {
+            this.setState({
+                showPopup: !this.state.showPopup
+            })
+        }
+    }
+
     componentDidMount() {
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
@@ -36,8 +55,53 @@ class Deals extends Component{
             console.log('There was a problem with your fetch request' + err.message);
         });
     }
+
+    notify = () => {
+        toast.error("To like/flag a post you must be logged in!")
+    }
+
+    addLike() {
+        const token = localStorage.getItem('jwtToken');
+        let itemId =  this.props.match.params.id
+
+        if(this.props.auth.isAuthenticated) {
+            fetch(`https://cnycserver.herokuapp.com/items/${itemId}/like`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(resData => console.log(resData))
+            .catch(err => console.log(err))
+        }
+        else {
+            this.notify();
+        }
+    }
+
+    addFlag() {
+        const token = localStorage.getItem('jwtToken');
+        let itemId =  this.props.match.params.id
+        if(this.props.auth.isAuthenticated) {
+            fetch(`https://cnycserver.herokuapp.com/items/${itemId}/flag`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': token,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(resData => console.log(resData))
+            .catch(err => console.log(err))
+        }
+        else {
+            this.notify();
+        }
+    }
     
     render(){
+        let flags = this.state.data.flags;
+        let likes = this.state.data.likes;
         const shareUrl = 'http://lazona.herokuapp.com/';
         const title = 'CheapNY: Best Deals of NY';   
       return(
@@ -51,14 +115,14 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ this.state.data.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
-            
+            <ToastContainer />
             <div className="text-center background">
                 <img src={this.state.data.image ? this.state.data.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
 
             <div className="row space-top">
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction">{} (0) Likes</button>
+                    <button className="btn-reaction" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center container2">
                     
@@ -101,8 +165,22 @@ class Deals extends Component{
 
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction">{} (0) Flag</button>
+                    <button className="btn-reaction" onClick={this.addFlag.bind(this)}>({flags ? flags.length: '0'}) Flag</button>
                 </div>
+            </div>
+
+            {/* showPopup */}
+            <div className="container text-center"> 
+                {
+                    this.state.showPopup ?
+                    <ReviewPopup
+                        title= 'POST AS'
+                        text= 'Post as a member is reccomend'
+                        closePopup ={this.togglePopup.bind(this)}
+                        id={this.props.match.params.id}
+                    />
+                    : null
+                }
             </div>
 
 
@@ -119,7 +197,9 @@ class Deals extends Component{
                     <h3>Reviews</h3>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right addReview">
-                    <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link>
+                    <button className="btn btn-info" onClick={this.togglePopup.bind(this)}>+ Add Review</button>
+
+                    {/* <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link> */}
                 </div>
             </div>
             <hr/>
@@ -196,4 +276,9 @@ class Deals extends Component{
       );
     }
 }
-export default (Deals);
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
+export default connect(mapStateToProps)(withRouter(Deals));

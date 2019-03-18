@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../../img/l3.png';
 import Popup from '../deals/Popup';
@@ -21,9 +21,14 @@ class Navbar extends Component {
   }
 
   togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
+    if(this.props.auth.isAuthenticated) {
+      this.props.history.push('/addDeal');
+    }
+    else {
+      this.setState({
+        showPopup: !this.state.showPopup
+      });
+    }
   }
   
   render() {
@@ -33,7 +38,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link to="/profile" className="nav-link">
-              Welcome, {user.name}
+            <span role="img" style={{color:"red"}}>😀</span> Welcome, {user.name}
           </Link>
         </li>
         <li className="nav-item">
@@ -120,5 +125,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {logoutUser})(Navbar);
+// export default withRouter(connect(mapStateToProps, matchDispatchToProps)(ChildView))
+export default withRouter(connect(mapStateToProps, {logoutUser})(Navbar));
 
