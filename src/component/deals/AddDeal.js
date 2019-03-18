@@ -30,10 +30,8 @@ class AddDeal extends Component{
 
     
     componentDidMount(){
-        // console.log('isAuthenticated: ', this.props.auth.isAuthenticated);
-        // console.log('user.id', this.props.auth.user.name);
+        window.scrollTo(0,0);
         if(!this.props.auth.isAuthenticated){
-            console.log('NO AUTHENTICATED ')
             this.setState({author: this.props.auth.user.name})
             this.props.history.push('/login');
         }

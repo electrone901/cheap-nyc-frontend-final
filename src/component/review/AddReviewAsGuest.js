@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/addReview';
 
-class AddReview extends Component {
+class AddReviewAsGuest extends Component {
     constructor() {
         super();
         this.state = {
@@ -19,13 +18,6 @@ class AddReview extends Component {
 
     componentDidMount() {
         window.scrollTo(0,0);
-        if(this.props.auth.user.name) {
-            this.setState({author: this.props.auth.user.name})
-        }
-        else {
-            this.props.history.push("/login");
-        }
-        
     }
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors) {
@@ -38,7 +30,6 @@ class AddReview extends Component {
     }
 
     onSubmit(e) {
-        console.log('click', )
         e.preventDefault();
         const reviewData = {
             name: this.state.author,
@@ -49,14 +40,28 @@ class AddReview extends Component {
     }
  
     render() {
-        console.log('props', this.props)
         const {errors} = this.state;
         return(
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 m-auto">
-                        <h1>Add a review As Member</h1>
+                        <h1>Add a review As Guest</h1>
+                        
                         <form onSubmit={this.onSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="text">Author</label>
+                                <input
+                                    type="text"
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': errors.name
+                                    })}
+                                    name="author"
+                                    value={this.state.author}
+                                    onChange={this.onChange} 
+                                />
+                                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                            </div>
+
                             <div className="form-group">
                                 <label htmlFor="text">Rating</label>
                                 <div  className={classnames('form-control form-control-lg rating', {
@@ -109,10 +114,9 @@ class AddReview extends Component {
 }
 
 const mapStateTpProps = state => ({
-    auth: state.auth,
     errors: state.errors
 })
-export default connect(mapStateTpProps, {postReview}) (withRouter(AddReview));
+export default connect(mapStateTpProps, {postReview})(AddReviewAsGuest);
 
 
 // Link - https://cnycserver.herokuapp.com/items/:itemId/reviews

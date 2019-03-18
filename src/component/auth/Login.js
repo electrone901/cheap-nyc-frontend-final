@@ -27,7 +27,7 @@ class Login extends Component{
       toast.success(`🚀  Login Successful!`)
     }
     componentDidMount(){
-      console.log('this.props.auth.isAuthenticated',this.props.auth.isAuthenticated)
+      window.scrollTo(0,0);
       if(this.props.auth.isAuthenticated){
         this.props.history.push('/');
       }

@@ -29,6 +29,9 @@ class AddDealAsGuest extends Component{
         this.handleChangeCity = this.handleChangeCity.bind(this);
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
+    componentDidMount() {
+        window.scrollTo(0,0);
+    }
 
     componentWillReceiveProps(nextProps){
         console.log("nextProps Luis: ",nextProps.errors);

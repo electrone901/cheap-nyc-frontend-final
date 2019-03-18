@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import  { Link } from 'react-router-dom';
+import  { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import image2 from '../../img/stocks.png';
 import Spinner from '../common/Spinner';
 import { 
@@ -11,6 +12,8 @@ import {
     TwitterIcon,
     EmailIcon,
     FacebookIcon, } from 'react-share';
+import { stat } from 'fs';
+import ReviewPopup from '../review/ReviewPopup';
  
 class Deals extends Component{
     constructor() {
@@ -20,6 +23,22 @@ class Deals extends Component{
             reviews: null
         }
     }
+
+    togglePopup() {
+        let id =  this.props.match.params.id
+        console.log('id',id)
+        if(this.props.auth.isAuthenticated) {
+            console.log('YES is Authenticated');
+            this.props.history.push(`/addReview/${id}`)
+        }
+        else {
+            console.log('NOT Luis is Authenticated');
+            this.setState({
+                showPopup: !this.state.showPopup
+            })
+        }
+    }
+
     componentDidMount() {
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
@@ -38,6 +57,7 @@ class Deals extends Component{
     }
     
     render(){
+        console.log('this.props', this.props);
         const shareUrl = 'http://lazona.herokuapp.com/';
         const title = 'CheapNY: Best Deals of NY';   
       return(
@@ -105,6 +125,20 @@ class Deals extends Component{
                 </div>
             </div>
 
+            {/* showPopup */}
+            <div className="container text-center"> 
+                {
+                    this.state.showPopup ?
+                    <ReviewPopup
+                        title= 'POST AS'
+                        text= 'Post as a member is reccomend'
+                        closePopup ={this.togglePopup.bind(this)}
+                        id={this.props.match.params.id}
+                    />
+                    : null
+                }
+            </div>
+
 
             <div className="space-top">
                 <p> <span className="field-name"> Company Name: </span>{this.state.data.company}</p>
@@ -119,7 +153,9 @@ class Deals extends Component{
                     <h3>Reviews</h3>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right addReview">
-                    <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link>
+                    <button className="btn btn-info" onClick={this.togglePopup.bind(this)}>+ Add Review</button>
+
+                    {/* <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link> */}
                 </div>
             </div>
             <hr/>
@@ -196,4 +232,9 @@ class Deals extends Component{
       );
     }
 }
-export default (Deals);
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
+export default connect(mapStateToProps)(withRouter(Deals));
