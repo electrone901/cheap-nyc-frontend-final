@@ -1,15 +1,15 @@
 const initialState = {
-    post: {}
-}
+    post: []
+};
 
 export default function(state = initialState, action) {
     switch(action.type) {
         case 'POST_DEAL':
-        return{
-            ...state,
-            post: action.payload
-        }
+            return{
+                ...state,
+                post: action.payload
+            };
         default:
-        return state;
+            return state;
     }
 }
