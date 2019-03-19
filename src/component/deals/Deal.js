@@ -17,6 +17,7 @@ import ReviewPopup from '../review/ReviewPopup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
+import { getDeal } from '../../actions/addPostDeal';
  
 class Deals extends Component{
     constructor() {
@@ -44,17 +45,8 @@ class Deals extends Component{
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
         let url = `https://cnycserver.herokuapp.com/items/${id}`;
-        fetch(url)
-        .then(res => {
-            console.log('res', res);
-            return res.json();
-        })
-        .then((data) => {
-            this.setState({data: data.item});
-        })
-        .catch((err) => {
-            console.log('There was a problem with your fetch request' + err.message);
-        });
+        
+        this.props.getDeal(url);
     }
 
     // WAY TO DISABLED LIKE BUTTON
@@ -150,20 +142,22 @@ class Deals extends Component{
         // console.log('includes', arrayLikes.includes(userId));
         // }
         
+        const { post } = this.props.postDeal;
+        
       return(
           <div className="container">
 
             <div className="row justify-content-center">
                 <div className="col-8 col-sm-8 col-md-8">
-                    <h1>{this.state.data.name}  <span className="detail__price"> $ {this.state.data.price}</span></h1>
+                    <h1>{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right">
-                    <a href={`http://maps.google.com/?q=`+ this.state.data.location} target="_blank" className="direcions">Get Directions</a>
+                    <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
             <ToastContainer />
             <div className="text-center background">
-                <img src={this.state.data.image ? this.state.data.image: image2} className="img-thumbnail" alt="Responsive" />
+                <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
 
             <div className="row space-top">
@@ -217,7 +211,7 @@ class Deals extends Component{
                     <EmailShareButton
                         url={shareUrl}
                         subject={title}
-                        body={this.state.data.description}
+                        body={post.description}
                         className="btn-social">
                         <EmailIcon
                         size={32}
@@ -255,10 +249,10 @@ class Deals extends Component{
 
 
             <div className="space-top">
-                <p> <span className="field-name"> Company Name: </span>{this.state.data.company}</p>
-                <p> <span className="field-name"> Location: </span>{this.state.data.location}</p>
-                <p> <span className="field-name"> Category: </span> {this.state.data.category}</p>
-                <p> <span className="field-name"> Product Description: </span>{this.state.data.description}</p>          
+                <p> <span className="field-name"> Company Name: </span>{post.company}</p>
+                <p> <span className="field-name"> Location: </span>{post.location}</p>
+                <p> <span className="field-name"> Category: </span> {post.category}</p>
+                <p> <span className="field-name"> Product Description: </span>{post.description}</p>          
             </div>
             <br/>
             {/* REVIEWS */}
@@ -276,7 +270,7 @@ class Deals extends Component{
              
              {/* REVIEWS INFO FROM API */}
             {   
-                this.state.data.reviews ? this.state.data.reviews.map((review, key) => {
+                post.reviews ? post.reviews.map((review, key) => {
                     var percentage = (review.rating * 20) + '%'; //calculate % rating 
                     return( 
                         <div key={key}>
@@ -350,6 +344,8 @@ class Deals extends Component{
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors,
-    addLike: state.addLike
-})
-export default connect(mapStateToProps, {addLike}) (withRouter(Deals));
+    addLike: state.addLike,
+    postDeal: state.postDeal
+});
+
+export default connect(mapStateToProps, { addLike, getDeal}) (withRouter(Deals));
