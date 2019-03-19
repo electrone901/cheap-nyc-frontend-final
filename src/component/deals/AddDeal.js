@@ -35,16 +35,6 @@ class AddDeal extends Component{
             this.setState({author: this.props.auth.user.name})
             this.props.history.push('/login');
         }
-       
-        // if(this.props.auth.isAuthenticated){
-        //     console.log('YES IS AUTHENTICATED ')
-        //     this.setState({author: this.props.auth.user.name})
-        //     this.props.history.push('/addDeal');
-        // }
-        // else {
-        //     // this.props.history.push('/register');
-        //     this.props.history.push('/addDeal');
-        // }
     }
 
     componentWillReceiveProps(nextProps){
@@ -52,15 +42,10 @@ class AddDeal extends Component{
         if(nextProps.errors) {
             this.setState({err: nextProps.errors})
         }
-        else {
-            console.log('Deal was Posted!!!');
-            // this.props.history.push()
-        }
     }
 
     
     onChange(e){
-
         this.setState({[e.target.name]: e.target.value});
     }
     handleChangeCity(e) {
