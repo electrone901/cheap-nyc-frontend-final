@@ -1,5 +1,5 @@
 import axios from '../axios-stocks';
-import { GET_ERRORS, POST_DEAL } from './types';
+import { GET_ERRORS, POST_DEAL, GET_DEAL } from './types';
 
 export const postDeal = (postData, history) => dispatch => {
     axios.post('/items/', postData)
@@ -20,3 +20,19 @@ export const postDeal = (postData, history) => dispatch => {
     );
 }
 
+export const getDeal = (url) => dispatch => {
+    fetch(url)
+        .then(res => {
+            console.log('res', res);
+            return res.json();
+        })
+        .then(data => {
+            dispatch({
+                type: GET_DEAL,
+                payload:  data.item
+            });
+        })
+        .catch((err) => {
+            console.log('There was a problem with your fetch request' + err.message);
+        });
+};
