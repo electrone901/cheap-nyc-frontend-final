@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
 import Popup from './Popup';
@@ -17,11 +17,9 @@ class AllDealsWithFilter extends Component{
 
   togglePopup() {
     if(this.props.auth.isAuthenticated) {
-      console.log(' YES user logged this.props.auth.isAuthenticated', this.props)
       this.props.history.push('/addDeal');
     }
     else {
-      console.log('user NOT logged!!!!!', this.props)
       this.setState({
         showPopup: !this.state.showPopup
       });
@@ -108,7 +106,6 @@ class AllDealsWithFilter extends Component{
     })
   }
   render(){
-    console.log('ALLDEALS this.props', this.props)
       return(
           <div>
             <h1 className="title">Explore by category</h1>

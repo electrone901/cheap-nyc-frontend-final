@@ -38,7 +38,7 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link to="/profile" className="nav-link">
-            <span role="img" style={{color:"red"}}>😀</span> Welcome, {user.name}
+            <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {user.name}
           </Link>
         </li>
         <li className="nav-item">

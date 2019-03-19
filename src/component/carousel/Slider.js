@@ -12,11 +12,25 @@ export default class Slider extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // images: [
+            //     "https://react-slider.herokuapp.com/img/oriens-belt.jpg",
+            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
+            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
+            // ],  "images/priceles.jpg",
+
+
             images: [
-                "https://react-slider.herokuapp.com/img/oriens-belt.jpg",
-                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
-                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
-                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
+                "images/b2.jpg",
+                "images/bestDeals.jpg",
+                "images/under_1.jpg",
+                "images/b4.jpg",
+                "images/over_50.jpg",
+                "images/under_15.jpg",
+                "images/under_20.jpg",
+                "images/b1.jpg", 
+                "images/b3.jpg",
+                "images/b6.jpg",
             ],
             currentIndex: 0,
             translateValue: 0,

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { postDeal } from '../../actions/addPostDeal';
@@ -38,7 +37,6 @@ class AddDeal extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log("nextProps Luis: ",nextProps.errors);
         if(nextProps.errors) {
             this.setState({err: nextProps.errors})
         }
@@ -49,12 +47,10 @@ class AddDeal extends Component{
         this.setState({[e.target.name]: e.target.value});
     }
     handleChangeCity(e) {
-        console.log('city', e.target.value)
         this.setState({city: e.target.value});
     }
 
     handleChangeCategory(e) {
-        console.log('category', e.target.value)
         this.setState({category: e.target.value});
     }
     
@@ -84,7 +80,6 @@ class AddDeal extends Component{
     
     render(){
         const { err } = this.state
-        console.log("Add deal this.props.auth.user.id what", this.props.auth.isAuthenticated);
         return(
             <div className="addDeal">
                 <div className="container">
@@ -225,8 +220,6 @@ class AddDeal extends Component{
                             
                         </div>
                         
-
-
                         <div className="form-group">
                             <label htmlFor="text">Item Description</label>
                             <textarea 
@@ -243,24 +236,6 @@ class AddDeal extends Component{
                             </textarea>
                             {err.description && (<div className="invalid-feedback">{err.description}</div>)}
                         </div>
-                        
-
-                        
-                        {/* <div className="form-group">
-                            <label htmlFor="text">Author</label>
-                            <input
-                                type="text"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': err.author
-                                })}
-                                name="author"
-                                value={this.state.author}
-                                onChange={this.onChange} 
-                            />
-                            {err.author && (<div className="invalid-feedback">{err.author}</div>)}
-                        </div> */}
-
-
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>
                     </div>

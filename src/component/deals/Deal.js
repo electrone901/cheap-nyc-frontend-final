@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import  { Link, withRouter } from 'react-router-dom';
+import  { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import image2 from '../../img/stocks.png';
 import Spinner from '../common/Spinner';
@@ -12,11 +12,11 @@ import {
     TwitterIcon,
     EmailIcon,
     FacebookIcon, } from 'react-share';
-import { stat } from 'fs';
 import ReviewPopup from '../review/ReviewPopup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
+import { addFlag } from '../../actions/addFlagActions';
 import { getDeal } from '../../actions/addPostDeal';
  
 class Deals extends Component{
@@ -49,16 +49,6 @@ class Deals extends Component{
         this.props.getDeal(url);
     }
 
-    // WAY TO DISABLED LIKE BUTTON
-    componentWillReceiveProps(nextProps) {
-        if(!nextProps.error) {
-            this.setState({errors: nextProps.errors})
-        }
-        else {
-            console.log('change color here');
-        }
-    }
-
     notify = () => {
         toast.error("To like/flag a post you must be logged in!")
     }
@@ -71,47 +61,18 @@ class Deals extends Component{
         else {
             this.notify();
         }
-
-        // const token = localStorage.getItem('jwtToken');
-        // let itemId =  this.props.match.params.id
-
-        // if(this.props.auth.isAuthenticated) {
-        //     fetch(`https://cnycserver.herokuapp.com/items/${itemId}/like`, {
-        //         method: 'PUT',
-        //         headers: {
-        //             'Authorization': token,
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     .then(resData => console.log(resData))
-        //     .catch(err => console.log(err))
-        // }
-        // else {
-        //     this.notify();
-        // }
     }
 
     addFlag() {
-        const token = localStorage.getItem('jwtToken');
-        let itemId =  this.props.match.params.id
+        let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
-            fetch(`https://cnycserver.herokuapp.com/items/${itemId}/flag`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': token,
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(resData => console.log(resData))
-            .catch(err => console.log(err))
+            this.props.addFlag(itemId, this.props.history)
         }
         else {
             this.notify();
         }
     }
-    disable() {
 
-    }
     
     render(){
         const { post } = this.props.postDeal;
@@ -121,29 +82,6 @@ class Deals extends Component{
         const shareUrl = 'http://lazona.herokuapp.com/';
         const title = 'CheapNY: Best Deals of NY';
 
-
-        // CHECK IF USER LIKED/FLAGGED POST
-        let showHideLikeButton;
-        if(this.state.data) {
-            let arrayLikes =  this.state.data.likes;
-            let userId =  this.props.auth.user.id;
-            showHideLikeButton 
-            console.log('arrayLikes', arrayLikes, 'includes', arrayLikes.includes(userId))
-            // this.setState({
-            //     showHideLikeButton: arrayLikes.includes(userId)
-            // })
-        }
-
-        console.log('state', this.state)
-        console.log('props', this.props)
-        // let showHideLikeButton;
-        // if(this.state.data) {
-        //     let arrayLikes =  this.state.data.likes;
-        //     let userId =  this.props.match.params.id;
-        // console.log('arrayLikes', arrayLikes) 
-        // console.log('includes', arrayLikes.includes(userId));
-        // }
-        
       return(
           <div className="container">
 
@@ -161,30 +99,6 @@ class Deals extends Component{
             </div>
 
             <div className="row space-top">
-            {/* disabled
-
-            <div className="col-4 col-sm-4 col-md-4 text-center">
-                <button className="btn-reaction" onClick={this.disable.bind(this)}>({likes ? likes.length: '0'}) disable</button>
-            </div> */}
-
-
-
-                {/* <button className="btn btn-secondary" disabled>disabled</button>
-
-
-                <div className="col-4 col-sm-4 col-md-4 text-center">
-                    {
-
-                    }
-                    <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
-                </div> */}
-
-
-
-
-
-
-
                 <div className="col-4 col-sm-4 col-md-4 text-center">
                     <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
                 </div>
@@ -262,8 +176,6 @@ class Deals extends Component{
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right addReview">
                     <button className="btn btn-info" onClick={this.togglePopup.bind(this)}>+ Add Review</button>
-
-                    {/* <Link to={`/addReview/${this.state.data._id}`} className="btn btn-info">+ Add Review</Link> */}
                 </div>
             </div>
             <hr/>
@@ -348,4 +260,4 @@ const mapStateToProps = state => ({
     postDeal: state.postDeal
 });
 
-export default connect(mapStateToProps, { addLike, getDeal}) (withRouter(Deals));
+export default connect(mapStateToProps, { addLike, addFlag, getDeal}) (withRouter(Deals));

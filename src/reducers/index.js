@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import addReviewReducer from './addReviewReducer';
+import addFlagReducer from './addFlagReducer';
 import addPostDealReducer from './addPostDealReducer';
 import addLikeReducer from './addLikeReducer';
 import authReducer from './authReducer';
@@ -13,6 +14,7 @@ export default combineReducers({
     postDeal: addPostDealReducer,
     addReview: addReviewReducer,
     addLike: addLikeReducer,
+    addFlag: addFlagReducer,
     transactions: transactionReducer,
     stocks: stockReducer
 });

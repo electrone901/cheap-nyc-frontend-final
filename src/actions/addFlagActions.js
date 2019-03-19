@@ -1,9 +1,9 @@
 import axios from '../axios-stocks';
 import { GET_ERRORS, GET_DEAL } from './types';
 
-export const addLike = (itemId, history) => dispatch => {
+export const addFlag = (itemId, history) => dispatch => {
     const token = localStorage.getItem('jwtToken');
-    axios.put(`/items/${itemId}/like`, { 
+    axios.put(`/items/${itemId}/flag`, { 
         headers: {
             'Authorization': token,
             'Content-Type': 'application/json'
