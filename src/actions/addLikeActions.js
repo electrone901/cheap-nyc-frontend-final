@@ -1,5 +1,5 @@
 import axios from '../axios-stocks';
-import { GET_ERRORS, ADD_LIKE } from './types';
+import { GET_ERRORS, ADD_LIKE, GET_DEAL } from './types';
 
 export const addLike = (itemId, history) => dispatch => {
     const token = localStorage.getItem('jwtToken');
@@ -11,9 +11,9 @@ export const addLike = (itemId, history) => dispatch => {
     })
     .then(res => {
         dispatch({
-            type: ADD_LIKE,
-            payload: res.data
-        })
+            type: GET_DEAL,
+            payload: res.data.item
+        });
       }  
     )
     // .then(res => history.push('/'))

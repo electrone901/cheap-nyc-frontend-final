@@ -114,8 +114,10 @@ class Deals extends Component{
     }
     
     render(){
-        let flags = this.state.data.flags;
-        let likes = this.state.data.likes;
+        const { post } = this.props.postDeal;
+        
+        let flags = post.flags;
+        let likes = post.likes;
         const shareUrl = 'http://lazona.herokuapp.com/';
         const title = 'CheapNY: Best Deals of NY';
 
@@ -141,8 +143,6 @@ class Deals extends Component{
         // console.log('arrayLikes', arrayLikes) 
         // console.log('includes', arrayLikes.includes(userId));
         // }
-        
-        const { post } = this.props.postDeal;
         
       return(
           <div className="container">
