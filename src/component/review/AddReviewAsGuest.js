@@ -118,7 +118,3 @@ const mapStateTpProps = state => ({
 })
 export default connect(mapStateTpProps, {postReview})(AddReviewAsGuest);
 
-
-// Link - https://cnycserver.herokuapp.com/items/:itemId/reviews
-// Request - POST
-// Body - name, rating, text

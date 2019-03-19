@@ -16,6 +16,7 @@ import { stat } from 'fs';
 import ReviewPopup from '../review/ReviewPopup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addLike } from '../../actions/addLikeActions';
  
 class Deals extends Component{
     constructor() {
@@ -27,10 +28,10 @@ class Deals extends Component{
     }
 
     togglePopup() {
-        let userId =  this.props.match.params.id
+        let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
             console.log('YES is Authenticated');
-            this.props.history.push(`/addReview/${userId}`)
+            this.props.history.push(`/addReview/${itemId}`)
         }
         else {
             this.setState({
@@ -56,28 +57,46 @@ class Deals extends Component{
         });
     }
 
+    // WAY TO DISABLED LIKE BUTTON
+    componentWillReceiveProps(nextProps) {
+        if(!nextProps.error) {
+            this.setState({errors: nextProps.errors})
+        }
+        else {
+            console.log('change color here');
+        }
+    }
+
     notify = () => {
         toast.error("To like/flag a post you must be logged in!")
     }
 
     addLike() {
-        const token = localStorage.getItem('jwtToken');
-        let itemId =  this.props.match.params.id
-
+        let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
-            fetch(`https://cnycserver.herokuapp.com/items/${itemId}/like`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': token,
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(resData => console.log(resData))
-            .catch(err => console.log(err))
+            this.props.addLike(itemId, this.props.history)
         }
         else {
             this.notify();
         }
+
+        // const token = localStorage.getItem('jwtToken');
+        // let itemId =  this.props.match.params.id
+
+        // if(this.props.auth.isAuthenticated) {
+        //     fetch(`https://cnycserver.herokuapp.com/items/${itemId}/like`, {
+        //         method: 'PUT',
+        //         headers: {
+        //             'Authorization': token,
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
+        //     .then(resData => console.log(resData))
+        //     .catch(err => console.log(err))
+        // }
+        // else {
+        //     this.notify();
+        // }
     }
 
     addFlag() {
@@ -98,12 +117,39 @@ class Deals extends Component{
             this.notify();
         }
     }
+    disable() {
+
+    }
     
     render(){
         let flags = this.state.data.flags;
         let likes = this.state.data.likes;
         const shareUrl = 'http://lazona.herokuapp.com/';
-        const title = 'CheapNY: Best Deals of NY';   
+        const title = 'CheapNY: Best Deals of NY';
+
+
+        // CHECK IF USER LIKED/FLAGGED POST
+        let showHideLikeButton;
+        if(this.state.data) {
+            let arrayLikes =  this.state.data.likes;
+            let userId =  this.props.auth.user.id;
+            showHideLikeButton 
+            console.log('arrayLikes', arrayLikes, 'includes', arrayLikes.includes(userId))
+            // this.setState({
+            //     showHideLikeButton: arrayLikes.includes(userId)
+            // })
+        }
+
+        console.log('state', this.state)
+        console.log('props', this.props)
+        // let showHideLikeButton;
+        // if(this.state.data) {
+        //     let arrayLikes =  this.state.data.likes;
+        //     let userId =  this.props.match.params.id;
+        // console.log('arrayLikes', arrayLikes) 
+        // console.log('includes', arrayLikes.includes(userId));
+        // }
+        
       return(
           <div className="container">
 
@@ -121,8 +167,32 @@ class Deals extends Component{
             </div>
 
             <div className="row space-top">
+            {/* disabled
+
+            <div className="col-4 col-sm-4 col-md-4 text-center">
+                <button className="btn-reaction" onClick={this.disable.bind(this)}>({likes ? likes.length: '0'}) disable</button>
+            </div> */}
+
+
+
+                {/* <button className="btn btn-secondary" disabled>disabled</button>
+
+
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
+                    {
+
+                    }
+                    <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
+                </div> */}
+
+
+
+
+
+
+
+                <div className="col-4 col-sm-4 col-md-4 text-center">
+                    <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center container2">
                     
@@ -279,6 +349,7 @@ class Deals extends Component{
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
+    errors: state.errors,
+    addLike: state.addLike
 })
-export default connect(mapStateToProps)(withRouter(Deals));
+export default connect(mapStateToProps, {addLike}) (withRouter(Deals));
