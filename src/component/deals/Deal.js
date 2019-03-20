@@ -79,8 +79,9 @@ class Deals extends Component{
         
         let flags = post.flags;
         let likes = post.likes;
-        const shareUrl = 'http://lazona.herokuapp.com/';
-        const title = 'CheapNY: Best Deals of NY';
+        let postId = this.props.match.params.id;
+        let shareUrl = `http://cheapny.herokuapp.com/deal/${postId}`;    
+        const title = `Hey, I think you would like it! You gotta check out this ${post.name} it’s SO COOL!!`;
 
       return(
           <div className="container">

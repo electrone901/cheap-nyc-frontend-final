@@ -17,6 +17,7 @@ import Deal from './component/deals/Deal';
 import AddDealAsGuest from './component/deals/AddDealAsGuest';
 import AddReview from './component/review/AddReview';
 import AddReviewAsGuest from './component/review/AddReviewAsGuest';
+import UserProfile from './component/user/UserProfile';
 
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
@@ -51,8 +52,10 @@ class App extends Component {
               <Route exact path="/AddDeal-guest" component={AddDealAsGuest} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/userProfile" component={UserProfile} />
               <Route exact path="/addReview/:id" component={AddReview} />
               <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
+              
               <Switch>
                  <PrivateRoute exact path="/portfolio" component={Portfolio} />
                  <Route exact path="/deal/:id" component={Deal} />

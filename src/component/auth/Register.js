@@ -10,6 +10,7 @@ class Register extends Component{
         super();
         this.state = {
             name: '',
+            imageName: 'Choose file',
             email: '',
             password: '',
             confirmPassword: '',
@@ -32,6 +33,13 @@ class Register extends Component{
             this.setState({errors: nextProps.errors});
         }
     }
+
+    fileSelectedHandler = e => {
+      if(e.target.files[0]){
+          this.setState({ image: e.target.files[0] });
+          this.setState({ imageName: e.target.files[0].name });
+      }
+    }
     
     onChange(e){
         this.setState({[e.target.name]: e.target.value});
@@ -39,13 +47,18 @@ class Register extends Component{
     
     onSubmit(e){
         e.preventDefault();
-        const newUser = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            // password2: this.state.confirmPassword
-            confirmPassword: this.state.confirmPassword
-        };
+        // const newUser = {
+        //     name: this.state.name,
+        //     email: this.state.email,
+        //     password: this.state.password,
+        //     confirmPassword: this.state.confirmPassword
+        // };
+        const newUser = new FormData();
+        newUser.append('name', this.state.name);
+        newUser.append('imageName', this.state.imageName);
+        newUser.append('email', this.state.email);
+        newUser.append('password', this.state.password);
+        newUser.append('confirmPassword', this.state.confirmPassword);
         
         this.props.registerUser(newUser, this.props.history);
     }
@@ -71,6 +84,24 @@ class Register extends Component{
                             onChange={this.onChange} />
                             {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                         </div>
+
+                        <div className="form-group">
+                            <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"></span>
+                                </div>
+                                <div className="custom-file">
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="form-group">
                           <input type="email"
                             className={classnames('form-control form-control-lg', {
