@@ -7,6 +7,9 @@ import classnames from 'classnames';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { postDeal } from '../../actions/addPostDeal';
+import userImage from '../../img/userProfile.jpg'; 
+// import starBash from '../../img/starBash2.png'; 
+import starBash from '../../img/starBash.png'; 
 
 class UserProfile extends Component{
     constructor(){
@@ -79,157 +82,192 @@ class UserProfile extends Component{
         formData.append('author', this.state.author);
         // this.props.postDeal(formData, this.props.history);
     }
+    updateUSerInfo() {
+
+    }
     
     
     render(){
         const { err } = this.state
         return(
-            <div className="addDeal">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-8 m-auto">
-                      <h1 className="display-4 text-center">Profile</h1>
-                      <form onSubmit={this.onSubmit}>
-                        <div className="form-group row"> 
-
-                            <div className="col-md-8">
-                                <label htmlFor="text">Item name</label>
-                                <input
-                                    type="text"
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': err.name
-                                    })}
-                                    name="name"
-                                    value={this.state.name}
-                                    onChange={this.onChange} 
-                                />
-                                {err.name && (<div className="invalid-feedback">{err.name}</div>)}
-                            </div>
-
-                            <div className="form-group col-sm-12 col-md-4">
-                                <label htmlFor="text">Category</label>
-                                <select
-                                    name="category"
-                                    value={this.state.selectValue}
-                                    onChange={this.handleChangeCategory}
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': err.category
-                                    })}
-                                >
-                                    <option value="">Category</option>
-                                    <option value="Food">Food</option>
-                                    <option value="Drinks">Drinks</option>
-                                    <option value="Activities">Activities</option>
-                                    <option value="Events">Events</option>
-                                    <option value="Arts">Arts</option>
-                                    <option value="Sports">Sports</option>
-                                    <option value="Outdoor">Outdoor</option>
-                                    <option value="Indoor">Indoor</option>
-                                    <option value="Music">Music</option>
-                                    <option value="Classes">Classes</option>
-                                    <option value="Travel">Travel</option>
-                                    <option value="Social">Social</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                                {err.category && (<div className="invalid-feedback">{err.category}</div>)}
-                            </div>
-
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="text">Item price</label>
-                            <input
-                                type="number" 
-                                id="price" 
-                                min="0" 
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': err.price
-                                })}
-                                name="price"
-                                value={this.state.price}
-                                onChange={this.onChange} 
-                            />
-                            {err.price && (<div className="invalid-feedback">{err.price}</div>)}
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"></span>
-                                </div>
-                                <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="form-group row"> 
-                            <div className="col-md-8">
-                                <label htmlFor="text">Address:  <span className="small">(eg:123 StreetName, Borough, NY ZipCode)</span> </label>
-                                <input
-                                    type="text" 
-                                    id="address" 
-                                    min="5" 
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': err.location
-                                    })}
-                                    name="address"
-                                    value={this.state.location}
-                                    onChange={this.onChange} 
-                                />
-                                {err.location && (<div className="invalid-feedback">{err.location}</div>)}
-                            </div>
-
-                            <div className="col-sm-12 col-md-4"> 
-                                <label htmlFor="text">City</label>
-                                <select
-                                    name="city"
-                                    value={this.state.selectValue}
-                                    onChange={this.handleChangeCity}
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': err.city
-                                    })}
-                                >
-                                    <option value="">City</option>
-                                    <option value="Manhattan">Manhattan</option>
-                                    <option value="Queens">Queens</option>
-                                    <option value="Bronx">Bronx</option>
-                                    <option value="Brooklyn">Brooklyn</option>
-                                    <option value="Staten Island">Staten Island</option>
-                                </select>
-                                {err.city && (<div className="invalid-feedback">{err.city}</div>)}
-                            </div>
-                            
-                        </div>
-                        
-                        <div className="form-group">
-                            <label htmlFor="text">Item Description</label>
-                            <textarea 
-                                type="text" 
-                                id="description" 
-                                min="5" 
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': err.description
-                                })}
-                                name="description"
-                                value={this.state.description}
-                                onChange={this.onChange} 
-                                rows="3">
-                            </textarea>
-                            {err.description && (<div className="invalid-feedback">{err.description}</div>)}
-                        </div>
-                        <input type="submit" className="btn btn-info btn-block mt-4" />
-                      </form>
+            <div className="constainer text-center space-top">
+                <div className="d-flex justify-content-between">
+                    <h1 className="profile-title">Profile</h1>
+                    <div className="d-flex align-items-end">
+                        <button className="btn-reaction disabled " onClick={this.updateUSerInfo.bind(this)}>Edit profile</button>
                     </div>
-                  </div>
+                </div>
+                <div className="card-body backgroundProfile profile-text">
+                    <img src={userImage} className="img-thumbnail thumbnail-review" alt="Responsive" />
+                    <h5 className="card-title">Luis Carbajal</h5>
+                    <p className="card-text">NYC community Advocator</p>
+                    <p className="btn btn-primary">Level: Legendary</p>
+                </div>
+                <div className="card-footer">
+                    <img src={starBash} className="start-img" alt="Responsive" />
+                    <img src={starBash} className="start-img" alt="Responsive" />
+                    <img src={starBash} className="start-img" alt="Responsive" />
                 </div>
             </div>
+            
+
+            // <div className="addDeal">
+            //     <div className="container">
+
+            //       <div className="row">
+            //         <div className="col-md-8 m-auto">
+            //           <h1 className="display-4 text-center">Profile</h1>
+
+            //           <div className="text-center background">
+            //             {/* <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" /> */}
+            //             <img src={userImage} className="img-thumbnail" alt="Responsive" />
+            //           </div>
+
+
+
+            //           <form onSubmit={this.onSubmit}>
+            //             <div className="form-group row"> 
+
+            //                 <div className="col-md-8">
+            //                     <label htmlFor="text">Item name</label>
+            //                     <input
+            //                         type="text"
+            //                         className={classnames('form-control form-control-lg', {
+            //                             'is-invalid': err.name
+            //                         })}
+            //                         name="name"
+            //                         value={this.state.name}
+            //                         onChange={this.onChange} 
+            //                     />
+            //                     {err.name && (<div className="invalid-feedback">{err.name}</div>)}
+            //                 </div>
+
+            //                 <div className="form-group col-sm-12 col-md-4">
+            //                     <label htmlFor="text">Category</label>
+            //                     <select
+            //                         name="category"
+            //                         value={this.state.selectValue}
+            //                         onChange={this.handleChangeCategory}
+            //                         className={classnames('form-control form-control-lg', {
+            //                             'is-invalid': err.category
+            //                         })}
+            //                     >
+            //                         <option value="">Category</option>
+            //                         <option value="Food">Food</option>
+            //                         <option value="Drinks">Drinks</option>
+            //                         <option value="Activities">Activities</option>
+            //                         <option value="Events">Events</option>
+            //                         <option value="Arts">Arts</option>
+            //                         <option value="Sports">Sports</option>
+            //                         <option value="Outdoor">Outdoor</option>
+            //                         <option value="Indoor">Indoor</option>
+            //                         <option value="Music">Music</option>
+            //                         <option value="Classes">Classes</option>
+            //                         <option value="Travel">Travel</option>
+            //                         <option value="Social">Social</option>
+            //                         <option value="Others">Others</option>
+            //                     </select>
+            //                     {err.category && (<div className="invalid-feedback">{err.category}</div>)}
+            //                 </div>
+
+            //             </div>
+
+            //             <div className="form-group">
+            //                 <label htmlFor="text">Item price</label>
+            //                 <input
+            //                     type="number" 
+            //                     id="price" 
+            //                     min="0" 
+            //                     className={classnames('form-control form-control-lg', {
+            //                         'is-invalid': err.price
+            //                     })}
+            //                     name="price"
+            //                     value={this.state.price}
+            //                     onChange={this.onChange} 
+            //                 />
+            //                 {err.price && (<div className="invalid-feedback">{err.price}</div>)}
+            //             </div>
+
+            //             <div className="form-group">
+            //                 <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
+            //                 <div className="input-group mb-3">
+            //                     <div className="input-group-prepend">
+            //                         <span className="input-group-text"></span>
+            //                     </div>
+            //                     <div className="custom-file">
+            //                         <input 
+            //                             type="file"
+            //                             className="custom-file-input"
+            //                             id="inputGroupFile01"
+            //                             onChange={this.fileSelectedHandler}/>
+            //                         <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+            //                     </div>
+            //                 </div>
+            //             </div>
+
+            //             <div className="form-group row"> 
+            //                 <div className="col-md-8">
+            //                     <label htmlFor="text">Address:  <span className="small">(eg:123 StreetName, Borough, NY ZipCode)</span> </label>
+            //                     <input
+            //                         type="text" 
+            //                         id="address" 
+            //                         min="5" 
+            //                         className={classnames('form-control form-control-lg', {
+            //                             'is-invalid': err.location
+            //                         })}
+            //                         name="address"
+            //                         value={this.state.location}
+            //                         onChange={this.onChange} 
+            //                     />
+            //                     {err.location && (<div className="invalid-feedback">{err.location}</div>)}
+            //                 </div>
+
+            //                 <div className="col-sm-12 col-md-4"> 
+            //                     <label htmlFor="text">City</label>
+            //                     <select
+            //                         name="city"
+            //                         value={this.state.selectValue}
+            //                         onChange={this.handleChangeCity}
+            //                         className={classnames('form-control form-control-lg', {
+            //                             'is-invalid': err.city
+            //                         })}
+            //                     >
+            //                         <option value="">City</option>
+            //                         <option value="Manhattan">Manhattan</option>
+            //                         <option value="Queens">Queens</option>
+            //                         <option value="Bronx">Bronx</option>
+            //                         <option value="Brooklyn">Brooklyn</option>
+            //                         <option value="Staten Island">Staten Island</option>
+            //                     </select>
+            //                     {err.city && (<div className="invalid-feedback">{err.city}</div>)}
+            //                 </div>
+                            
+            //             </div>
+                        
+            //             <div className="form-group">
+            //                 <label htmlFor="text">Item Description</label>
+            //                 <textarea 
+            //                     type="text" 
+            //                     id="description" 
+            //                     min="5" 
+            //                     className={classnames('form-control form-control-lg', {
+            //                         'is-invalid': err.description
+            //                     })}
+            //                     name="description"
+            //                     value={this.state.description}
+            //                     onChange={this.onChange} 
+            //                     rows="3">
+            //                 </textarea>
+            //                 {err.description && (<div className="invalid-feedback">{err.description}</div>)}
+            //             </div>
+            //             <input type="submit" className="btn btn-info btn-block mt-4" />
+            //           </form>
+            //         </div>
+            //       </div>
+            //     </div>
+            // </div>
+        
+        
         );
     }
 }

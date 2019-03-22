@@ -13,6 +13,7 @@ import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
+import PreviewConfirmationPost from './component/deals/PreviewConfirmationPost';
 import Deal from './component/deals/Deal';
 import AddDealAsGuest from './component/deals/AddDealAsGuest';
 import AddReview from './component/review/AddReview';
@@ -49,10 +50,11 @@ class App extends Component {
             <div>
               <Route exact path="/" component={Deals} />
               <Route exact path="/addDeal" component={AddDeal} />
+              <Route exact path="/confirmation-post" component={PreviewConfirmationPost} />
               <Route exact path="/AddDeal-guest" component={AddDealAsGuest} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/userProfile" component={UserProfile} />
+              <Route exact path="/profile" component={UserProfile} />
               <Route exact path="/addReview/:id" component={AddReview} />
               <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
               

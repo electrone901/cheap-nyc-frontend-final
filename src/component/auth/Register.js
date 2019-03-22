@@ -10,6 +10,7 @@ class Register extends Component{
         super();
         this.state = {
             name: '',
+            image: null,
             imageName: 'Choose file',
             email: '',
             password: '',
@@ -47,15 +48,9 @@ class Register extends Component{
     
     onSubmit(e){
         e.preventDefault();
-        // const newUser = {
-        //     name: this.state.name,
-        //     email: this.state.email,
-        //     password: this.state.password,
-        //     confirmPassword: this.state.confirmPassword
-        // };
         const newUser = new FormData();
         newUser.append('name', this.state.name);
-        newUser.append('imageName', this.state.imageName);
+        newUser.append('image', this.state.image);
         newUser.append('email', this.state.email);
         newUser.append('password', this.state.password);
         newUser.append('confirmPassword', this.state.confirmPassword);

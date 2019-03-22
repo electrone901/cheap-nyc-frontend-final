@@ -335,8 +335,35 @@ Description     : A file that contains all styles for Carousel.js.
   background: white;
 }
 
+/* USER PROFILE */
+.start-img {
+  height: 150px;
+}
+.profile-text {
+  color: white;
+}
+.profile-title {
+  padding-left: 10px;
+}
+.backgroundProfile {
+  background-image: url("/images/b2.jpg");
+  /* justify-content: center;
+  text-align: center; */
+  background-position: center;
+  
+}
 
+/* POST CONFIRMATION PAGE */
+.warning-text {
+  color: firebrick;
+  font-size: smaller;
+}
 
+/* ADD DEAL FORM */
+.require {
+  color: red;
+  font-size: 17px;
+}
 
 
 /* MEDIA QUERIES */
