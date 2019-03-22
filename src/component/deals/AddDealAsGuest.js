@@ -88,6 +88,7 @@ class AddDealAsGuest extends Component{
             this.setState({ image: e.target.files[0] });
             this.setState({ imageName: e.target.files[0].name });
         }
+        console.log('image', this.state.image)
     }
 
 
@@ -189,6 +190,7 @@ class AddDealAsGuest extends Component{
       }
 
     render(){
+        console.log('image', this.state.image)
         const { serverErr } = this.state;
         console.log("state", this.state);
         let preview =   <div className="container">
@@ -199,14 +201,14 @@ class AddDealAsGuest extends Component{
                 </div>
             </div>
             <div className="text-center background">
-                <img src={this.state.image ? this.state.image: image2} className="img-thumbnail" alt="Responsive" />
+                <img src={this.state.imageName ? this.state.imageName: image2} className="img-thumbnail" alt="Responsive" />
             </div>
             <div className="space-top">
                 <p> <span className="field-name"> Company Name: </span>{this.state.company}</p>
                 <p> <span className="field-name"> Item name: </span>{this.state.name}</p>
                 <p> <span className="field-name"> Category: </span> {this.state.category}</p>
                 <p> <span className="field-name"> Item price: </span> {this.state.price}</p>
-                <p> <span className="field-name"> Address: </span>{this.state.location}</p>
+                <p> <span className="field-name"> Address: </span>{this.state.address}</p>
                 <p> <span className="field-name"> City: </span>{this.state.city}</p>
                 <p> <span className="field-name"> Product Description: </span>{this.state.description}</p>      
             </div>
@@ -268,7 +270,7 @@ class AddDealAsGuest extends Component{
                     <label htmlFor="text">Category <span className="require">*</span> </label>
                     <select
                         name="category"
-                        value={this.state.selectValue}
+                        value={this.state.category}
                         onChange={this.onChange}
                         className={classnames('form-control form-control-lg', {
                             'is-invalid': serverErr.category
@@ -362,7 +364,7 @@ class AddDealAsGuest extends Component{
                     <label htmlFor="text">City <span className="require">*</span></label>
                     <select
                         name="city"
-                        value={this.state.selectValue}
+                        value={this.state.city}
                         onChange={this.onChange}
                         className={classnames('form-control form-control-lg', {
                             'is-invalid': serverErr.city
@@ -371,7 +373,7 @@ class AddDealAsGuest extends Component{
                             'is-invalid': this.state.formErrors.city
                         })}
                     >
-                        <option value="">City</option>
+                        <option value=" ">City</option>
                         <option value="Manhattan">Manhattan</option>
                         <option value="Queens">Queens</option>
                         <option value="Bronx">Bronx</option>
