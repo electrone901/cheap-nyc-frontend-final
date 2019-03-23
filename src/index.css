@@ -347,10 +347,14 @@ Description     : A file that contains all styles for Carousel.js.
 }
 .backgroundProfile {
   background-image: url("/images/b2.jpg");
-  /* justify-content: center;
-  text-align: center; */
-  background-position: center;
-  
+  background-position: center; 
+  height: 500px;
+}
+.thumbnail-user-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 70px;
 }
 
 /* POST CONFIRMATION PAGE */
@@ -388,6 +392,21 @@ Description     : A file that contains all styles for Carousel.js.
     font-size: 1.5rem;
     font-weight: 600;
   }
+
+  /* USER */
+  .thumbnail-user-profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 50px;
+  }
+  .backgroundProfile {
+    height: 450px;
+  }
+  .start-img {
+    height: 50px;
+  }
+
 
   /* Deal */
   .img-thumbnail {

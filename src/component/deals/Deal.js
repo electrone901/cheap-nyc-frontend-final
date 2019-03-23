@@ -193,7 +193,7 @@ class Deals extends Component{
 
                                 <div className="col-4 col-sm-4 col-md-4">
                                     <div className="">
-                                        <img src={userImage} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
+                                        <img src={review.userImage ? review.userImage: userImage} className="rounded-circle img-thumbnail thumbnail-review" alt="details" />
                                     </div>
                                     <div className="author-div">
                                         <p className="date"></p>
