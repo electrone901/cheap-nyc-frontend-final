@@ -21,6 +21,7 @@ class AddDealAsGuest extends Component{
             category: '',
             image: null,
             imageName: 'Choose file',
+            imageFile: '',
             address: '',
             city: '',
             description: '',
@@ -88,7 +89,17 @@ class AddDealAsGuest extends Component{
             this.setState({ image: e.target.files[0] });
             this.setState({ imageName: e.target.files[0].name });
         }
-        console.log('image', this.state.image)
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+        this.setState({
+           file: file,
+           imageFile: reader.result
+         });
+       };
+
+       reader.readAsDataURL(file);
     }
 
 
@@ -201,7 +212,7 @@ class AddDealAsGuest extends Component{
                 </div>
             </div>
             <div className="text-center background">
-                <img src={this.state.imageName ? this.state.imageName: image2} className="img-thumbnail" alt="Responsive" />
+                <img src={this.state.imageName ? this.state.imageFile : image2} className="img-thumbnail" alt="Responsive" />
             </div>
             <div className="space-top">
                 <p> <span className="field-name"> Company Name: </span>{this.state.company}</p>

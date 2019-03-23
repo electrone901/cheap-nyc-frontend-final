@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import  { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import image2 from '../../img/stocks.png';
+import image2 from '../../img/stocksNoAvailable.png';
+import userImage from '../../img/userProfile.jpg';
+
 import Spinner from '../common/Spinner';
 import { 
     FacebookShareButton, 
@@ -86,11 +88,11 @@ class Deals extends Component{
       return(
           <div className="container">
 
-            <div className="row justify-content-center">
+            <div className="row justify-content-center space-top">
                 <div className="col-8 col-sm-8 col-md-8">
-                    <h1>{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
+                    <h1 className="deal-tittle">{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
                 </div>
-                <div className="col-4 col-sm-4 col-md-4 text-right">
+                <div className="col-4 col-sm-4 col-md-4 text-right ">
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
@@ -191,7 +193,7 @@ class Deals extends Component{
 
                                 <div className="col-4 col-sm-4 col-md-4">
                                     <div className="">
-                                        <img src={image2} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
+                                        <img src={userImage} alt="details" className="rounded-circle img-thumbnail thumbnail-review"/>
                                     </div>
                                     <div className="author-div">
                                         <p className="date"></p>

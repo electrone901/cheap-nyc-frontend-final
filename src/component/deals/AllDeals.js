@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../common/Spinner';
+import noAvailable from '../../img/noAvailable.png';
 
 class AllDeals extends Component {
     render() {
@@ -13,7 +14,7 @@ class AllDeals extends Component {
                             <h5>{item.name}  ${item.price} </h5> 
                             <figure className="figure">
                                 <Link to={`/deal/${item._id}`}>
-                                    <img src={item.image ? item.image : 'https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/90V03Q5Y60.jpg'} className="figure-img img-fluid rounded" alt="deal"/>
+                                    <img src={item.image ? item.image : noAvailable} className="figure-img img-fluid rounded" alt="deal"/>
                                 </Link>
                                 <div className="container2">
                                     <figcaption className="figure-caption container2-item">Location: {item.city ? item.city : "None"}</figcaption>

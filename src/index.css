@@ -399,10 +399,17 @@ Description     : A file that contains all styles for Carousel.js.
   .background {
     background-color: #fffefe;
   }
+  
+  .direcions {
+    font-size: 14px;
+  }
+  .deal-tittle {
+    font-size: 18px;
+    font-weight: 600;
+  }
 
   .space-top {
     padding-top: 10px;
-    padding-bottom: 17px;
   }
   p {
     margin-top: 0;
