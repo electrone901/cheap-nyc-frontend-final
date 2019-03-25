@@ -36,10 +36,12 @@ class UserProfile extends Component{
 
     
     componentDidMount(){
+        const userId = this.props.match.params.id;
+        
         const graphqlQuery = {
             query: `
                 query{
-                  userById(id:"${this.state.id}"){
+                  userById(id:"${userId}"){
                     name
                     image
                   }

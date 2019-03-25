@@ -54,7 +54,7 @@ class App extends Component {
               <Route exact path="/AddDeal-guest" component={AddDealAsGuest} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/profile" component={UserProfile} />
+              <Route exact path="/profile/:id" component={UserProfile} />
               <Route exact path="/addReview/:id" component={AddReview} />
               <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
               

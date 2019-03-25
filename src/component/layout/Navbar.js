@@ -37,7 +37,7 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to="/profile" className="nav-link">
+          <Link to={`/profile/${user.id}`} className="nav-link">
             <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {user.name}
           </Link>
         </li>
