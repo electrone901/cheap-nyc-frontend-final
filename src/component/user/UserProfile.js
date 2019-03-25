@@ -26,6 +26,7 @@ class UserProfile extends Component{
             city: '',
             description: '',
             author: '',
+            userData: '',
             err: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -63,7 +64,7 @@ class UserProfile extends Component{
                 if(resData.errors){
                     return console.log(resData.errors);
                 }
-                console.log(resData.data.userById);
+                this.setState({userData: resData.data.userById});
             })
             .catch(err => {
                 console.log(err);
@@ -113,14 +114,12 @@ class UserProfile extends Component{
         const { err } = this.state
         return(
             <div className="constainer text-center">
-                
-
                 <div className="text-right">
                     <button className="btn-reaction disabled " onClick={this.updateUSerInfo.bind(this)}>Edit profile</button>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
-                    <img src={userImage} className="thumbnail-user-profile" alt="Responsive" />
-                    <h5 className="card-title">Luis Carbajal</h5>
+                    <img src={ this.state.userData.image ? this.state.userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
+                    <h5 className="card-title">{ this.state.userData.name }</h5>
                     <p className="card-text">NYC community Advocator</p>
                     <p className="btn btn-primary">Level: Legendary</p>
                 </div>
