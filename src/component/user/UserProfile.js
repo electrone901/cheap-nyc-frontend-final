@@ -15,6 +15,7 @@ class UserProfile extends Component{
     constructor(){
         super();
         this.state = {
+            id: '5c9101a113d0e5000405d38c',
             company: '',
             name: '',
             price: '',
@@ -35,18 +36,37 @@ class UserProfile extends Component{
 
     
     componentDidMount(){
-        // window.scrollTo(0,0);
-        // if(!this.props.auth.isAuthenticated){
-        //     this.setState({author: this.props.auth.user.name})
-        //     this.props.history.push('/login');
-        // }
+        const graphqlQuery = {
+            query: `
+                query{
+                  userById(id:"${this.state.id}"){
+                    name
+                    image
+                  }
+                }
+            `
+        };
+        
+        fetch('https://cnycserver.herokuapp.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(graphqlQuery)
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(resData =>{
+                if(resData.errors){
+                    return console.log(resData.errors);
+                }
+                console.log(resData.data.userById);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
-
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.errors) {
-    //         this.setState({err: nextProps.errors})
-    //     }
-    // }
 
     
     onChange(e){
