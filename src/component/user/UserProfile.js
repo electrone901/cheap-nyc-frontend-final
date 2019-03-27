@@ -10,6 +10,7 @@ import { postDeal } from '../../actions/addPostDeal';
 import userImage from '../../img/userProfile.jpg'; 
 // import starBash from '../../img/starBash2.png'; 
 import starBash from '../../img/starBash.png'; 
+import { getUser } from '../../actions/authActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -39,36 +40,7 @@ class UserProfile extends Component{
     componentDidMount(){
         const userId = this.props.match.params.id;
         
-        const graphqlQuery = {
-            query: `
-                query{
-                  userById(id:"${userId}"){
-                    name
-                    image
-                  }
-                }
-            `
-        };
-        
-        fetch('https://cnycserver.herokuapp.com/graphql', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(graphqlQuery)
-        })
-            .then(res => {
-                return res.json();
-            })
-            .then(resData =>{
-                if(resData.errors){
-                    return console.log(resData.errors);
-                }
-                this.setState({userData: resData.data.userById});
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        this.props.getUser(userId);
     }
 
     
@@ -111,15 +83,17 @@ class UserProfile extends Component{
     
     
     render(){
-        const { err } = this.state
+        const { err } = this.state;
+        const { userData } = this.props.auth;
+        
         return(
             <div className="constainer text-center">
                 <div className="text-right">
                     <button className="btn-reaction disabled " onClick={this.updateUSerInfo.bind(this)}>Edit profile</button>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
-                    <img src={ this.state.userData.image ? this.state.userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
-                    <h5 className="card-title">{ this.state.userData.name }</h5>
+                    <img src={ userData.image ? userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
+                    <h5 className="card-title">{ userData.name }</h5>
                     <p className="card-text">NYC community Advocator</p>
                     <p className="btn btn-primary">Level: Legendary</p>
                 </div>
@@ -139,4 +113,4 @@ const mapStateToProps = state => ({
 });
 // export default UserProfile;
 
-export default connect(mapStateToProps, {postDeal})(UserProfile);
+export default connect(mapStateToProps, {getUser})(UserProfile);

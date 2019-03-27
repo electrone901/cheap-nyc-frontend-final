@@ -47,20 +47,40 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const getUser = (id) => dispatch => {
-    axios.get(`/api/users/${id}`)
-        .then(res =>
-            dispatch({
-                type: GET_USER,
-                payload: res.data
+export const getUser = (userId) => dispatch => {
+    const graphqlQuery = {
+            query: `
+                query{
+                  userById(id:"${userId}"){
+                    name
+                    image
+                  }
+                }
+            `
+        };
+        
+        fetch('https://cnycserver.herokuapp.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(graphqlQuery)
+        })
+            .then(res => {
+                return res.json();
             })
-        )
-        .catch(err => 
-            dispatch({
-                type: GET_USER,
-                payload: null
+            .then(resData =>{
+                if(resData.errors){
+                    return console.log(resData.errors);
+                }
+                dispatch({
+                    type: GET_USER,
+                    payload: resData.data.userById
+                });
             })
-        );
+            .catch(err => {
+                console.log(err);
+            });
 };
 
 export const loseMoney = (moneyData, id) => dispatch => {

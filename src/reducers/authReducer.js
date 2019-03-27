@@ -3,7 +3,7 @@ import isEmpty from '../validation/is-empty';
 const initialState = {
     isAuthenticated: false,
     user: {},
-    userMoney: {}
+    userData: {}
 };
 
 export default function(state = initialState, action){
@@ -13,12 +13,12 @@ export default function(state = initialState, action){
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload,
-                userMoney: action.payload
+                userData: action.payload
             };
         case 'GET_USER':
             return{
                 ...state,
-                userMoney: action.payload
+                userData: action.payload
             };
         default:
             return state;
