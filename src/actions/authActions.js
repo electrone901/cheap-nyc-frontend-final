@@ -52,6 +52,7 @@ export const getUser = (userId) => dispatch => {
             query: `
                 query{
                   userById(id:"${userId}"){
+                    _id
                     name
                     image
                   }

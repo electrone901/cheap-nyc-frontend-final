@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { postDeal } from '../../actions/addPostDeal';
@@ -89,7 +90,7 @@ class UserProfile extends Component{
         return(
             <div className="constainer text-center">
                 <div className="text-right">
-                    <button className="btn-reaction disabled " onClick={this.updateUSerInfo.bind(this)}>Edit profile</button>
+                    <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
                     <img src={ userData.image ? userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />

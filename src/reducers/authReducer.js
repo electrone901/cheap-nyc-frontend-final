@@ -12,8 +12,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
-                user: action.payload,
-                userData: action.payload
+                user: action.payload
             };
         case 'GET_USER':
             return{

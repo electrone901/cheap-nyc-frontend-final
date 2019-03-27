@@ -32,13 +32,13 @@ class Navbar extends Component {
   }
   
   render() {
-    const {isAuthenticated, userData} = this.props.auth;
+    const {isAuthenticated, user} = this.props.auth;
     
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to={`/profile/${userData.id}`} className="nav-link">
-            <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {userData.name}
+          <Link to={`/profile/${user.id}`} className="nav-link">
+            <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {user.name}
           </Link>
         </li>
         <li className="nav-item">
