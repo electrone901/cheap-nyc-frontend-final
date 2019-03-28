@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import { getUser } from '../../actions/authActions';
+import { editUser } from '../../actions/userActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -52,7 +53,13 @@ class UserProfile extends Component{
     
     onSubmit(e){
         e.preventDefault();
-        console.log(this.state.name);
+        const userId = this.props.match.params.id;
+        
+        const newData = {
+             name: this.state.name
+        };
+        
+        this.props.editUser(userId, newData, this.props.history);
     }
     render(){
         const { err } = this.state;
@@ -91,4 +98,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, {getUser})(UserProfile);
+export default connect(mapStateToProps, { getUser, editUser })(UserProfile);
