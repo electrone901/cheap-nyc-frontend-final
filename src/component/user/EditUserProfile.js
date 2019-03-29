@@ -16,6 +16,7 @@ class UserProfile extends Component{
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onSubmitImage = this.onSubmitImage.bind(this);
     }
     
     componentDidMount(){
@@ -61,9 +62,14 @@ class UserProfile extends Component{
         
         this.props.editUser(userId, newData, this.props.history);
     }
+    
+    onSubmitImage(e){
+        e.preventDefault();
+       
+        console.log("Change image", this.state.image);
+    }
     render(){
         const { err } = this.state;
-        const { userData } = this.props.auth;
         
         return(
             <div className="container">
@@ -84,7 +90,28 @@ class UserProfile extends Component{
                         />
                         {err.name && (<div className="invalid-feedback">{err.name}</div>)}
                     </div>
-                    <input type="submit" className="btn btn-info btn-block mt-4" />
+                    <input type="submit" className="btn btn-info btn-block mt-4" value="Update Inforamtion"/>
+                  </form>
+                  
+                  <hr />
+                  <hr />
+                  
+                  <form onSubmit={this.onSubmitImage}>
+                    <label htmlFor="text">Upload an image</label>
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text"></span>
+                        </div>
+                        <div className="custom-file">
+                            <input 
+                                type="file"
+                                className="custom-file-input"
+                                id="inputGroupFile01"
+                                onChange={this.fileSelectedHandler}/>
+                            <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                        </div>
+                    </div>
+                    <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
                   </form>
                 </div>
               </div>
