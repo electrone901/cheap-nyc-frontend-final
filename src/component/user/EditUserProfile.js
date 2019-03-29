@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import { getUser } from '../../actions/authActions';
 import { editUser, changeUserImage } from '../../actions/userActions';
+import userImage from '../../img/userProfile.jpg'; 
 
 class UserProfile extends Component{
     constructor(){
@@ -11,6 +12,7 @@ class UserProfile extends Component{
         this.state = {
             name: '',
             image: null,
+            imageFile: '',
             imageName: 'Choose file',
             err: {}
         };
@@ -34,9 +36,11 @@ class UserProfile extends Component{
             const { userData } = nextProps.auth;
             
             userData.name = userData.name ? userData.name : '';
+            userData.image = userData.image ? userData.image : null;
             
             this.setState({
-                name: userData.name
+                name: userData.name,
+                imageFile: userData.image
             });
         }
     }
@@ -50,6 +54,17 @@ class UserProfile extends Component{
             this.setState({ image: e.target.files[0] });
             this.setState({ imageName: e.target.files[0].name });
         }
+        const reader = new FileReader();
+        const file = e.target.files[0];
+
+        reader.onloadend = () => {
+        this.setState({
+           file: file,
+           imageFile: reader.result
+         });
+       };
+
+       reader.readAsDataURL(file);
     }
     
     onSubmit(e){
@@ -115,6 +130,7 @@ class UserProfile extends Component{
                             <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
                         </div>
                     </div>
+                    <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-thumbnail" alt="User Image" />
                     <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
                   </form>
                 </div>
