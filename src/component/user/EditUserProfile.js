@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 
 import { getUser } from '../../actions/authActions';
-import { editUser } from '../../actions/userActions';
+import { editUser, changeUserImage } from '../../actions/userActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -65,8 +65,12 @@ class UserProfile extends Component{
     
     onSubmitImage(e){
         e.preventDefault();
+        const userId = this.props.match.params.id;
+        
+        const formData = new FormData();
+        formData.append('image', this.state.image);
        
-        console.log("Change image", this.state.image);
+        this.props.changeUserImage(userId, formData, this.props.history);
     }
     render(){
         const { err } = this.state;
@@ -125,4 +129,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { getUser, editUser })(UserProfile);
+export default connect(mapStateToProps, { getUser, editUser, changeUserImage })(UserProfile);

@@ -18,3 +18,20 @@ export const editUser = (userId, newData, history) => dispatch => {
             })
         );
 };
+
+export const changeUserImage = (userId, newData, history) => dispatch => {
+    axios.put(`/users/${userId}/edit-image`, newData)
+        .then(data => {
+            dispatch({
+                type: EDIT_USER,
+                payload: data.user
+            });
+            history.push(`/profile/${userId}`);
+        })
+       .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        );
+};
