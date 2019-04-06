@@ -1,0 +1,498 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* LOGIN */
+.login {
+  height: 60vh;
+}
+
+/* Deals */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.input-group {
+  display: inline-flex;
+}
+
+.btn-width {
+  min-width: 180px;
+}
+
+.filterbutton {
+  padding-top: 15px;
+  padding-bottom: 35px;
+}
+
+.background {
+  background-color: black;
+}
+
+.img-thumbnail {
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0px;
+  background-color: #fff0;
+  border: 1px solid #fff0;
+  border-radius: 0rem;
+}
+
+/* ALL DEALS */
+.img-fluid {
+  max-width: 90%;
+}
+.figure-caption {
+  padding-right: 5px;
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container2-item-btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 0px 15px;
+}
+.col-lg-3 {
+  padding-bottom: 30px;
+}
+
+.dropdown-padding-bottom {
+  padding-top: 37px;
+}
+
+/* FILTER */
+.btn-height {
+  height: 40px;
+}
+
+
+/* DEAL */
+.field-name {
+  font-weight: 600;
+} 
+.font-content {
+  font-size: 1.25rem;
+}
+.space-top {
+  padding-top: 35px;
+}
+
+.thumbnail-review{        
+  width : 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+
+/* REVIEWS */
+.authorRating {
+  font-size: 2em;
+  display: flex;
+  padding-bottom: 7px;
+}
+.back-stars {
+  display: flex;
+  color: #ff004e;
+  position: relative;
+  text-shadow: 4px 4px 10px #843a3a;
+}
+.front-stars {
+  color: #FFBC0B;
+  overflow: hidden;
+  position: absolute;
+  text-shadow: 2px 2px 5px #d29b09;
+  top: 0;
+  display: flex;
+}
+
+.btn-reaction {
+  text-transform: uppercase;
+  /* background-color: #4CAF50; Green */
+  background-color: #00baba; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-social {
+  text-transform: uppercase;
+  background-color: #00baba8c; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-info-helpful {
+  text-transform: uppercase;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  background-color: #e2e7eb;
+  color: #686F7A;
+  font-weight: 800;
+  border: 1px solid #CACBCC;
+}
+.date {
+  flex: 0 0 auto;
+  min-width: 1px;
+  color: #686F7A;
+  font-size: 15px;
+}
+.author-div {
+  padding-left: 20%;
+}
+.author-name {
+  margin-top: -15px;
+}
+
+/* NAVBAR */
+.logo {
+  margin-left: -30px;
+}
+
+/******************************************************************************
+Title           : carousel.scss
+Description     : A file that contains all styles for Carousel.js.
+******************************************************************************/
+
+.slider {
+  position: relative;
+  margin: 0 auto;
+  height: 53vh;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.arrow {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d2cbcb30;
+  /* // border-radius: 50%; */
+  cursor: pointer;
+  transition: transform ease-in .1s;
+}
+
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  z-index: 999;
+  color: #fff;
+}
+
+.backArrow {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  z-index: 999;
+  color: #fff;
+}
+
+.fa-arrow-right:before, .fa-arrow-left:before {
+  color: #222
+}
+
+.tParent {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  color: #fff;
+}
+
+.tParent__items__sign {
+  background: #f13a59;
+  color: #fff;
+  align-items: center;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 8px 32px;
+  -webkit-transition: background .15s;
+  transition: background .15s;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 1.1;
+  padding-top: 10px;
+}
+
+/* FOOTER */
+.quick-links li {
+  list-style: none;
+}
+.quick-links a {
+  color:hsla(0,0%,100%,.7);
+}
+
+.spinner {
+  width: 500px;
+  margin: auto;
+  display: block;
+  margin-top: -10px;
+}
+
+/* ADD REVIEW */
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.clear {
+  float: none;
+  clear: both;
+}
+.rating {
+    width: 40%;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+.rating > label {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    color: #000;
+    font-size: xx-large;
+}
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}
+
+
+/* POPUP */
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 1001;
+}
+.popup_inner {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+}
+
+/* USER PROFILE */
+.start-img {
+  height: 150px;
+}
+.profile-text {
+  color: white;
+}
+.profile-title {
+  padding-left: 10px;
+}
+.backgroundProfile {
+  background-image: url("/images/b2.jpg");
+  background-position: center; 
+  height: 500px;
+}
+.thumbnail-user-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 70px;
+}
+
+/* POST CONFIRMATION PAGE */
+.warning-text {
+  color: firebrick;
+  font-size: smaller;
+}
+
+/* ADD DEAL FORM */
+.require {
+  color: red;
+  font-size: 17px;
+}
+.hover-img {
+  position: relative;
+}
+.hover-img span {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 9999;
+}
+input:hover .hover-img span {
+  top: 20px;
+  left: 0;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width:600px)  {
+  .col-md-8 {
+    margin-bottom: 1rem;
+  }
+  .col-lg-3 {
+    padding-bottom: 5px;
+  }
+  #dealPadding {
+    padding-bottom: 20px;
+  }
+  .h1, h1 {
+    font-size: 1.5rem;
+  }
+  .logo {
+    margin-left: -1px;
+  }
+  .display-4 {
+    padding-top: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* USER */
+  .thumbnail-user-profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 50px;
+  }
+  .backgroundProfile {
+    height: 450px;
+  }
+  .start-img {
+    height: 50px;
+  }
+
+
+  /* Deal */
+  .img-thumbnail {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0rem;
+  }
+  .background {
+    background-color: #fffefe;
+  }
+  
+  .direcions {
+    font-size: 14px;
+  }
+  .deal-tittle {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .space-top {
+    padding-top: 10px;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1px;
+  }
+  
+  .addReview {
+    margin-left: -26px;
+  }
+  .img-reviewer {
+    text-align: center;
+  }
+
+  .author-div {
+    text-align: center;
+    padding-left: 0px;
+  }
+  .author-name {
+    margin-top: 0px;
+    padding-bottom: 7px;
+  }
+
+  .thumbnail-review {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+    height: 100px;
+    width: 112px;
+  }
+
+  .helpful {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .spinner {
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+  
+  /* POPUP */
+  .padding-top {
+    padding-top: 10px;
+  }
+  
+
+  /* ADD REVIEW */
+  .rating {
+    width: 100%;
+  }
+
+}
+
