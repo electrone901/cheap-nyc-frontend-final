@@ -368,8 +368,6 @@ Description     : A file that contains all styles for Carousel.js.
   color: red;
   font-size: 17px;
 }
-<<<<<<< HEAD
-=======
 .hover-img {
   position: relative;
 }
@@ -383,7 +381,6 @@ input:hover .hover-img span {
   top: 20px;
   left: 0;
 }
->>>>>>> luis8
 
 
 /* MEDIA QUERIES */
