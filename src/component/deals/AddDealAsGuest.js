@@ -198,7 +198,7 @@ class AddDealAsGuest extends Component{
 
     errorClass(error) {
         return(error.length === 0 ? '' : 'has-error');
-      }
+    }
 
     render(){
         console.log('image', this.state.image)

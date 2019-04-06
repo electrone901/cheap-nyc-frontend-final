@@ -8,7 +8,8 @@ class AllDealsWithFilter extends Component{
   constructor() {
     super();
     this.state = {
-      data: ''
+      data: '',
+      filterByCategory: null
     };
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeCity = this.handleChangeCity.bind(this);
@@ -116,6 +117,7 @@ class AllDealsWithFilter extends Component{
                   <select
                     value={this.state.selectValue}
                     onChange={this.handleChangeCategory}
+                    disabled={this.state.filterByCategory === true ? true : null}
                     className="btn btn-light dropdown-toggle btn-width btn-height"
                   >
                     <option value="All categories">All categories</option>
