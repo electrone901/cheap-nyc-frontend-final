@@ -14,7 +14,6 @@ class Navbar extends Component {
     };
   }
 
-  // To logout implement in the future
   onLogoutClick(e){
       e.preventDefault();
       this.props.logoutUser();
@@ -52,12 +51,12 @@ class Navbar extends Component {
     
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
+        <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link className="nav-link" to="/register">
             Sign Up
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link className="nav-link" to="/login">
             Login
           </Link>
@@ -66,30 +65,32 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-light btn-light">
+      <nav className="navbar navbar-expand-sm navbar-light btn-light sticky-top">
         <div className="container">
           <Link className="navbar-brand logo" to="/">
             <img src={logo} alt="logo"/>
           </Link>
+        
+
           <button
             className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#mobile-nav"
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"/>
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav"> 
             <ul className="navbar-nav mr-auto">
-              {/* <li className="nav-item">
-                  {' '}
-                  <Link className="nav-link" to="/addDeal">
-                    Create a post
-                  </Link>
-                </li> */}
-
-              <li className="nav-item nav-link" onClick={this.togglePopup.bind(this)}>
+              <li className="nav-item nav-link">
+                {isAuthenticated ? authLinks : guestLinks}
+              </li>
+            </ul>
+            <ul className="navbar-nav text-right">
+              <li className="btn btn-primary text-left"  onClick={this.togglePopup.bind(this)}>
                   {' '}
                     Create a post
               </li>
@@ -102,17 +103,10 @@ class Navbar extends Component {
                       closePopup={this.togglePopup.bind(this)}
                       />
                       : null
-                  }
+                }
               </li>
-
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="/categories">
-                  {' '}
-                  How it works
-                </Link>
-              </li> */}
             </ul>
-            {isAuthenticated ? authLinks : guestLinks}
+           
           </div>
           
         </div>
@@ -125,6 +119,5 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-// export default withRouter(connect(mapStateToProps, matchDispatchToProps)(ChildView))
 export default withRouter(connect(mapStateToProps, {logoutUser})(Navbar));
 
