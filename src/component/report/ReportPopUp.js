@@ -7,8 +7,8 @@ class ReportPopUp extends Component {
         super();
         this.state = {
             author: '',
-            rating: null,
-            description: '',
+            reason: '',
+            reason_description: '',
             errors: {}
         }
         this.onChange = this.onChange.bind(this);
@@ -36,14 +36,22 @@ class ReportPopUp extends Component {
     }
 
     onSubmit(e) {
-        console.log('click', )
+        console.log('click', this.state)
         e.preventDefault();
-        const reviewData = {
-            name: this.state.author,
-            rating: this.state.rating,
-            text: this.state.description,
-        };
-        this.props.postReview(reviewData, this.props.match.params.id, this.props.history);
+        
+        // Request - POST
+        // Params - Replace ':itemId' with an id of a item
+        // Required Fields - text(string)
+        // Login is required
+        // let url = "https://cnycserver.herokuapp.com/items/" + itemId + "/report";
+
+
+        // const reviewData = {
+        //     name: this.state.author,
+        //     rating: this.state.rating,
+        //     text: this.state.description,
+        // };
+        // this.props.postReview(reviewData, this.props.match.params.id, this.props.history);
     }
 
     
@@ -55,37 +63,41 @@ class ReportPopUp extends Component {
         <div className='popup'>
           <div className='popup_inner'>
             <h1 className="space-top">{this.props.title}</h1>
-            <p className="small">{this.props.text}</p>
+            <p className="font-content">{this.props.text}</p>
             
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto space-top">
                 <form onSubmit={this.onSubmit}>
 
                     <div className="dropdown col-lg-12 col-md-12 col-sm-12">
                         <select
-                            value={this.state.selectValue}
-                            onChange={this.handleChangeCity}
+                            required
+                            name="reason"
+                            value={this.state.reason}
+                            onChange={this.onChange}
                             className="btn btn-light dropdown-toggle btn-width btn-height textArea"
                         > 
                             <option value="">Select One</option>
-                            <option value="Manhattan">Manhattan</option>
-                            <option value="Queens">Queens</option>
-                            <option value="Bronx">Bronx</option>
-                            <option value="Brooklyn">Brooklyn</option>
-                            <option value="Staten Island">Staten Island</option>
+                            <option value="It's expired">It's expired</option>
+                            <option value="I'm not satisfied with the service or product">I'm not satisfied with the service or product</option>
+                            <option value="It's a duplicate post">It's a duplicate post</option>
+                            <option value="Invalid Location">Invalid Location</option>
+                            <option value="It's a scam">It's a scam</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 
                     <div className="form-group space-top">
+                        <label htmlFor="text">Other reason or comments</label>
                         <textarea 
                             type="text" 
-                            id="description" 
+                            id="reason_description" 
                             min="5" 
                             className="textArea"
                             // className={classnames('', {
                             //     'is-invalid': errors.text
                             // })}
-                            name="description"
-                            value={this.state.description}
+                            name="reason_description"
+                            value={this.state.reason_description}
                             onChange={this.onChange} 
                             rows="3"
                             >

@@ -197,8 +197,8 @@ class Deals extends Component{
                 {
                     this.state.showPopup ?
                     <ReportPopUp
-                        title= 'REPORT THIS POST'
-                        text= 'Post as a member is reccomend'
+                        // title= 'I would like to report this post because'
+                        text= 'I would like to report this post because'
                         closePopup ={this.togglePopup.bind(this)}
                         id={this.props.match.params.id}
                     />
