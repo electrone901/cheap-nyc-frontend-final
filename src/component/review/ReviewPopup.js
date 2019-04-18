@@ -8,7 +8,7 @@ class ReviewPopup extends Component {
       return (
         <div className='popup'>
           <div className='popup_inner'>
-            <h1 className="padding-top">{this.props.title}</h1>
+            <h1 className="space-top">{this.props.title}</h1>
             <p className="small">{this.props.text}</p>
             <div className="row text-center">
               <div className="col-lg-6 col-md-6 col-sm-4 padding-top">

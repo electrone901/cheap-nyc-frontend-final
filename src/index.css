@@ -76,6 +76,11 @@ body {
   height: 40px;
 }
 
+/* ReportPopUp */
+.textArea {
+  width: 90%;
+}
+
 
 /* DEAL */
 .field-name {
@@ -484,9 +489,7 @@ input:hover .hover-img span {
   }
   
   /* POPUP */
-  .padding-top {
-    padding-top: 10px;
-  }
+
   
 
   /* ADD REVIEW */

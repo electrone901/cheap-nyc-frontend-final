@@ -14,6 +14,11 @@ export default function(state = initialState, action) {
                 ...state,
                 post: action.payload
             };
+        case 'GET_DEALS':
+            return {
+                ...state,
+                post: action.payload
+            }
         default:
             return state;
     }
