@@ -48,13 +48,12 @@ class Deals extends Component{
     reportPopup() {
         let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
-            console.log('YES is Authenticated');
-            this.props.history.push(`/addReview/${itemId}`)
+            this.setState({
+                reportPopup: !this.state.reportPopup
+            })
         }
         else {
-            this.setState({
-                showPopup: !this.state.showPopup
-            })
+            this.notify();
         }
     }
 
@@ -115,7 +114,7 @@ class Deals extends Component{
 
       return(
           <div className="container">
-
+            <ToastContainer />
             <div className="row justify-content-center space-top">
                 <div className="col-8 col-sm-8 col-md-8">
                     <h1 className="deal-tittle">{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
@@ -124,7 +123,7 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
-            <ToastContainer />
+            
             <div className="text-center background">
                 <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
@@ -174,7 +173,7 @@ class Deals extends Component{
 
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction" onClick={this.addFlag.bind(this)}>({flags ? flags.length: '0'}) Report</button>
+                    <button className="btn-reaction" onClick={this.reportPopup.bind(this)}>({flags ? flags.length: '0'}) Report</button>
                 </div>
             </div>
 
@@ -195,11 +194,10 @@ class Deals extends Component{
             {/* ReportPopup */}
             <div className="container text-center"> 
                 {
-                    this.state.showPopup ?
+                    this.state.reportPopup ?
                     <ReportPopUp
-                        // title= 'I would like to report this post because'
-                        text= 'I would like to report this post because'
-                        closePopup ={this.togglePopup.bind(this)}
+                        title= 'I would like to report this post because'
+                        closePopup ={this.reportPopup.bind(this)}
                         id={this.props.match.params.id}
                     />
                     : null

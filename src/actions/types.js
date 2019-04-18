@@ -12,6 +12,8 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_USER = 'GET_USER';
 export const EDIT_USER = 'EDIT_USER';
 
+export const POST_REPORT = 'POST_REPORT';
+
 export const GET_TRANSACTIONS = 'GET_TRANSACTIONS';
 export const TRANSACTION_LOADING = 'TRANSACTION_LOADING';
 
