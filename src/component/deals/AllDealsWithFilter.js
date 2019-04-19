@@ -10,11 +10,11 @@ class AllDealsWithFilter extends Component{
   constructor() {
     super();
     this.state = {
-      data: '',
-      price1: null,
-      price2: null,
-      category: null,
-      city: null
+      data: "",
+      price1: -1,
+      price2: -1,
+      category: "",
+      city: ""
     };
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeCity = this.handleChangeCity.bind(this);
@@ -36,15 +36,15 @@ class AllDealsWithFilter extends Component{
     e.preventDefault();
     let {category, city, price1, price2} = this.state;
 
-    console.log('all ', category, city, price1, price2)
-    
+    console.log('all what', category, city, price1, price2)
 
-    if((category === null && city === null &&  price1 === null && price2 === null) || 
-    (category === "" && city === "" &&  price1 === ""  && price2 === undefined)) {
+ 
+    // get all items in DB
+    if(category === "" && city === "" &&  price1 === -1 && price2 === -1) {
       let url = "https://cnycserver.herokuapp.com/items";
       fetch(url)
       .then(res => {
-          console.log('res', res);
+          console.log('res YASS', res);
           return res.json();
       })
       .then((data) => {
@@ -54,7 +54,28 @@ class AllDealsWithFilter extends Component{
           console.log('There was a problem with your fetch request' + err.message);
       });
     }
+    
+    
+    //10  "Success on finding all items with price range from $0 to $1"
+    // category: "", 
+    // city: "", 
+    // price1:0 , price2:1)
+
+    
+    
+    //6   "Success on finding all items on category Food",
+    // category: "Food", 
+    // city: "", 
+    // price1:-1 , price2:-1
+
+    // 10 finding by city
+    // category: "", 
+    // city: "Manhattan", 
+    // price1:-1 , price2:-1
+
+
     else {
+      console.log('gets category = x    city = x   between 2 prices ')
       const graphqlQuery = {
         query: `{
           itemsByFilter(
@@ -341,7 +362,7 @@ class AllDealsWithFilter extends Component{
                     onChange={this.handleChangePrice}
                     className="btn btn-light dropdown-toggle btn-width btn-height"
                   >
-                    <option value="">All Prices</option>
+                    <option value="-1&-1">All Prices</option>
                     <option value="0&0">Free</option>
                     <option value="0&1">under $ 1</option>
                     <option value="1&5">under $ 5</option>
