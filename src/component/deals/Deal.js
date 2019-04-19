@@ -15,6 +15,8 @@ import {
     EmailIcon,
     FacebookIcon, } from 'react-share';
 import ReviewPopup from '../review/ReviewPopup';
+
+import ReportPopUp from '../report/ReportPopUp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
@@ -43,6 +45,18 @@ class Deals extends Component{
         }
     }
 
+    reportPopup() {
+        let itemId =  this.props.match.params.id
+        if(this.props.auth.isAuthenticated) {
+            this.setState({
+                reportPopup: !this.state.reportPopup
+            })
+        }
+        else {
+            this.notify();
+        }
+    }
+
     componentDidMount() {
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
@@ -52,7 +66,7 @@ class Deals extends Component{
     }
 
     notify = () => {
-        toast.error("To like/flag a post you must be logged in!")
+        toast.error("To like/Report a post you must be logged in!")
     }
 
     addLike() {
@@ -66,13 +80,26 @@ class Deals extends Component{
     }
 
     addFlag() {
-        let itemId =  this.props.match.params.id;
+        // let itemId =  this.props.match.params.id;
+        // if(this.props.auth.isAuthenticated) {
+        //     this.props.addFlag(itemId, this.props.history)
+        // }
+        // else {
+        //     this.notify();
+        // }
+
+        //
+        let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
-            this.props.addFlag(itemId, this.props.history)
+            console.log('YES is Authenticated show review');
+            // this.props.history.push(`/addReview/${itemId}`)
         }
         else {
-            this.notify();
+            this.setState({
+                showPopup: !this.state.showPopup
+            })
         }
+        
     }
 
     
@@ -87,7 +114,7 @@ class Deals extends Component{
 
       return(
           <div className="container">
-
+            <ToastContainer />
             <div className="row justify-content-center space-top">
                 <div className="col-8 col-sm-8 col-md-8">
                     <h1 className="deal-tittle">{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
@@ -96,7 +123,7 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">Get Directions</a>
                 </div>
             </div>
-            <ToastContainer />
+            
             <div className="text-center background">
                 <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
@@ -146,7 +173,7 @@ class Deals extends Component{
 
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction" onClick={this.addFlag.bind(this)}>({flags ? flags.length: '0'}) Flag</button>
+                    <button className="btn-reaction" onClick={this.reportPopup.bind(this)}> Report</button>
                 </div>
             </div>
 
@@ -158,6 +185,19 @@ class Deals extends Component{
                         title= 'POST AS'
                         text= 'Post as a member is reccomend'
                         closePopup ={this.togglePopup.bind(this)}
+                        id={this.props.match.params.id}
+                    />
+                    : null
+                }
+            </div>
+
+            {/* ReportPopup */}
+            <div className="container text-center"> 
+                {
+                    this.state.reportPopup ?
+                    <ReportPopUp
+                        title= 'I would like to report this post because'
+                        closePopup ={this.reportPopup.bind(this)}
                         id={this.props.match.params.id}
                     />
                     : null

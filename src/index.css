@@ -44,9 +44,8 @@ body {
 }
 
 /* ALL DEALS */
-.img-fluid {
-  max-width: 90%;
-}
+
+
 .figure-caption {
   padding-right: 5px;
 }
@@ -74,6 +73,11 @@ body {
 /* FILTER */
 .btn-height {
   height: 40px;
+}
+
+/* ReportPopUp */
+.textArea {
+  width: 90%;
 }
 
 
@@ -384,7 +388,17 @@ input:hover .hover-img span {
 
 
 /* MEDIA QUERIES */
+@media (min-width: 600px) {
+  .img-fluid {
+    max-width: 90%;
+    max-height: 180px;
+  }
+}
+
 @media (max-width:600px)  {
+  .img-fluid {
+    max-width: 90%;
+  }
   .col-md-8 {
     margin-bottom: 1rem;
   }
@@ -484,9 +498,7 @@ input:hover .hover-img span {
   }
   
   /* POPUP */
-  .padding-top {
-    padding-top: 10px;
-  }
+
   
 
   /* ADD REVIEW */
