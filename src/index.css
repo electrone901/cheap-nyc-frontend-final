@@ -44,9 +44,8 @@ body {
 }
 
 /* ALL DEALS */
-.img-fluid {
-  max-width: 90%;
-}
+
+
 .figure-caption {
   padding-right: 5px;
 }
@@ -389,7 +388,17 @@ input:hover .hover-img span {
 
 
 /* MEDIA QUERIES */
+@media (min-width: 600px) {
+  .img-fluid {
+    max-width: 90%;
+    max-height: 180px;
+  }
+}
+
 @media (max-width:600px)  {
+  .img-fluid {
+    max-width: 90%;
+  }
   .col-md-8 {
     margin-bottom: 1rem;
   }
