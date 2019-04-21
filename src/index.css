@@ -387,6 +387,12 @@ input:hover .hover-img span {
 }
 
 /* HOWITWORKS */
+.frame-parent {position: relative; }
+.frame-custome {
+  width: 90%;
+  height: 570px;
+}
+
 .tiptop {
   text-align: center;
   width: 70%;
