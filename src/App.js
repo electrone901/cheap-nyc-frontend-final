@@ -15,6 +15,7 @@ import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
 
 import howItWorks from './component/how_it_works&credits/how_it_works&credits';
+import ContactUs from './component/how_it_works&credits/ContactUs';
 
 import PreviewConfirmationPost from './component/deals/PreviewConfirmationPost';
 import Deal from './component/deals/Deal';
@@ -60,6 +61,7 @@ class App extends Component {
               <Route exact path="/addReview/:id" component={AddReview} />
               <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
               <Route exact path="/howItWorks" component={howItWorks} />
+              <Route exact path="/contact-us" component={ContactUs} />
               
               <Switch>
                  <Route exact path="/deal/:id" component={Deal} />

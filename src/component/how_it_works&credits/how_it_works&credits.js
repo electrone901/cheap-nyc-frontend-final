@@ -16,6 +16,7 @@ class howItWorks extends Component{
 
                     <h3 className="how-works-title">About Us</h3>
                     <p>CheapNy aggregates many deals into a simple, understandable format, this is the one stop shop for locals and tourist in NYC to find more reasonably priced ways to have fun. Everyday, we continue to grow our outreach throughout the city, and continue to find more ways for you to save money doing the things you love. Your feedback is crucial, and we would love to hear from you. Contact us to <a className="btn btn-primary" href="mailto:mycheapnewyork@gmail.com?Subject=Feedback-Suggestions" target="_top">mycheapnewyork@gmail.com</a></p>
+                    
                     <br/>
                     <h3 className="how-works-title">How do we ensure deals are always up to date?</h3>
                         <li>We rely on our team of fantastic trouble shooters who can solve problems and make sure our service is as seamless and timely as possible.</li>
