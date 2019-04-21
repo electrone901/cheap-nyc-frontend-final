@@ -19,9 +19,9 @@ class howItWorks extends Component{
                     <br/>
                     <h3 className="how-works-title">How do we ensure deals are always up to date?</h3>
                         <li>We rely on our team of fantastic trouble shooters who can solve problems and make sure our service is as seamless and timely as possible.</li>
-                        <li>We rely on people like you who write a review or flag a post (when a post is flag several times automatically gets erase)</li>
-                        <li>Every post has an expiration date that helps to remove the post when is not longer available </li>
-                        <li>CheapNy provides a platform where deals are post everyday therefore it’s hard to ensure every deal is valid, we recommend to contact the provider in advance.</li>
+                        <li>We rely on people like you who write a review or report a post (when a post is reported several times it automatically gets erased)</li>
+                        <li>Every post has an expiration date that helps to remove the post when it's not longer available </li>
+                        <li>CheapNy provides a platform where deals are posted everyday therefore it’s hard to ensure every deal is valid, we recommend you contact the provider in advance.</li>
                 </div>
 
 
@@ -52,7 +52,7 @@ class howItWorks extends Component{
 
                     <li className="">
                         <h3 className="how-works-title">In the Future</h3>
-                        <p>Definitely. The site is a constantly iterating, and finding new deals and places. Right now we want to exhaust ourselves with places with online presences, but then we will continue to target every other method there is. Ultimately would love to have bars and restaurants sign up with their own profile and control some of their posting, and allow them to post flash deals in a tweet format.</p>
+                        <p>We are constantly finding new deals and places. Right now we want to exhaust ourselves with places with online presences, but then we will continue to target every other method there is. Ultimately would love to have businesses sign up with their own profile and control some of their postings, and allow them to post flash deals in a tweet format.</p>
                     </li>
                     <li className="">
                         <h3 className="how-works-title">Disclaimer</h3>
