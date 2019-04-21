@@ -13,6 +13,9 @@ import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
+
+import howItWorks from './component/how_it_works&credits/how_it_works&credits';
+
 import PreviewConfirmationPost from './component/deals/PreviewConfirmationPost';
 import Deal from './component/deals/Deal';
 import AddDealAsGuest from './component/deals/AddDealAsGuest';
@@ -57,6 +60,7 @@ class App extends Component {
               <Route exact path="/profile/:id/edit" component={EditUserProfile} />
               <Route exact path="/addReview/:id" component={AddReview} />
               <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
+              <Route exact path="/howItWorks" component={howItWorks} />
               
               <Switch>
                  <Route exact path="/deal/:id" component={Deal} />

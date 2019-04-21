@@ -386,6 +386,42 @@ input:hover .hover-img span {
   left: 0;
 }
 
+/* HOWITWORKS */
+.tiptop {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+.how-works-title {
+  margin-bottom: 0;
+  color: #d86139;
+  font-size: 18px;
+  line-height: 30px;
+}
+.how-works-list {
+  text-decoration: none;
+  margin: 0 0 12px;
+  /* padding: 0 0 0 70px; */
+  vertical-align: middle;
+  text-align: left;
+  margin-left: 50px;
+}
+.how-works-list-parent{
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+/* .jumbotron-custome {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #60c717;
+  border-radius: .3rem;
+} */
+/* HOWITWORKS */
+
+
 
 /* MEDIA QUERIES */
 @media (min-width: 600px) {
