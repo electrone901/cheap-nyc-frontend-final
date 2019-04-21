@@ -20,6 +20,7 @@ class Navbar extends Component {
   }
 
   togglePopup() {
+    
     if(this.props.auth.isAuthenticated) {
       this.props.history.push('/addDeal');
     }
@@ -36,7 +37,7 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to={`/profile/${user.id}`} className="nav-link">
+          <Link to={`/profile/${user.id}`} className="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
             <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {user.name}
           </Link>
         </li>
@@ -90,7 +91,15 @@ class Navbar extends Component {
               </li>
             </ul>
             <ul className="navbar-nav text-right">
-              <li className="btn btn-primary text-left"  onClick={this.togglePopup.bind(this)}>
+
+
+              <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <Link className="nav-link" to="/howItWorks">
+                  How it works
+                </Link>
+              </li>
+
+              <li className="btn btn-primary text-left" data-toggle="collapse" data-target=".navbar-collapse.show"  onClick={this.togglePopup.bind(this)}>
                   {' '}
                     Create a post
               </li>
