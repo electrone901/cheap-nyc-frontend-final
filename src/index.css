@@ -9,7 +9,7 @@ body {
   height: 60vh;
 }
 
-/* Deals */
+/* DEALS */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -43,36 +43,7 @@ body {
   border-radius: 0rem;
 }
 
-/* ALL DEALS */
 
-
-.figure-caption {
-  padding-right: 5px;
-}
-
-.container2 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.container2-item-btn {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  padding: 0px 15px;
-}
-
-
-
-
-.col-lg-3 {
-  padding-bottom: 30px;
-}
-
-.dropdown-padding-bottom {
-  padding-top: 37px;
-}
 
 /* FILTER */
 .btn-height {
@@ -126,7 +97,6 @@ body {
 
 .btn-reaction {
   text-transform: uppercase;
-  /* background-color: #4CAF50; Green */
   background-color: #00baba; /* Grblueeen */
   border: none;
   color: white;
@@ -208,7 +178,6 @@ Description     : A file that contains all styles for Carousel.js.
   align-items: center;
   justify-content: center;
   background: #d2cbcb30;
-  /* // border-radius: 50%; */
   cursor: pointer;
   transition: transform ease-in .1s;
 }
@@ -426,7 +395,6 @@ input:hover .hover-img span {
   .btn-light {
     padding: 1px;
   }
-  
   .btn-width {
     min-width: auto;
     height: 40px;
@@ -457,10 +425,9 @@ input:hover .hover-img span {
 }
 
 @media (max-width:600px)  {
-  /* .img-fluid {
-    max-height: 200px;
-    max-width: 90%;
-  } */
+  .popupButtons {
+    padding: 5px;
+  }
   .col-md-8 {
     margin-bottom: 1rem;
   }
@@ -559,9 +526,6 @@ input:hover .hover-img span {
     display: block;
   }
   
-  /* POPUP */
-
-  
 
   /* ADD REVIEW */
   .rating {
@@ -572,17 +536,37 @@ input:hover .hover-img span {
 
 
 /* what */
-.small-text {
+/* .small-text {
   line-height: 1.6;
   color: rgba(46,62,72,.6);
   text-transform: uppercase;
   font-weight: 500;
+} */
+
+/* what */
+
+/* ALL DEALS */
+.figure-caption {
+  padding-right: 5px;
 }
-.space-all {
-  padding-top: 14px;
-  padding-right: 18px;
-  padding-bottom: 14px;
-  padding-left: 18px;
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container2-item-btn {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 0px 15px;
+}
+.col-lg-3 {
+  padding-bottom: 35px;
+}
+.dropdown-padding-bottom {
+  padding-top: 37px;
 }
 .text--sectionTitle {
   font-size: 15px;
@@ -595,9 +579,12 @@ input:hover .hover-img span {
   font-size: 12px;
 }
 
-/* what */
-
-/* ADD NEW LAYOUT */
+.space-all {
+  padding-top: 14px;
+  padding-right: 18px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+}
 .flex--row>.flex-item:first-child {
   padding-left: 0;
 }
@@ -611,19 +598,11 @@ input:hover .hover-img span {
   flex-shrink: 0;
   width: auto;
 }
-._carousel__container .nav-button, .card--hasShadow, .exploreHome-groupCard, .exploreHome-mostPopularRow .nav-button, .flatpickr-calendar {
+.groupDeals{
   -webkit-box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
   box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
 }
 
-.exploreHome-groupCard {
-  -webkit-transition: -webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
-  border: 0;
-  transition: -webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
-  transition: box-shadow .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1),-webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
-  transition: box-shadow .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1);
-  width: 250px;
-}
 .groupCard {
   height: 100%;
 }
@@ -648,13 +627,14 @@ input:hover .hover-img span {
   height: 100%;
   justify-content: flex-start;
 }
-
+.flex--column:hover {
+  -ms-transform: scale(1.5);  /*IE*/
+  -webkit-transform: scale(1.5); /*Safari 3-8*/
+  transform: scale(1.01);
+}
 .flex--column>.flex-item {
   -ms-flex-preferred-size: auto;
   flex-basis: auto;
   padding-left: 0;
   width: 100%;
 }
-
-
-/* ADD NEW LAYOUT */

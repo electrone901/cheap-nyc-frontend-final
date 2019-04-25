@@ -43,37 +43,27 @@ class AllDeals extends Component {
                     //         </figure>
                     //     </div>
                     // </div> 
-
-
-
-
+                 
 
 
                     <div className="col-lg-3 col-md-3 col-sm-6 text-center" id="dealPadding" key={key}>
-                        {/* <div class="flex-item flex-item--shrink _carousel__item"> */}
-                            {/* <div class="card groupCard exploreHome-groupCard"> */}
-                                <div class="flex flex--column card groupCard">
-                                    <div class="flex-item flex-item--shrink groupCard-image keepAspect--16-9 thumb display--block"
-                                        aria-label="Awesome Events" role="img">
-                                        <Link to={`/deal/${item._id}`}>
-                                            <img src={item.image ? item.image : noAvailable} className="figure-img img-fluid rounded" alt="deal"/>
-                                        </Link>
-                                    </div>
-                                    <div className="space-all">
-                                    <p className="text--sectionTitle">{item.name}  ${item.price} </p>
-                                    {/* <p className="">Located in Manhattan</p> */}
-
-                                    <div class="container2">
-                                        <figcaption class="figure-caption container2-item"><i class="far fa-thumbs-up"></i> {item.likes.length} Likes</figcaption>
-                                        
-                                        <Link to={`/deal/${item._id}`} className="btn btn-primary btn-details">
-                                            Details
-                                        </Link>
-                                    </div>
-                                    </div>
+                        <div class="flex flex--column card groupCard groupDeals">
+                            <div class="flex-item flex-item--shrink"
+                                aria-label="Awesome Events" role="img">
+                                <Link to={`/deal/${item._id}`}>
+                                    <img src={item.image ? item.image : noAvailable} className="figure-img img-fluid rounded" alt="deal"/>
+                                </Link>
+                            </div>
+                            <div className="space-all">
+                            <p className="text--sectionTitle">{item.name}  ${item.price} </p>
+                                <div class="container2">
+                                    <figcaption class="figure-caption container2-item"><i class="far fa-thumbs-up"></i> {item.likes.length} Likes</figcaption>
+                                    <Link to={`/deal/${item._id}`} className="btn btn-primary btn-details">
+                                        Details
+                                    </Link>
                                 </div>
-                            {/* </div> */}
-                        {/* </div> */}
+                            </div>
+                        </div>
                     </div>
                 );
             }): <Spinner />
