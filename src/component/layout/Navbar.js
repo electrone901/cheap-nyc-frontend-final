@@ -19,6 +19,12 @@ class Navbar extends Component {
       this.props.logoutUser();
   }
 
+  profile() {
+    const { user } = this.props.auth;
+    console.log('userLuis', user.id)
+    this.props.history.push(`/profile/${user.id}`);
+  }
+
   togglePopup() {
     
     if(this.props.auth.isAuthenticated) {
@@ -33,12 +39,14 @@ class Navbar extends Component {
   
   render() {
     const {isAuthenticated, user} = this.props.auth;
-    
+    // const nameArray = user.name.split(" ");
+    // const name = nameArray[0];
     const authLinks = (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link to={`/profile/${user.id}`} className="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <span role="img" style={{color:"red"}} aria-label="Good vibes emoji">😀</span> Welcome, {user.name}
+        
+        <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <Link to={`/profile/${user.id}`} className="nav-link">
+            Profile
           </Link>
         </li>
         <li className="nav-item">
@@ -71,7 +79,6 @@ class Navbar extends Component {
           <Link className="navbar-brand logo" to="/">
             <img src={logo} alt="logo"/>
           </Link>
-        
 
           <button
             className="navbar-toggler"

@@ -13,8 +13,7 @@ class howItWorks extends Component{
                         <h1 className="display-4">Our Mission</h1>
                         <p className="lead">Whether you’re traveling or living in NYC, our mission is to provide the best deals based on price. Our aim is to build a community of people who want to find more accessible prices and new ways to save money while doing what they love. </p>
                     </div>
-
-                    <h3 className="how-works-title">About Us</h3>
+                    <h3 className="how-works-title space-top">About Us</h3>
                     <p>CheapNy aggregates many deals into a simple, understandable format, this is the one stop shop for locals and tourist in NYC to find more reasonably priced ways to have fun. Everyday, we continue to grow our outreach throughout the city, and continue to find more ways for you to save money doing the things you love. Your feedback is crucial, and we would love to hear from you. Contact us to <a className="btn btn-primary" href="mailto:mycheapnewyork@gmail.com?Subject=Feedback-Suggestions" target="_top">mycheapnewyork@gmail.com</a></p>
                     
                     <br/>
@@ -39,18 +38,6 @@ class howItWorks extends Component{
                 </div>
 
                 <ul className="how-works-list-parent">
-                    {/* <li className="list-group">
-                        <h3 className="how-works-title">How It Works</h3>
-                        <ul className="list-group">
-                            <li className="list-group-item">Sharing is caring. Please share your NYC tips & hacks, your favorite restaurants, places, activities, events, etcetera.</li>
-                            <li className="list-group-item">Make new friends and help each other discover new things within the city. </li>
-                            <li className="list-group-item">Leave a comment, comments help other members make informed decisions.</li>
-                            <li className="list-group-item">Leave truthful references  that describe your experience most accurately.</li>
-                            <li className="list-group-item">Like posts you have try or you want to.</li>
-                            <li className="list-group-item">Report duplicate posts, inaccurately, and scams that are not within a reasonable price. </li>
-                        </ul>
-                    </li><br/> */}
-
                     <li className="">
                         <h3 className="how-works-title">In the Future</h3>
                         <p>We are constantly finding new deals and places. Right now we want to exhaust ourselves with places with online presences, but then we will continue to target every other method there is. Ultimately would love to have businesses sign up with their own profile and control some of their postings, and allow them to post flash deals in a tweet format.</p>

@@ -25,7 +25,7 @@ body {
 
 .filterbutton {
   padding-top: 15px;
-  padding-bottom: 35px;
+  padding-bottom: 15px;
 }
 
 .background {
@@ -53,7 +53,7 @@ body {
 .container2 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .container2-item-btn {
@@ -62,6 +62,10 @@ body {
   border-color: #007bff;
   padding: 0px 15px;
 }
+
+
+
+
 .col-lg-3 {
   padding-bottom: 30px;
 }
@@ -387,12 +391,10 @@ input:hover .hover-img span {
 }
 
 /* HOWITWORKS */
-.frame-parent {position: relative; }
 .frame-custome {
   width: 90%;
   height: 570px;
 }
-
 .tiptop {
   text-align: center;
   width: 70%;
@@ -407,7 +409,6 @@ input:hover .hover-img span {
 .how-works-list {
   text-decoration: none;
   margin: 0 0 12px;
-  /* padding: 0 0 0 70px; */
   vertical-align: middle;
   text-align: left;
   margin-left: 50px;
@@ -419,28 +420,47 @@ input:hover .hover-img span {
   padding-left: 0;
 }
 
-/* .jumbotron-custome {
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background-color: #60c717;
-  border-radius: .3rem;
-} */
-/* HOWITWORKS */
-
-
 
 /* MEDIA QUERIES */
+@media (max-width: 767px) and (min-width: 575px) {
+  .btn-light {
+    padding: 1px;
+  }
+  
+  .btn-width {
+    min-width: auto;
+    height: 40px;
+  }
+  .btn {
+    border: 0px solid transparent;
+    white-space: normal;
+  }
+  .logo {
+    margin-left: -40px;
+  }
+  nav .nav-link {
+    font-size: 12px;
+    padding-right: .2rem !important;
+    padding-left: .2rem !important;
+  }
+  .btn-primary {
+    font-size: 12px;
+  }
+}
+
+
 @media (min-width: 600px) {
   .img-fluid {
-    max-width: 90%;
-    max-height: 180px;
+    max-width: 100%;
+    max-height: 200px;
   }
 }
 
 @media (max-width:600px)  {
-  .img-fluid {
+  /* .img-fluid {
+    max-height: 200px;
     max-width: 90%;
-  }
+  } */
   .col-md-8 {
     margin-bottom: 1rem;
   }
@@ -550,3 +570,91 @@ input:hover .hover-img span {
 
 }
 
+
+/* what */
+.small-text {
+  line-height: 1.6;
+  color: rgba(46,62,72,.6);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.space-all {
+  padding-top: 14px;
+  padding-right: 18px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+}
+.text--sectionTitle {
+  font-size: 15px;
+  line-height: 1.45;
+  color: #2e3e48;
+  font-weight: 600;
+  margin-top: -16px;
+}
+.btn-details {
+  font-size: 12px;
+}
+
+/* what */
+
+/* ADD NEW LAYOUT */
+.flex--row>.flex-item:first-child {
+  padding-left: 0;
+}
+.flex>.flex-item--shrink {
+  -ms-flex-negative: 0;
+  -ms-flex-positive: 0;
+  -ms-flex-preferred-size: auto;
+  -webkit-box-flex: 0;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: auto;
+}
+._carousel__container .nav-button, .card--hasShadow, .exploreHome-groupCard, .exploreHome-mostPopularRow .nav-button, .flatpickr-calendar {
+  -webkit-box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+  box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+}
+
+.exploreHome-groupCard {
+  -webkit-transition: -webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
+  border: 0;
+  transition: -webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
+  transition: box-shadow .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1),-webkit-box-shadow .25s cubic-bezier(.4,0,.2,1),-webkit-transform .25s cubic-bezier(.4,0,.2,1);
+  transition: box-shadow .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1);
+  width: 250px;
+}
+.groupCard {
+  height: 100%;
+}
+.card {
+  position: static;
+}
+.flex--column {
+  -ms-flex-align: flex;
+  -ms-flex-direction: column;
+  -ms-flex-pack: start;
+  -webkit-box-align: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: start;
+  -webkit-box-sizing: border-box;
+  align-items: flex;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.flex--column>.flex-item {
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  padding-left: 0;
+  width: 100%;
+}
+
+
+/* ADD NEW LAYOUT */
