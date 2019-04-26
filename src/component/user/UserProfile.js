@@ -95,8 +95,8 @@ class UserProfile extends Component{
                     <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
-                    <img src={ userData.image ? userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
                     <span className="btn btn-primary userLabel"><i class="fa fa-star" aria-hidden="true"></i> Legendary</span>
+                    <img src={ userData.image ? userData.image : userImage } className="mt-4 thumbnail-user-profile" alt="Responsive" />
                     <h4>
                         <i className="fas fa-medal space-top"></i> 
                         { userData.name}

@@ -340,9 +340,8 @@ Description     : A file that contains all styles for Carousel.js.
   /* margin-top: 50px; */
 }
 .userLabel {
-  margin-top: -169px;
-  position: relative;
-  margin-left: -43px;
+  position: absolute;
+  margin-left: 140px;
   background-color: transparent;
   border-color: white;
 }
@@ -471,7 +470,8 @@ input:hover .hover-img span {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-top: 50px;
+    display: block;
+    margin: 0 auto;
   }
   .backgroundProfile {
     /* height: 450px; */
