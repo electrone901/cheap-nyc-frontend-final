@@ -11,6 +11,7 @@ import { postDeal } from '../../actions/addPostDeal';
 import userImage from '../../img/userProfile.jpg'; 
 // import starBash from '../../img/starBash2.png'; 
 import starBash from '../../img/starBash.png'; 
+import trophy from '../../img/trophy.png'; 
 import { getUser } from '../../actions/authActions';
 
 class UserProfile extends Component{
@@ -86,23 +87,38 @@ class UserProfile extends Component{
     render(){
         const { err } = this.state;
         const { userData } = this.props.auth;
+        const line = <p>.</p>
         
         return(
-            <div className="constainer text-center">
+            <div className="container text-center">
                 <div className="text-right">
                     <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
                     <img src={ userData.image ? userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
-                    <h5 className="card-title">{ userData.name }</h5>
-                    <p className="card-text">NYC community Advocator</p>
-                    <p className="btn btn-primary">Level: Legendary</p>
+                    <span className="btn btn-primary userLabel"><i class="fa fa-star" aria-hidden="true"></i> Legendary</span>
+                    <h4>
+                        <i className="fas fa-medal space-top"></i> 
+                        { userData.name}
+                    </h4>
+                    <h5 className="card-footer">Traveler, Dreamer, Art, Food, Sports</h5>
+                    
+                    <div className="row">
+                        <div className="col-4">
+                            Favorites
+                            {line}
+                        </div>
+                        <div className="col-4">
+                            Used
+                            {line}
+                        </div>
+                        <div className="col-4 wh">
+                            Added
+                            {line}
+                        </div>
+                    </div>
                 </div>
-                <div className="card-footer">
-                    <img src={starBash} className="start-img" alt="Responsive" />
-                    <img src={starBash} className="start-img" alt="Responsive" />
-                    <img src={starBash} className="start-img" alt="Responsive" />
-                </div>
+
             </div>        
         );
     }
