@@ -173,7 +173,7 @@ class Deals extends Component{
 
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction" onClick={this.reportPopup.bind(this)}> Report</button>
+                    <button className="btn-reaction stylebutton" onClick={this.reportPopup.bind(this)}> Report</button>
                 </div>
             </div>
 

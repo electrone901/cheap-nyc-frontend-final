@@ -20,8 +20,6 @@ export const postDeal = (postData, history) => dispatch => {
     );
 }
 
-
-
 export const getDeal = (url) => dispatch => {
     fetch(url)
         .then(res => {
