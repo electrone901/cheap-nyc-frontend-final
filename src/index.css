@@ -14,7 +14,6 @@ body {
   position: relative;
   display: inline-block;
 }
-
 .input-group {
   display: inline-flex;
 }
@@ -42,7 +41,12 @@ body {
   border: 1px solid #fff0;
   border-radius: 0rem;
 }
-
+.deal-tittle {
+  color: #ec0000;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.45;
+}
 
 
 /* FILTER */
@@ -313,6 +317,17 @@ Description     : A file that contains all styles for Carousel.js.
 }
 
 /* USER PROFILE */
+.checkbox {
+  /* grid mode */
+  display: grid;
+  /* template col implicid ,  */
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+}
+
+.checkbox-box{
+  margin-right: 3px;
+}
+
 .start-img {
   height: 150px;
 }
@@ -325,10 +340,12 @@ Description     : A file that contains all styles for Carousel.js.
 .backgroundProfile {
   background-image: url("/images/b2.jpg");
   background-position: center; 
-  height: 500px;
+  height: 400px;
   /* opacity: 0.5; */
   z-index: 1;
-  background-color: rgb(144, 3, 3);
+  /* background-color: rgb(144, 3, 3); */
+  background-color: #F44336;
+  /* background-color: rgb(253, 1, 220); */
   background-blend-mode: darken;
   position: relative;
 }
@@ -337,12 +354,11 @@ Description     : A file that contains all styles for Carousel.js.
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  /* margin-top: 50px; */
 }
+
 .userLabel {
-  margin-top: -169px;
-  position: relative;
-  margin-left: -43px;
+  position: absolute;
+  margin-left: 140px;
   background-color: transparent;
   border-color: white;
 }
@@ -350,6 +366,60 @@ Description     : A file that contains all styles for Carousel.js.
   content: "\f5a2";
   font-size: x-large;
 }
+.noActiveButton{
+  background-color: blue;
+  color: white;
+}
+
+.activeButton{
+  background-color: white;
+  color: black;
+}
+.list-content {
+  -ms-flex-pack: center!important;
+  justify-content: center!important;
+  background-color: #ccbcbc14;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.listPostUser {
+  -webkit-box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+  box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
+  width: 80%;
+  padding-top: 10px;
+  background-color: white;
+}
+.feedPostDescription {
+  text-align: left;
+}
+.post-title {
+  font-size: 15px;
+  font-weight: 550;
+  line-height: 1.1;
+  padding-top: 15px;
+}
+.img-profile {
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0px;
+  background-color: #fff0;
+  border: 1px solid #fff0;
+  border-radius: 0rem;
+}
+
+.parrographPadding {
+  margin-top: 4px;
+  margin-bottom: 4px;
+
+}
+.messageImg {
+  width: 100%;
+  /* height: 40px; */
+  /* margin-left: 40px; */
+}
+
 
 /* POST CONFIRMATION PAGE */
 .warning-text {
@@ -431,6 +501,9 @@ input:hover .hover-img span {
   .btn-primary {
     font-size: 12px;
   }
+  .col-lg-3 {
+    padding-bottom: 5px;
+  }
 }
 
 
@@ -474,8 +547,8 @@ input:hover .hover-img span {
     margin-top: 50px;
   }
   .backgroundProfile {
-    /* height: 450px; */
-    height: 1450px;
+    height: 450px;
+    /* height: 1450px; */
   }
   .start-img {
     height: 50px;
@@ -492,6 +565,7 @@ input:hover .hover-img span {
     margin-bottom: -10px;
   }
 
+
   /* Deal */
   .img-thumbnail {
     height: 300px;
@@ -507,8 +581,10 @@ input:hover .hover-img span {
     font-size: 14px;
   }
   .deal-tittle {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0rem;
   }
 
   .space-top {
@@ -590,7 +666,7 @@ input:hover .hover-img span {
   border-color: #007bff;
   padding: 0px 15px;
 }
-.col-lg-3 {
+.space-down {
   padding-bottom: 35px;
 }
 .dropdown-padding-bottom {

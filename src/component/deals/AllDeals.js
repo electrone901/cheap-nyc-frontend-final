@@ -46,7 +46,7 @@ class AllDeals extends Component {
                  
 
 
-                    <div className="col-lg-3 col-md-3 col-sm-6 text-center" id="dealPadding" key={key}>
+                    <div className="col-lg-3 col-md-3 col-sm-6 text-center space-down" id="dealPadding" key={key}>
                         <div class="flex flex--column card groupCard groupDeals">
                             <div class="flex-item flex-item--shrink"
                                 aria-label="Awesome Events" role="img">

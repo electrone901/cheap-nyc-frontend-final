@@ -18,6 +18,8 @@ class UserProfile extends Component{
     constructor(){
         super();
         this.state = {
+            favoriteclass: false,
+            userDealsclass: true,
             id: '5c9101a113d0e5000405d38c',
             company: '',
             name: '',
@@ -40,9 +42,49 @@ class UserProfile extends Component{
 
     
     componentDidMount(){
+        window.scrollTo(0,0);
         const userId = this.props.match.params.id;
-        
         this.props.getUser(userId);
+        console.log("what", typeof(userId))
+
+        const graphqlQuery = {
+            query: `
+                query{
+                    userById(id:"${userId}"){
+                    favorites {
+                        id
+                        name
+                        }
+                    }
+                }
+                `
+        };
+        fetch('https://cnycserver.herokuapp.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(graphqlQuery)
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(resData =>{
+                if(resData.errors){
+                    return console.log(resData.errors);
+                }
+                else {
+                    console.log('resData.data', resData.data.userById.favorites)
+                    this.setState({favoritesList: resData.data.userById.favorites})
+                }
+                // dispatch({
+                //     type: GET_USER,
+                //     payload: resData.data.userById
+                // });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     
@@ -79,24 +121,41 @@ class UserProfile extends Component{
         formData.append('author', this.state.author);
         // this.props.postDeal(formData, this.props.history);
     }
-    updateUSerInfo() {
 
+    getFavoritesDeals(_this, p) {
+        console.log('FAVORITES')
+        if(this.state.favoriteclass){
+            this.setState({
+                userDealsclass: true,
+                favoriteclass: false
+            })
+        }
+        
     }
-    
-    
+
+    getUserDeals(_this, p) {
+        console.log('USED')
+        if(this.state.userDealsclass){
+            this.setState({
+                userDealsclass: false,
+                favoriteclass: true
+            })
+        }
+    }
     render(){
+        console.log('state', this.state)
         const { err } = this.state;
         const { userData } = this.props.auth;
-        const line = <p>.</p>
-        
+        let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
+        let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
         return(
             <div className="container text-center">
                 <div className="text-right">
                     <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
-                    <img src={ userData.image ? userData.image : userImage } className="thumbnail-user-profile" alt="Responsive" />
-                    <span className="btn btn-primary userLabel"><i class="fa fa-star" aria-hidden="true"></i> Legendary</span>
+                    <span className="btn btn-primary userLabel"><i className="fa fa-star" aria-hidden="true"></i> Legendary</span>
+                    <img src={ userData.image ? userData.image : userImage } className="mt-4 thumbnail-user-profile" alt="Responsive" />
                     <h4>
                         <i className="fas fa-medal space-top"></i> 
                         { userData.name}
@@ -104,19 +163,34 @@ class UserProfile extends Component{
                     <h5 className="card-footer">Traveler, Dreamer, Art, Food, Sports</h5>
                     
                     <div className="row">
-                        <div className="col-4">
-                            Favorites
-                            {line}
+                        <div className="col-6 wh">
+                            <button onClick={this.getFavoritesDeals.bind(this)} className={btn_favorites}>Deals Liked</button>
                         </div>
-                        <div className="col-4">
-                            Used
-                            {line}
-                        </div>
-                        <div className="col-4 wh">
-                            Added
-                            {line}
+                        <div className="col-6 wh">
+                            <button onClick={this.getUserDeals.bind(this)} className={btn_userDeals}>Deals Added</button>
                         </div>
                     </div>
+                </div>
+
+                <div className="container list-content">
+                    {
+                        this.state.favoritesList ? this.state.favoritesList.map((post, key) => {
+                            let postId = post.id; 
+                            return(
+                                <div className="container listPostUser" key={key}>
+                                    <div className="row ">
+                                        <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
+                                        <p className="col-8 text-left">{post.name} </p>
+                                        {/* <p className="col-2"> <i className="fa fa-angle-double-right fa-1x"></i></p> */}
+
+                                        <Link to={`/deal/${postId}`} className="col-2">
+                                            <i className="fa fa-angle-double-right fa-1x"></i>
+                                        </Link>
+                                    </div>
+                                </div>
+                            )
+                        }): "You don't have post, go to the list and add posts to your favorite list "
+                    }
                 </div>
 
             </div>        
@@ -128,6 +202,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-// export default UserProfile;
+
 
 export default connect(mapStateToProps, {getUser})(UserProfile);
+
