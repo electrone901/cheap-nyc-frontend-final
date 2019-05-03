@@ -163,26 +163,14 @@ class UserProfile extends Component{
                     <h5 className="card-footer">Traveler, Dreamer, Art, Food, Sports</h5>
                     
                     <div className="row">
-                        <div className="col-4">
-                            <button onClick={this.getFavoritesDeals.bind(this)} className={btn_favorites}>Favorites</button>
+                        <div className="col-6 wh">
+                            <button onClick={this.getFavoritesDeals.bind(this)} className={btn_favorites}>Deals Liked</button>
                         </div>
-                        <div className="col-4">
-                            <button onClick={this.getUserDeals.bind(this)} className={btn_userDeals}>Used</button>
-                        </div>
-                        <div className="col-4 wh">
-                            <button onClick={this.getFavoritesDeals.bind(this)} className={btn_userDeals}>Added</button>
+                        <div className="col-6 wh">
+                            <button onClick={this.getUserDeals.bind(this)} className={btn_userDeals}>Deals Added</button>
                         </div>
                     </div>
                 </div>
-
-                {/* <div className="container listPostUser">
-                    <div className="row ">
-                        <p className="col-2"><i className="fa fa-heart fa-1x"></i></p>
-                        <p className="col-8">Luis card </p>
-                        <p className="col-2">Details <i className="fa fa-angle-double-right fa-1x"></i></p>
-                    </div>
-                    
-                </div> */}
 
                 <div className="container list-content">
                     {
@@ -191,7 +179,7 @@ class UserProfile extends Component{
                             return(
                                 <div className="container listPostUser" key={key}>
                                     <div className="row ">
-                                        <p className="col-2"><i className="fa fa-heart fa-1x"></i></p>
+                                        <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
                                         <p className="col-8 text-left">{post.name} </p>
                                         {/* <p className="col-2"> <i className="fa fa-angle-double-right fa-1x"></i></p> */}
 

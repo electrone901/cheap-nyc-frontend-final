@@ -116,11 +116,12 @@ class Deals extends Component{
           <div className="container">
             <ToastContainer />
             <div className="row justify-content-center space-top">
-                <div className="col-8 col-sm-8 col-md-8">
-                    <h1 className="deal-tittle">{post.name}  <span className="detail__price"> $ {post.price}</span></h1>
+                <div className="col-8 col-sm-8 col-md-8 space-top">
+                {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
+                    <h2 className="deal-tittle">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-right ">
-                    <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">Get Directions</a>
+                    <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
             </div>
             
@@ -130,7 +131,8 @@ class Deals extends Component{
 
             <div className="row space-top">
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}>({likes ? likes.length: '0'}) Likes</button>
+
+                    <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}> <i className="fa fa-heart" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i>  ({likes ? likes.length: '0'}) Likes</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center container2">
                     

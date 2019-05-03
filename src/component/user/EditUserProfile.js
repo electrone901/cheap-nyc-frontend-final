@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
+import CheckBox from './CheckBox';
 import { getUser } from '../../actions/authActions';
 import { editUser, changeUserImage } from '../../actions/userActions';
 import userImage from '../../img/userProfile.jpg'; 
@@ -14,10 +15,16 @@ class UserProfile extends Component{
             image: null,
             imageFile: '',
             imageName: 'Choose file',
-            err: {}
+            err: {},  
+            newUser: {
+                skills: []
+              },    
+            interestOptions: ["Sports", "Adventure", "Food", "Social", "Bars", "Photography", "Outdoor", "Indoor", "Events", "Concerts",
+            "Theater", "Karaoke", "Movies", "Night Life", "Dancing", "Museums", "Party", "Games", "Biking", "Hiking"],
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleCheckBox = this.handleCheckBox.bind(this);
         this.onSubmitImage = this.onSubmitImage.bind(this);
     }
     
@@ -69,13 +76,16 @@ class UserProfile extends Component{
     
     onSubmit(e){
         e.preventDefault();
-        const userId = this.props.match.params.id;
+        console.log("choose", this.state.newUser)
+        // here make the api call 
         
-        const newData = {
-             name: this.state.name
-        };
+        // const userId = this.props.match.params.id;
         
-        this.props.editUser(userId, newData, this.props.history);
+        // const newData = {
+        //      name: this.state.name
+        // };
+        
+        // this.props.editUser(userId, newData, this.props.history);
     }
     
     onSubmitImage(e){
@@ -87,6 +97,24 @@ class UserProfile extends Component{
        
         this.props.changeUserImage(userId, formData, this.props.history);
     }
+    handleCheckBox(e) {
+        console.log('handleCheckBox', e)
+        const newSelection = e.target.value;
+        let newSelectionArray;
+
+        if (this.state.newUser.skills.indexOf(newSelection) > -1) {
+            newSelectionArray = this.state.newUser.skills.filter(
+            s => s !== newSelection
+            );
+        } else {
+            newSelectionArray = [...this.state.newUser.skills, newSelection];
+        }
+
+        this.setState(prevState => ({
+            newUser: { ...prevState.newUser, skills: newSelectionArray }
+        }));
+    }
+
     render(){
         const { err } = this.state;
         
@@ -109,13 +137,44 @@ class UserProfile extends Component{
                         />
                         {err.name && (<div className="invalid-feedback">{err.name}</div>)}
                     </div>
-                    <input type="submit" className="btn btn-info btn-block mt-4" value="Update Inforamtion"/>
+
+                    <CheckBox
+                        title={"Interests"}
+                        name={"interests"}
+                        options={this.state.interestOptions}
+                        selectedOptions={this.state.newUser.skills}
+                        handleChange={this.handleCheckBox}
+                    />{" "}
+        
+
+                    <div className="checkbox">
+                            {
+                                this.state.interestArray ? this.state.interestArray.map((option, key)=> {
+                                    console.log('option', option, "key",key)
+                                    return (
+                                        <label htmlFor="text" className="checkbox-inline" key={key}>
+                                            <input 
+                                                type="checkbox"
+                                                id="myInterest"
+                                                name="myInterest"
+                                                onChange={this.handleCheckBox(option)}
+                                                value={option}
+                                                checked={this.handleCheckBox(option)}
+                                            >
+                                            </input>
+                                            {option}
+                                        </label>
+                                    )
+                                }): ""
+
+                            }
+                    </div>
+                    <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
                   </form>
                   
-                  <hr />
-                  <hr />
+                  <hr/>
                   
-                  <form onSubmit={this.onSubmitImage}>
+                  <form onSubmit={this.onSubmitImage} className="space-top">
                     <label htmlFor="text">Upload an image</label>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
@@ -130,7 +189,9 @@ class UserProfile extends Component{
                             <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
                         </div>
                     </div>
-                    <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-thumbnail" alt="User Image" />
+                    <div className="text-center">
+                        <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="User Image" />
+                    </div>
                     <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
                   </form>
                 </div>
