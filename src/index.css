@@ -340,7 +340,7 @@ Description     : A file that contains all styles for Carousel.js.
 .backgroundProfile {
   background-image: url("/images/b2.jpg");
   background-position: center; 
-  height: 400px;
+  height: 440px;
   /* opacity: 0.5; */
   z-index: 1;
   /* background-color: rgb(144, 3, 3); */
@@ -349,6 +349,7 @@ Description     : A file that contains all styles for Carousel.js.
   background-blend-mode: darken;
   position: relative;
 }
+
 
 .thumbnail-user-profile {
   width: 200px;
@@ -547,9 +548,14 @@ input:hover .hover-img span {
     margin-top: 50px;
   }
   .backgroundProfile {
-    height: 450px;
+    height: 420px;
     /* height: 1450px; */
   }
+
+  .listPostUser {
+    width: 100%;
+  }
+
   .start-img {
     height: 50px;
   }

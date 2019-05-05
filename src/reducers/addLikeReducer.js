@@ -1,5 +1,6 @@
 const initialState = {
-    like: {}
+    like: {},
+    getLikedDeals: []
 }
 
 export default function(state= initialState, action) {
@@ -9,7 +10,13 @@ export default function(state= initialState, action) {
             ...state, 
             like: action.payload
         }
+        case 'GETLIKEDDEALS':
+        return{
+            ...state,
+            getLikedDeals: action.payload
+        }
         default:
             return state;
     }
 }
+

@@ -1,6 +1,3 @@
-// UserProfile update image
-//  update image
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
@@ -9,10 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { postDeal } from '../../actions/addPostDeal';
 import userImage from '../../img/userProfile.jpg'; 
-// import starBash from '../../img/starBash2.png'; 
-import starBash from '../../img/starBash.png'; 
-import trophy from '../../img/trophy.png'; 
 import { getUser } from '../../actions/authActions';
+import { getLikedDeals } from '../../actions/addLikeActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -20,7 +15,7 @@ class UserProfile extends Component{
         this.state = {
             favoriteclass: false,
             userDealsclass: true,
-            id: '5c9101a113d0e5000405d38c',
+            id: '',
             company: '',
             name: '',
             price: '',
@@ -32,6 +27,7 @@ class UserProfile extends Component{
             description: '',
             author: '',
             userData: '',
+            favoritesList: [],
             err: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -40,13 +36,15 @@ class UserProfile extends Component{
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
-    
-    componentDidMount(){
-        window.scrollTo(0,0);
-        const userId = this.props.match.params.id;
-        this.props.getUser(userId);
-        console.log("what", typeof(userId))
-
+    getFavoritesDeals(userId) {
+        // toggle userDealsclass && favoriteclass to active
+        if(this.state.favoriteclass){
+            this.setState({
+                userDealsclass: true,
+                favoriteclass: false
+            })
+        }
+        // gets LikedDeals
         const graphqlQuery = {
             query: `
                 query{
@@ -74,17 +72,23 @@ class UserProfile extends Component{
                     return console.log(resData.errors);
                 }
                 else {
-                    console.log('resData.data', resData.data.userById.favorites)
+                    console.log('what resData.data', resData.data.userById)
                     this.setState({favoritesList: resData.data.userById.favorites})
                 }
-                // dispatch({
-                //     type: GET_USER,
-                //     payload: resData.data.userById
-                // });
             })
             .catch(err => {
                 console.log(err);
             });
+        
+    }
+
+    
+    componentDidMount(){
+        window.scrollTo(0,0);
+        const userId = this.props.match.params.id;
+        this.props.getUser(userId);
+        this.getFavoritesDeals(userId);
+        
     }
 
     
@@ -122,18 +126,8 @@ class UserProfile extends Component{
         // this.props.postDeal(formData, this.props.history);
     }
 
-    getFavoritesDeals(_this, p) {
-        console.log('FAVORITES')
-        if(this.state.favoriteclass){
-            this.setState({
-                userDealsclass: true,
-                favoriteclass: false
-            })
-        }
-        
-    }
 
-    getUserDeals(_this, p) {
+    getDealsAdded(_this, p) {
         console.log('USED')
         if(this.state.userDealsclass){
             this.setState({
@@ -141,13 +135,85 @@ class UserProfile extends Component{
                 favoriteclass: true
             })
         }
+
+        const userId = this.props.match.params.id;
+        const graphqlQuery = {
+            query: `
+            query{
+               userById(id: "${userId}") {
+                   listOfPosts {
+                       id
+                       name
+                   }
+               } 
+            }
+            `
+        };
+        fetch('https://cnycserver.herokuapp.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(graphqlQuery)
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(resData => {
+            if(resData.errors) {
+                return console.log(resData.errors);
+            }
+            else {
+                this.setState({dealsAdded: resData.data.userById.listOfPosts })
+            }
+        })
+        
+
+
+
     }
     render(){
-        console.log('state', this.state)
+        console.log('props', this.props)
+        console.log('favorites', this.props.auth.userData.favorites)
+        console.log('userData', this.props.auth.userData)
         const { err } = this.state;
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
+
+        let  dealsLiked = (
+            this.state.favoritesList ? this.state.favoritesList.map((post, key) => {
+                let postId = post.id; 
+                return(
+                    <div className="container listPostUser" key={key}>
+                        <div className="row ">
+                            <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
+                            <p className="col-8 text-left">{post.name} </p>
+                            <Link to={`/deal/${postId}`} className="col-2">
+                                <i className="fa fa-angle-double-right fa-1x"></i>
+                            </Link>
+                        </div>
+                    </div>
+                )
+            }): "You don't have post, go to the list and add posts to your favorite list "
+        );
+        let  dealsAdded = (
+            this.state.dealsAdded ? this.state.dealsAdded.map((post, key) => {
+                let postId = post.id; 
+                return(
+                    <div className="container listPostUser" key={key}>
+                        <div className="row ">
+                            <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
+                            <p className="col-8 text-left">{post.name} </p>
+                            <Link to={`/deal/${postId}`} className="col-2">
+                                <i className="fa fa-angle-double-right fa-1x"></i>
+                            </Link>
+                        </div>
+                    </div>
+                )
+            }): "You haven't created a post yet. Go aheag and post one"
+        );
+  
         return(
             <div className="container text-center">
                 <div className="text-right">
@@ -160,39 +226,28 @@ class UserProfile extends Component{
                         <i className="fas fa-medal space-top"></i> 
                         { userData.name}
                     </h4>
-                    <h5 className="card-footer">Traveler, Dreamer, Art, Food, Sports</h5>
+
+                    {
+                       userData.title ?  <h5 className="card-footer">{userData.title}</h5>: <Link to={`${userData._id}/edit`} className="btn btn-primary"> <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Interest Bio</Link>
+                    }
+    
                     
                     <div className="row">
                         <div className="col-6 wh">
-                            <button onClick={this.getFavoritesDeals.bind(this)} className={btn_favorites}>Deals Liked</button>
+                            <button onClick={this.getFavoritesDeals.bind(this, userData._id)} className={btn_favorites}>Deals Liked</button>
                         </div>
                         <div className="col-6 wh">
-                            <button onClick={this.getUserDeals.bind(this)} className={btn_userDeals}>Deals Added</button>
+                            <button onClick={this.getDealsAdded.bind(this)} className={btn_userDeals}>Deals Added</button>
                         </div>
                     </div>
                 </div>
 
+                {/* dealsLiked & dealsAdded */}
                 <div className="container list-content">
                     {
-                        this.state.favoritesList ? this.state.favoritesList.map((post, key) => {
-                            let postId = post.id; 
-                            return(
-                                <div className="container listPostUser" key={key}>
-                                    <div className="row ">
-                                        <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
-                                        <p className="col-8 text-left">{post.name} </p>
-                                        {/* <p className="col-2"> <i className="fa fa-angle-double-right fa-1x"></i></p> */}
-
-                                        <Link to={`/deal/${postId}`} className="col-2">
-                                            <i className="fa fa-angle-double-right fa-1x"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                            )
-                        }): "You don't have post, go to the list and add posts to your favorite list "
+                        this.state.favoritesList && (!this.state.favoriteclass) ? dealsLiked : dealsAdded
                     }
                 </div>
-
             </div>        
         );
     }

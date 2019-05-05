@@ -69,6 +69,7 @@ class AllDealsWithFilter extends Component{
               price
               city 
               image
+              likes
           }
         }`
       };
