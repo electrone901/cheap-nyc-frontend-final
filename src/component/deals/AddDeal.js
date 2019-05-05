@@ -29,6 +29,7 @@ class AddDeal extends Component{
             addressValid: false,
             cityValid: false,
             descriptionValid: false,
+            userId: "",
             serverErr: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -40,8 +41,11 @@ class AddDeal extends Component{
     componentDidMount(){
         window.scrollTo(0,0);
         if(!this.props.auth.isAuthenticated){
-            this.setState({author: this.props.auth.user.name})
             this.props.history.push('/login');
+        }
+        else {
+            console.log('this.props.auth.user.name', this.props.auth.user.id)
+            this.setState({userId: this.props.auth.user.id})
         }
     }
 
@@ -176,6 +180,7 @@ class AddDeal extends Component{
         formData.append('location', this.state.address);
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
+        formData.append('userId', this.state.userId);
         this.props.postDeal(formData, this.props.history);
     }
 
@@ -186,7 +191,7 @@ class AddDeal extends Component{
     
     render(){
         const { serverErr } = this.state
-        console.log('state', this.state);
+        console.log(' ADD state', this.state);
 
         let preview = <div className="container">
             <div className="row text-center space-top">
@@ -217,6 +222,7 @@ class AddDeal extends Component{
             </div>
             <hr/> 
         </div>;
+
         let form = <div className="container">
             <div className="row">
                 <div className="col-md-8 m-auto">

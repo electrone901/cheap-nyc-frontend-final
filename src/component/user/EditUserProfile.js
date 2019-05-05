@@ -7,6 +7,8 @@ import { getUser } from '../../actions/authActions';
 import { editUser, changeUserImage } from '../../actions/userActions';
 import userImage from '../../img/userProfile.jpg'; 
 
+import axios from '../../axios-stocks';
+
 class UserProfile extends Component{
     constructor(){
         super();
@@ -18,7 +20,8 @@ class UserProfile extends Component{
             err: {},  
             newUser: {
                 skills: []
-              },    
+              },  
+            title: '', 
             interestOptions: ["Sports", "Adventure", "Food", "Social", "Bars", "Photography", "Outdoor", "Indoor", "Events", "Concerts",
             "Theater", "Karaoke", "Movies", "Night Life", "Dancing", "Museums", "Party", "Games", "Biking", "Hiking"],
         };
@@ -30,7 +33,6 @@ class UserProfile extends Component{
     
     componentDidMount(){
         const userId = this.props.match.params.id;
-        
         this.props.getUser(userId);
     }
     
@@ -74,18 +76,40 @@ class UserProfile extends Component{
        reader.readAsDataURL(file);
     }
     
-    onSubmit(e){
+    onSubmit(e, history){
         e.preventDefault();
-        console.log("choose", this.state.newUser)
-        // here make the api call 
-        
-        // const userId = this.props.match.params.id;
-        
-        // const newData = {
-        //      name: this.state.name
-        // };
-        
-        // this.props.editUser(userId, newData, this.props.history);
+        // console.log("choose", this.state.newUser.skills)
+        let userInterestInput = this.state.newUser.skills;
+        let interestString = "";
+        for(let i =0; i < userInterestInput.length; i++) {
+            if(i == userInterestInput.length-1) interestString += userInterestInput[i];
+            else {
+                interestString += userInterestInput[i]+ ", ";
+            }
+          }
+
+
+        const userId = this.props.match.params.id;
+        const name = this.props.auth.user.name;
+
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("title", interestString);
+        let link = "https://cnycserver.herokuapp.com/users/" + userId +"/edit";
+        axios.put(link, formData) 
+        .then(res => {
+            this.setState({title: res.data.user.title})
+            console.log('title##', res.data.user.title)
+        })
+
+
+
+        // .then(res => history.push('/'))
+        // .catch(err => {
+        //     return console.log(err)
+        // });
+        // this.history.push('/')
+        // history.push(`/profile/${userId}`);
     }
     
     onSubmitImage(e){
@@ -117,7 +141,8 @@ class UserProfile extends Component{
 
     render(){
         const { err } = this.state;
-        
+        console.log('this.props title', this.props.auth)
+        // console.log('this.props', this.props.auth.user.name)
         return(
             <div className="container">
               <div className="row">

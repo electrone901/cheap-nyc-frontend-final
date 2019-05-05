@@ -190,9 +190,6 @@ class AddDealAsGuest extends Component{
         formData.append('location', this.state.address);
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
-
-        console.log('formData', formData)
-
         this.props.postDeal(formData, this.props.history);
     }
 

@@ -41,10 +41,11 @@ export const setCurrentUser = decoded => {
   };
 };
 
-export const logoutUser = () => dispatch => {
+export const logoutUser = (history) => dispatch => {
   localStorage.removeItem('jwtToken');
   setAuthToken(false);
-  dispatch(setCurrentUser({}));
+  dispatch(setCurrentUser({}))
+  history.push('/');
 };
 
 export const getUser = (userId) => dispatch => {
@@ -55,6 +56,7 @@ export const getUser = (userId) => dispatch => {
                     _id
                     name
                     image
+                    title
                   }
                 }
             `
