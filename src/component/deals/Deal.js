@@ -228,7 +228,7 @@ class Deals extends Component{
              {/* REVIEWS INFO FROM API */}
             {   
                 post.reviews ? post.reviews.map((review, key) => {
-                    console.log('is passing userId',review)
+                    console.log('is passing userId',review.userId)
                     var percentage = (review.rating * 20) + '%'; //calculate % rating 
                     return( 
                         <div key={key}>
@@ -240,7 +240,7 @@ class Deals extends Component{
                                     </div>
                                     <div className="author-div">
                                         <p className="date"></p>
-                                        <Link to="/" className="author-name">
+                                        <Link to={`/profile/${review.userId}`} className="author-name">
                                             {review.name}
                                         </Link>
                                         {/* <p className="author-name">{review.name}</p> */}

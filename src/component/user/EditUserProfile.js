@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
 
 import CheckBox from './CheckBox';
 import { getUser } from '../../actions/authActions';
-import { editUser, changeUserImage } from '../../actions/userActions';
+import { changeUserImage, updateTitle} from '../../actions/userActions';
 import userImage from '../../img/userProfile.jpg'; 
 
 import axios from '../../axios-stocks';
@@ -78,9 +79,9 @@ class UserProfile extends Component{
     
     onSubmit(e, history){
         e.preventDefault();
-        // console.log("choose", this.state.newUser.skills)
         let userInterestInput = this.state.newUser.skills;
         let interestString = "";
+        // get an interestString
         for(let i =0; i < userInterestInput.length; i++) {
             if(i == userInterestInput.length-1) interestString += userInterestInput[i];
             else {
@@ -90,26 +91,11 @@ class UserProfile extends Component{
 
 
         const userId = this.props.match.params.id;
-        const name = this.props.auth.user.name;
-
+        const name = this.state.name ?  this.state.name: this.props.auth.user.name;
         const formData = new FormData();
         formData.append("name", name);
         formData.append("title", interestString);
-        let link = "https://cnycserver.herokuapp.com/users/" + userId +"/edit";
-        axios.put(link, formData) 
-        .then(res => {
-            this.setState({title: res.data.user.title})
-            console.log('title##', res.data.user.title)
-        })
-
-
-
-        // .then(res => history.push('/'))
-        // .catch(err => {
-        //     return console.log(err)
-        // });
-        // this.history.push('/')
-        // history.push(`/profile/${userId}`);
+        this.props.updateTitle(userId, formData, this.props.history);
     }
     
     onSubmitImage(e){
@@ -141,8 +127,6 @@ class UserProfile extends Component{
 
     render(){
         const { err } = this.state;
-        console.log('this.props title', this.props.auth)
-        // console.log('this.props', this.props.auth.user.name)
         return(
             <div className="container">
               <div className="row">
@@ -164,7 +148,7 @@ class UserProfile extends Component{
                     </div>
 
                     <CheckBox
-                        title={"Interests"}
+                        title={"Interests (select max 8)"}
                         name={"interests"}
                         options={this.state.interestOptions}
                         selectedOptions={this.state.newUser.skills}
@@ -231,4 +215,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { getUser, editUser, changeUserImage })(UserProfile);
+export default connect(mapStateToProps, { getUser, changeUserImage, updateTitle })(UserProfile);

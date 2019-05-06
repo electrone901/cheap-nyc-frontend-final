@@ -228,7 +228,7 @@ class UserProfile extends Component{
                     </h4>
 
                     {
-                       userData.title ?  <h5 className="card-footer">{userData.title}</h5>: <Link to={`${userData._id}/edit`} className="btn btn-primary"> <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Interest Bio</Link>
+                       userData.title ?  <h6 className="card-footer">{userData.title}</h6>: <Link to={`${userData._id}/edit`} className="btn btn-primary"> <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Interest Bio</Link>
                     }
     
                     
