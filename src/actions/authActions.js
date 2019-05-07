@@ -34,6 +34,7 @@ export const loginUser = (userData) => dispatch => {
 };
 
 
+
 export const setCurrentUser = decoded => {
   return {
     type: SET_CURRENT_USER,
@@ -47,6 +48,8 @@ export const logoutUser = (history) => dispatch => {
   dispatch(setCurrentUser({}))
   history.push('/');
 };
+
+
 
 export const getUser = (userId) => dispatch => {
     const graphqlQuery = {
