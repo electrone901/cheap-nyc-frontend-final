@@ -240,7 +240,7 @@ class Deals extends Component{
                                     </div>
                                     <div className="author-div">
                                         <p className="date"></p>
-                                        <Link to={`/profile/${review.userId}`} className="author-name">
+                                        <Link to={`/user/${review.userId}`} className="author-name">
                                             {review.name}
                                         </Link>
                                         {/* <p className="author-name">{review.name}</p> */}
