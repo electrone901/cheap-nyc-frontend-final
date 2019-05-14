@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter  } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 import { registerUser } from '../../actions/authActions';
 
@@ -58,9 +59,15 @@ class Register extends Component{
         this.props.registerUser(newUser, this.props.history);
     }
     
+    responseGoogle = (response) => {
+        this.setState({ email: response.profileObj.email });
+        this.setState({ name: response.profileObj.givenName });
+    };
+    
     render(){
         const {errors} = this.state;
-        console.log('state', this.state)
+        console.log('state', this.state);
+        
         return(
             <div className="register">
                 <div className="container">
@@ -133,6 +140,13 @@ class Register extends Component{
                         </div>
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>
+                      <GoogleLogin
+                        clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                      />
                     </div>
                   </div>
                 </div>
