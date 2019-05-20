@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { GoogleLogin } from 'react-google-login';
 import classnames from 'classnames';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -60,6 +61,15 @@ class Login extends Component{
         this.props.loginUser(userData);
     }
     
+    responseGoogle = (response) => {
+      const userData  = {
+        email:  response.profileObj.email,
+        password: response.profileObj.googleId
+      };
+      
+      this.props.loginUser(userData);
+    };
+    
     render(){
       console.log('this.props.auth.user.name', this.props.auth.user.name)
 
@@ -99,6 +109,13 @@ class Login extends Component{
                         </div>
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                       </form>
+                      <GoogleLogin
+                        clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
+                        buttonText="Login with Google"
+                        onSuccess={this.responseGoogle}
+                        onFailure={this.responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                      />
                     </div>
                   </div>
                 </div>
