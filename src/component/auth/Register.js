@@ -60,8 +60,14 @@ class Register extends Component{
     }
     
     responseGoogle = (response) => {
-        this.setState({ email: response.profileObj.email });
-        this.setState({ name: response.profileObj.givenName });
+      const newUser = new FormData();
+      newUser.append('name', response.profileObj.givenName);
+      newUser.append('image', response.profileObj.imageUrl);
+      newUser.append('email', response.profileObj.email);
+      newUser.append('password', response.profileObj.googleId);
+      newUser.append('confirmPassword', response.profileObj.googleId);
+      
+      this.props.registerUser(newUser, this.props.history);
     };
     
     render(){
@@ -142,7 +148,7 @@ class Register extends Component{
                       </form>
                       <GoogleLogin
                         clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
-                        buttonText="Login"
+                        buttonText="Sign Up with Google"
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
                         cookiePolicy={'single_host_origin'}
