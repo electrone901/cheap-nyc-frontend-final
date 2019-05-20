@@ -2,14 +2,17 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "home": "https://electrone901.github.io/cheap-nyc-frontend-final/",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.0.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-facebook-login": "^4.1.1",
     "react-moment": "^0.8.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -25,6 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   }
 }

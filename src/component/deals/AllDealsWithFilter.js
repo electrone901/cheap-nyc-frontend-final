@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
 import Popup from './Popup';
 import { getDeals } from '../../actions/addPostDeal';
+import FacebookLogin from 'react-facebook-login';
 
 import noAvailable from '../../img/noAvailable.png';
 
@@ -12,6 +13,12 @@ class AllDealsWithFilter extends Component{
   constructor() {
     super();
     this.state = {
+      isLoggedin: false,
+      userId: "",
+      name: "",
+      email: "",
+      picture: "",
+
       data: "",
       price1: -1,
       price2: -1,
@@ -136,9 +143,45 @@ class AllDealsWithFilter extends Component{
     })
   }
 
+  componentClicked = () => console.log('clicked yay!')
+  responseFacebook = response => {
+    console.log('response',response)
+    this.setState({
+      isLoggedin: true,
+      userId: response.userId,
+      name: response.name,
+      email: response.email,
+      picture: response.picture.data.url
+    })
+  }
+
+
   render(){
     // console.log('state',this.state)
     console.log('props',this.props.postDeal.post)
+    let fbContent;
+    if(this.state.isLoggedin) {
+      fbContent = (
+        <div style={{
+          'width': '450px',
+          'margin': 'auto',
+          'background': '#f4f4f4',
+          'padding':'20px'
+        }}>
+          <img src={this.state.picture} alt={this.state.name} />
+          <h2>Welcome {this.state.name}</h2>
+          Email: {this.state.email}
+        </div>
+      )
+    } 
+    else {
+      fbContent = (<FacebookLogin
+        appId="457987018302497"
+        autoLoad={true}
+        fields="name,email,picture"
+        onClick={this.componentClicked}
+        callback={this.responseFacebook}/>)
+    }
       return(
           <div>
 
@@ -206,6 +249,9 @@ class AllDealsWithFilter extends Component{
                 </div>
               </div>
             </div> */}
+            <h1 className="title">FacebookLogin</h1>
+            {fbContent}
+
 
             <h1 className="title">Explore by category</h1>
             <div className="filterbutton">
