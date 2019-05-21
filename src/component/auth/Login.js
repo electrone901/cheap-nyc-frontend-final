@@ -71,9 +71,29 @@ class Login extends Component{
       
       this.props.loginUser(userData);
     };
+
+
+     responseFacebook = async(response) => {
+      console.log('responseFacebook',response)
+      let userData= {};
+      try {
+        console.log('responseFacebook',response.userID, response.email)
+        userData = {
+          email:  response.email,
+          password: response.userID
+        }
+      } catch (error) {
+        this.setState({
+            response: error.toString()
+        })
+      } finally {
+        this.props.loginUser(userData);
+      }      
+    }
+
     
     render(){
-      console.log('this.props.auth.user.name', this.props.auth.user.name)
+      console.log('this.props.auth.user.name', this.props)
 
         const { errors } = this.state;
         console.log('state', this.state)
