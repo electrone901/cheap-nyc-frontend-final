@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
+
 import classnames from 'classnames';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -115,6 +117,14 @@ class Login extends Component{
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
                         cookiePolicy={'single_host_origin'}
+                      />
+                      <br/>
+                      <FacebookLogin
+                        appId="457987018302497"
+                        autoLoad={true}
+                        fields="name,email,picture"
+                        onClick={this.componentClicked}
+                        callback={this.responseFacebook}
                       />
                     </div>
                   </div>
