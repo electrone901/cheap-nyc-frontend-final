@@ -10,6 +10,7 @@
     "moment": "^2.22.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.4",
     "react-moment": "^0.8.1",
     "react-redux": "^5.0.7",

@@ -9,6 +9,20 @@ body {
   height: 60vh;
 }
 
+/* SIGNUP */
+.noColor {
+  border-color: #dc354500;
+}
+
+.loginContainer {
+  background-color: #e9f1f273;
+}
+.loginSocialBtn {
+  font-size: 20px !important;
+}
+.heightForm {
+  line-height: 1;
+}
 /* DEALS */
 .dropdown {
   position: relative;

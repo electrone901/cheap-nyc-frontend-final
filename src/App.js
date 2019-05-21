@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 
 import setAuthToken from './utilis/setAuthToken';
-import PrivateRoute from './component/common/PrivateRoute';
+// import PrivateRoute from './component/common/PrivateRoute';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 
 import store from './store';
@@ -26,6 +26,7 @@ import UserProfile from './component/user/UserProfile';
 import EditUserProfile from './component/user/EditUserProfile';
 
 import Register from './component/auth/Register';
+import RegisterWithEmail from './component/auth/RegisterWithEmail';
 import Login from './component/auth/Login';
 
 
