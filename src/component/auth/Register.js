@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter  } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 
+import FacebookLogin from 'react-facebook-login';
+
 import { registerUser } from '../../actions/authActions';
 
 class Register extends Component{
@@ -69,6 +71,17 @@ class Register extends Component{
       
       this.props.registerUser(newUser, this.props.history);
     };
+    // this one
+    responseFacebook = (response) => {
+      console.log('image ?', response)
+      const newUser = new FormData();
+      newUser.append('name', response.name);
+      newUser.append('image', response.image);
+      newUser.append('email', response.email);
+      newUser.append('password', response.userID);
+      newUser.append('confirmPassword', response.userID);
+      this.props.registerUser(newUser, this.props.history);
+    }
     
     render(){
         const {errors} = this.state;
@@ -78,82 +91,109 @@ class Register extends Component{
             <div className="register">
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-8 m-auto">
-                      <h1 className="display-4 text-center">Sign Up</h1>
-                      <form noValidate onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                          <input type="text"
-                            className={classnames('form-control form-control-lg', {
-                              'is-invalid': errors.name
-                            })}
-                            placeholder="Name"
-                            name="name"
-                            value={this.state.name}
-                            onChange={this.onChange} />
-                            {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-                        </div>
+                    <div className="col-md-5 m-auto text-center">
+                      <h1 className="title text-center">Sign up</h1>
+                      <div className="">
+                        <GoogleLogin
+                          className="loginSocialBtn"
+                          clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
+                          buttonText="Sign Up with Google"
+                          onSuccess={this.responseGoogle}
+                          onFailure={this.responseGoogle}
+                          cookiePolicy={'single_host_origin'}
+                        />
+                        <br/>
+                        <FacebookLogin
+                          appId="457987018302497"
+                          autoLoad={true}
+                          fields="name,email,picture"
+                          onClick={this.componentClicked}
+                          callback={this.responseFacebook}
+                        />
+                      </div>
 
-                        <div className="form-group">
-                            <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"></span>
-                                </div>
-                                <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                      <div className="">
+                        <p className={classnames('form-control noColor', {'is-invalid': errors.email})}></p>
+                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                      </div> 
+
+                      <div className="loginContainer space-top">              
+                        <div className="col-md-10 m-auto">
+                          <h4 className="text-center">Sign Up whith an Email</h4>
+                          <form noValidate onSubmit={this.onSubmit}>
+                            <div className="form-group heightForm">
+                              <input type="text"
+                                className={classnames('form-control form-control-lg', {
+                                  'is-invalid': errors.name
+                                })}
+                                placeholder="Name"
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.onChange} />
+                                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text"></span>
+                                    </div>
+                                    <div className="custom-file">
+                                        <input 
+                                            type="file"
+                                            className="custom-file-input"
+                                            id="inputGroupFile01"
+                                            onChange={this.fileSelectedHandler}/>
+                                        <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="form-group">
-                          <input type="email"
-                            className={classnames('form-control form-control-lg', {
-                              'is-invalid': errors.email
-                            })}
-                            placeholder="Email Address"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.onChange} />
-                            {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                        </div>
-                        <div className="form-group">
-                          <input type="password"
-                            className={classnames('form-control form-control-lg', {
-                              'is-invalid': errors.password
-                            })}
-                            placeholder="Password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.onChange} />
-                            {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                        </div>
+                            <div className="form-group">
+                              <input type="email"
+                                className={classnames('form-control form-control-lg', {
+                                  'is-invalid': errors.email
+                                })}
+                                placeholder="Email Address"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.onChange} />
+                                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                            </div>
+                            <div className="form-group">
+                              <input type="password"
+                                className={classnames('form-control form-control-lg', {
+                                  'is-invalid': errors.password
+                                })}
+                                placeholder="Password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.onChange} />
+                                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                            </div>
 
-                        <div className="form-group">
-                          <input type="password"
-                            className={classnames('form-control form-control-lg', {
-                              'is-invalid': errors.confirmPassword
-                            })}
-                            placeholder="Confirm Password"
-                            name="confirmPassword"
-                            value={this.state.confirmPassword}
-                            onChange={this.onChange} />
-                            {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
+                            <div className="form-group">
+                              <input type="password"
+                                className={classnames('form-control form-control-lg', {
+                                  'is-invalid': errors.confirmPassword
+                                })}
+                                placeholder="Confirm Password"
+                                name="confirmPassword"
+                                value={this.state.confirmPassword}
+                                onChange={this.onChange} />
+                                {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
+                            </div>
+                            <input type="submit" className="btn btn-info btn-block mt-4" />
+                          </form>
+
+
                         </div>
-                        <input type="submit" className="btn btn-info btn-block mt-4" />
-                      </form>
-                      <GoogleLogin
-                        clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
-                        buttonText="Sign Up with Google"
-                        onSuccess={this.responseGoogle}
-                        onFailure={this.responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                      />
-                    </div>
+                      </div>
+
+
+
+                   </div>
                   </div>
                 </div>
             </div>
