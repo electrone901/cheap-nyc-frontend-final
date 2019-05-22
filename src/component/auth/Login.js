@@ -73,23 +73,37 @@ class Login extends Component{
     };
 
 
-     responseFacebook = async(response) => {
+    responseFacebook = (response) => {
       console.log('responseFacebook',response)
-      let userData= {};
-      try {
-        console.log('responseFacebook',response.userID, response.email)
-        userData = {
-          email:  response.email,
-          password: response.userID
-        }
-      } catch (error) {
-        this.setState({
-            response: error.toString()
-        })
-      } finally {
-        this.props.loginUser(userData);
-      }      
-    }
+      const userData  = {
+        email:  response.email,
+        password: response.userID
+      };
+      this.props.loginUser(userData);
+    };
+    // onClick(e) {
+    //   e.preventDefault();
+    //   console.log("onClick")
+    //   this.responseFacebook;
+    // }
+
+    //  responseFacebook = async(response) => {
+    //   console.log('responseFacebook',response)
+    //   let userData= {};
+    //   try {
+    //     console.log('responseFacebook',response.userID, response.email)
+    //     userData = {
+    //       email:  response.email,
+    //       password: response.userID
+    //     }
+    //   } catch (error) {
+    //     this.setState({
+    //         response: error.toString()
+    //     })
+    //   } finally {
+    //     this.props.loginUser(userData);
+    //   }      
+    // }
 
     
     render(){
@@ -141,9 +155,8 @@ class Login extends Component{
                       <br/>
                       <FacebookLogin
                         appId="457987018302497"
-                        autoLoad={true}
                         fields="name,email,picture"
-                        onClick={this.componentClicked}
+                        onClick = {this.onClick}
                         callback={this.responseFacebook}
                       />
                     </div>

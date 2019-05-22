@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { withRouter  } from 'react-router-dom';
+import { Link, withRouter  } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-
 import FacebookLogin from 'react-facebook-login';
-
 import { registerUser } from '../../actions/authActions';
+// import RegisterWithEmail from './RegisterWithEmail'
 
 class Register extends Component{
     constructor(){
@@ -73,14 +72,20 @@ class Register extends Component{
     };
     // this one
     responseFacebook = (response) => {
-      console.log('image ?', response)
+      console.log('responseFacebook**', response)
       const newUser = new FormData();
       newUser.append('name', response.name);
-      newUser.append('image', response.image);
+      newUser.append('image', response.picture.data.url);
       newUser.append('email', response.email);
       newUser.append('password', response.userID);
       newUser.append('confirmPassword', response.userID);
+      console.log('reach form**', newUser)
       this.props.registerUser(newUser, this.props.history);
+    }
+
+    onClick(e) {
+      // e.preventDefault();
+      console.log("onClick")
     }
     
     render(){
@@ -92,6 +97,7 @@ class Register extends Component{
                 <div className="container">
                   <div className="row">
                     <div className="col-md-5 m-auto text-center">
+                      {/* <RegisterWithEmail/> */}
                       <h1 className="title text-center">Sign up</h1>
                       <div className="">
                         <GoogleLogin
@@ -105,9 +111,8 @@ class Register extends Component{
                         <br/>
                         <FacebookLogin
                           appId="457987018302497"
-                          autoLoad={true}
+                          onClick = {this.onClick}
                           fields="name,email,picture"
-                          onClick={this.componentClicked}
                           callback={this.responseFacebook}
                         />
                       </div>
@@ -185,8 +190,10 @@ class Register extends Component{
                                 {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" />
+                            <p className="agreement"> 
+                              When you "Continue", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service. </Link>, Privacy Policy, and Cookie Policy.
+                            </p>
                           </form>
-
 
                         </div>
                       </div>
