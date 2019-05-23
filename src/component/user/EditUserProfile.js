@@ -10,7 +10,7 @@ import userImage from '../../img/userProfile.jpg';
 
 import axios from '../../axios-stocks';
 
-class UserProfile extends Component{
+class EditUserProfile extends Component{
     constructor(){
         super();
         this.state = {
@@ -109,7 +109,6 @@ class UserProfile extends Component{
         this.props.changeUserImage(userId, formData, this.props.history);
     }
     handleCheckBox(e) {
-        console.log('handleCheckBox', e)
         const newSelection = e.target.value;
         let newSelectionArray;
 
@@ -132,78 +131,87 @@ class UserProfile extends Component{
             <div className="container">
               <div className="row">
                 <div className="col-md-8 m-auto">
-                  <h1 className="display-4 text-center">Edit Profile</h1>
-                  <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="text">Your Name</label>
-                        <input
-                            type="text"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': err.name
-                            })}
-                            name="name"
-                            value={this.state.name}
-                            onChange={this.onChange}
-                        />
-                        {err.name && (<div className="invalid-feedback">{err.name}</div>)}
+                  <h1 className="title text-center">Edit Name & Interests</h1>
+                  <div className="loginContainer space-top">
+                    <div className="col-10 m-auto">
+                        <form onSubmit={this.onSubmit}>
+                            <div className="form-group">
+                                <label htmlFor="text">Your Name</label>
+                                <input
+                                    type="text"
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': err.name
+                                    })}
+                                    name="name"
+                                    value={this.state.name}
+                                    onChange={this.onChange}
+                                />
+                                {err.name && (<div className="invalid-feedback">{err.name}</div>)}
+                            </div>
+
+                            <CheckBox
+                                title={"Interests (select max 8)"}
+                                name={"interests"}
+                                options={this.state.interestOptions}
+                                selectedOptions={this.state.newUser.skills}
+                                handleChange={this.handleCheckBox}
+                            />{" "}
+                
+
+                            <div className="checkbox">
+                                    {
+                                        this.state.interestArray ? this.state.interestArray.map((option, key)=> {
+                                            return (
+                                                <label htmlFor="text" className="checkbox-inline" key={key}>
+                                                    <input 
+                                                        type="checkbox"
+                                                        id="myInterest"
+                                                        name="myInterest"
+                                                        onChange={this.handleCheckBox(option)}
+                                                        value={option}
+                                                        checked={this.handleCheckBox(option)}
+                                                    >
+                                                    </input>
+                                                    {option}
+                                                </label>
+                                            )
+                                        }): ""
+
+                                    }
+                            </div>
+                            <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
+                        </form>
                     </div>
+                  </div>
+                  <hr className="space-top"/>
 
-                    <CheckBox
-                        title={"Interests (select max 8)"}
-                        name={"interests"}
-                        options={this.state.interestOptions}
-                        selectedOptions={this.state.newUser.skills}
-                        handleChange={this.handleCheckBox}
-                    />{" "}
-        
-
-                    <div className="checkbox">
-                            {
-                                this.state.interestArray ? this.state.interestArray.map((option, key)=> {
-                                    console.log('option', option, "key",key)
-                                    return (
-                                        <label htmlFor="text" className="checkbox-inline" key={key}>
-                                            <input 
-                                                type="checkbox"
-                                                id="myInterest"
-                                                name="myInterest"
-                                                onChange={this.handleCheckBox(option)}
-                                                value={option}
-                                                checked={this.handleCheckBox(option)}
-                                            >
-                                            </input>
-                                            {option}
-                                        </label>
-                                    )
-                                }): ""
-
-                            }
-                    </div>
-                    <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
-                  </form>
                   
-                  <hr/>
-                  
-                  <form onSubmit={this.onSubmitImage} className="space-top">
-                    <label htmlFor="text">Upload an image</label>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text"></span>
-                        </div>
-                        <div className="custom-file">
-                            <input 
-                                type="file"
-                                className="custom-file-input"
-                                id="inputGroupFile01"
-                                onChange={this.fileSelectedHandler}/>
-                            <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                        </div>
+                  <div className="loginContainer">
+                  <h1 className="title text-center">Edit Image</h1>
+                    <div className="col-md-10 m-auto">
+                        <form onSubmit={this.onSubmitImage}>
+                            <label htmlFor="text">Upload an image</label>
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"></span>
+                                </div>
+                                <div className="custom-file">
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="User Image" />
+                            </div>
+                            <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
+                        </form>
                     </div>
-                    <div className="text-center">
-                        <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="User Image" />
-                    </div>
-                    <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
-                  </form>
+                  </div>
+
                 </div>
               </div>
             </div>    
@@ -216,4 +224,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { getUser, changeUserImage, updateTitle })(UserProfile);
+export default connect(mapStateToProps, { getUser, changeUserImage, updateTitle })(EditUserProfile);

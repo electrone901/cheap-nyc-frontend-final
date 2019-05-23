@@ -35,7 +35,6 @@ class AddDeal extends Component{
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChangeCity = this.handleChangeCity.bind(this);
-        // this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
     componentDidMount(){
@@ -56,7 +55,6 @@ class AddDeal extends Component{
         }
     }
 
-    
     onChange(e){
         console.log('e.target.value', e.target.value);
         const name = e.target.name;
@@ -71,10 +69,7 @@ class AddDeal extends Component{
         this.setState({[name]: value}, () => {this.validateField(name, value)});
     }
 
-    // handleChangeCategory(e) {
-    //     this.setState({category: e.target.value});
-    // }
-    
+
     fileSelectedHandler = e => {
         if(e.target.files[0]){
             this.setState({ image: e.target.files[0] });
@@ -166,7 +161,6 @@ class AddDeal extends Component{
 
     edit(e) {
         e.preventDefault();
-        console.log('edit');
         this.setState({previewPost: false})
     }
 
@@ -188,19 +182,17 @@ class AddDeal extends Component{
         return(error.length === 0 ? '' : 'has-error');
     }
     
-    
     render(){
         const { serverErr } = this.state
-        console.log(' ADD state', this.state);
-
         let preview = <div className="container">
             <div className="row text-center space-top">
                 <div className="col-12 col-sm-12 col-md-12">
                     <h2>Confirm the information below, you cannot edit after publishing</h2>
                 </div>
             </div>
-            <div className="text-center background">
-                <img src={this.state.image ? this.state.imageFile: image2}/>
+
+            <div className="col-12 text-center background">
+                <img className="imagePreview" src={this.state.image ? this.state.imageFile: image2}/>
             </div>
             <div className="space-top">
                 <p> <span className="field-name"> Company Name: </span>{this.state.company}</p>
@@ -227,177 +219,171 @@ class AddDeal extends Component{
             <div className="row">
                 <div className="col-md-8 m-auto">
                     <h1 className="display-4 text-center">Posting as Member</h1>
-                    
-<form onSubmit={this.onSubmit}>
 
-    <div className="form-group">
-        <label htmlFor="text">Company name</label>
-        <input
-            type="text"
-            required className={classnames('form-control form-control-lg', {
-                'is-invalid': this.state.formErrors.company
-            })}
-            name="company"
-            value={this.state.company}
-            onChange={this.onChange} 
-        />
-        {<div className="invalid-feedback">{this.state.formErrors.company}</div>}
-        {serverErr.company && (<div className="invalid-feedback">{serverErr.company}</div>)}
-    </div>
+                    <form onSubmit={this.onSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="text">Company name</label>
+                            <input
+                                type="text"
+                                required className={classnames('form-control form-control-lg', {
+                                    'is-invalid': this.state.formErrors.company
+                                })}
+                                name="company"
+                                value={this.state.company}
+                                onChange={this.onChange} 
+                            />
+                            {<div className="invalid-feedback">{this.state.formErrors.company}</div>}
+                            {serverErr.company && (<div className="invalid-feedback">{serverErr.company}</div>)}
+                        </div>
 
+                        <div className="form-group row"> 
 
+                            <div className="col-md-8">
+                                <label htmlFor="text">Item name</label>
+                                <input
+                                    type="text"
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.name
+                                    })}
+                                    name="name"
+                                    value={this.state.name}
+                                    onChange={this.onChange} 
+                                />
+                                <div className="invalid-feedback">{this.state.formErrors.name}</div>
+                                {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
+                            </div>
 
-    <div className="form-group row"> 
+                            <div className="form-group col-sm-12 col-md-4">
+                                <label htmlFor="text">Category <span className="require">*</span> </label>
+                                <select
+                                    name="category"
+                                    value={this.state.category}
+                                    onChange={this.onChange}
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.category
+                                    })}
+                                    required className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.category
+                                    })}
+                                >
+                                    <option value="">Category</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Drinks">Drinks</option>
+                                    <option value="Activities">Activities</option>
+                                    <option value="Events">Events</option>
+                                    <option value="Arts">Arts</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Outdoor">Outdoor</option>
+                                    <option value="Indoor">Indoor</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Classes">Classes</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Social">Social</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                <div className="invalid-feedback">{this.state.formErrors.name}</div>
+                                {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
+                            </div>
 
-        <div className="col-md-8">
-            <label htmlFor="text">Item name</label>
-            <input
-                type="text"
-                className={classnames('form-control form-control-lg', {
-                    'is-invalid': this.state.formErrors.name
-                })}
-                name="name"
-                value={this.state.name}
-                onChange={this.onChange} 
-            />
-            <div className="invalid-feedback">{this.state.formErrors.name}</div>
-            {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
-        </div>
+                        </div>
 
-        <div className="form-group col-sm-12 col-md-4">
-            <label htmlFor="text">Category <span className="require">*</span> </label>
-            <select
-                name="category"
-                value={this.state.category}
-                onChange={this.onChange}
-                className={classnames('form-control form-control-lg', {
-                    'is-invalid': this.state.formErrors.category
-                })}
-                required className={classnames('form-control form-control-lg', {
-                    'is-invalid': this.state.formErrors.category
-                })}
-            >
-                <option value="">Category</option>
-                <option value="Food">Food</option>
-                <option value="Drinks">Drinks</option>
-                <option value="Activities">Activities</option>
-                <option value="Events">Events</option>
-                <option value="Arts">Arts</option>
-                <option value="Sports">Sports</option>
-                <option value="Outdoor">Outdoor</option>
-                <option value="Indoor">Indoor</option>
-                <option value="Music">Music</option>
-                <option value="Classes">Classes</option>
-                <option value="Travel">Travel</option>
-                <option value="Social">Social</option>
-                <option value="Others">Others</option>
-            </select>
-            <div className="invalid-feedback">{this.state.formErrors.name}</div>
-            {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
-        </div>
+                        <div className="form-group">
+                            <label htmlFor="text">Item price</label>
+                            <input
+                                type="number" 
+                                id="price" 
+                                min="0" 
+                                className={classnames('form-control form-control-lg', {
+                                    'is-invalid': this.state.formErrors.price
+                                })}
+                                name="price"
+                                value={this.state.price}
+                                onChange={this.onChange} 
+                            />
+                            <div className="invalid-feedback">{this.state.formErrors.price}</div>
+                            {serverErr.price && (<div className="invalid-feedback">{serverErr.price}</div>)}
+                        </div>
 
-    </div>
+                        <div className="form-group">
+                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"></span>
+                                </div>
+                                <div className="custom-file">
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                </div>
+                            </div>
+                        </div>
 
-    <div className="form-group">
-        <label htmlFor="text">Item price</label>
-        <input
-            type="number" 
-            id="price" 
-            min="0" 
-            className={classnames('form-control form-control-lg', {
-                'is-invalid': this.state.formErrors.price
-            })}
-            name="price"
-            value={this.state.price}
-            onChange={this.onChange} 
-        />
-         <div className="invalid-feedback">{this.state.formErrors.price}</div>
-        {serverErr.price && (<div className="invalid-feedback">{serverErr.price}</div>)}
-    </div>
+                        <div className="form-group row"> 
+                            <div className="col-md-8">
+                                <label htmlFor="text">Address:  <span className="small">(eg:123 StreetName, Borough, NY ZipCode)</span> </label>
+                                <input
+                                    type="text" 
+                                    id="address" 
+                                    min="5" 
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.address
+                                    })}
+                                    name="address"
+                                    value={this.state.address}
+                                    onChange={this.onChange} 
+                                />
+                                <div className="invalid-feedback">{this.state.formErrors.address}</div>
+                                {serverErr.address && (<div className="invalid-feedback">{serverErr.address}</div>)}
+                            </div>
 
-    <div className="form-group">
-        <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
-        <div className="input-group mb-3">
-            <div className="input-group-prepend">
-                <span className="input-group-text"></span>
-            </div>
-            <div className="custom-file">
-                <input 
-                    type="file"
-                    className="custom-file-input"
-                    id="inputGroupFile01"
-                    onChange={this.fileSelectedHandler}/>
-                <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-            </div>
-        </div>
-    </div>
+                            <div className="col-sm-12 col-md-4"> 
+                                <label htmlFor="text">City <span className="require">*</span> </label>
+                                <select
+                                    name="city"
+                                    value={this.state.city}
+                                    onChange={this.onChange}
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': serverErr.city
+                                    })}
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.city
+                                    })}
+                                >
+                                    <option value="">City</option>
+                                    <option value="Manhattan">Manhattan</option>
+                                    <option value="Queens">Queens</option>
+                                    <option value="Bronx">Bronx</option>
+                                    <option value="Brooklyn">Brooklyn</option>
+                                    <option value="Staten Island">Staten Island</option>
+                                </select>
+                                <div className="invalid-feedback">{this.state.formErrors.city}</div>
+                                {serverErr.city && (<div className="invalid-feedback">{serverErr.city}</div>)}
+                            </div>
+                            
+                        </div>
 
-    <div className="form-group row"> 
-        <div className="col-md-8">
-            <label htmlFor="text">Address:  <span className="small">(eg:123 StreetName, Borough, NY ZipCode)</span> </label>
-            <input
-                type="text" 
-                id="address" 
-                min="5" 
-                className={classnames('form-control form-control-lg', {
-                    'is-invalid': this.state.formErrors.address
-                })}
-                name="address"
-                value={this.state.address}
-                onChange={this.onChange} 
-            />
-             <div className="invalid-feedback">{this.state.formErrors.address}</div>
-            {serverErr.address && (<div className="invalid-feedback">{serverErr.address}</div>)}
-        </div>
-
-        <div className="col-sm-12 col-md-4"> 
-            <label htmlFor="text">City <span className="require">*</span> </label>
-            <select
-                name="city"
-                value={this.state.city}
-                onChange={this.onChange}
-                className={classnames('form-control form-control-lg', {
-                    'is-invalid': serverErr.city
-                })}
-                className={classnames('form-control form-control-lg', {
-                    'is-invalid': this.state.formErrors.city
-                })}
-            >
-                <option value="">City</option>
-                <option value="Manhattan">Manhattan</option>
-                <option value="Queens">Queens</option>
-                <option value="Bronx">Bronx</option>
-                <option value="Brooklyn">Brooklyn</option>
-                <option value="Staten Island">Staten Island</option>
-            </select>
-            <div className="invalid-feedback">{this.state.formErrors.city}</div>
-            {serverErr.city && (<div className="invalid-feedback">{serverErr.city}</div>)}
-        </div>
-        
-    </div>
-
-    <div className="form-group">
-        <label htmlFor="text">Item Description</label>
-        <textarea 
-            type="text" 
-            id="description" 
-            min="5" 
-            className={classnames('form-control form-control-lg', {
-                'is-invalid': this.state.formErrors.description
-            })}
-            name="description"
-            value={this.state.description}
-            onChange={this.onChange} 
-            rows="3">
-        </textarea>
-        <div className="invalid-feedback">{this.state.formErrors.description}</div>
-        {serverErr.description && (<div className="invalid-feedback">{serverErr.description}</div>)}
-    </div>
-    <input type="submit" className="btn btn-info btn-block mt-4" disabled={!this.state.formValid} />
-
-</form>
-
-
+                        <div className="form-group">
+                            <label htmlFor="text">Item Description</label>
+                            <textarea 
+                                type="text" 
+                                id="description" 
+                                min="5" 
+                                className={classnames('form-control form-control-lg', {
+                                    'is-invalid': this.state.formErrors.description
+                                })}
+                                name="description"
+                                value={this.state.description}
+                                onChange={this.onChange} 
+                                rows="3">
+                            </textarea>
+                            <div className="invalid-feedback">{this.state.formErrors.description}</div>
+                            {serverErr.description && (<div className="invalid-feedback">{serverErr.description}</div>)}
+                        </div>
+                        <input type="submit" className="btn btn-info btn-block mt-4" disabled={!this.state.formValid} />
+                    </form>
 
                 </div>
             </div>

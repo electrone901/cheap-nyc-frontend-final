@@ -451,10 +451,7 @@ Description     : A file that contains all styles for Carousel.js.
 }
 .messageImg {
   width: 100%;
-  /* height: 40px; */
-  /* margin-left: 40px; */
 }
-
 
 /* POST CONFIRMATION PAGE */
 .warning-text {
@@ -674,17 +671,6 @@ input:hover .hover-img span {
 
 }
 
-
-/* what */
-/* .small-text {
-  line-height: 1.6;
-  color: rgba(46,62,72,.6);
-  text-transform: uppercase;
-  font-weight: 500;
-} */
-
-/* what */
-
 /* ALL DEALS */
 .figure-caption {
   padding-right: 5px;
@@ -778,3 +764,8 @@ input:hover .hover-img span {
   padding-left: 0;
   width: 100%;
 }
+.imagePreview {
+  max-width:100%;
+  max-height:auto;
+}
+

@@ -28,6 +28,7 @@ class Deals extends Component{
         super();
         this.state = {
             data: '',
+            errors: {}, 
             reviews: null
         }
     }
@@ -35,7 +36,6 @@ class Deals extends Component{
     togglePopup() {
         let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
-            console.log('YES is Authenticated');
             this.props.history.push(`/addReview/${itemId}`)
         }
         else {
@@ -61,8 +61,13 @@ class Deals extends Component{
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
         let url = `https://cnycserver.herokuapp.com/items/${id}`;
-        
         this.props.getDeal(url);
+    }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors.alreadyliked) {
+            this.setState({errors: nextProps.errors});
+            this.alreadylikedNotification();
+        }
     }
 
     notify = () => {
@@ -78,15 +83,11 @@ class Deals extends Component{
         if(!this.props.auth.isAuthenticated) {
             this.notify();
         }
-        else if(this.props.errors) {
-            this.alreadylikedNotification();
-        }
-        else {
-            this.props.addLike(itemId, this.props.history)
-        }
+        this.props.addLike(itemId, this.props.history)
     }
 
     addFlag() {
+        console.log()
         let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
             // this.props.history.push(`/addReview/${itemId}`)
@@ -96,12 +97,10 @@ class Deals extends Component{
                 showPopup: !this.state.showPopup
             })
         }
-        
     }
 
-    
     render(){
-        console.log('this.props', this.props)
+        const { errors } = this.state;
         const { post } = this.props.postDeal;
         let flags = post.flags;
         let likes = post.likes;
@@ -225,7 +224,6 @@ class Deals extends Component{
              {/* REVIEWS INFO FROM API */}
             {   
                 post.reviews ? post.reviews.map((review, key) => {
-                    console.log('is passing userId',review.userId)
                     var percentage = (review.rating * 20) + '%'; //calculate % rating 
                     return( 
                         <div key={key}>
