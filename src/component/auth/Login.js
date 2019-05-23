@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login';
+
 import classnames from 'classnames';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -69,9 +71,19 @@ class Login extends Component{
       
       this.props.loginUser(userData);
     };
+
+
+    responseFacebook = (response) => {
+      console.log('responseFacebook',response)
+      const userData  = {
+        email:  response.email,
+        password: response.userID
+      };
+      this.props.loginUser(userData);
+    };
     
     render(){
-      console.log('this.props.auth.user.name', this.props.auth.user.name)
+      console.log('this.props.auth.user.name', this.props)
 
         const { errors } = this.state;
         console.log('state', this.state)
@@ -115,6 +127,13 @@ class Login extends Component{
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
                         cookiePolicy={'single_host_origin'}
+                      />
+                      <br/>
+                      <FacebookLogin
+                        appId="2516650448368322"
+                        fields="name,email,picture"
+                        onClick = {this.onClick}
+                        callback={this.responseFacebook}
                       />
                     </div>
                   </div>

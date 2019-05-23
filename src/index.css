@@ -13,6 +13,11 @@ body {
 .noColor {
   border-color: #dc354500;
 }
+.agreement {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(0,0,0,.54);
+}
 
 .loginContainer {
   background-color: #e9f1f273;
