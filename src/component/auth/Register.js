@@ -191,7 +191,7 @@ class Register extends Component{
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" />
                             <p className="agreement"> 
-                              When you "Continue", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service. </Link>, Privacy Policy, and Cookie Policy.
+                              When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
                             </p>
                           </form>
 
