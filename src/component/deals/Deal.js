@@ -69,29 +69,26 @@ class Deals extends Component{
         toast.error("To like/Report a post you must be logged in!")
     }
 
+    alreadylikedNotification = () => {
+        toast.error("You already liked this post!")
+    }
+
     addLike() {
         let itemId =  this.props.match.params.id;
-        if(this.props.auth.isAuthenticated) {
-            this.props.addLike(itemId, this.props.history)
+        if(!this.props.auth.isAuthenticated) {
+            this.notify();
+        }
+        else if(this.props.errors) {
+            this.alreadylikedNotification();
         }
         else {
-            this.notify();
+            this.props.addLike(itemId, this.props.history)
         }
     }
 
     addFlag() {
-        // let itemId =  this.props.match.params.id;
-        // if(this.props.auth.isAuthenticated) {
-        //     this.props.addFlag(itemId, this.props.history)
-        // }
-        // else {
-        //     this.notify();
-        // }
-
-        //
         let itemId =  this.props.match.params.id
         if(this.props.auth.isAuthenticated) {
-            console.log('YES is Authenticated show review');
             // this.props.history.push(`/addReview/${itemId}`)
         }
         else {
@@ -104,8 +101,8 @@ class Deals extends Component{
 
     
     render(){
+        console.log('this.props', this.props)
         const { post } = this.props.postDeal;
-        
         let flags = post.flags;
         let likes = post.likes;
         let postId = this.props.match.params.id;
