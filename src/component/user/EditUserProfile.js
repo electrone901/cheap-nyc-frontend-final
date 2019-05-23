@@ -33,6 +33,7 @@ class UserProfile extends Component{
     }
     
     componentDidMount(){
+        window.scrollTo(0,0);
         const userId = this.props.match.params.id;
         this.props.getUser(userId);
     }

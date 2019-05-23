@@ -23,7 +23,7 @@ class Login extends Component{
     }
     
     notify = () => {
-      toast.error("Please login first to continue 😀")
+      toast.error("Please login to continue 🚀")
     }
 
     successfulLogin = () => {
@@ -59,7 +59,6 @@ class Login extends Component{
             email: this.state.email,
             password: this.state.password
         };
-        
         this.props.loginUser(userData);
     }
     
@@ -68,10 +67,8 @@ class Login extends Component{
         email:  response.profileObj.email,
         password: response.profileObj.googleId
       };
-      
       this.props.loginUser(userData);
     };
-
 
     responseFacebook = (response) => {
       console.log('responseFacebook',response)
@@ -81,31 +78,7 @@ class Login extends Component{
       };
       this.props.loginUser(userData);
     };
-    // onClick(e) {
-    //   e.preventDefault();
-    //   console.log("onClick")
-    //   this.responseFacebook;
-    // }
 
-    //  responseFacebook = async(response) => {
-    //   console.log('responseFacebook',response)
-    //   let userData= {};
-    //   try {
-    //     console.log('responseFacebook',response.userID, response.email)
-    //     userData = {
-    //       email:  response.email,
-    //       password: response.userID
-    //     }
-    //   } catch (error) {
-    //     this.setState({
-    //         response: error.toString()
-    //     })
-    //   } finally {
-    //     this.props.loginUser(userData);
-    //   }      
-    // }
-
-    
     render(){
       console.log('this.props.auth.user.name', this.props)
 
@@ -115,37 +88,11 @@ class Login extends Component{
             <div className="login">
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-8 m-auto">
+                    <div className="col-md-5 m-auto text-center space-top">
+                      <h1 className="title text-center">Log In</h1>
                       <ToastContainer />
-                      <h1 className="display-4 text-center">Log In</h1>
-                      <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                          <input
-                            type="email"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.email
-                            })}
-                            placeholder="Email Address"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.onChange} />
-                            {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                        </div>
-                        <div className="form-group">
-                          <input
-                            type="password"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': errors.password
-                            })}
-                            placeholder="Password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.onChange} />
-                            {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                        </div>
-                        <input type="submit" className="btn btn-info btn-block mt-4" />
-                      </form>
                       <GoogleLogin
+                        className="googleLogin"
                         clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
                         buttonText="Login with Google"
                         onSuccess={this.responseGoogle}
@@ -154,11 +101,48 @@ class Login extends Component{
                       />
                       <br/>
                       <FacebookLogin
+                        cssClass="facebookLogin"
+                        icon="fa-facebook"
+                        textButton=" Login with Facebook" 
                         appId="457987018302497"
                         fields="name,email,picture"
                         onClick = {this.onClick}
                         callback={this.responseFacebook}
                       />
+                      <br/><br/>
+                      <div className="loginContainer space-top">
+                        <div className="col-md-10 m-auto">
+                          <h4 className="text-center">Login whith Email</h4>
+                          <form onSubmit={this.onSubmit}>
+                            <div className="form-group">
+                              <input
+                                type="email"
+                                className={classnames('form-control form-control-lg', {
+                                    'is-invalid': errors.email
+                                })}
+                                placeholder="Email Address"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.onChange} />
+                                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+                            </div>
+                            <div className="form-group">
+                              <input
+                                type="password"
+                                className={classnames('form-control form-control-lg', {
+                                    'is-invalid': errors.password
+                                })}
+                                placeholder="Password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.onChange} />
+                                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+                            </div>
+                            <input type="submit" className="btn btn-info btn-block mt-4" />
+                          </form>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>

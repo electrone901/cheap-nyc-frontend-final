@@ -22,9 +22,24 @@ body {
 .loginContainer {
   background-color: #e9f1f273;
 }
-.loginSocialBtn {
-  font-size: 20px !important;
+.facebookLogin {
+  margin-top: 4px;
+  font-family: Helvetica,sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  transition: background-color .3s,border-color .3s;
+  background-color: #4c69ba;
+  border: calc(.06887vw + .67769px) solid #4c69ba;
+  padding: 10px 20px;
 }
+.googleLogin { 
+  padding: 2px 17px !important;
+}
+
 .heightForm {
   line-height: 1;
 }

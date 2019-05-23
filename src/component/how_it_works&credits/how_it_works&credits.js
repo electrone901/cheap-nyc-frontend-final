@@ -14,7 +14,7 @@ class howItWorks extends Component{
                         <p className="lead">Whether you’re traveling or living in NYC, our mission is to provide the best deals based on price. Our aim is to build a community of people who want to find more accessible prices and new ways to save money while doing what they love. </p>
                     </div>
                     <h3 className="how-works-title space-top">About Us</h3>
-                    <p>CheapNy aggregates many deals into a simple, understandable format, this is the one stop shop for locals and tourist in NYC to find more reasonably priced ways to have fun. Everyday, we continue to grow our outreach throughout the city, and continue to find more ways for you to save money doing the things you love. Your feedback is crucial, and we would love to hear from you. Contact us to <a className="btn btn-primary" href="mailto:mycheapnewyork@gmail.com?Subject=Feedback-Suggestions" target="_top">mycheapnewyork@gmail.com</a></p>
+                    <p>CheapNy aggregates many deals into a simple, understandable format, this is the one stop shop for locals and tourist in NYC to find more reasonably priced ways to have fun. Everyday, we continue to grow our outreach throughout the city, and continue to find more ways for you to save money doing the things you love. Your feedback is crucial, and we would love to hear from you. Contact us to <a className="btn btn-primary" href="mailto:realcheapny@gmail.com?Subject=Feedback-Suggestions" target="_top">realcheapny@gmail.com</a></p>
                     
                     <br/>
                     <h3 className="how-works-title">How do we ensure deals are always up to date?</h3>

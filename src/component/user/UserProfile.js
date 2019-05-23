@@ -88,10 +88,8 @@ class UserProfile extends Component{
         const userId = this.props.match.params.id;
         this.props.getUser(userId);
         this.getFavoritesDeals(userId);
-        
     }
 
-    
     onChange(e){
         this.setState({[e.target.name]: e.target.value});
     }
@@ -217,6 +215,7 @@ class UserProfile extends Component{
         return(
             <div className="container text-center">
                 <div className="text-right">
+                    is auth ? ShowEdit: " "
                     <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
                 </div>
                 <div className="card-body backgroundProfile profile-text">
