@@ -110,7 +110,7 @@ class Register extends Component{
                         />
                         <br/>
                         <FacebookLogin
-                          appId="457987018302497"
+                          appId="2516650448368322"
                           onClick = {this.onClick}
                           fields="name,email,picture"
                           callback={this.responseFacebook}

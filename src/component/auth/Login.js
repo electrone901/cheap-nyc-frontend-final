@@ -81,30 +81,6 @@ class Login extends Component{
       };
       this.props.loginUser(userData);
     };
-    // onClick(e) {
-    //   e.preventDefault();
-    //   console.log("onClick")
-    //   this.responseFacebook;
-    // }
-
-    //  responseFacebook = async(response) => {
-    //   console.log('responseFacebook',response)
-    //   let userData= {};
-    //   try {
-    //     console.log('responseFacebook',response.userID, response.email)
-    //     userData = {
-    //       email:  response.email,
-    //       password: response.userID
-    //     }
-    //   } catch (error) {
-    //     this.setState({
-    //         response: error.toString()
-    //     })
-    //   } finally {
-    //     this.props.loginUser(userData);
-    //   }      
-    // }
-
     
     render(){
       console.log('this.props.auth.user.name', this.props)
@@ -154,7 +130,7 @@ class Login extends Component{
                       />
                       <br/>
                       <FacebookLogin
-                        appId="457987018302497"
+                        appId="2516650448368322"
                         fields="name,email,picture"
                         onClick = {this.onClick}
                         callback={this.responseFacebook}
