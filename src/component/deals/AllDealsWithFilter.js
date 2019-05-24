@@ -100,6 +100,7 @@ class AllDealsWithFilter extends Component{
   }
 
   componentDidMount() {
+    window.scrollTo(0,0);
     let url = "https://cnycserver.herokuapp.com/items";
     // this.props.getDeals(url);
     fetch(url)

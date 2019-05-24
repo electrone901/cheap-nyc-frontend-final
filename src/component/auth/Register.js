@@ -5,7 +5,6 @@ import { Link, withRouter  } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { registerUser } from '../../actions/authActions';
-// import RegisterWithEmail from './RegisterWithEmail'
 
 class Register extends Component{
     constructor(){
@@ -67,10 +66,9 @@ class Register extends Component{
       newUser.append('email', response.profileObj.email);
       newUser.append('password', response.profileObj.googleId);
       newUser.append('confirmPassword', response.profileObj.googleId);
-      
       this.props.registerUser(newUser, this.props.history);
     };
-    // this one
+
     responseFacebook = (response) => {
       console.log('responseFacebook**', response)
       const newUser = new FormData();
@@ -83,11 +81,6 @@ class Register extends Component{
       this.props.registerUser(newUser, this.props.history);
     }
 
-    onClick(e) {
-      // e.preventDefault();
-      console.log("onClick")
-    }
-    
     render(){
         const {errors} = this.state;
         console.log('state', this.state);
@@ -97,11 +90,10 @@ class Register extends Component{
                 <div className="container">
                   <div className="row">
                     <div className="col-md-5 m-auto text-center">
-                      {/* <RegisterWithEmail/> */}
                       <h1 className="title text-center">Sign up</h1>
-                      <div className="">
+                      <div>
                         <GoogleLogin
-                          className="loginSocialBtn"
+                          className="googleLogin"
                           clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
                           buttonText="Sign Up with Google"
                           onSuccess={this.responseGoogle}
@@ -110,21 +102,23 @@ class Register extends Component{
                         />
                         <br/>
                         <FacebookLogin
+                          cssClass="facebookLogin"
+                          icon="fa-facebook"
+                          textButton=" Sign up with Facebook" 
                           appId="2516650448368322"
                           onClick = {this.onClick}
                           fields="name,email,picture"
                           callback={this.responseFacebook}
                         />
                       </div>
-
                       <div className="">
                         <p className={classnames('form-control noColor', {'is-invalid': errors.email})}></p>
                         {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                       </div> 
-
+                      <br/>
                       <div className="loginContainer space-top">              
                         <div className="col-md-10 m-auto">
-                          <h4 className="text-center">Sign Up whith an Email</h4>
+                          <h5 className="text-center">Sign Up with an Email</h5>
                           <form noValidate onSubmit={this.onSubmit}>
                             <div className="form-group heightForm">
                               <input type="text"
@@ -194,12 +188,8 @@ class Register extends Component{
                               When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
                             </p>
                           </form>
-
                         </div>
                       </div>
-
-
-
                    </div>
                   </div>
                 </div>

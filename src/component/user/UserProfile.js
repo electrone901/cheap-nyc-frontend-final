@@ -28,6 +28,7 @@ class UserProfile extends Component{
             author: '',
             userData: '',
             favoritesList: [],
+            currentUser: "",
             err: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -72,7 +73,6 @@ class UserProfile extends Component{
                     return console.log(resData.errors);
                 }
                 else {
-                    console.log('what resData.data', resData.data.userById)
                     this.setState({favoritesList: resData.data.userById.favorites})
                 }
             })
@@ -88,10 +88,9 @@ class UserProfile extends Component{
         const userId = this.props.match.params.id;
         this.props.getUser(userId);
         this.getFavoritesDeals(userId);
-        
+        this.setState({ currentUser: this.props.auth.user.id})
     }
 
-    
     onChange(e){
         this.setState({[e.target.name]: e.target.value});
     }
@@ -128,7 +127,6 @@ class UserProfile extends Component{
 
 
     getDealsAdded(_this, p) {
-        console.log('USED')
         if(this.state.userDealsclass){
             this.setState({
                 userDealsclass: false,
@@ -173,16 +171,12 @@ class UserProfile extends Component{
 
     }
     render(){
-        console.log('props', this.props)
-        console.log('favorites', this.props.auth.userData.favorites)
-        console.log('userData', this.props.auth.userData)
         const { err } = this.state;
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
-
         let  dealsLiked = (
-            this.state.favoritesList ? this.state.favoritesList.map((post, key) => {
+            this.state.favoritesList && this.state.favoritesList.length > 1 ? this.state.favoritesList.map((post, key) => {
                 let postId = post.id; 
                 return(
                     <div className="container listPostUser" key={key}>
@@ -195,10 +189,10 @@ class UserProfile extends Component{
                         </div>
                     </div>
                 )
-            }): "You don't have post, go to the list and add posts to your favorite list "
+            }): "Post Liked: 0️⃣  0️⃣  😿 😿 "
         );
         let  dealsAdded = (
-            this.state.dealsAdded ? this.state.dealsAdded.map((post, key) => {
+            (this.state.dealsAdded && this.state.dealsAdded.length > 0 )? this.state.dealsAdded.map((post, key) => {
                 let postId = post.id; 
                 return(
                     <div className="container listPostUser" key={key}>
@@ -211,13 +205,18 @@ class UserProfile extends Component{
                         </div>
                     </div>
                 )
-            }): "You haven't created a post yet. Go aheag and post one"
+            }):  "Post Added: 0️⃣  0️⃣  😿 😿 "
         );
+        let editBtn, editInterest;
+        if(this.state.currentUser === this.props.match.params.id) {
+            editBtn = <Link to={`/profile/${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
+            editInterest = (<Link to={`/profile/${userData._id}/edit`} className="btn btn-primary">Add Interest</Link>)
+        }
   
         return(
             <div className="container text-center">
                 <div className="text-right">
-                    <Link to={`${userData._id}/edit`} className="btn btn-primary">Edit profile</Link>
+                    { editBtn }
                 </div>
                 <div className="card-body backgroundProfile profile-text">
                     <span className="btn btn-primary userLabel"><i className="fa fa-star" aria-hidden="true"></i> Legendary</span>
@@ -228,7 +227,7 @@ class UserProfile extends Component{
                     </h4>
 
                     {
-                       userData.title ?  <h6 className="card-footer">{userData.title}</h6>: <Link to={`${userData._id}/edit`} className="btn btn-primary"> <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Interest Bio</Link>
+                       userData.title ?  <h6 className="card-footer">{userData.title}</h6>: editInterest
                     }
     
                     

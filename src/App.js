@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
 
 import setAuthToken from './utilis/setAuthToken';
-// import PrivateRoute from './component/common/PrivateRoute';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 
 import store from './store';
