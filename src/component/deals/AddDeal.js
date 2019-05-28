@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import image2 from '../../img/stocks.png';
 import 'react-toastify/dist/ReactToastify.css';
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import moment from 'moment';
 
 import { postDeal } from '../../actions/addPostDeal';
+
 
 class AddDeal extends Component{
     constructor(){
@@ -30,11 +34,15 @@ class AddDeal extends Component{
             cityValid: false,
             descriptionValid: false,
             userId: "",
+            startDate: moment(),
+            endDate: "",
+            duration: 0,
             serverErr: {}
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChangeCity = this.handleChangeCity.bind(this);
+        this.endDate = this.endDate.bind(this);
     }
 
     componentDidMount(){
@@ -44,7 +52,10 @@ class AddDeal extends Component{
         }
         else {
             console.log('this.props.auth.user.name', this.props.auth.user.id)
-            this.setState({userId: this.props.auth.user.id})
+            this.setState({
+                author: this.props.auth.user.id,
+                userId: this.props.auth.user.id
+            })
         }
     }
 
@@ -60,6 +71,17 @@ class AddDeal extends Component{
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value}, () => {this.validateField(name, value)});
+    }
+    endDate(date) {
+        this.setState({
+            endDate: date
+        });
+        var now = moment(new Date()),
+        end = moment(date),
+        duration = moment(end).diff(now, 'days') + 1;
+        this.setState({
+            duration: duration
+        });
     }
 
     handleChangeCity(e) {
@@ -113,7 +135,7 @@ class AddDeal extends Component{
                 fieldValidationErrors.category = categoryValid ? '' : 'Please select the Category';
                 break;
             case 'price':
-                priceValid = value.length >= 2 && value.length <= 30;
+                priceValid = value.length >= 1 && value.length <= 30;
                 fieldValidationErrors.price = priceValid ? '' :'Please enter a vaild price, ex - 1.99';
                 break;
             case 'address':
@@ -125,8 +147,8 @@ class AddDeal extends Component{
                 fieldValidationErrors.city = cityValid ? '': 'Please select a city';
                 break;
             case 'description':
-                descriptionValid = value.length >= 5 && value.length <=300;
-                fieldValidationErrors.description = descriptionValid ? '': 'Description  should be 5 - 300 characters long';
+                descriptionValid = value.length >= 5 && value.length <=500;
+                fieldValidationErrors.description = descriptionValid ? '': 'Description  should be 5 - 500 characters long';
                 break;
             default:
                 break;
@@ -175,6 +197,7 @@ class AddDeal extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('userId', this.state.userId);
+        formData.append('duration', this.state.duration);
         this.props.postDeal(formData, this.props.history);
     }
 
@@ -183,6 +206,7 @@ class AddDeal extends Component{
     }
     
     render(){
+        console.log('state',this.state)
         const { serverErr } = this.state
         let preview = <div className="container">
             <div className="row text-center space-top">
@@ -284,40 +308,35 @@ class AddDeal extends Component{
                                 <div className="invalid-feedback">{this.state.formErrors.name}</div>
                                 {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
                             </div>
-
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="text">Item price</label>
-                            <input
-                                type="number" 
-                                id="price" 
-                                min="0" 
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': this.state.formErrors.price
-                                })}
-                                name="price"
-                                value={this.state.price}
-                                onChange={this.onChange} 
-                            />
-                            <div className="invalid-feedback">{this.state.formErrors.price}</div>
-                            {serverErr.price && (<div className="invalid-feedback">{serverErr.price}</div>)}
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"></span>
-                                </div>
-                                <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                                </div>
+                        <div className="form-group row"> 
+                            <div className="col-md-6">
+                                <label htmlFor="text">Item price</label>
+                                <input
+                                    type="number"
+                                    id="price" 
+                                    min="0" 
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.price
+                                    })}
+                                    name="price"
+                                    value={this.state.price}
+                                    onChange={this.onChange} 
+                                />
+                                <div className="invalid-feedback">{this.state.formErrors.price}</div>
+                                {serverErr.price && (<div className="invalid-feedback">{serverErr.price}</div>)}
+                            </div>
+                            
+                            <div className="col-md-6">
+                                <label htmlFor="text">Deal Ends By: <span className="small text-right">  *start day is today</span></label>
+                                <DatePicker
+                                    className="form-control form-control-lg"
+                                    placeholderText="Must select a date"
+                                    selected={this.state.endDate}
+                                    onChange={this.endDate} 
+                                    dateFormat="MMMM d, yyyy"
+                                />
                             </div>
                         </div>
 
@@ -382,6 +401,24 @@ class AddDeal extends Component{
                             <div className="invalid-feedback">{this.state.formErrors.description}</div>
                             {serverErr.description && (<div className="invalid-feedback">{serverErr.description}</div>)}
                         </div>
+                        
+                        <div className="form-group">
+                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
+                            <div className="input-group mb-3">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"></span>
+                                </div>
+                                <div className="custom-file">
+                                    <input 
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="inputGroupFile01"
+                                        onChange={this.fileSelectedHandler}/>
+                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="submit" className="btn btn-info btn-block mt-4" disabled={!this.state.formValid} />
                     </form>
 

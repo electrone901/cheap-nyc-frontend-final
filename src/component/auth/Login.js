@@ -85,7 +85,7 @@ class Login extends Component{
         const { errors } = this.state;
         console.log('state', this.state)
         return(
-            <div className="login">
+            <div className="register">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-5 m-auto text-center space-top">

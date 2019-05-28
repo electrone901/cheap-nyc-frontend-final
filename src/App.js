@@ -15,10 +15,7 @@ import AddDeal from './component/deals/AddDeal';
 
 import howItWorks from './component/how_it_works&credits/how_it_works&credits';
 import ContactUs from './component/how_it_works&credits/ContactUs';
-
-import PreviewConfirmationPost from './component/deals/PreviewConfirmationPost';
 import Deal from './component/deals/Deal';
-import AddDealAsGuest from './component/deals/AddDealAsGuest';
 import AddReview from './component/review/AddReview';
 import AddReviewAsGuest from './component/review/AddReviewAsGuest';
 import UserProfile from './component/user/UserProfile';
@@ -53,8 +50,6 @@ class App extends Component {
             <div>
               <Route exact path="/" component={Deals} />
               <Route exact path="/addDeal" component={AddDeal} />
-              <Route exact path="/confirmation-post" component={PreviewConfirmationPost} />
-              <Route exact path="/AddDeal-guest" component={AddDealAsGuest} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profile/:id" component={UserProfile} />
