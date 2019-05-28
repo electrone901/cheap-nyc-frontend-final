@@ -163,7 +163,7 @@ class AllDealsWithFilter extends Component{
             <div className="dropdown col-lg-3 col-md-3 col-sm">
               {
                 this.state.showResetBtn ? 
-                <button className="" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
+                <button className="resetBtn" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
               }
             </div>
             <div className="row text-center">

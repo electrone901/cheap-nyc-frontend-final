@@ -8,6 +8,9 @@ body {
 .login {
   height: 60vh;
 }
+.resetBtn {
+  color: blue;
+}
 
 /* SIGNUP */
 .noColor {

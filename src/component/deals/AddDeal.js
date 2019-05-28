@@ -51,9 +51,9 @@ class AddDeal extends Component{
             this.props.history.push('/login');
         }
         else {
-            console.log('this.props.auth.user.name', this.props.auth.user.id)
+            console.log('** this.props.auth.user.name', this.props.auth.user.name)
             this.setState({
-                author: this.props.auth.user.id,
+                author: this.props.auth.user.name,
                 userId: this.props.auth.user.id
             })
         }
@@ -197,6 +197,7 @@ class AddDeal extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('userId', this.state.userId);
+        formData.append('author', this.props.auth.user.name);
         formData.append('duration', this.state.duration);
         this.props.postDeal(formData, this.props.history);
     }
