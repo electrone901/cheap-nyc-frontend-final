@@ -315,7 +315,7 @@ class AddDeal extends Component{
                             <div className="col-md-6">
                                 <label htmlFor="text">Item price</label>
                                 <input
-                                    type="number"
+                                    type="any"
                                     id="price" 
                                     min="0" 
                                     className={classnames('form-control form-control-lg', {
