@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../../img/l3.png';
-import Popup from '../deals/Popup';
+// import Popup from '../deals/Popup';
 
 import { logoutUser } from '../../actions/authActions';
 
@@ -25,17 +25,17 @@ class Navbar extends Component {
     this.props.history.push(`/profile/${user.id}`);
   }
 
-  togglePopup() {
+  // togglePopup() {
     
-    if(this.props.auth.isAuthenticated) {
-      this.props.history.push('/addDeal');
-    }
-    else {
-      this.setState({
-        showPopup: !this.state.showPopup
-      });
-    }
-  }
+  //   if(this.props.auth.isAuthenticated) {
+  //     this.props.history.push('/addDeal');
+  //   }
+  //   else {
+  //     this.setState({
+  //       showPopup: !this.state.showPopup
+  //     });
+  //   }
+  // }
   
   render() {
     const {isAuthenticated, user} = this.props.auth;
@@ -111,20 +111,8 @@ class Navbar extends Component {
                 </Link>
               </li>
 
-              <li className="btn btn-primary text-left" data-toggle="collapse" data-target=".navbar-collapse.show"  onClick={this.togglePopup.bind(this)}>
-                  {' '}
-                    Create a post
-              </li>
-              <li className="nav-item nav-link row text-center">
-                {
-                    this.state.showPopup ? 
-                      <Popup
-                      title='POST AS'
-                      text='Post as a member is recommend'
-                      closePopup={this.togglePopup.bind(this)}
-                      />
-                      : null
-                }
+              <li className="text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <Link to="/addDeal" className="btn btn-primary">Create a post</Link>
               </li>
             </ul>
            
