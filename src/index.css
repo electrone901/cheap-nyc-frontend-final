@@ -246,8 +246,11 @@ Description     : A file that contains all styles for Carousel.js.
 .tParent {
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 30%;
   color: #fff;
+}
+.textSliderTitle {
+  font-weight: 600;
 }
 
 .tParent__items__sign {
@@ -562,7 +565,7 @@ input:hover .hover-img span {
   #dealPadding {
     padding-bottom: 20px;
   }
-  .h1, h1 {
+  .h1, h1, h2 {
     font-size: 1.5rem;
   }
   .logo {

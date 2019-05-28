@@ -218,8 +218,6 @@ class AllDealsWithFilter extends Component{
                   <option value="5&10">under $ 10</option>
                   <option value="10&20">under $ 20</option>
                   <option value="20&30">under $ 30</option>
-                  <option value="30&50">under $ 50</option>
-                  <option value="50&1000">over $ 50</option>
                 </select>
               </div>
 

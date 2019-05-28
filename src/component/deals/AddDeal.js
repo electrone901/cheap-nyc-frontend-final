@@ -135,7 +135,7 @@ class AddDeal extends Component{
                 fieldValidationErrors.category = categoryValid ? '' : 'Please select the Category';
                 break;
             case 'price':
-                priceValid = value.length >= 1 && value.length <= 30;
+                priceValid = value.length >= 1 && value.length <= 6 && value <= 30;
                 fieldValidationErrors.price = priceValid ? '' :'Please enter a vaild price, ex - 1.99';
                 break;
             case 'address':

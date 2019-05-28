@@ -37,7 +37,11 @@ class howItWorks extends Component{
                 <div className="jumbotron">
                 <h3 className="how-works-title">How It Works</h3>
                 <ul className="list-group">
-                            <li className="list-group-item">Sharing is caring. Please share your NYC tips & hacks, your favorite restaurants, places, activities, events, etcetera.</li>
+                            <li className="list-group-item">*All deals must be under $30.</li>
+                            <li className="list-group-item">Reported posts are removed.</li>
+                            <li className="list-group-item">Posts have an expiration date. </li>
+                            <li className="list-group-item">More than one post is allowed for a business.</li>
+                            <li className="list-group-item">Sharing is caring. Please share your NYC tips & hacks, your favorite restaurants, places, activities, events, etcetera under $30.</li>
                             <li className="list-group-item">Make new friends and help each other discover new things within the city. </li>
                             <li className="list-group-item">Leave a comment, comments help other members make informed decisions.</li>
                             <li className="list-group-item">Leave truthful references  that describe your experience most accurately.</li>
