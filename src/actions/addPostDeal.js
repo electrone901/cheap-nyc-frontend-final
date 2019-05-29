@@ -7,7 +7,7 @@ export const postDeal = (postData, history) => dispatch => {
         dispatch({
             type: POST_DEAL,
             payload: res.data
-        })
+        });
       }  
     )
     .then(res => history.push('/'))
@@ -15,10 +15,22 @@ export const postDeal = (postData, history) => dispatch => {
         dispatch({
             type: GET_ERRORS,
             payload: err.response.data
-        })
+        });
       }
     );
-}
+};
+
+export const editItemDeal = (postData, itemId,  history) => dispatch => {
+    axios.put(`/items/${itemId}`, postData)
+        .then(res => history.push(`/deal/${itemId}`))
+        .catch(err => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+          }
+    );
+};
 
 export const getDeal = (url) => dispatch => {
     fetch(url)

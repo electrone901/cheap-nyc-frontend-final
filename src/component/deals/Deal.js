@@ -71,11 +71,11 @@ class Deals extends Component{
     }
 
     notify = () => {
-        toast.error("To like/Report a post you must be logged in!")
+        toast.error("To like/Report a post you must be logged in!");
     }
 
     alreadylikedNotification = () => {
-        toast.error("You already liked this post!")
+        toast.error("You already liked this post!");
     }
 
     addLike() {

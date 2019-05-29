@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import moment from 'moment';
 
-import { postDeal } from '../../actions/addPostDeal';
+import { editItemDeal } from '../../actions/addPostDeal';
 
 class EditDeal extends Component{
     constructor(){
@@ -189,17 +189,7 @@ class EditDeal extends Component{
     // formData allows to append data to obj
     onSubmit(e){
         e.preventDefault();
-        let newPost = this.state;
-        console.log('newpost', newPost)
-        this.setState({previewPost: true})
-    }
-
-    edit(e) {
-        e.preventDefault();
-        this.setState({previewPost: false})
-    }
-
-    postDealToDataBase(e) {
+        
         const formData = new FormData();
         formData.append('company', this.state.company);
         formData.append('price', this.state.price);
@@ -212,7 +202,13 @@ class EditDeal extends Component{
         formData.append('userId', this.state.userId);
         formData.append('author', this.props.auth.user.name);
         formData.append('duration', this.state.duration);
-        this.props.postDeal(formData, this.props.history);
+        
+        this.props.editItemDeal(formData, this.props.match.params.id, this.props.history);
+    }
+
+    edit(e) {
+        e.preventDefault();
+        this.setState({previewPost: false})
     }
 
     errorClass(error) {
@@ -422,4 +418,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, {postDeal})(EditDeal);
+export default connect(mapStateToProps, {editItemDeal})(EditDeal);
