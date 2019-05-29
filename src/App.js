@@ -12,6 +12,7 @@ import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
 import Deals from './component/deals/Deals';
 import AddDeal from './component/deals/AddDeal';
+import EditDeal from './component/deals/EditDeal';
 
 import howItWorks from './component/how_it_works&credits/how_it_works&credits';
 import ContactUs from './component/how_it_works&credits/ContactUs';
@@ -63,6 +64,7 @@ class App extends Component {
                 <Route exact path="/howItWorks" component={howItWorks} />
                 <Route exact path="/contact-us" component={ContactUs} />
                 <Route exact path="/deal/:id" component={Deal} />
+                <Route exact path="/deal/:id/edit" component={EditDeal} />
                 <Route component={NotFound} />
               </Switch>
             </div>
