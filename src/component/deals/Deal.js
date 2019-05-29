@@ -111,16 +111,15 @@ class Deals extends Component{
       return(
           <div className="container">
             <ToastContainer />
-            <div className="row justify-content-center space-top">
-                <div className="col-8 col-sm-8 col-md-8 space-top d-flex">
-                {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
-                    <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
-                    <Link to={`/deal/${post._id}/edit`}><button className="btn btn-primary">Edit</button></Link>
-                </div>
-                <div className="col-4 col-sm-4 col-md-4 text-right ">
+            <div className="space-top">
+                <div className="text-right ">
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
-                
+                <div className="d-flex justify-content-between mt-1">
+                {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
+                    <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
+                    <Link to={`/deal/${post._id}/edit`}><button className="btn btn-warning">Edit</button></Link>
+                </div>
             </div>
             
             <div className="text-center background">
