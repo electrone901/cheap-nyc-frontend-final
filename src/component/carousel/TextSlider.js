@@ -27,7 +27,8 @@ class TextSlider extends Component {
             <div className="tParent">
                 <div className="row">
                     <div className="col text-center">
-                        <h1 className="">Find the best NY deals</h1>
+                        <h1 className="textSliderTitle">Find the best NY deals</h1>
+                        <h2 className="textSliderTitle">free or under $30</h2>
                         <p className="tParent__items__subTittle">Do more with less</p>
                         {
                             this.state.auth ? null:<Link to="/register" className="tParent__items__sign">Sign Up</Link>

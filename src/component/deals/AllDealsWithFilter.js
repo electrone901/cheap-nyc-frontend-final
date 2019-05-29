@@ -163,7 +163,7 @@ class AllDealsWithFilter extends Component{
             <div className="dropdown col-lg-3 col-md-3 col-sm">
               {
                 this.state.showResetBtn ? 
-                <button className="" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
+                <button className="resetBtn" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
               }
             </div>
             <div className="row text-center">
@@ -218,8 +218,6 @@ class AllDealsWithFilter extends Component{
                   <option value="5&10">under $ 10</option>
                   <option value="10&20">under $ 20</option>
                   <option value="20&30">under $ 30</option>
-                  <option value="30&50">under $ 50</option>
-                  <option value="50&1000">over $ 50</option>
                 </select>
               </div>
 
