@@ -17,8 +17,12 @@ class AllDealsWithFilter extends Component{
       price2: -1,
       category: "",
       showResetBtn: false,
-      city: ""
+      city: "",
+      page: 1,
+      totalDeals: 0,
+      currentPage: 0
     };
+    this.loadPage = this.loadPage.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeCity = this.handleChangeCity.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
@@ -126,12 +130,35 @@ class AllDealsWithFilter extends Component{
         return res.json();
     })
     .then((data) => {
-        this.setState({data: data.items});
+        this.setState({
+          data: data.items,
+          totalDeals: data.totalDeals,
+          currentPage: 1
+        });
     })
     .catch((err) => {
         console.log('There was a problem with your fetch request' + err.message);
     });
-}
+  }
+  
+  loadPage(number){
+    let url = "https://cnycserver.herokuapp.com/items?page=" + number;
+    fetch(url)
+    .then(res => {
+        console.log('res', res);
+        return res.json();
+    })
+    .then((data) => {
+        this.setState({
+          data: data.items,
+          totalDeals: data.totalDeals,
+          currentPage: number
+        });
+    })
+    .catch((err) => {
+        console.log('There was a problem with your fetch request' + err.message);
+    });
+  }
 
   handleChangeCategory(e) {
     this.setState({
@@ -155,7 +182,6 @@ class AllDealsWithFilter extends Component{
   }
 
   render(){
-    console.log('state',this.state)
     return(
         <div>
           <h1 className="title">Explore by category</h1>
@@ -228,6 +254,22 @@ class AllDealsWithFilter extends Component{
           </div>
 
           <div>
+            <div className="d-flex justify-content-center mb-3">
+              {(() => {
+                const rows = [];
+                for (let i = 1; i <= (this.state.totalDeals / 8) + 1; i++) {
+                  rows.push(
+                    <button
+                      key={i}
+                      className= {this.state.currentPage === i ? "btn btn-primary mr-5" : "btn mr-5"}
+                      onClick={this.loadPage.bind(this, i)}>
+                      {i}
+                    </button>
+                  );
+                }
+                return rows;
+              })()}
+            </div>
             <AllDeals data={this.state.data} />
           </div>
 
