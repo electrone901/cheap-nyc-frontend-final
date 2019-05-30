@@ -142,6 +142,9 @@ class AllDealsWithFilter extends Component{
   }
   
   loadPage(number){
+    const {innerWidth:width, innerHeight: height} = window;
+    
+    window.scrollTo(width, height / 1.6);
     let url = "https://cnycserver.herokuapp.com/items?page=" + number;
     fetch(url)
     .then(res => {
@@ -254,14 +257,15 @@ class AllDealsWithFilter extends Component{
           </div>
 
           <div>
-            <div className="d-flex justify-content-center mb-3">
+            <AllDeals data={this.state.data} />
+            <div className="d-flex justify-content-center my-2">
               {(() => {
                 const rows = [];
                 for (let i = 1; i <= (this.state.totalDeals / 8) + 1; i++) {
                   rows.push(
                     <button
                       key={i}
-                      className= {this.state.currentPage === i ? "btn btn-primary mr-5" : "btn mr-5"}
+                      className= {this.state.currentPage === i ? "btn btn-primary mx-3" : "btn mx-3"}
                       onClick={this.loadPage.bind(this, i)}>
                       {i}
                     </button>
@@ -270,7 +274,6 @@ class AllDealsWithFilter extends Component{
                 return rows;
               })()}
             </div>
-            <AllDeals data={this.state.data} />
           </div>
 
         </div>
