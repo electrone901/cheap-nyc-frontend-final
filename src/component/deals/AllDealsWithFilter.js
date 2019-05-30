@@ -258,10 +258,10 @@ class AllDealsWithFilter extends Component{
 
           <div>
             <AllDeals data={this.state.data} />
-            <div className="d-flex justify-content-center my-2">
+            <div className="d-flex justify-content-center my-3">
               {(() => {
                 const rows = [];
-                for (let i = 1; i <= (this.state.totalDeals / 8) + 1; i++) {
+                for (let i = 1; i <= (this.state.totalDeals / 12) + 1; i++) {
                   rows.push(
                     <button
                       key={i}
