@@ -100,13 +100,19 @@ class Deals extends Component{
     }
 
     render(){
-        const { errors } = this.state;
+        const { errors, auth } = this.props;
         const { post } = this.props.postDeal;
         let flags = post.flags;
         let likes = post.likes;
         let postId = this.props.match.params.id;
         let shareUrl = `http://cheapny.herokuapp.com/deal/${postId}`;    
         const title = `Hey, I think you would like it! You gotta check out this ${post.name} it’s SO COOL!!`;
+        
+        const EditButton = (
+            <Link to={`/deal/${post._id}/edit`}>
+                <button className="btn btn-warning">Edit</button>
+            </Link>
+        );
 
       return(
           <div className="container">
@@ -118,7 +124,7 @@ class Deals extends Component{
                 <div className="d-flex justify-content-between mt-1">
                 {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
                     <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
-                    <Link to={`/deal/${post._id}/edit`}><button className="btn btn-warning">Edit</button></Link>
+                    {auth.user.id === post.userId ? EditButton : null}
                 </div>
             </div>
             
