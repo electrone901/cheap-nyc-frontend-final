@@ -30,27 +30,27 @@ class Deals extends Component{
             data: '',
             errors: {}, 
             reviews: null
-        }
+        };
     }
 
     togglePopup() {
-        let itemId =  this.props.match.params.id
+        let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
-            this.props.history.push(`/addReview/${itemId}`)
+            this.props.history.push(`/addReview/${itemId}`);
         }
         else {
             this.setState({
                 showPopup: !this.state.showPopup
-            })
+            });
         }
     }
 
     reportPopup() {
-        let itemId =  this.props.match.params.id
+        let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             this.setState({
                 reportPopup: !this.state.reportPopup
-            })
+            });
         }
         else {
             this.notify();
@@ -83,20 +83,23 @@ class Deals extends Component{
         if(!this.props.auth.isAuthenticated) {
             this.notify();
         }
-        this.props.addLike(itemId, this.props.history)
+        this.props.addLike(itemId, this.props.history);
     }
 
     addFlag() {
-        console.log()
-        let itemId =  this.props.match.params.id
+        let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             // this.props.history.push(`/addReview/${itemId}`)
         }
         else {
             this.setState({
                 showPopup: !this.state.showPopup
-            })
+            });
         }
+    }
+    
+    removeDeal(id){
+        console.log(id);
     }
 
     render(){
@@ -124,7 +127,10 @@ class Deals extends Component{
                 <div className="d-flex justify-content-between mt-1">
                 {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
                     <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
-                    {auth.user.id === post.userId ? EditButton : null}
+                    <div className="d-flex mt-1">
+                        <button className="btn btn-danger" onClick={this.removeDeal.bind(this, post._id)}>Delete</button>
+                        {auth.user.id === post.userId ? EditButton : null}
+                    </div>
                 </div>
             </div>
             
