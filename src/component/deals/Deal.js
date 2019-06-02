@@ -21,7 +21,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
 import { addFlag } from '../../actions/addFlagActions';
-import { getDeal } from '../../actions/addPostDeal';
+import { getDeal, removeADeal } from '../../actions/addPostDeal';
  
 class Deals extends Component{
     constructor() {
@@ -99,7 +99,7 @@ class Deals extends Component{
     }
     
     removeDeal(id){
-        console.log(id);
+        this.props.removeADeal(id, this.props.history);
     }
 
     render(){
@@ -116,6 +116,10 @@ class Deals extends Component{
                 <button className="btn btn-warning">Edit</button>
             </Link>
         );
+        
+        const DeleteButton = (
+            <button className="btn btn-danger" onClick={this.removeDeal.bind(this, post._id)}>Delete</button>
+        );
 
       return(
           <div className="container">
@@ -128,7 +132,7 @@ class Deals extends Component{
                 {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
                     <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
                     <div className="d-flex mt-1">
-                        <button className="btn btn-danger" onClick={this.removeDeal.bind(this, post._id)}>Delete</button>
+                        {auth.user.id === post.userId ? DeleteButton : null}
                         {auth.user.id === post.userId ? EditButton : null}
                     </div>
                 </div>
@@ -317,4 +321,4 @@ const mapStateToProps = state => ({
     postDeal: state.postDeal
 });
 
-export default connect(mapStateToProps, { addLike, addFlag, getDeal}) (withRouter(Deals));
+export default connect(mapStateToProps, { addLike, addFlag, getDeal, removeADeal}) (withRouter(Deals));

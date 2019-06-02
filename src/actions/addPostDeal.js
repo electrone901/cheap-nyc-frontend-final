@@ -32,6 +32,18 @@ export const editItemDeal = (postData, itemId,  history) => dispatch => {
     );
 };
 
+export const removeADeal = (itemId,  history) => dispatch => {
+    axios.delete(`/items/${itemId}`, itemId)
+        .then(res => history.push('/'))
+        .catch(err => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+          }
+    );
+};
+
 export const getDeal = (url) => dispatch => {
     fetch(url)
         .then(res => {
