@@ -36,6 +36,8 @@ class AddDeal extends Component{
             userId: "",
             startDate: moment(),
             endDate: "",
+            website: "",
+            startDate: "",
             duration: 0,
             serverErr: {}
         };
@@ -43,6 +45,7 @@ class AddDeal extends Component{
         this.onSubmit = this.onSubmit.bind(this);
         this.handleChangeCity = this.handleChangeCity.bind(this);
         this.endDate = this.endDate.bind(this);
+        this.startDate = this.startDate.bind(this);
     }
 
     componentDidMount(){
@@ -81,6 +84,11 @@ class AddDeal extends Component{
         duration = moment(end).diff(now, 'days') + 1;
         this.setState({
             duration: duration
+        });
+    }
+    startDate(date) {
+        this.setState({
+            startDate: date
         });
     }
 
@@ -199,6 +207,10 @@ class AddDeal extends Component{
         formData.append('userId', this.state.userId);
         formData.append('author', this.props.auth.user.name);
         formData.append('duration', this.state.duration);
+        formData.append('startDate', this.state.startDate)
+        formData.append('endDate', this.state.endDate)
+        formData.append('website', this.state.website)
+
         this.props.postDeal(formData, this.props.history);
     }
 
@@ -212,7 +224,7 @@ class AddDeal extends Component{
         let preview = <div className="container">
             <div className="row text-center space-top">
                 <div className="col-12 col-sm-12 col-md-12">
-                    <h2>Confirm the information below, you cannot edit after publishing</h2>
+                    <h2 className="title">Confirm the information below</h2>
                 </div>
             </div>
 
@@ -229,12 +241,12 @@ class AddDeal extends Component{
                 <p> <span className="field-name"> Product Description: </span>{this.state.description}</p>      
             </div>
             <br/>
-            <div className="row space-top">
+            <div className="row">
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction disabled" onClick={this.edit.bind(this)}>Edit</button>
+                    <button className="btn btn-info btn-block mt-4" onClick={this.edit.bind(this)}>Edit</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn-reaction disabled" onClick={this.postDealToDataBase.bind(this)}>Publish</button>
+                    <button className="btn btn-success btn-block mt-4" onClick={this.postDealToDataBase.bind(this)}>Publish <i className="fa fa-check" aria-hidden="true"></i></button>
                 </div>
             </div>
             <hr/> 
@@ -312,7 +324,7 @@ class AddDeal extends Component{
                         </div>
 
                         <div className="form-group row"> 
-                            <div className="col-md-6">
+                            <div className="col">
                                 <label htmlFor="text">Item price</label>
                                 <input
                                     type="any"
@@ -329,11 +341,21 @@ class AddDeal extends Component{
                                 {serverErr.price && (<div className="invalid-feedback">{serverErr.price}</div>)}
                             </div>
                             
-                            <div className="col-md-6">
-                                <label htmlFor="text">Deal Ends By: <span className="small text-right">  *start day is today</span></label>
+                            <div className="col">
+                                <label htmlFor="text" >Deal Starts</label>
                                 <DatePicker
-                                    className="form-control form-control-lg"
-                                    placeholderText="Must select a date"
+                                    className="input-text2 form-control form-control-lg"
+                                    placeholderText="Required"
+                                    selected={this.state.startDate}
+                                    onChange={this.startDate} 
+                                    dateFormat="MMMM d, yyyy"
+                                />
+                            </div>
+                            <div className="col">
+                                <label htmlFor="text">Deal Ends</label>
+                                <DatePicker
+                                    className="input-text2 form-control form-control-lg"
+                                    placeholderText="Required"
                                     selected={this.state.endDate}
                                     onChange={this.endDate} 
                                     dateFormat="MMMM d, yyyy"
@@ -368,7 +390,7 @@ class AddDeal extends Component{
                                     className={classnames('form-control form-control-lg', {
                                         'is-invalid': serverErr.city
                                     })}
-                                    className={classnames('form-control form-control-lg', {
+                                    className={classnames('form-control form-control-lg ', {
                                         'is-invalid': this.state.formErrors.city
                                     })}
                                 >
@@ -419,6 +441,22 @@ class AddDeal extends Component{
                                 </div>
                             </div>
                         </div>
+
+                        <div className="form-group">
+                            <label htmlFor="text">Company website <span className="small">(Optional but recommended)</span></label>
+                            <input
+                                type="text"
+                                required className={classnames('form-control form-control-lg', {
+                                    'is-invalid': this.state.formErrors.website
+                                })}
+                                name="website"
+                                value={this.state.website}
+                                onChange={this.onChange} 
+                            />
+                            {<div className="invalid-feedback">{this.state.formErrors.website}</div>}
+                            {serverErr.website && (<div className="invalid-feedback">{serverErr.website}</div>)}
+                        </div>
+
 
                         <input type="submit" className="btn btn-info btn-block mt-4" disabled={!this.state.formValid} />
                     </form>

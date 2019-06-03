@@ -221,6 +221,19 @@ class Deals extends Component{
 
 
             <div className="space-top">
+                <div className="row">
+                    <button className="btn whenText field-name">When: </button>
+                    <div className="col-4 text-center">
+                        <button className="btn btn-block mt-4 eventDay">
+                            <span>Start day:<br/> Jun 8 2019</span>
+                        </button>
+                    </div>
+                    <div className="col-4 text-center">
+                        <button className="btn btn-block mt-4 eventDay">
+                            <span> End day:<br/> Jun 30 2019</span>
+                        </button>
+                    </div>
+                </div><br/>
                 <p> <span className="field-name"> Company Name: </span>{post.company}</p>
                 <p> <span className="field-name"> Location: </span>{post.location}</p>
                 <p> <span className="field-name"> Category: </span> {post.category}</p>
