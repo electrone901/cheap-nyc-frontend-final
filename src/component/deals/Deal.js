@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import  { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
+
 import image2 from '../../img/stocksNoAvailable.png';
 import userImage from '../../img/userProfile.jpg';
 
@@ -225,12 +227,12 @@ class Deals extends Component{
                     <button className="btn whenText field-name">When: </button>
                     <div className="col-4 text-center">
                         <button className="btn btn-block mt-4 eventDay">
-                            <span>Start day:<br/> Jun 8 2019</span>
+                            <span>Start day:<br/> {post.startDate ? <Moment format="MM/DD/YYYY">{post.startDate}</Moment> : "TBA"}</span>
                         </button>
                     </div>
                     <div className="col-4 text-center">
                         <button className="btn btn-block mt-4 eventDay">
-                            <span> End day:<br/> Jun 30 2019</span>
+                            <span> End day:<br/> {post.endDate ? <Moment format="MM/DD/YYYY">{post.endDate}</Moment> : "TBA"}</span>
                         </button>
                     </div>
                 </div><br/>
