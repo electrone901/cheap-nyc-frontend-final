@@ -63,8 +63,9 @@ class Deals extends Component{
         window.scrollTo(0,0);
         let id = this.props.match.params.id;
         let url = `https://cnycserver.herokuapp.com/items/${id}`;
-        this.props.getDeal(url);
+        this.props.getDeal(url, this.props.history);
     }
+    
     componentWillReceiveProps(nextProps) {
         if(nextProps.errors.alreadyliked) {
             this.setState({errors: nextProps.errors});
@@ -107,6 +108,7 @@ class Deals extends Component{
     render(){
         const { errors, auth } = this.props;
         const { post } = this.props.postDeal;
+        
         let flags = post.flags;
         let likes = post.likes;
         let postId = this.props.match.params.id;

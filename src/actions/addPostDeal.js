@@ -44,13 +44,17 @@ export const removeADeal = (itemId,  history) => dispatch => {
     );
 };
 
-export const getDeal = (url) => dispatch => {
+export const getDeal = (url, history) => dispatch => {
     fetch(url)
         .then(res => {
             console.log('res', res);
+            if(res.status === 404){
+                history.push('/nodealfound');
+            }
             return res.json();
         })
         .then(data => {
+            
             dispatch({
                 type: GET_DEAL,
                 payload:  data.item

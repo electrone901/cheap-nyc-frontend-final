@@ -27,7 +27,7 @@ import RegisterWithEmail from './component/auth/RegisterWithEmail';
 import Login from './component/auth/Login';
 
 import NotFound from './component/error/NotFound';
-
+import NoDealFound from './component/error/NoDealFound';
 
 if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken);
@@ -65,6 +65,7 @@ class App extends Component {
                 <Route exact path="/contact-us" component={ContactUs} />
                 <Route exact path="/deal/:id" component={Deal} />
                 <Route exact path="/deal/:id/edit" component={EditDeal} />
+                <Route exact path="/nodealfound" component={NoDealFound} />
                 <Route component={NotFound} />
               </Switch>
             </div>
