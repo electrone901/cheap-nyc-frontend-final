@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import image2 from '../../img/stocks.png';
 import 'react-toastify/dist/ReactToastify.css';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
@@ -227,10 +226,13 @@ class AddDeal extends Component{
                     <h2 className="title">Confirm the information below</h2>
                 </div>
             </div>
-
-            <div className="col-12 text-center background">
-                <img className="imagePreview" src={this.state.image ? this.state.imageFile: image2}/>
-            </div>
+            {
+                this.state.image ? (
+                    <div className="col-12 text-center background">
+                        <img className="imagePreview" src={this.state.imageFile}/>
+                    </div>
+                ): null
+            }
             <div className="space-top">
                 <p> <span className="field-name"> Company Name: </span>{this.state.company}</p>
                 <p> <span className="field-name"> Item name: </span>{this.state.name}</p>
