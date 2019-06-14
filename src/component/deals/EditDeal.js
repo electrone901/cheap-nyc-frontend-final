@@ -34,6 +34,7 @@ class EditDeal extends Component{
             userId: "",
             startDate: moment(),
             endDate: "",
+            website: "", 
             duration: 0,
             serverErr: {}
         };
@@ -66,6 +67,7 @@ class EditDeal extends Component{
                         address: data.item.location,
                         city: data.item.city,
                         description: data.item.description,
+                        website: data.item.website
                     });
                 })
                 .catch((err) => {
@@ -201,6 +203,7 @@ class EditDeal extends Component{
         formData.append('userId', this.state.userId);
         formData.append('author', this.props.auth.user.name);
         formData.append('duration', this.state.duration);
+        formData.append('website', this.state.website);
         
         this.props.editItemDeal(formData, this.props.match.params.id, this.props.history);
     }
@@ -396,6 +399,21 @@ class EditDeal extends Component{
                                 </div>
                             </div>
                         </div>
+                        
+                        <div className="col-md-12">
+                                <label htmlFor="text">Website</label>
+                                <input
+                                    type="text"
+                                    className={classnames('form-control form-control-lg', {
+                                        'is-invalid': this.state.formErrors.website
+                                    })}
+                                    name="website"
+                                    value={this.state.website}
+                                    onChange={this.onChange} 
+                                />
+                                <div className="invalid-feedback">{this.state.formErrors.name}</div>
+                                {serverErr.name && (<div className="invalid-feedback">{serverErr.name}</div>)}
+                            </div>
 
                         <input type="submit" className="btn btn-info btn-block mt-4" />
                     </form>

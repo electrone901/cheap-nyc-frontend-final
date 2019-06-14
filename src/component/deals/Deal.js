@@ -241,7 +241,8 @@ class Deals extends Component{
                 <p> <span className="field-name"> Company Name: </span>{post.company}</p>
                 <p> <span className="field-name"> Location: </span>{post.location}</p>
                 <p> <span className="field-name"> Category: </span> {post.category}</p>
-                <p> <span className="field-name"> Product Description: </span>{post.description}</p>          
+                <p> <span className="field-name"> Product Description: </span>{post.description}</p>
+                <p> <span className="field-name"> Website: </span>{post.website ? post.website : "None"}</p>
             </div>
             <br/>
             {/* REVIEWS */}

@@ -241,6 +241,7 @@ class AddDeal extends Component{
                 <p> <span className="field-name"> Address: </span>{this.state.address}</p>
                 <p> <span className="field-name"> City: </span>{this.state.city}</p>
                 <p> <span className="field-name"> Product Description: </span>{this.state.description}</p>      
+                <p> <span className="field-name"> Website: </span>{this.state.website ? this.state.website : "none"}</p>
             </div>
             <br/>
             <div className="row">
@@ -448,7 +449,7 @@ class AddDeal extends Component{
                             <label htmlFor="text">Company website <span className="small">(Optional but recommended)</span></label>
                             <input
                                 type="text"
-                                required className={classnames('form-control form-control-lg', {
+                                className={classnames('form-control form-control-lg', {
                                     'is-invalid': this.state.formErrors.website
                                 })}
                                 name="website"
