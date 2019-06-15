@@ -105,8 +105,10 @@ class AllDealsWithFilter extends Component{
               return console.log('from API',resData.errors);
           }
           else {
-            console.log('luis data',resData.data.itemsByFilter)
-            this.setState({ data: resData.data.itemsByFilter})
+            this.setState({ 
+              data: resData.data.itemsByFilter,
+              totalDeals: 0
+            });
           }
       })
       .catch(err => {
