@@ -111,7 +111,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link className="nav-link" to="/contact-us">
-                  Contact 
+                  Contact Us
                 </Link>
               </li>
 
