@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class ContactUs extends Component{
+class Feedback extends Component{
   componentDidMount() {
     window.scrollTo(0,0);
   }
@@ -14,4 +14,4 @@ class ContactUs extends Component{
       );
   }
 }
-export default (ContactUs);
+export default Feedback;

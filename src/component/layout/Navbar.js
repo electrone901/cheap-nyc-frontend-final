@@ -99,15 +99,19 @@ class Navbar extends Component {
             </ul>
             <ul className="navbar-nav text-right">
 
-
-              <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link className="nav-link" to="/contact-us">
-                  Contact 
-                </Link>
-              </li>
               <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link className="nav-link" to="/howItWorks">
                   How it works
+                </Link>
+              </li>
+              <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <Link className="nav-link" to="/feedback">
+                  Feedback 
+                </Link>
+              </li>
+              <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <Link className="nav-link" to="/contact-us">
+                  Contact 
                 </Link>
               </li>
 

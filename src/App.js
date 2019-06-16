@@ -15,7 +15,7 @@ import AddDeal from './component/deals/AddDeal';
 import EditDeal from './component/deals/EditDeal';
 
 import howItWorks from './component/how_it_works&credits/how_it_works&credits';
-import ContactUs from './component/how_it_works&credits/ContactUs';
+import Feedback from './component/how_it_works&credits/Feedback';
 import Deal from './component/deals/Deal';
 import AddReview from './component/review/AddReview';
 import AddReviewAsGuest from './component/review/AddReviewAsGuest';
@@ -62,7 +62,7 @@ class App extends Component {
                 <Route exact path="/addReview/:id" component={AddReview} />
                 <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
                 <Route exact path="/howItWorks" component={howItWorks} />
-                <Route exact path="/contact-us" component={ContactUs} />
+                <Route exact path="/feedback" component={Feedback} />
                 <Route exact path="/deal/:id" component={Deal} />
                 <Route exact path="/deal/:id/edit" component={EditDeal} />
                 <Route exact path="/nodealfound" component={NoDealFound} />
