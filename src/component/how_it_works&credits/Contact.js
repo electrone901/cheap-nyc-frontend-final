@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import email from '../../img/email-ready.png'; 
+import fb from '../../img/fb.png'; 
+import instagram from '../../img/ig.png'; 
+import twitter from '../../img/t.png'; 
 
 class Contact extends Component{
   componentDidMount() {
@@ -7,17 +11,30 @@ class Contact extends Component{
   render(){
       
       return(
-          <div className="text-center">
-            <h1>Contact Us</h1>
-            <h2>Email: realcheapny@gmail.com</h2>
-            <h2>Check us out on our social media!</h2>
-            <ul>
-              <li className="list-inline-item"><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-facebook-square fa-2x"></i></a></li>
-              <li className="list-inline-item"><a href="https://twitter.com/realcheapny" target="blank"><i className="fa fa-twitter fa-2x"></i></a></li>
-              <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="fa fa-instagram fa-2x"></i></a></li>
-              <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="google-plus-g fa fa-google-plus fa-2x"></i></a></li>
-              <li className="list-inline-item"><a href="https://www.facebook.com/groups/YoAmoNuevaYork/" target="blank"><i className="fa fa-envelope fa-2x"></i></a></li>
-            </ul>
+        // download the logos and added them 
+          <div className="container">
+            <br/>
+            <div className="text-center">
+              <div className="jumbotron">
+                <h1>Contact Us</h1>
+                <h2>Email: realcheapny@gmail.com</h2>
+                <h2>Check us out on our social media!</h2><br/>
+                <div className="row -row-social">
+                  <div className="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <a href="https://www.facebook.com/realcheapny/" target="blank"><img className="social-thumbnail" src={fb}/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <a href="https://www.instagram.com/realcheapny/" target="blank"><img className="social-thumbnail" src={instagram}/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <a href="https://twitter.com/realcheapny" target="blank"><img className="social-thumbnail" src={twitter}/></a>
+                  </div>
+                  <div className="col-lg-3 col-md-3 col-sm-6 text-center">
+                    <a href="mailto:realcheapny@gmail.com"><img className="social-thumbnail" src={email}/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
       );
   }

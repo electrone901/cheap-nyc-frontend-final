@@ -3,7 +3,7 @@ import  { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 
-import image2 from '../../img/stocksNoAvailable.png';
+import image2 from '../../img/stocksNoAvailable.png'; 
 import userImage from '../../img/userProfile.jpg';
 
 import Spinner from '../common/Spinner';
