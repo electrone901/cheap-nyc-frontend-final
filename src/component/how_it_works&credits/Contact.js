@@ -4,9 +4,24 @@ import fb from '../../img/fb.png';
 import instagram from '../../img/ig.png'; 
 import twitter from '../../img/t.png'; 
 
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA contact');
+  ReactGA.initialize('UA-142224072-1');
+}
+export const loadPageView = () => {
+  ReactGA.set({page: window.location.pathname});
+  ReactGA.pageview(window.location.pathname);
+}
+
 class Contact extends Component{
   componentDidMount() {
     window.scrollTo(0,0);
+  }
+  componentDidMount(){
+    initGA();
+    loadPageView();
   }
   render(){
       

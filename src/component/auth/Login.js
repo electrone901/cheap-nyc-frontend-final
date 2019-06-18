@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-
 import classnames from 'classnames';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { loginUser } from '../../actions/authActions';
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class Login extends Component{
     constructor(){
@@ -30,6 +38,8 @@ class Login extends Component{
       toast.success(`🚀  Login Successful!`)
     }
     componentDidMount(){
+      initGA();
+      loadPageView();
       window.scrollTo(0,0);
       if(this.props.auth.isAuthenticated){
         this.props.history.push('/');

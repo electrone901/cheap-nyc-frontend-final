@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { postReport } from '../../actions/reportActions';
 import { connect } from 'react-redux';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class ReportPopUp extends Component {
     constructor() {
@@ -17,6 +26,10 @@ class ReportPopUp extends Component {
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+    componentDidMount() {
+        initGA();
+        loadPageView();
     }
     onChange(e){
         this.setState({[e.target.name]: e.target.value});

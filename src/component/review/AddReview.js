@@ -3,6 +3,17 @@ import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { postReview } from '../../actions/addReview';
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class AddReview extends Component {
     constructor() {
@@ -18,6 +29,8 @@ class AddReview extends Component {
     }
 
     componentDidMount() {
+        initGA();
+        loadPageView();
         window.scrollTo(0,0);
         if(this.props.auth.user.name) {
             this.setState({author: this.props.auth.user.name})

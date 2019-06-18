@@ -5,6 +5,17 @@ import { Link, withRouter  } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { registerUser } from '../../actions/authActions';
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class Register extends Component{
     constructor(){
@@ -23,6 +34,8 @@ class Register extends Component{
     }
     
     componentDidMount(){
+      initGA();
+      loadPageView();
       window.scrollTo(0,0);
       if(this.props.auth.isAuthenticated){
         this.props.history.push('/portfolio');

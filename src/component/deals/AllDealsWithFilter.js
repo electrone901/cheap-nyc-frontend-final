@@ -4,9 +4,16 @@ import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
 import Popup from './Popup';
 import { getDeals } from '../../actions/addPostDeal';
+import ReactGA from 'react-ga';
 
-import noAvailable from '../../img/noAvailable.png';
-
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class AllDealsWithFilter extends Component{
   constructor() {
@@ -123,6 +130,9 @@ class AllDealsWithFilter extends Component{
   }
 
   componentDidMount() {
+    // this.props.history.listen(location => ReactGA.pageview(location.pathname)); 
+    initGA();
+    loadPageView();
     window.scrollTo(0,0);
     let url = "https://cnycserver.herokuapp.com/items";
     // this.props.getDeals(url);

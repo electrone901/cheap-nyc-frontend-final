@@ -5,8 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import moment from 'moment';
-
 import { editItemDeal } from '../../actions/addPostDeal';
+import ReactGA from 'react-ga';
+
+export const initGA = () => {
+  console.log('**initGA');
+  ReactGA.initialize('UA-142224072-1');
+}
+export const loadPageView = () => {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 class EditDeal extends Component{
     constructor(){
@@ -45,6 +54,8 @@ class EditDeal extends Component{
     }
 
     componentDidMount(){
+        initGA();
+        loadPageView();
         window.scrollTo(0,0);
         if(!this.props.auth.isAuthenticated){
             this.props.history.push('/login');
