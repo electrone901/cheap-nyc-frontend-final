@@ -30,11 +30,7 @@ export default() => {
                         <div className="col-sm col-md col-lg">
                             <h5>Sponsorships</h5>
                             <ul className="list-unstyled quick-links">
-                                <li><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-angle-double-right"></i> Become a Sponsor</a></li>
-                                <li><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-angle-double-right"></i> Have your business services, </a></li>
-                                <li><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-angle-double-right"></i> logo display here and get more </a></li>
-                                <li><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-angle-double-right"></i> customers. Anyone can be a Sponsor.</a></li>
-                                {/* <li><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-angle-double-right"></i></a></li> */}
+                                <li><Link to="/contact-us"><i className="fa fa-angle-double-right"></i>Contact Us</Link></li>
                             </ul>
                         </div>
 

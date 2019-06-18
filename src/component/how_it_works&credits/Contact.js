@@ -16,10 +16,8 @@ export const loadPageView = () => {
 }
 
 class Contact extends Component{
-  componentDidMount() {
-    window.scrollTo(0,0);
-  }
   componentDidMount(){
+    window.scrollTo(0,0);
     initGA();
     loadPageView();
   }
