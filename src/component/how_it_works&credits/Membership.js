@@ -15,10 +15,12 @@ class Contact extends Component{
             <div className="text-center">
               <h1 className="bg-danger text-light">Membership</h1>
               <h4 className="my-5">Plans and Pricing Designed to meet Your Needs</h4>
-              <div className="jumbotron">
+              <div className="">
+                <hr className="bg-danger mb-4" />
                 <div className="row -row-social">
                   <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-                    <div class="card">
+                    <hr className="bg-danger mb-4 py-1" />
+                    <div class="card mb-3">
                       <div class="card-body">
                         <p class="btn btn-primary btn-block">Basic</p>
                         <p class="card-text my-0">1 location</p>
@@ -29,9 +31,11 @@ class Contact extends Component{
                         <p class="card-text mb-4">Basic analytics</p>
                       </div>
                     </div>
+                    <hr className="bg-danger pb-1" />
                   </div>
                   <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-                    <div class="card">
+                    <hr className="bg-danger mb-4 py-1" />
+                    <div class="card mb-3">
                       <div class="card-body">
                         <p class="btn btn-primary btn-block">Starter</p>
                         <p class="card-text my-0">Up to 3 locations</p>
@@ -43,9 +47,11 @@ class Contact extends Component{
                         <p class="card-text">Tracking code integration</p>
                       </div>
                     </div>
+                    <hr className="bg-danger mb-4 pb-1" />
                   </div>
                   <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-                    <div class="card">
+                    <hr className="bg-danger mb-4 py-1" />
+                    <div class="card mb-3">
                       <div class="card-body">
                         <p class="btn btn-primary btn-block">Expert</p>
                         <p class="card-text my-0">Up to 20 locations</p>
@@ -57,8 +63,10 @@ class Contact extends Component{
                         <p class="card-text">Tracking code integration</p>
                       </div>
                     </div>
+                    <hr className="bg-danger mb-4 pb-1" />
                   </div>
                 </div>
+                <hr className="bg-danger" />
               </div>
             </div>
           </div>
