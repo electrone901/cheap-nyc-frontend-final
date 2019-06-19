@@ -105,6 +105,11 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
+                <Link className="nav-link" to="/membership">
+                  Membership 
+                </Link>
+              </li>
+              <li className="nav-item text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link className="nav-link" to="/feedback">
                   Feedback 
                 </Link>
