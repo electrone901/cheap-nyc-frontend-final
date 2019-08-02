@@ -23,9 +23,6 @@ body {
 .login {
   height: 60vh;
 }
-.resetBtn {
-  color: blue;
-}
 
 /* SIGNUP */
 .noColor {
@@ -289,9 +286,8 @@ Description     : A file that contains all styles for Carousel.js.
 }
 
 .title {
-  font-size: 24px;
-  line-height: 1.1;
-  padding-top: 10px;
+  font-size: 28px;
+  margin-top: 14px;
 }
 
 /* FOOTER */

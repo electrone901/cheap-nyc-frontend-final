@@ -191,7 +191,7 @@ class AllDealsWithFilter extends Component{
     let prices = e.target.value.split('&');
     console.log('prices',prices)
     this.setState({
-      price1:prices[0],
+      price1: prices[0],
       price2: prices[1]
     })
   }
@@ -199,12 +199,12 @@ class AllDealsWithFilter extends Component{
   render(){
     return(
         <div>
-          <h1 className="title">Explore by category</h1>
+          <h1 className="title text-center">Explore by category</h1>
           <div className="filterbutton">
             <div className="dropdown col-lg-3 col-md-3 col-sm">
               {
                 this.state.showResetBtn ? 
-                <button className="resetBtn" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
+                <button className="btn btn-primary mb-2 ml-4 px-5" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
               }
             </div>
             <div className="row text-center">
