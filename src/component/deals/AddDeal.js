@@ -45,7 +45,6 @@ class AddDeal extends Component{
             startDate: moment(),
             endDate: "",
             website: "",
-            startDate: "",
             duration: 0,
             serverErr: {}
         };
@@ -129,7 +128,6 @@ class AddDeal extends Component{
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
         let companyValid = this.state.companyValid;
         let nameValid = this.state.nameValid;
         let categoryValid = this.state.categoryValid;
@@ -240,7 +238,7 @@ class AddDeal extends Component{
             {
                 this.state.image ? (
                     <div className="col-12 text-center background">
-                        <img className="imagePreview" src={this.state.imageFile}/>
+                        <img className="imagePreview" src={this.state.imageFile} alt="previewImage"/>
                     </div>
                 ): null
             }
@@ -313,9 +311,7 @@ class AddDeal extends Component{
                                     className={classnames('form-control form-control-lg', {
                                         'is-invalid': this.state.formErrors.category
                                     })}
-                                    required className={classnames('form-control form-control-lg', {
-                                        'is-invalid': this.state.formErrors.category
-                                    })}
+                                    required
                                 >
                                     <option value="">Category</option>
                                     <option value="Food">Food</option>
@@ -401,9 +397,6 @@ class AddDeal extends Component{
                                     name="city"
                                     value={this.state.city}
                                     onChange={this.onChange}
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': serverErr.city
-                                    })}
                                     className={classnames('form-control form-control-lg ', {
                                         'is-invalid': this.state.formErrors.city
                                     })}

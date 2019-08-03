@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { withRouter } from 'react-router-dom';
 
 import CheckBox from './CheckBox';
 import { getUser } from '../../actions/authActions';
 import { changeUserImage, updateTitle} from '../../actions/userActions';
 import userImage from '../../img/userProfile.jpg'; 
-
-import axios from '../../axios-stocks';
 
 class EditUserProfile extends Component{
     constructor(){
@@ -205,7 +202,7 @@ class EditUserProfile extends Component{
                                 </div>
                             </div>
                             <div className="text-center">
-                                <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="User Image" />
+                                <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="Preview User" />
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
                         </form>

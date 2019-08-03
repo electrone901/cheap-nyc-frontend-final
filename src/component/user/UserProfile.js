@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { postDeal } from '../../actions/addPostDeal';
 import userImage from '../../img/userProfile.jpg'; 
 import { getUser } from '../../actions/authActions';
-import { getLikedDeals } from '../../actions/addLikeActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -171,7 +168,7 @@ class UserProfile extends Component{
 
     }
     render(){
-        const { err } = this.state;
+        //const { err } = this.state;
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";

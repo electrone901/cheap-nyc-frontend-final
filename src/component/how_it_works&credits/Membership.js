@@ -1,8 +1,4 @@
 import React, {Component} from 'react';
-import email from '../../img/email-ready.png'; 
-import fb from '../../img/fb.png'; 
-import instagram from '../../img/ig.png'; 
-import twitter from '../../img/t.png'; 
 
 class Contact extends Component{
   componentDidMount(){

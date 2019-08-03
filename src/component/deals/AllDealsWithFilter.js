@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
-import Popup from './Popup';
 import { getDeals } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
 

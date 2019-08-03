@@ -25,7 +25,7 @@ import UserProfile from './component/user/UserProfile';
 import EditUserProfile from './component/user/EditUserProfile';
 
 import Register from './component/auth/Register';
-import RegisterWithEmail from './component/auth/RegisterWithEmail';
+//import RegisterWithEmail from './component/auth/RegisterWithEmail';
 import Login from './component/auth/Login';
 
 import NotFound from './component/error/NotFound';

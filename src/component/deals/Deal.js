@@ -48,7 +48,7 @@ class Deals extends Component{
     }
 
     reportPopup() {
-        let itemId =  this.props.match.params.id;
+        //let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             this.setState({
                 reportPopup: !this.state.reportPopup
@@ -90,7 +90,7 @@ class Deals extends Component{
     }
 
     addFlag() {
-        let itemId =  this.props.match.params.id;
+        //let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             // this.props.history.push(`/addReview/${itemId}`)
         }
@@ -106,10 +106,10 @@ class Deals extends Component{
     }
 
     render(){
-        const { errors, auth } = this.props;
+        const { auth } = this.props;
         const { post } = this.props.postDeal;
         
-        let flags = post.flags;
+        //let flags = post.flags;
         let likes = post.likes;
         let postId = this.props.match.params.id;
         let shareUrl = `http://cheapny.herokuapp.com/deal/${postId}`;    

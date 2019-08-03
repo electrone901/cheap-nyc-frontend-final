@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 import { postReport } from '../../actions/reportActions';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -52,7 +50,7 @@ class ReportPopUp extends Component {
     }
     
     render() {
-        const {errors} = this.state;
+        //const {errors} = this.state;
         return (
             <div className='popup'>
             <div className='popup_inner'>

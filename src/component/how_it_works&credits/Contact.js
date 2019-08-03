@@ -34,16 +34,16 @@ class Contact extends Component{
                 <h2>Check us out on our social media!</h2><br/>
                 <div className="row -row-social">
                   <div className="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <a href="https://www.facebook.com/realcheapny/" target="blank"><img className="social-thumbnail" src={fb}/></a>
+                    <a href="https://www.facebook.com/realcheapny/" target="blank"><img className="social-thumbnail" alt="facebookIcon" src={fb}/></a>
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <a href="https://www.instagram.com/realcheapny/" target="blank"><img className="social-thumbnail" src={instagram}/></a>
+                    <a href="https://www.instagram.com/realcheapny/" target="blank"><img className="social-thumbnail" alt="instagramIcon" src={instagram}/></a>
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <a href="https://twitter.com/realcheapny" target="blank"><img className="social-thumbnail" src={twitter}/></a>
+                    <a href="https://twitter.com/realcheapny" target="blank"><img className="social-thumbnail" alt="twitterIcon" src={twitter}/></a>
                   </div>
                   <div className="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <a href="mailto:realcheapny@gmail.com"><img className="social-thumbnail" src={email}/></a>
+                    <a href="mailto:realcheapny@gmail.com"><img className="social-thumbnail" alt="emailIcon" src={email}/></a>
                   </div>
                 </div>
               </div>

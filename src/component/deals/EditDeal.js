@@ -137,7 +137,6 @@ class EditDeal extends Component{
 
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
-        let emailValid = this.state.emailValid;
         let companyValid = this.state.companyValid;
         let nameValid = this.state.nameValid;
         let categoryValid = this.state.categoryValid;
@@ -278,9 +277,7 @@ class EditDeal extends Component{
                                     className={classnames('form-control form-control-lg', {
                                         'is-invalid': this.state.formErrors.category
                                     })}
-                                    required className={classnames('form-control form-control-lg', {
-                                        'is-invalid': this.state.formErrors.category
-                                    })}
+                                    required
                                 >
                                     <option value="">Category</option>
                                     <option value="Food">Food</option>
@@ -358,9 +355,6 @@ class EditDeal extends Component{
                                     onChange={this.onChange}
                                     className={classnames('form-control form-control-lg', {
                                         'is-invalid': serverErr.city
-                                    })}
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': this.state.formErrors.city
                                     })}
                                 >
                                     <option value="">City</option>
