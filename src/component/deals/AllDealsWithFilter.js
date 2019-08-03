@@ -196,6 +196,14 @@ class AllDealsWithFilter extends Component{
   }
 
   render(){
+    const noDealMesage = (
+      <div>
+          <h5 className="text-center text-warning">
+              No Deal Found
+          </h5>
+      </div>
+      
+  );
     return(
         <div>
           <h1 className="title text-center">Explore by category</h1>
@@ -269,6 +277,7 @@ class AllDealsWithFilter extends Component{
 
           <div>
             <AllDeals data={this.state.data} />
+            { this.state.data.length > 0 ? null : noDealMesage }
             <div className="d-flex justify-content-center my-3">
               {(() => {
                 const rows = [];

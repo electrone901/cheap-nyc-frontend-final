@@ -5,8 +5,7 @@ import noAvailable from '../../img/noAvailable.png';
 
 class AllDeals extends Component {
     render() {
-        console.log('DDATA',this.props.data)
-      return  <div className="row">
+        return  <div className="row">
         {
             this.props.data ? this.props.data.map((item, key) => {
                 return (
