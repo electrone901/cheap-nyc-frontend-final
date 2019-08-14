@@ -275,13 +275,30 @@ class AllDealsWithFilter extends Component{
       </div>
     );
 
+    const searchBar = (
+      <div class="input-group my-3">
+        <input type="text" class="form-control" placeholder="Search Deal by Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
+      </div>
+    );
+
     return(
         <div>
           <div className="d-flex justify-content-around">
-            <h1 className={this.state.filerMode === "category" ? "title text-center text-primary" : "title text-center"}>Explore by Category</h1>
-            <h1 className={this.state.filerMode === "name" ? "title text-center text-primary" : "title text-center"}>Explore by Name</h1>
+            <h1
+              className={this.state.filerMode === "category" ? "title text-center text-primary" : "title text-center"}
+              onClick={() => this.setState({filerMode: "category"})}>
+                Explore by Category
+            </h1>
+            <h1
+              className={this.state.filerMode === "name" ? "title text-center text-primary" : "title text-center"}
+              onClick={() => this.setState({filerMode: "name"})}>
+                Explore by Name
+            </h1>
           </div>
-          {this.state.filerMode === "category" ? filterbutton : null}
+          {this.state.filerMode === "category" ? filterbutton : searchBar}
           <div>
             <AllDeals data={this.state.data} />
             { this.state.data.length > 0 ? null : noDealMesage }
