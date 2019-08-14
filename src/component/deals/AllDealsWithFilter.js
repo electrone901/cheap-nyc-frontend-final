@@ -27,9 +27,11 @@ class AllDealsWithFilter extends Component{
       page: 1,
       totalDeals: 0,
       currentPage: 0,
-      filerMode: 'category'
+      filerMode: 'category',
+      dealName: ''
     };
     this.loadPage = this.loadPage.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
     this.handleChangeCity = this.handleChangeCity.bind(this);
     this.handleChangePrice = this.handleChangePrice.bind(this);
@@ -196,6 +198,28 @@ class AllDealsWithFilter extends Component{
     })
   }
 
+  onChange(e){
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value});
+  };
+
+  searchDealByName(){
+    let url =  "https://cnycserver.herokuapp.com/items/searchItemByName?name=" + this.state.dealName;
+    fetch(url)
+      .then(res => {
+          return res.json();
+      })
+      .then(data => {
+          this.setState({
+            data: data.items
+          });
+      })
+      .catch((err) => {
+          console.log('There was a problem with your fetch request' + err.message);
+      });
+  }
+
   render(){
     const noDealMesage = (
       <div>
@@ -276,10 +300,16 @@ class AllDealsWithFilter extends Component{
     );
 
     const searchBar = (
-      <div class="input-group my-3">
-        <input type="text" class="form-control" placeholder="Search Deal by Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Search</button>
+      <div className="input-group my-3">
+        <input
+          type="text"
+          name="dealName"
+          className="form-control"
+          value={this.state.dealName}
+          placeholder="Search Deal by Name"
+          onChange={this.onChange} />
+        <div className="input-group-append">
+          <button className="btn btn-outline-secondary" type="button" onClick={this.searchDealByName.bind(this)}>Search</button>
         </div>
       </div>
     );
