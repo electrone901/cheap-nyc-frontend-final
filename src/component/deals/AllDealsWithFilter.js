@@ -26,7 +26,8 @@ class AllDealsWithFilter extends Component{
       city: "",
       page: 1,
       totalDeals: 0,
-      currentPage: 0
+      currentPage: 0,
+      filerMode: 'category'
     };
     this.loadPage = this.loadPage.bind(this);
     this.handleChangeCategory = this.handleChangeCategory.bind(this);
@@ -202,79 +203,85 @@ class AllDealsWithFilter extends Component{
               No Deal Found
           </h5>
       </div>
-      
-  );
-    return(
-        <div>
-          <h1 className="title text-center">Explore by category</h1>
-          <div className="filterbutton">
-            <div className="dropdown col-lg-3 col-md-3 col-sm">
-              {
-                this.state.showResetBtn ? 
-                <button className="btn btn-primary mb-2 ml-4 px-5" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
-              }
-            </div>
-            <div className="row text-center">
-              <div className="dropdown col-lg-3 col-md-3 col-sm">
-                <select
-                  value={this.state.selectValue}
-                  onChange={this.handleChangeCategory}
-                  className="btn btn-light dropdown-toggle btn-width btn-height"
-                >
-                  <option value="">All categories</option>
-                  <option value="Food">Food</option>
-                  <option value="Drinks">Drinks</option>
-                  <option value="Activities">Activities</option>
-                  <option value="Events">Events</option>
-                  <option value="Arts">Arts</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Outdoor">Outdoor</option>
-                  <option value="Indoor">Indoor</option>
-                  <option value="Music">Music</option>
-                  <option value="Classes">Classes</option>
-                  <option value="Travel">Travel</option>
-                  <option value="Social">Social</option>
-                  <option value="Others">Others</option>
-                </select>
-              </div>
+    );
 
-              <div className="dropdown col-lg-3 col-md-3 col-sm">
-                <select
-                  value={this.state.selectValue}
-                  onChange={this.handleChangeCity}
-                  className="btn btn-light dropdown-toggle btn-width btn-height"
-                > 
-                  <option value="">All Cities</option>
-                  <option value="Manhattan">Manhattan</option>
-                  <option value="Queens">Queens</option>
-                  <option value="Bronx">Bronx</option>
-                  <option value="Brooklyn">Brooklyn</option>
-                  <option value="Staten Island">Staten Island</option>
-                </select>
-              </div>
-
-              <div className="dropdown col-lg-3 col-md-3 col-sm">
-                <select
-                  value={this.state.value}
-                  onChange={this.handleChangePrice}
-                  className="btn btn-light dropdown-toggle btn-width btn-height"
-                >
-                  <option value="-1&-1">All Prices</option>
-                  <option value="0&0">Free</option>
-                  <option value="0&1">under $ 1</option>
-                  <option value="1&5">under $ 5</option>
-                  <option value="5&10">under $ 10</option>
-                  <option value="10&20">under $ 20</option>
-                  <option value="20&30">under $ 30</option>
-                </select>
-              </div>
-
-              <div className="dropdown col-lg-3 col-md-3 col-sm">
-                <button className="btn btn-primary btn-width" onClick={this.findDeals.bind(this)}>Find Deals</button>
-              </div>
-            </div>
+    const filterbutton = (
+      <div className="filterbutton">
+        <div className="dropdown col-lg-3 col-md-3 col-sm">
+          {
+            this.state.showResetBtn ? 
+            <button className="btn btn-primary mb-2 ml-4 px-5" onClick={this.getAllDeals.bind(this)}>Reset All</button>: null
+          }
+        </div>
+        <div className="row text-center">
+          <div className="dropdown col-lg-3 col-md-3 col-sm">
+            <select
+              value={this.state.selectValue}
+              onChange={this.handleChangeCategory}
+              className="btn btn-light dropdown-toggle btn-width btn-height"
+            >
+              <option value="">All categories</option>
+              <option value="Food">Food</option>
+              <option value="Drinks">Drinks</option>
+              <option value="Activities">Activities</option>
+              <option value="Events">Events</option>
+              <option value="Arts">Arts</option>
+              <option value="Sports">Sports</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Indoor">Indoor</option>
+              <option value="Music">Music</option>
+              <option value="Classes">Classes</option>
+              <option value="Travel">Travel</option>
+              <option value="Social">Social</option>
+              <option value="Others">Others</option>
+            </select>
           </div>
 
+          <div className="dropdown col-lg-3 col-md-3 col-sm">
+            <select
+              value={this.state.selectValue}
+              onChange={this.handleChangeCity}
+              className="btn btn-light dropdown-toggle btn-width btn-height"
+            > 
+              <option value="">All Cities</option>
+              <option value="Manhattan">Manhattan</option>
+              <option value="Queens">Queens</option>
+              <option value="Bronx">Bronx</option>
+              <option value="Brooklyn">Brooklyn</option>
+              <option value="Staten Island">Staten Island</option>
+            </select>
+          </div>
+
+          <div className="dropdown col-lg-3 col-md-3 col-sm">
+            <select
+              value={this.state.value}
+              onChange={this.handleChangePrice}
+              className="btn btn-light dropdown-toggle btn-width btn-height"
+            >
+              <option value="-1&-1">All Prices</option>
+              <option value="0&0">Free</option>
+              <option value="0&1">under $ 1</option>
+              <option value="1&5">under $ 5</option>
+              <option value="5&10">under $ 10</option>
+              <option value="10&20">under $ 20</option>
+              <option value="20&30">under $ 30</option>
+            </select>
+          </div>
+
+          <div className="dropdown col-lg-3 col-md-3 col-sm">
+            <button className="btn btn-primary btn-width" onClick={this.findDeals.bind(this)}>Find Deals</button>
+          </div>
+        </div>
+      </div>
+    );
+
+    return(
+        <div>
+          <div className="d-flex justify-content-around">
+            <h1 className={this.state.filerMode === "category" ? "title text-center text-primary" : "title text-center"}>Explore by Category</h1>
+            <h1 className={this.state.filerMode === "name" ? "title text-center text-primary" : "title text-center"}>Explore by Name</h1>
+          </div>
+          {this.state.filerMode === "category" ? filterbutton : null}
           <div>
             <AllDeals data={this.state.data} />
             { this.state.data.length > 0 ? null : noDealMesage }
