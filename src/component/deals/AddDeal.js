@@ -9,7 +9,6 @@ import { postDeal } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 export const loadPageView = () => {
@@ -42,7 +41,7 @@ class AddDeal extends Component{
             cityValid: false,
             descriptionValid: false,
             userId: "",
-            startDate: moment(),
+            startDate: moment()._d,
             endDate: "",
             website: "",
             duration: 0,
@@ -63,7 +62,6 @@ class AddDeal extends Component{
             this.props.history.push('/login');
         }
         else {
-            console.log('** this.props.auth.user.name', this.props.auth.user.name)
             this.setState({
                 author: this.props.auth.user.name,
                 userId: this.props.auth.user.id
@@ -72,29 +70,29 @@ class AddDeal extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('nexrProps AddDeal as Member', nextProps.errors)
         if(nextProps.errors) {
             this.setState({serverErr: nextProps.errors})
         }
     }
 
     onChange(e){
-        console.log('e.target.value', e.target.value);
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value}, () => {this.validateField(name, value)});
     }
+
     endDate(date) {
         this.setState({
             endDate: date
         });
-        var now = moment(new Date()),
+        var now = moment(),
         end = moment(date),
         duration = moment(end).diff(now, 'days') + 1;
         this.setState({
             duration: duration
         });
     }
+    
     startDate(date) {
         this.setState({
             startDate: date
@@ -102,7 +100,6 @@ class AddDeal extends Component{
     }
 
     handleChangeCity(e) {
-        console.log('city', e.target.value);
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value}, () => {this.validateField(name, value)});
@@ -193,7 +190,6 @@ class AddDeal extends Component{
     onSubmit(e){
         e.preventDefault();
         let newPost = this.state;
-        console.log('newpost', newPost)
         this.setState({previewPost: true})
     }
 
@@ -227,7 +223,6 @@ class AddDeal extends Component{
     }
     
     render(){
-        console.log('state',this.state)
         const { serverErr } = this.state
         let preview = <div className="container">
             <div className="row text-center space-top">
@@ -359,8 +354,11 @@ class AddDeal extends Component{
                                     selected={this.state.startDate}
                                     onChange={this.startDate} 
                                     dateFormat="MMMM d, yyyy"
+
                                 />
                             </div>
+
+                            
                             <div className="col">
                                 <label htmlFor="text">Deal Ends</label>
                                 <DatePicker
