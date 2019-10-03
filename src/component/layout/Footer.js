@@ -59,7 +59,7 @@ export default() => {
 
                         <div className="">
                             <p className="footerDescription">
-                                Copyright & copy;{new Date().getFullYear()} Inc. NY, U.S. © All right Reversed <a className="text-green ml-2" href="http://realcheapny.com" target="blank"> realcheapny.com</a>
+                                Copyright & &#169;{new Date().getFullYear()} Inc. NY, U.S. © All right Reversed <a className="text-green ml-2" href="http://realcheapny.com" target="blank"> realcheapny.com</a>
                             </p>
                         </div>
                         
