@@ -288,6 +288,7 @@ Description     : A file that contains all styles for Carousel.js.
 .title {
   font-size: 28px;
   margin-top: 14px;
+  cursor: pointer;
 }
 
 /* FOOTER */
