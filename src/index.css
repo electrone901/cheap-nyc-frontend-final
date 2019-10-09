@@ -76,8 +76,7 @@ body {
 }
 
 .filterbutton {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .background {
@@ -837,3 +836,14 @@ input:hover .hover-img span {
   max-height:auto;
 }
 
+/* utilties */
+.underline{
+  padding-bottom: 5px;
+  border-bottom: 2px solid blue;
+}
+
+@media(max-width: 600px){
+  .title{
+    font-size: 1.2rem;
+  }
+}

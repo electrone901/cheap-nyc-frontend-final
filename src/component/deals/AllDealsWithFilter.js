@@ -317,16 +317,16 @@ class AllDealsWithFilter extends Component{
     return(
         <div>
           <div className="d-flex justify-content-around">
-            <h1
-              className={this.state.filerMode === "category" ? "title text-center text-primary" : "title text-center"}
+            <h2
+              className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "category"})}>
                 Explore by Category
-            </h1>
-            <h1
-              className={this.state.filerMode === "name" ? "title text-center text-primary" : "title text-center"}
+            </h2>
+            <h2
+              className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "name"})}>
                 Explore by Name
-            </h1>
+            </h2>
           </div>
           {this.state.filerMode === "category" ? filterbutton : searchBar}
           <div>
