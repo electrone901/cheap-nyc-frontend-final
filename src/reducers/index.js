@@ -6,8 +6,6 @@ import addLikeReducer from './addLikeReducer';
 import authReducer from './authReducer';
 import errorReducer from './errorReducer';
 import userReducer from './userReducer';
-import transactionReducer from './transactionReducer';
-import stockReducer from './stockReducer';
 
 export default combineReducers({
     auth: authReducer,
@@ -16,7 +14,5 @@ export default combineReducers({
     addReview: addReviewReducer,
     addLike: addLikeReducer,
     addFlag: addFlagReducer,
-    user: userReducer,
-    transactions: transactionReducer,
-    stocks: stockReducer
+    user: userReducer
 });

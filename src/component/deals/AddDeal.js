@@ -189,7 +189,6 @@ class AddDeal extends Component{
     // formData allows to append data to obj
     onSubmit(e){
         e.preventDefault();
-        let newPost = this.state;
         this.setState({previewPost: true})
     }
 
