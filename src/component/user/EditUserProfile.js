@@ -81,7 +81,7 @@ class EditUserProfile extends Component{
         let interestString = "";
         // get an interestString
         for(let i =0; i < userInterestInput.length; i++) {
-            if(i == userInterestInput.length-1) interestString += userInterestInput[i];
+            if(i === userInterestInput.length-1) interestString += userInterestInput[i];
             else {
                 interestString += userInterestInput[i]+ ", ";
             }

@@ -20,7 +20,6 @@ import Feedback from './component/how_it_works&credits/Feedback';
 import Contact from './component/how_it_works&credits/Contact';
 import Deal from './component/deals/Deal';
 import AddReview from './component/review/AddReview';
-import AddReviewAsGuest from './component/review/AddReviewAsGuest';
 import UserProfile from './component/user/UserProfile';
 import EditUserProfile from './component/user/EditUserProfile';
 
@@ -62,7 +61,6 @@ class App extends Component {
                 <Route exact path="/user/:id" component={UserProfile} />
                 <Route exact path="/profile/:id/edit" component={EditUserProfile} />
                 <Route exact path="/addReview/:id" component={AddReview} />
-                <Route exact path="/addReview-guest/:id" component={AddReviewAsGuest} />
                 <Route exact path="/howItWorks" component={howItWorks} />
                 <Route exact path="/membership" component={Membership} />
                 <Route exact path="/contact-us" component={Contact} />

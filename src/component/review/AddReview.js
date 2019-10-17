@@ -75,15 +75,15 @@ class AddReview extends Component {
                                 <div  className={classnames('form-control form-control-lg rating', {
                                         'is-invalid': errors.rating
                                     })}>
-                                    <input onChange={this.onChange} value={this.state.rating} id="star5" name="rating" type="radio" value="5" className="radio-btn hide"  />
+                                    <input onChange={this.onChange} value={this.state.rating || "5"} id="star5" name="rating" type="radio" className="radio-btn hide"  />
                                     <label htmlFor="star5" >☆</label>
-                                    <input onChange={this.onChange} value={this.state.rating} id="star4" name="rating" type="radio" value="4" className="radio-btn hide" />
+                                    <input onChange={this.onChange} value={this.state.rating || "4"} id="star4" name="rating" type="radio" className="radio-btn hide" />
                                     <label htmlFor="star4" >☆</label>
-                                    <input  onChange={this.onChange} value={this.state.rating}id="star3" name="rating" type="radio" value="3" className="radio-btn hide" />
+                                    <input  onChange={this.onChange} value={this.state.rating || "3"}id="star3" name="rating" type="radio" className="radio-btn hide" />
                                     <label htmlFor="star3" >☆</label>
-                                    <input onChange={this.onChange} value={this.state.rating} id="star2" name="rating" type="radio" value="2" className="radio-btn hide" />
+                                    <input onChange={this.onChange} value={this.state.rating || "2"} id="star2" name="rating" type="radio" className="radio-btn hide" />
                                     <label htmlFor="star2" >☆</label>
-                                    <input onChange={this.onChange} value={this.state.rating} id="star1" name="rating" type="radio" value="1" className="radio-btn hide" />
+                                    <input onChange={this.onChange} value={this.state.rating || "1"} id="star1" name="rating" type="radio" className="radio-btn hide" />
                                     <label htmlFor="star1" >☆</label>
                                     <div className="clear"></div>
                                 </div>
