@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { registerUser } from '../../actions/authActions';
 import ReactGA from 'react-ga';
+import TextInput from '../common/TextInput';
 
 export const initGA = () => {
   console.log('**initGA');
@@ -134,14 +135,13 @@ class Register extends Component{
                           <h5 className="text-center">Sign Up with an Email</h5>
                           <form noValidate onSubmit={this.onSubmit}>
                             <div className="form-group heightForm">
-                              <input type="text"
-                                className={classnames('form-control form-control-lg', {
-                                  'is-invalid': errors.name
-                                })}
+                              <TextInput
+                                type="text"
                                 placeholder="Name"
                                 name="name"
                                 value={this.state.name}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.name} />
                                 {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                             </div>
 
@@ -163,37 +163,34 @@ class Register extends Component{
                             </div>
 
                             <div className="form-group">
-                              <input type="email"
-                                className={classnames('form-control form-control-lg', {
-                                  'is-invalid': errors.email
-                                })}
+                              <TextInput
+                                type="email"
                                 placeholder="Email Address"
                                 name="email"
                                 value={this.state.email}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.email} />
                                 {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                             </div>
                             <div className="form-group">
-                              <input type="password"
-                                className={classnames('form-control form-control-lg', {
-                                  'is-invalid': errors.password
-                                })}
+                              <TextInput
+                                type="password"
                                 placeholder="Password"
                                 name="password"
                                 value={this.state.password}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.password} />
                                 {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                             </div>
 
                             <div className="form-group">
-                              <input type="password"
-                                className={classnames('form-control form-control-lg', {
-                                  'is-invalid': errors.confirmPassword
-                                })}
+                              <TextInput
+                                type="password"
                                 placeholder="Confirm Password"
                                 name="confirmPassword"
                                 value={this.state.confirmPassword}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.confirmPassword} />
                                 {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" />

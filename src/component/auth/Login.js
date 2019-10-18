@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
-import classnames from 'classnames';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginUser } from '../../actions/authActions';
 import ReactGA from 'react-ga';
+import TextInput from '../common/TextInput';
 
 export const initGA = () => {
   console.log('**initGA');
@@ -90,10 +90,8 @@ class Login extends Component{
     };
 
     render(){
-      console.log('this.props.auth.user.name', this.props)
-
         const { errors } = this.state;
-        console.log('state', this.state)
+        
         return(
             <div className="register">
                 <div className="container">
@@ -125,27 +123,23 @@ class Login extends Component{
                           <h4 className="text-center">Login with Email</h4>
                           <form onSubmit={this.onSubmit}>
                             <div className="form-group">
-                              <input
+                              <TextInput
                                 type="email"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': errors.email
-                                })}
                                 placeholder="Email Address"
                                 name="email"
                                 value={this.state.email}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.email} />
                                 {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                             </div>
                             <div className="form-group">
-                              <input
+                              <TextInput
                                 type="password"
-                                className={classnames('form-control form-control-lg', {
-                                    'is-invalid': errors.password
-                                })}
                                 placeholder="Password"
                                 name="password"
                                 value={this.state.password}
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                                error={errors.password} />
                                 {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                             </div>
                             <input type="submit" className="btn btn-info btn-block mt-4" />
