@@ -2,7 +2,6 @@ import axios from '../axios-stocks';
 import { GET_ERRORS, POST_REVIEW } from './types';
 
 export const postReview = (reviewData, itemId, history) => dispatch => {
-    console.log('action postReview actions', reviewData, itemId, history)
     axios.post('/items/' + itemId + '/reviews', reviewData)
     .then(res => {
         dispatch({

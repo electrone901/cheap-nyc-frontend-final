@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { Link, withRouter  } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
@@ -126,7 +125,6 @@ class Register extends Component{
                         />
                       </div>
                       <div className="">
-                        <p className={classnames('form-control noColor', {'is-invalid': errors.email})}></p>
                         {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                       </div> 
                       <br/>
