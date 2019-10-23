@@ -27,17 +27,13 @@ class RegisterWithEmail extends Component{
     }
 
     testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
       window.FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
       });
     }
 
     statusChangeCallback(response) {
-      console.log('statusChangeCallback');
-      console.log(response);
       if (response.status === 'connected') {
         this.testAPI();
       } else if (response.status === 'not_authorized') {
@@ -49,14 +45,13 @@ class RegisterWithEmail extends Component{
 
     checkLoginState() {
         window.FB.getLoginStatus(function(response) {
-            console.log('MyResponse', response)
         this.statusChangeCallback(response);
       }.bind(this));
     }
 
     handleFBLogin() {
-        window.FB.login(this.checkLoginState());
-        }
+      window.FB.login(this.checkLoginState());
+    }
 
     render() {
         return (
@@ -64,9 +59,8 @@ class RegisterWithEmail extends Component{
                     <button
                         classnames = "btn-facebook"
                         id         = "btn-social-login"
-                        onClick = {this.handleFBLogin}
-                        >
-                        <span className="fa fa-facebook"></span> Luis Sign in with Facebook
+                        onClick = {this.handleFBLogin}>
+                        <span className="fa fa-facebook"></span> 
                     </button>
                 </div>
                );

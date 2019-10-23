@@ -7,7 +7,6 @@ import twitter from '../../img/t.png';
 import ReactGA from 'react-ga';
 
 export const initGA = () => {
-  console.log('**initGA contact');
   ReactGA.initialize('UA-142224072-1');
 }
 export const loadPageView = () => {
@@ -24,7 +23,6 @@ class Contact extends Component{
   render(){
       
       return(
-        // download the logos and added them 
           <div className="container">
             <br/>
             <div className="text-center">

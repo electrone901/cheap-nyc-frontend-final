@@ -1,21 +1,24 @@
 import axios from '../axios-stocks';
 
-import { GET_ERRORS, EDIT_USER , GET_USER} from './types';
+import {
+    GET_ERRORS,
+    EDIT_USER,
+    GET_USER
+} from './types';
 
 export const updateTitle = (userId, formData, history) => dispatch => {
     axios.put(`/users/${userId}/edit`, formData)
-    .then(res => {
-      if(res.errors){
-          return console.log(res.errors);
-      }
-      dispatch({
-          type: GET_USER,
-          payload: res.data.user
-      });
-      history.push(`/profile/${userId}`);
-    })
-  }
-  
+        .then(res => {
+            if (res.errors) {
+                return console.log(res.errors);
+            }
+            dispatch({
+                type: GET_USER,
+                payload: res.data.user
+            });
+            history.push(`/profile/${userId}`);
+        })
+}
 
 export const changeUserImage = (userId, newData, history) => dispatch => {
     axios.put(`/users/${userId}/edit-image`, newData)
@@ -26,7 +29,7 @@ export const changeUserImage = (userId, newData, history) => dispatch => {
             });
             history.push(`/profile/${userId}`);
         })
-       .catch(err =>
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data

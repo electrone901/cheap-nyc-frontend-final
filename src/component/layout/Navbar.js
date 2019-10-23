@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../../img/l3.png';
-// import Popup from '../deals/Popup';
 
 import { logoutUser } from '../../actions/authActions';
 
@@ -21,26 +20,12 @@ class Navbar extends Component {
 
   profile() {
     const { user } = this.props.auth;
-    console.log('userLuis', user.id)
     this.props.history.push(`/profile/${user.id}`);
   }
 
-  // togglePopup() {
-    
-  //   if(this.props.auth.isAuthenticated) {
-  //     this.props.history.push('/addDeal');
-  //   }
-  //   else {
-  //     this.setState({
-  //       showPopup: !this.state.showPopup
-  //     });
-  //   }
-  // }
   
   render() {
     const {isAuthenticated, user} = this.props.auth;
-    // const nameArray = user.name.split(" ");
-    // const name = nameArray[0];
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         

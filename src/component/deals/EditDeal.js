@@ -9,7 +9,6 @@ import { editItemDeal } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 export const loadPageView = () => {
@@ -69,7 +68,6 @@ class EditDeal extends Component{
                     return res.json();
                 })
                 .then(data => {
-                    console.log(data)
                     this.setState({
                         name: data.item.name,
                         company: data.item.company,
@@ -111,7 +109,6 @@ class EditDeal extends Component{
     }
 
     handleChangeCity(e) {
-        console.log('city', e.target.value);
         const name = e.target.name;
         const value = e.target.value;
         this.setState({[name]: value}, () => {this.validateField(name, value)});

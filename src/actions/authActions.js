@@ -1,5 +1,4 @@
 import jwt_decode from 'jwt-decode';
-
 import axios from '../axios-stocks';
 import setAuthToken from '../utilis/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER, GET_USER } from './types';
@@ -59,44 +58,42 @@ export const logoutUser = (history) => dispatch => {
   }
 };
 
-
-
 export const getUser = (userId) => dispatch => {
     const graphqlQuery = {
-            query: `
-                query{
-                  userById(id:"${userId}"){
-                    _id
-                    name
-                    image
-                    title
-                  }
+          query: `
+              query{
+                userById(id:"${userId}"){
+                  _id
+                  name
+                  image
+                  title
                 }
-            `
-        };
+              }
+          `
+      };
         
-        fetch('https://cnycserver.herokuapp.com/graphql', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(graphqlQuery)
-        })
-            .then(res => {
-                return res.json();
-            })
-            .then(resData =>{
-                if(resData.errors){
-                    return console.log(resData.errors);
-                }
-                dispatch({
-                    type: GET_USER,
-                    payload: resData.data.userById
-                });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+      fetch('https://cnycserver.herokuapp.com/graphql', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(graphqlQuery)
+      })
+      .then(res => {
+          return res.json();
+      })
+      .then(resData =>{
+          if(resData.errors){
+              return console.log(resData.errors);
+          }
+          dispatch({
+              type: GET_USER,
+              payload: resData.data.userById
+          });
+      })
+      .catch(err => {
+          console.log(err);
+      });
 };
 
 export const loseMoney = (moneyData, id) => dispatch => {

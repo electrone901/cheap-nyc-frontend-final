@@ -12,14 +12,6 @@ export default class Slider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // images: [
-            //     "https://react-slider.herokuapp.com/img/oriens-belt.jpg",
-            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
-            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
-            //     "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
-            // ],  "images/priceles.jpg",
-
-
             images: [
                 "images/b2.jpg",
                 "images/bestDeals.jpg",

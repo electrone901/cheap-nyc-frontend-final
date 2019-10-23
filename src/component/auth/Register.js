@@ -8,7 +8,6 @@ import ReactGA from 'react-ga';
 import TextInput from '../common/TextInput';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 
@@ -43,7 +42,6 @@ class Register extends Component{
     }
     
     componentWillReceiveProps(nextProps){
-      console.log('nextProps registe component', nextProps.errors)
         if(nextProps.errors){
             this.setState({errors: nextProps.errors});
         }
@@ -83,21 +81,17 @@ class Register extends Component{
     };
 
     responseFacebook = (response) => {
-      console.log('responseFacebook**', response)
       const newUser = new FormData();
       newUser.append('name', response.name);
       newUser.append('image', response.picture.data.url);
       newUser.append('email', response.email);
       newUser.append('password', response.userID);
       newUser.append('confirmPassword', response.userID);
-      console.log('reach form**', newUser)
       this.props.registerUser(newUser, this.props.history);
     }
 
     render(){
         const {errors} = this.state;
-        console.log('state', this.state);
-        
         return(
             <div className="register">
                 <div className="container">

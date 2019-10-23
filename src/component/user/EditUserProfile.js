@@ -79,7 +79,6 @@ class EditUserProfile extends Component{
         e.preventDefault();
         let userInterestInput = this.state.newUser.skills;
         let interestString = "";
-        // get an interestString
         for(let i =0; i < userInterestInput.length; i++) {
             if(i === userInterestInput.length-1) interestString += userInterestInput[i];
             else {

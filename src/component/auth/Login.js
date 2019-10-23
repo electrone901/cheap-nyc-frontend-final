@@ -9,7 +9,6 @@ import ReactGA from 'react-ga';
 import TextInput from '../common/TextInput';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 
@@ -81,7 +80,6 @@ class Login extends Component{
     };
 
     responseFacebook = (response) => {
-      console.log('responseFacebook',response)
       const userData  = {
         email:  response.email,
         password: response.userID

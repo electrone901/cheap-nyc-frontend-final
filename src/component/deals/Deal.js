@@ -48,7 +48,6 @@ class Deals extends Component{
     }
 
     reportPopup() {
-        //let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             this.setState({
                 reportPopup: !this.state.reportPopup
@@ -90,7 +89,6 @@ class Deals extends Component{
     }
 
     addFlag() {
-        //let itemId =  this.props.match.params.id;
         if(this.props.auth.isAuthenticated) {
             // this.props.history.push(`/addReview/${itemId}`)
         }
@@ -109,7 +107,6 @@ class Deals extends Component{
         const { auth } = this.props;
         const { post } = this.props.postDeal;
         
-        //let flags = post.flags;
         let likes = post.likes;
         let postId = this.props.match.params.id;
         let shareUrl = `http://cheapny.herokuapp.com/deal/${postId}`;    
@@ -133,7 +130,6 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
                 <div className="d-flex justify-content-between mt-1">
-                {/* groupCard-title text--sectionTitle text--ellipsisTwoLines */}
                     <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
                     <div className="d-flex mt-1">
                         {auth.user.id === post.userId ? DeleteButton : null}
@@ -273,7 +269,6 @@ class Deals extends Component{
                                         <Link to={`/user/${review.userId}`} className="author-name">
                                             {review.name}
                                         </Link>
-                                        {/* <p className="author-name">{review.name}</p> */}
                                     </div>
                                 </div>
                 

@@ -1,5 +1,8 @@
 import axios from '../axios-stocks';
-import { GET_ERRORS, POST_REVIEW } from './types';
+import {
+    GET_ERRORS,
+    POST_REVIEW
+} from './types';
 
 export const postReview = (reviewData, itemId, history) => dispatch => {
     axios.post('/items/' + itemId + '/reviews', reviewData)
@@ -11,8 +14,8 @@ export const postReview = (reviewData, itemId, history) => dispatch => {
     })
     .then(res => {
         history.push(`/deal/${itemId}`);
-    }) 
-    .catch(err => 
+    })
+    .catch(err =>
         dispatch({
             type: GET_ERRORS,
             payload: err.response.data

@@ -4,7 +4,6 @@ Description     : is the left arrow of our carousel  using font-awesome
 ******************************************************************************/
 
 import React from 'react';
-// import '../../sass/main.scss';
 
 // functional component
 const LeftArrow = (props) => {

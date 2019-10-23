@@ -23,7 +23,6 @@ class howItWorks extends Component{
                         CheapNy collects and displays deals into a simple, understandable format 
                         making it the one-stop shop for all New Yorkers, new and old. Contact us to <a className="btn btn-primary btn-width" href="mailto:realcheapny@gmail.com?Subject=Feedback-Suggestions" target="_top">realcheapny@gmail.com</a>
                     </p>
-                    {/* <p>CheapNy aggregates many deals into a simple, understandable format, this is the one stop shop for locals and tourist in NYC to find more reasonably priced ways to have fun. Everyday, we continue to grow our outreach throughout the city, and continue to find more ways for you to save money doing the things you love. Your feedback is crucial, and we would love to hear from you. Contact us to <a className="btn btn-primary" href="mailto:realcheapny@gmail.com?Subject=Feedback-Suggestions" target="_top">realcheapny@gmail.com</a></p> */}
                     
                     <br/>
                     <h3 className="how-works-title">How do we ensure deals are always up to date?</h3>

@@ -119,7 +119,6 @@ class UserProfile extends Component{
         formData.append('city', this.state.city);
         formData.append('description', this.state.description);
         formData.append('author', this.state.author);
-        // this.props.postDeal(formData, this.props.history);
     }
 
 
@@ -168,7 +167,6 @@ class UserProfile extends Component{
 
     }
     render(){
-        //const { err } = this.state;
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class ReviewPopup extends Component {
     render() {
-        console.log('props reviewPopup', this.props.id)
         let { id } = this.props;
       return (
         <div className='popup'>

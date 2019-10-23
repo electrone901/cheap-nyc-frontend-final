@@ -1,26 +1,29 @@
 import axios from '../axios-stocks';
-import { GET_ERRORS, POST_DEAL, GET_DEAL, GET_DEALS } from './types';
+import {
+    GET_ERRORS,
+    POST_DEAL,
+    GET_DEAL,
+    GET_DEALS
+} from './types';
 
 export const postDeal = (postData, history) => dispatch => {
     axios.post('/items/', postData)
-    .then(res => {
-        dispatch({
-            type: POST_DEAL,
-            payload: res.data
+        .then(res => {
+            dispatch({
+                type: POST_DEAL,
+                payload: res.data
+            });
+        })
+        .then(res => history.push('/'))
+        .catch(err => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
         });
-      }  
-    )
-    .then(res => history.push('/'))
-    .catch(err => {
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        });
-      }
-    );
 };
 
-export const editItemDeal = (postData, itemId,  history) => dispatch => {
+export const editItemDeal = (postData, itemId, history) => dispatch => {
     axios.put(`/items/${itemId}`, postData)
         .then(res => history.push(`/deal/${itemId}`))
         .catch(err => {
@@ -28,11 +31,10 @@ export const editItemDeal = (postData, itemId,  history) => dispatch => {
                 type: GET_ERRORS,
                 payload: err.response.data
             });
-          }
-    );
+        });
 };
 
-export const removeADeal = (itemId,  history) => dispatch => {
+export const removeADeal = (itemId, history) => dispatch => {
     axios.delete(`/items/${itemId}`, itemId)
         .then(res => history.push('/'))
         .catch(err => {
@@ -40,24 +42,22 @@ export const removeADeal = (itemId,  history) => dispatch => {
                 type: GET_ERRORS,
                 payload: err.response.data
             });
-          }
-    );
+        });
 };
 
 export const getDeal = (url, history) => dispatch => {
     fetch(url)
         .then(res => {
-            console.log('res', res);
-            if(res.status === 404){
+            if (res.status === 404) {
                 history.push('/nodealfound');
             }
             return res.json();
         })
         .then(data => {
-            
+
             dispatch({
                 type: GET_DEAL,
-                payload:  data.item
+                payload: data.item
             });
         })
         .catch((err) => {
@@ -66,16 +66,14 @@ export const getDeal = (url, history) => dispatch => {
 };
 
 export const getDeals = (url) => dispatch => {
-    console.log('getDeals  ****')
     fetch(url)
         .then(res => {
-            console.log('res Luis', res);
             return res.json();
         })
         .then(data => {
             dispatch({
                 type: GET_DEALS,
-                payload:  data.items
+                payload: data.items
             });
         })
         .catch((err) => {
@@ -84,16 +82,14 @@ export const getDeals = (url) => dispatch => {
 };
 
 export const getFilteredDeals = (url) => dispatch => {
-    console.log('getDeals  ****')
     fetch(url)
         .then(res => {
-            console.log('res Luis', res);
             return res.json();
         })
         .then(data => {
             dispatch({
                 type: GET_DEALS,
-                payload:  data.items
+                payload: data.items
             });
         })
         .catch((err) => {

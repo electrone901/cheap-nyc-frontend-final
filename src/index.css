@@ -739,6 +739,10 @@ input:hover .hover-img span {
 }
 
 /* ALL DEALS */
+.search {
+  height: 50px;
+}
+
 .figure-caption {
   padding-right: 5px;
 }

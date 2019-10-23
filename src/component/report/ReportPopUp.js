@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReactGA from 'react-ga';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 export const loadPageView = () => {
@@ -50,7 +49,6 @@ class ReportPopUp extends Component {
     }
     
     render() {
-        //const {errors} = this.state;
         return (
             <div className='popup'>
             <div className='popup_inner'>

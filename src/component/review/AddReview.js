@@ -6,7 +6,6 @@ import { postReview } from '../../actions/addReview';
 import ReactGA from 'react-ga';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 
@@ -51,7 +50,6 @@ class AddReview extends Component {
     }
 
     onSubmit(e) {
-        console.log('click', )
         e.preventDefault();
         const reviewData = {
             name: this.state.author,
@@ -62,7 +60,6 @@ class AddReview extends Component {
     }
  
     render() {
-        console.log('props', this.props)
         const {errors} = this.state;
         return(
             <div className="container">
@@ -125,8 +122,3 @@ const mapStateTpProps = state => ({
     errors: state.errors
 })
 export default connect(mapStateTpProps, {postReview}) (withRouter(AddReview));
-
-
-// Link - https://cnycserver.herokuapp.com/items/:itemId/reviews
-// Request - POST
-// Body - name, rating, text

@@ -4,7 +4,6 @@ Description     : is the right arrow of our carousel  using font-awesome
 ******************************************************************************/
 
 import React from 'react';
-// import '../../sass/main.scss';
 
 const RightArrow = (props) => {
     return (

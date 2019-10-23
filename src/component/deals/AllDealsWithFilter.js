@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
 import { getDeals } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
+import qsearch from '../../img/qsearch1.png';
 
 export const initGA = () => {
-  console.log('**initGA');
   ReactGA.initialize('UA-142224072-1');
 }
 export const loadPageView = () => {
@@ -28,6 +28,7 @@ class AllDealsWithFilter extends Component{
       totalDeals: 0,
       currentPage: 0,
       filerMode: 'category',
+      searchImg: true, 
       dealName: ''
     };
     this.loadPage = this.loadPage.bind(this);
@@ -54,7 +55,6 @@ class AllDealsWithFilter extends Component{
     let url = "https://cnycserver.herokuapp.com/items";
     fetch(url)
     .then(res => {
-        console.log('res YASS', res);
         return res.json();
     })
     .then((data) => {
@@ -132,15 +132,12 @@ class AllDealsWithFilter extends Component{
   }
 
   componentDidMount() {
-    // this.props.history.listen(location => ReactGA.pageview(location.pathname)); 
     initGA();
     loadPageView();
     window.scrollTo(0,0);
     let url = "https://cnycserver.herokuapp.com/items";
-    // this.props.getDeals(url);
     fetch(url)
     .then(res => {
-        console.log('res', res);
         return res.json();
     })
     .then((data) => {
@@ -162,7 +159,6 @@ class AllDealsWithFilter extends Component{
     let url = "https://cnycserver.herokuapp.com/items?page=" + number;
     fetch(url)
     .then(res => {
-        console.log('res', res);
         return res.json();
     })
     .then((data) => {
@@ -191,7 +187,6 @@ class AllDealsWithFilter extends Component{
 
   handleChangePrice(e) {
     let prices = e.target.value.split('&');
-    console.log('prices',prices)
     this.setState({
       price1: prices[0],
       price2: prices[1]
@@ -316,18 +311,22 @@ class AllDealsWithFilter extends Component{
 
     return(
         <div>
+          
           <div className="d-flex justify-content-around">
             <h2
               className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "category"})}>
-                Explore by Category
+                ✨Explore by Category
             </h2>
             <h2
               className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
-              onClick={() => this.setState({filerMode: "name"})}>
+              onClick={() => this.setState({filerMode: "name", searchImg: false})}>
                 Explore by Name
+                <span><img src={qsearch} className="search" alt="search image" />  </span>
+              
             </h2>
           </div>
+
           {this.state.filerMode === "category" ? filterbutton : searchBar}
           <div>
             <AllDeals data={this.state.data} />
