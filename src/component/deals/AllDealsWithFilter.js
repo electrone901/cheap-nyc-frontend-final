@@ -316,13 +316,13 @@ class AllDealsWithFilter extends Component{
             <h2
               className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "category"})}>
-                ✨Explore by Category
+                <span role="img" aria-label="sparkles">✨</span>Explore by Category
             </h2>
             <h2
               className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "name", searchImg: false})}>
                 Explore by Name
-                <span><img src={qsearch} className="search" alt="search image" />  </span>
+                <span><img src={qsearch} className="search" alt="Search Icon" />  </span>
               
             </h2>
           </div>
