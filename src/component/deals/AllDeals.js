@@ -18,13 +18,16 @@ class AllDeals extends Component {
                                 </Link>
                             </div>
                             <div className="space-all">
-                            <p className="text--sectionTitle">{item.name}  ${item.price} </p>
+                            <p className="text--sectionTitle">{item.name}</p>
                                 <div className="container2">
                                     <figcaption className="figure-caption container2-item"><i className="far fa-thumbs-up"></i> {item.likes.length} Likes</figcaption>
                                     <Link to={`/deal/${item._id}`} className="btn btn-primary btn-details">
                                         Details
                                     </Link>
                                 </div>
+                                <p className="m-0 text-l font-italic">
+                                    {item.price === 0 ? "Free" : "$" + item.price}
+                                </p>
                             </div>
                         </div>
                     </div>

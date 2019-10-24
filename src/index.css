@@ -846,6 +846,10 @@ input:hover .hover-img span {
   border-bottom: 2px solid blue;
 }
 
+.text-l{
+  font-size: 26px;
+}
+
 @media(max-width: 600px){
   .title{
     font-size: 1.2rem;
