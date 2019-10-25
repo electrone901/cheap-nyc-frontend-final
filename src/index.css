@@ -24,6 +24,13 @@ body {
   height: 60vh;
 }
 
+.login__line{
+  width: 2px;
+  height: 5rem;
+  position: relative;
+  background-color: #000;
+}
+
 /* SIGNUP */
 .noColor {
   border-color: #dc354500;

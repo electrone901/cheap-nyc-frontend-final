@@ -89,65 +89,78 @@ class Login extends Component{
 
     render(){
         const { errors } = this.state;
+
+        const socialMedia = (
+          <div className="d-flex flex-column align-items-center">
+            <GoogleLogin
+              className="googleLogin"
+              clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
+              buttonText="Login with Google"
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+              cookiePolicy={'single_host_origin'} />
+            <FacebookLogin
+              cssClass="facebookLogin"
+              icon="fa-facebook"
+              textButton=" Login with Facebook" 
+              appId="2516650448368322"
+              fields="name,email,picture"
+              onClick = {this.onClick}
+              callback={this.responseFacebook} />
+          </div>
+        );
+
+        const form = (
+          <div>
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <TextInput
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email} />
+                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+              </div>
+              <div className="form-group">
+                <TextInput
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password} />
+                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+              </div>
+              <input type="submit" className="btn btn-info btn-block mt-4" />
+            </form>
+          </div>
+        )
         
         return(
-            <div className="register">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-5 m-auto text-center space-top">
-                      <h1 className="title text-center">Log In</h1>
-                      <ToastContainer />
-                      <GoogleLogin
-                        className="googleLogin"
-                        clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
-                        buttonText="Login with Google"
-                        onSuccess={this.responseGoogle}
-                        onFailure={this.responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                      />
-                      <br/>
-                      <FacebookLogin
-                        cssClass="facebookLogin"
-                        icon="fa-facebook"
-                        textButton=" Login with Facebook" 
-                        appId="2516650448368322"
-                        fields="name,email,picture"
-                        onClick = {this.onClick}
-                        callback={this.responseFacebook}
-                      />
-                      <br/><br/>
-                      <div className="loginContainer space-top">
-                        <div className="col-md-10 m-auto">
-                          <h4 className="text-center">Login with Email</h4>
-                          <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                              <TextInput
-                                type="email"
-                                placeholder="Email Address"
-                                name="email"
-                                value={this.state.email}
-                                onChange={this.onChange}
-                                error={errors.email} />
-                                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                            </div>
-                            <div className="form-group">
-                              <TextInput
-                                type="password"
-                                placeholder="Password"
-                                name="password"
-                                value={this.state.password}
-                                onChange={this.onChange}
-                                error={errors.password} />
-                                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                            </div>
-                            <input type="submit" className="btn btn-info btn-block mt-4" />
-                          </form>
-                        </div>
-                      </div>
-
+            <div className="login">
+              <div className="container">
+                <h1 className="title text-center">Log In</h1>
+                <ToastContainer />
+                <div className="row">
+                  <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
+                    <h2 className="title text-center">With Social Media</h2>
+                    {socialMedia}
+                  </div>
+                  <div className="col-sm-12	col-md-2 col-lg-2 text-center space-top">
+                    <div className="d-flex flex-column align-items-center">
+                      <div className="login__line"></div>
+                      <p className="mt-3">OR</p>
+                      <div className="login__line"></div>
                     </div>
                   </div>
+                  <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
+                    <h2 className="title text-center">With Email</h2>
+                    {form}
+                  </div>
                 </div>
+              </div>
             </div>
         );
     }
