@@ -19,7 +19,7 @@ class AllDeals extends Component {
                             </div>
                             <div className="space-all">
                             <p className="text--sectionTitle">{item.name}</p>
-                                <div className="container2">
+                                <div className="container2 d-flex align-items-center">
                                     <figcaption className="figure-caption container2-item"><i className="far fa-thumbs-up"></i> {item.likes.length} Likes</figcaption>
                                     <Link to={`/deal/${item._id}`} className="btn btn-primary btn-details">
                                         Details
