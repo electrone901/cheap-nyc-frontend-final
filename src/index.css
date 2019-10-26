@@ -47,6 +47,7 @@ body {
 }
 
 .loginContainer {
+  padding: 1rem;
   background-color: #e9f1f273;
 }
 .facebookLogin {

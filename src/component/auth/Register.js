@@ -94,16 +94,14 @@ class Register extends Component{
         const {errors} = this.state;
 
         const socialMedia = (
-          <div>
+          <div className="d-flex flex-column align-items-center loginContainer space-top">
             <GoogleLogin
               className="googleLogin"
               clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
               buttonText="Sign Up with Google"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-            <br/>
+              cookiePolicy={'single_host_origin'} />
             <FacebookLogin
               cssClass="facebookLogin"
               icon="fa-facebook"
@@ -111,77 +109,78 @@ class Register extends Component{
               appId="2516650448368322"
               onClick = {this.onClick}
               fields="name,email,picture"
-              callback={this.responseFacebook}
-            />
+              callback={this.responseFacebook} />
           </div>
         );
 
         const form = (
-          <form noValidate onSubmit={this.onSubmit}>
-            <div className="form-group heightForm">
-              <TextInput
-                type="text"
-                placeholder="Name"
-                name="name"
-                value={this.state.name}
-                onChange={this.onChange}
-                error={errors.name} />
-                {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-            </div>
+          <div className="loginContainer space-top">
+            <form noValidate onSubmit={this.onSubmit}>
+              <div className="form-group heightForm">
+                <TextInput
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={errors.name} />
+                  {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
+              </div>
 
-            <div className="form-group">
-                <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
-                <div className="input-group mb-3">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text"></span>
-                    </div>
-                    <div className="custom-file">
-                        <input 
-                            type="file"
-                            className="custom-file-input"
-                            id="inputGroupFile01"
-                            onChange={this.fileSelectedHandler}/>
-                        <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                    </div>
-                </div>
-            </div>
+              <div className="form-group">
+                  <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
+                  <div className="input-group mb-3">
+                      <div className="input-group-prepend">
+                          <span className="input-group-text"></span>
+                      </div>
+                      <div className="custom-file">
+                          <input 
+                              type="file"
+                              className="custom-file-input"
+                              id="inputGroupFile01"
+                              onChange={this.fileSelectedHandler}/>
+                          <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                      </div>
+                  </div>
+              </div>
 
-            <div className="form-group">
-              <TextInput
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                error={errors.email} />
-                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-            </div>
-            <div className="form-group">
-              <TextInput
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChange}
-                error={errors.password} />
-                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-            </div>
+              <div className="form-group">
+                <TextInput
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email} />
+                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+              </div>
+              <div className="form-group">
+                <TextInput
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password} />
+                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+              </div>
 
-            <div className="form-group">
-              <TextInput
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                value={this.state.confirmPassword}
-                onChange={this.onChange}
-                error={errors.confirmPassword} />
-                {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
-            </div>
-            <input type="submit" className="btn btn-info btn-block mt-4" />
-            <p className="agreement"> 
-              When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
-            </p>
-          </form>
+              <div className="form-group">
+                <TextInput
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  value={this.state.confirmPassword}
+                  onChange={this.onChange}
+                  error={errors.confirmPassword} />
+                  {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
+              </div>
+              <input type="submit" className="btn btn-info btn-block mt-4" />
+              <p className="agreement"> 
+                When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
+              </p>
+            </form>     
+         </div>
         )
 
         return(
