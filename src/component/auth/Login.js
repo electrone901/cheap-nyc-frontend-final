@@ -141,23 +141,23 @@ class Login extends Component{
         return(
             <div className="login">
               <div className="container">
-                <h1 className="title text-center">Log In</h1>
+                <h1 className="login__title">Log In</h1>
                 <ToastContainer />
                 <div className="row">
                   <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
-                    <h2 className="title text-center">With Social Media</h2>
-                    {socialMedia}
+                    <h2 className="title text-center">With Email</h2>
+                    {form}
                   </div>
                   <div className="col-sm-12	col-md-2 col-lg-2 text-center space-top">
-                    <div className="d-flex flex-column align-items-center">
+                    <div className="d-flex flex-sm-row flex-md-column flex-sm-row justify-content-center align-items-center">
                       <div className="login__line"></div>
-                      <p className="mt-3">OR</p>
+                      <p className="mt-3 mx-3">OR</p>
                       <div className="login__line"></div>
                     </div>
                   </div>
                   <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
-                    <h2 className="title text-center">With Email</h2>
-                    {form}
+                    <h2 className="title text-center">With Social Media</h2>
+                    {socialMedia}
                   </div>
                 </div>
               </div>

@@ -21,7 +21,12 @@ body {
 }
 /* LOGIN */
 .login {
-  height: 60vh;
+  min-height: 60vh;
+}
+
+.login__title{
+  font-size: 3rem;
+  text-align: center;
 }
 
 .login__line{
@@ -855,6 +860,13 @@ input:hover .hover-img span {
 
 .text-l{
   font-size: 26px;
+}
+
+@media(max-width: 767px){
+  .login__line{
+    width: 90%;
+    height: 2px;
+  }
 }
 
 @media(max-width: 600px){
