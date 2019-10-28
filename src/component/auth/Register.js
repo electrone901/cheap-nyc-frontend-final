@@ -194,9 +194,9 @@ class Register extends Component{
                     </div>
                     <div className="col-sm-12	col-md-2 col-lg-2 text-center space-top">
                       <div className="d-flex flex-sm-row flex-md-column flex-sm-row justify-content-center align-items-center">
-                        <div className="login__line"></div>
+                        <div className="signup__line"></div>
                         <p className="mt-3 mx-3">OR</p>
-                        <div className="login__line"></div>
+                        <div className="signup__line"></div>
                       </div>
                     </div>
                     <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">

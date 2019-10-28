@@ -28,7 +28,6 @@ class Navbar extends Component {
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <ul className="navbar-nav ml-auto">
-        
         <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link to={`/profile/${user.id}`} className="nav-link">
             Profile
@@ -104,12 +103,12 @@ class Navbar extends Component {
                   Contact Us
                 </Link>
               </li>
-
               <li className="text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/addDeal" className="btn btn-primary">Create a post</Link>
+                <Link to="/addDeal" className="btn btn-primary">
+                  Create a post
+                </Link>
               </li>
             </ul>
-           
           </div>
           
         </div>

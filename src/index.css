@@ -31,7 +31,7 @@ body {
 
 .login__line{
   width: 2px;
-  height: 5rem;
+  height: 7.5rem;
   position: relative;
   background-color: #000;
 }
@@ -71,6 +71,14 @@ body {
 .heightForm {
   line-height: 1;
 }
+
+.signup__line{
+  width: 2px;
+  height: 16.3rem;
+  position: relative;
+  background-color: #000;
+}
+
 /* DEALS */
 
 .whenText {
@@ -865,6 +873,10 @@ input:hover .hover-img span {
 
 @media(max-width: 767px){
   .login__line{
+    width: 90%;
+    height: 2px;
+  }
+  .signup__line{
     width: 90%;
     height: 2px;
   }
