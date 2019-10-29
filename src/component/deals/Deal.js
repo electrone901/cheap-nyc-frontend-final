@@ -16,7 +16,6 @@ import {
     TwitterIcon,
     EmailIcon,
     FacebookIcon, } from 'react-share';
-import ReviewPopup from '../review/ReviewPopup';
 
 import ReportPopUp from '../report/ReportPopUp';
 import { ToastContainer, toast } from 'react-toastify';
@@ -41,9 +40,7 @@ class Deals extends Component{
             this.props.history.push(`/addReview/${itemId}`);
         }
         else {
-            this.setState({
-                showPopup: !this.state.showPopup
-            });
+            this.props.history.push("/login");
         }
     }
 
@@ -190,20 +187,6 @@ class Deals extends Component{
                 <div className="col-4 col-sm-4 col-md-4 text-center">
                     <button className="btn-reaction stylebutton" onClick={this.reportPopup.bind(this)}> Report</button>
                 </div>
-            </div>
-
-            {/* showPopup */}
-            <div className="container text-center"> 
-                {
-                    this.state.showPopup ?
-                    <ReviewPopup
-                        title= 'POST AS'
-                        text= 'Post as a member is reccomend'
-                        closePopup ={this.togglePopup.bind(this)}
-                        id={this.props.match.params.id}
-                    />
-                    : null
-                }
             </div>
 
             {/* ReportPopup */}
