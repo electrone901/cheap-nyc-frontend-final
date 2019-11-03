@@ -189,12 +189,14 @@ class AddDeal extends Component{
     // formData allows to append data to obj
     onSubmit(e){
         e.preventDefault();
-        this.setState({previewPost: true})
+        this.setState({previewPost: true});
+        window.scrollTo(0,0);
     }
 
     edit(e) {
         e.preventDefault();
-        this.setState({previewPost: false})
+        this.setState({previewPost: false});
+        window.scrollTo(0,0);
     }
 
     postDealToDataBase(e) {
