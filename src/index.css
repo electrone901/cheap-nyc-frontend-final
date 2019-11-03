@@ -240,6 +240,7 @@ Description     : A file that contains all styles for Carousel.js.
   position: relative;
   height: 100%;
   width: 100%;
+  opacity: .5;
 }
 
 .slide {
@@ -285,22 +286,32 @@ Description     : A file that contains all styles for Carousel.js.
   top: 30%;
   color: #fff;
 }
+
 .textSliderTitle {
+  font-size: 2.8rem;
   font-weight: 600;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 1rem;
 }
 
-.tParent__items__sign {
-  background: #f13a59;
-  color: #fff;
+.textSliderPara{
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 1.5rem;
+}
+
+.tParent__items__sign:link,
+.tParent__items__sign:visited {
+  background: #e95b73;
+  color: black;
   align-items: center;
   border-radius: 4px;
   box-sizing: border-box;
   display: inline-flex;
-  font-size: 14px;
+  font-size: 1.2rem;
   line-height: 1.6;
   padding: 8px 32px;
-  -webkit-transition: background .15s;
-  transition: background .15s;
   font-weight: 900;
   text-decoration: none;
 }
