@@ -316,6 +316,10 @@ Description     : A file that contains all styles for Carousel.js.
   text-decoration: none;
 }
 
+.tParent__items__sign:hover{
+  opacity: .8;
+}
+
 .title {
   font-size: 28px;
   margin-top: 14px;
@@ -896,5 +900,15 @@ input:hover .hover-img span {
 @media(max-width: 600px){
   .title{
     font-size: 1.2rem;
+  }
+
+  .textSliderTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .textSliderPara{
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 }
