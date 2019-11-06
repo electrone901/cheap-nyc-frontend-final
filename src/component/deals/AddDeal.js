@@ -5,8 +5,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import moment from 'moment';
-import { postDeal } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
+
+import { postDeal } from '../../actions/addPostDeal';
+
 
 export const initGA = () => {
   ReactGA.initialize('UA-142224072-1');
@@ -254,7 +256,10 @@ class AddDeal extends Component{
                     <button className="btn btn-info btn-block mt-4" onClick={this.edit.bind(this)}>Edit</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn btn-success btn-block mt-4" onClick={this.postDealToDataBase.bind(this)}>Publish <i className="fa fa-check" aria-hidden="true"></i></button>
+                    { this.props.loading.postLoading ? <p className="mt-4">Sending...</p> : 
+                        <button className="btn btn-success btn-block mt-4" onClick={this.postDealToDataBase.bind(this)}>
+                            Publish <i className="fa fa-check" aria-hidden="true"></i>
+                        </button> }
                 </div>
             </div>
             <hr/> 
@@ -355,7 +360,6 @@ class AddDeal extends Component{
                                     selected={this.state.startDate}
                                     onChange={this.startDate} 
                                     dateFormat="MMMM d, yyyy"
-
                                 />
                             </div>
 
@@ -482,7 +486,8 @@ class AddDeal extends Component{
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
+  loading: state.postDeal
 });
 
 export default connect(mapStateToProps, {postDeal})(AddDeal);

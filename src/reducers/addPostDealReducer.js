@@ -1,5 +1,6 @@
 const initialState = {
-    post: []
+    post: [],
+    postLoading: false
 };
 
 export default function(state = initialState, action) {
@@ -15,9 +16,19 @@ export default function(state = initialState, action) {
                 post: action.payload
             };
         case 'GET_DEALS':
-            return {
+            return{
                 ...state,
                 post: action.payload
+            };
+        case 'SET_DEALLOADING':
+            return{
+                ...state,
+                postLoading: true
+            };
+        case 'REMOVE_DEALLOADING':
+            return{
+                ...state,
+                postLoading: false
             }
         default:
             return state;

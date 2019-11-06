@@ -3,23 +3,30 @@ import {
     GET_ERRORS,
     POST_DEAL,
     GET_DEAL,
-    GET_DEALS
+    GET_DEALS,
+    SET_DEALLOADING,
+    REMOVE_DEALLOADING
 } from './types';
 
 export const postDeal = (postData, history) => dispatch => {
+    dispatch(setDealLoading());
+
     axios.post('/items/', postData)
         .then(res => {
             dispatch({
                 type: POST_DEAL,
                 payload: res.data
             });
+            dispatch(removeDealLoading());
         })
-        .then(res => history.push('/'))
+        .then(() => history.push('/'))
         .catch(err => {
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
             });
+
+            dispatch(removeDealLoading());
         });
 };
 
@@ -96,3 +103,15 @@ export const getFilteredDeals = (url) => dispatch => {
             console.log('There was a problem with your fetch request' + err.message);
         });
 };
+
+const setDealLoading = () => {
+    return{
+        type: SET_DEALLOADING
+    }
+}
+
+const removeDealLoading = () => {
+    return{
+        type: REMOVE_DEALLOADING
+    }
+}
