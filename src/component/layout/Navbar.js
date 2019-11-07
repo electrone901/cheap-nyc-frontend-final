@@ -37,14 +37,14 @@ class Navbar extends Component {
         <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link
             to={`/profile/${user.id}`}
-            className={classnames("nav-link", 
+            className={classnames("nav-link font-italic", 
               this.state.currentLink === 'profile' ? 'active' : null
             )}
             onClick={() => this.onChangeLink("profile")}>
             Profile
           </Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item font-italic">
           <Link to="/" onClick={this.onLogoutClick.bind(this)} className="nav-link">
               Logout
           </Link>
@@ -58,7 +58,7 @@ class Navbar extends Component {
         <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link
             to="/register"
-            className={classnames("nav-link", 
+            className={classnames("nav-link font-italic", 
               this.state.currentLink === 'register' ? 'active' : null
             )}
             onClick={() => this.onChangeLink("register")}>
@@ -68,7 +68,7 @@ class Navbar extends Component {
         <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link
             to="/login"
-            className={classnames("nav-link", 
+            className={classnames("nav-link font-italic", 
               this.state.currentLink === 'login' ? 'active' : null
             )}
             onClick={() => this.onChangeLink("login")}>
