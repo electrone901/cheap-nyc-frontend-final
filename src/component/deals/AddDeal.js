@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import ReactGA from 'react-ga';
 
+import PreviewDeal from './PreviewDeal';
 import { postDeal } from '../../actions/addPostDeal';
 
 
@@ -17,7 +18,6 @@ export const loadPageView = () => {
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);
 }
-
 
 class AddDeal extends Component{
     constructor(){
@@ -226,44 +226,7 @@ class AddDeal extends Component{
     }
     
     render(){
-        const { serverErr } = this.state
-        let preview = <div className="container">
-            <div className="row text-center space-top">
-                <div className="col-12 col-sm-12 col-md-12">
-                    <h2 className="title">Confirm the information below</h2>
-                </div>
-            </div>
-            {
-                this.state.image ? (
-                    <div className="col-12 text-center background">
-                        <img className="imagePreview" src={this.state.imageFile} alt="previewImage"/>
-                    </div>
-                ): null
-            }
-            <div className="space-top">
-                <p> <span className="field-name"> Company Name: </span>{this.state.company}</p>
-                <p> <span className="field-name"> Item name: </span>{this.state.name}</p>
-                <p> <span className="field-name"> Category: </span> {this.state.category}</p>
-                <p> <span className="field-name"> Item price: </span> {this.state.price}</p>
-                <p> <span className="field-name"> Address: </span>{this.state.address}</p>
-                <p> <span className="field-name"> City: </span>{this.state.city}</p>
-                <p> <span className="field-name"> Product Description: </span>{this.state.description}</p>      
-                <p> <span className="field-name"> Website: </span>{this.state.website ? this.state.website : "none"}</p>
-            </div>
-            <br/>
-            <div className="row">
-                <div className="col-4 col-sm-4 col-md-4 text-center">
-                    <button className="btn btn-info btn-block mt-4" onClick={this.edit.bind(this)}>Edit</button>
-                </div>
-                <div className="col-4 col-sm-4 col-md-4 text-center">
-                    { this.props.loading.postLoading ? <p className="mt-4">Sending...</p> : 
-                        <button className="btn btn-success btn-block mt-4" onClick={this.postDealToDataBase.bind(this)}>
-                            Publish <i className="fa fa-check" aria-hidden="true"></i>
-                        </button> }
-                </div>
-            </div>
-            <hr/> 
-        </div>;
+        const { serverErr } = this.state;
 
         let form = <div className="container">
             <div className="row">
@@ -476,9 +439,13 @@ class AddDeal extends Component{
         </div>
         return(
             <div className="addDeal">
-                {
-                    this.state.previewPost ? preview: form
-                }
+                { this.state.previewPost ?
+                    <PreviewDeal
+                        dealData={this.state}
+                        edit={this.edit.bind(this)}
+                        loading={this.props.loading.postLoading}
+                        postDeal={this.postDealToDataBase.bind(this)} />
+                         : form }
             </div>
         );
     }
