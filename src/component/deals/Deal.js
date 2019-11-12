@@ -127,7 +127,7 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
                 <div className="d-flex justify-content-between mt-1">
-                    <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> $ {post.price}</span></h2>
+                    <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> ${post.price}</span></h2>
                     <div className="d-flex mt-1">
                         {auth.user.id === post.userId ? DeleteButton : null}
                         {auth.user.id === post.userId ? EditButton : null}

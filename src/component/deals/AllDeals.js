@@ -26,7 +26,7 @@ class AllDeals extends Component {
                                     </Link>
                                 </div>
                                 <p className="m-0 text-l font-italic">
-                                    {item.price === 0 ? "Free" : "$" + item.price}
+                                    {item.price === 0 ? "Free" : "$" + item.price.toFixed(2)}
                                 </p>
                             </div>
                         </div>
@@ -37,4 +37,5 @@ class AllDeals extends Component {
       </div>
     }
 }
+
 export default AllDeals;
