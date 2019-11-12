@@ -540,8 +540,9 @@ input:hover .hover-img span {
 
 /* HOWITWORKS */
 .frame-custome {
+  margin-top: 2rem;
   width: 90%;
-  height: 570px;
+  height: 90vh;
 }
 .tiptop {
   text-align: center;
