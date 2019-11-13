@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import AllDeals from './AllDeals';
 import { getDeals } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
-import qsearch from '../../img/qsearch1.png';
 
 export const initGA = () => {
   ReactGA.initialize('UA-142224072-1');
@@ -321,9 +320,7 @@ class AllDealsWithFilter extends Component{
             <h2
               className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "name", searchImg: false})}>
-                Explore by Name
-                <span><img src={qsearch} className="search" alt="Search Icon" />  </span>
-              
+                Explore by Name<i class="fas fa-search"></i>
             </h2>
           </div>
 
