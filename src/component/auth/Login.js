@@ -36,6 +36,7 @@ class Login extends Component{
     successfulLogin = () => {
       toast.success(`🚀  Login Successful!`)
     }
+    
     componentDidMount(){
       initGA();
       loadPageView();

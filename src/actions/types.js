@@ -8,7 +8,6 @@ export const SET_DEALLOADING = 'SET_DEALLOADING';
 export const REMOVE_DEALLOADING = 'REMOVE_DEALLOADING';
 
 export const ADD_LIKE = 'ADD_LIKE';
-export const ADD_FLAG = 'ADD_FLAG';
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const GET_USER = 'GET_USER';

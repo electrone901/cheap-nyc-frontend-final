@@ -21,7 +21,6 @@ import ReportPopUp from '../report/ReportPopUp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
-import { addFlag } from '../../actions/addFlagActions';
 import { getDeal, removeADeal } from '../../actions/addPostDeal';
  
 class Deals extends Component{
@@ -317,4 +316,4 @@ const mapStateToProps = state => ({
     postDeal: state.postDeal
 });
 
-export default connect(mapStateToProps, { addLike, addFlag, getDeal, removeADeal}) (withRouter(Deals));
+export default connect(mapStateToProps, { addLike, getDeal, removeADeal}) (withRouter(Deals));
