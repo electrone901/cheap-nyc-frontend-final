@@ -111,3 +111,10 @@
     left: 0;
     color: #FFD700;
 }
+
+@media (max-width:600px){
+  /* ADD REVIEW */
+  .rating {
+    width: 100%;
+  }
+}

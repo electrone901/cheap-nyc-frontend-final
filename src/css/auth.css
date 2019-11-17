@@ -58,3 +58,14 @@
     position: relative;
     background-color: #000;
 }
+
+@media(max-width: 767px){
+    .login__line{
+      width: 90%;
+      height: 2px;
+    }
+    .signup__line{
+      width: 90%;
+      height: 2px;
+    }
+  }

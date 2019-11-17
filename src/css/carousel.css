@@ -95,3 +95,19 @@
     margin-top: 14px;
     cursor: pointer;
 }
+
+@media(max-width: 600px){
+    .title{
+      font-size: 1.2rem;
+    }
+  
+    .textSliderTitle {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    
+    .textSliderPara{
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+}

@@ -110,4 +110,33 @@
 
 .messageImg {
     width: 100%;
-}  
+}
+@media (max-width:600px)  {
+    /* USER */
+    .thumbnail-user-profile {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-top: 50px;
+    }
+
+
+    .listPostUser {
+        width: 100%;
+    }
+
+    .start-img {
+        height: 50px;
+    }
+
+    .wh:after {
+        content: "";
+        position: absolute;
+        border-top: 5px solid rgb(255, 240, 240);
+        left: 25%;
+        bottom: 0;
+        width: 50%;
+        height: 0.2px;
+        margin-bottom: -10px;
+    }
+}
