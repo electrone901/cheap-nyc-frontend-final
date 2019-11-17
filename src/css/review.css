@@ -1,0 +1,113 @@
+/* REVIEWS */
+.authorRating {
+  font-size: 2em;
+  display: flex;
+  padding-bottom: 7px;
+}
+
+.back-stars {
+  display: flex;
+  color: #ff004e;
+  position: relative;
+  text-shadow: 4px 4px 10px #843a3a;
+}
+
+.front-stars {
+  color: #FFBC0B;
+  overflow: hidden;
+  position: absolute;
+  text-shadow: 2px 2px 5px #d29b09;
+  top: 0;
+  display: flex;
+}
+
+.btn-reaction {
+  text-transform: uppercase;
+  background-color: #00baba; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-social {
+  text-transform: uppercase;
+  background-color: #00baba8c; /* Grblueeen */
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-info-helpful {
+  text-transform: uppercase;
+  padding: 5px 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  background-color: #e2e7eb;
+  color: #686F7A;
+  font-weight: 800;
+  border: 1px solid #CACBCC;
+}
+
+.date {
+  flex: 0 0 auto;
+  min-width: 1px;
+  color: #686F7A;
+  font-size: 15px;
+}
+
+.author-div {
+  padding-left: 20%;
+}
+
+.author-name {
+  margin-top: -15px;
+}
+
+/* ADD REVIEW */
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.clear {
+  float: none;
+  clear: both;
+}
+.rating {
+    width: 40%;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+}
+.rating > label {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+    color: #000;
+    font-size: xx-large;
+}
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input.radio-btn:checked ~ label {
+    color: transparent;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input.radio-btn:checked ~ label:before,
+.rating > input.radio-btn:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+}

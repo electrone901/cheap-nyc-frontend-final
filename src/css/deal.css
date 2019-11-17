@@ -1,0 +1,98 @@
+/* Deals */
+.whenText {
+  background-color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.input-group {
+  display: inline-flex;
+}
+
+.btn-width {
+  min-width: 180px;
+}
+
+.filterbutton {
+  margin-bottom: 15px;
+}
+
+.background {
+  background-color: black;
+}
+
+.img-thumbnail {
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0px;
+  background-color: #fff0;
+  border: 1px solid #fff0;
+  border-radius: 0rem;
+}
+
+.deal-tittle {
+  color: #ec0000;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* FILTER */
+.btn-height {
+  height: 35px;
+}
+
+/* ReportPopUp */
+.textArea {
+  width: 90%;
+}
+
+/* DEAL */
+.field-name {
+  font-weight: 600;
+} 
+
+.font-content {
+  font-size: 1.25rem;
+}
+
+.space-top {
+  padding-top: 35px;
+}
+
+.thumbnail-review{        
+  width : 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+/* ADD DEAL FORM */
+.input-text2 {
+  font-size: 12px;
+}
+
+.require {
+  color: red;
+  font-size: 17px;
+}
+
+.hover-img {
+  position: relative;
+}
+
+.hover-img span {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  z-index: 9999;
+}
+
+input:hover .hover-img span {
+  top: 20px;
+  left: 0;
+}
