@@ -12,26 +12,11 @@ class UserProfile extends Component{
         this.state = {
             favoriteclass: false,
             userDealsclass: true,
-            id: '',
-            company: '',
-            name: '',
-            price: '',
-            category: '',
-            image: null,
-            imageName: 'Choose file',
-            address: '',
-            city: '',
-            description: '',
-            author: '',
             userData: '',
             favoritesList: [],
             currentUser: "",
             err: {}
         };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.handleChangeCity = this.handleChangeCity.bind(this);
-        this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
     getFavoritesDeals(userId) {
@@ -87,41 +72,7 @@ class UserProfile extends Component{
         this.getFavoritesDeals(userId);
         this.setState({ currentUser: this.props.auth.user.id})
     }
-
-    onChange(e){
-        this.setState({[e.target.name]: e.target.value});
-    }
-    handleChangeCity(e) {
-        this.setState({city: e.target.value});
-    }
-
-    handleChangeCategory(e) {
-        this.setState({category: e.target.value});
-    }
     
-    fileSelectedHandler = e => {
-        if(e.target.files[0]){
-            this.setState({ image: e.target.files[0] });
-            this.setState({ imageName: e.target.files[0].name });
-        }
-    }
-    
-    // formData allows to append data to obj
-    onSubmit(e){
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('company', this.state.company);
-        formData.append('price', this.state.price);
-        formData.append('name', this.state.name);
-        formData.append('category', this.state.category);
-        formData.append('image', this.state.image);
-        formData.append('location', this.state.address);
-        formData.append('city', this.state.city);
-        formData.append('description', this.state.description);
-        formData.append('author', this.state.author);
-    }
-
-
     getDealsAdded(_this, p) {
         if(this.state.userDealsclass){
             this.setState({
@@ -161,16 +112,12 @@ class UserProfile extends Component{
                 this.setState({dealsAdded: resData.data.userById.listOfPosts })
             }
         })
-        
-
-
-
     }
     render(){
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
-        let  dealsLiked = (
+        let dealsLiked = (
             this.state.favoritesList && this.state.favoritesList.length > 1 ? this.state.favoritesList.map((post, key) => {
                 let postId = post.id; 
                 return(

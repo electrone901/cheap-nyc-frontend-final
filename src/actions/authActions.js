@@ -96,14 +96,3 @@ export const getUser = (userId) => dispatch => {
           console.log(err);
       });
 };
-
-export const loseMoney = (moneyData, id) => dispatch => {
-    axios
-        .post(`/api/users/buy/${id}`, moneyData)
-        .catch(err => 
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data
-            })
-        );
-};
