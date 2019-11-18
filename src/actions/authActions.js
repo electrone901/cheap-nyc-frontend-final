@@ -65,6 +65,7 @@ export const getUser = (userId) => dispatch => {
                 userById(id:"${userId}"){
                   _id
                   name
+                  point
                   image
                   title
                 }

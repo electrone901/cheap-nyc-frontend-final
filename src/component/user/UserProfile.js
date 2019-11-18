@@ -214,11 +214,13 @@ class UserProfile extends Component{
                     { editBtn }
                 </div>
                 <div className="card-body backgroundProfile profile-text">
-                    <span className="btn btn-primary userLabel"><i className="fa fa-star" aria-hidden="true"></i> Legendary</span>
+                    <span className="btn btn-primary userLabel">
+                        { userData.point } <i className="fa fa-star" aria-hidden="true"></i>
+                    </span>
                     <img src={ userData.image ? userData.image : userImage } className="mt-4 thumbnail-user-profile" alt="Responsive" />
                     <h4>
                         <i className="fas fa-medal space-top"></i> 
-                        { userData.name}
+                        { userData.name }
                     </h4>
 
                     {
