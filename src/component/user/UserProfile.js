@@ -123,10 +123,12 @@ class UserProfile extends Component{
                 return(
                     <div className="container listPostUser" key={key}>
                         <div className="row ">
-                            <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
+                            <p className="col-2">
+                                <i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"20px", "paddingRight": "5px"}}></i>
+                            </p>
                             <p className="col-8 text-left">{post.name} </p>
                             <Link to={`/deal/${postId}`} className="col-2">
-                                <i className="fa fa-angle-double-right fa-1x"></i>
+                                <i class="fas fa-clipboard-list"></i>
                             </Link>
                         </div>
                     </div>
@@ -139,10 +141,12 @@ class UserProfile extends Component{
                 return(
                     <div className="container listPostUser" key={key}>
                         <div className="row ">
-                            <p className="col-2"><i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i></p>
+                            <p className="col-2">
+                                <i className="fas fa-store" style={{"color":"red", "fontSize":"20px", "paddingRight": "5px"}}></i>
+                            </p>
                             <p className="col-8 text-left">{post.name} </p>
                             <Link to={`/deal/${postId}`} className="col-2">
-                                <i className="fa fa-angle-double-right fa-1x"></i>
+                                <i class="fas fa-clipboard-list"></i>
                             </Link>
                         </div>
                     </div>
