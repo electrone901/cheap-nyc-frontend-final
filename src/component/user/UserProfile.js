@@ -122,13 +122,13 @@ class UserProfile extends Component{
                 let postId = post.id; 
                 return(
                     <div className="container listPostUser" key={key}>
-                        <div className="row ">
+                        <div className="row d-flex">
                             <p className="col-2">
-                                <i className="fa fa-heart fa-1x" style={{"color":"red", "fontSize":"20px", "paddingRight": "5px"}}></i>
+                                <i className="fa fa-heart profile-icon red"></i>
                             </p>
-                            <p className="col-8 text-left">{post.name} </p>
+                            <p className="col-8 profile-dealName">{post.name}</p>
                             <Link to={`/deal/${postId}`} className="col-2">
-                                <i class="fas fa-clipboard-list"></i>
+                                <i className="fas fa-clipboard-list profile-icon"></i>
                             </Link>
                         </div>
                     </div>
@@ -142,11 +142,11 @@ class UserProfile extends Component{
                     <div className="container listPostUser" key={key}>
                         <div className="row ">
                             <p className="col-2">
-                                <i className="fas fa-store" style={{"color":"red", "fontSize":"20px", "paddingRight": "5px"}}></i>
+                                <i className="fas fa-store profile-icon"></i>
                             </p>
-                            <p className="col-8 text-left">{post.name} </p>
+                            <p className="col-8 profile-dealName">{post.name}</p>
                             <Link to={`/deal/${postId}`} className="col-2">
-                                <i class="fas fa-clipboard-list"></i>
+                                <i className="fas fa-clipboard-list profile-icon"></i>
                             </Link>
                         </div>
                     </div>

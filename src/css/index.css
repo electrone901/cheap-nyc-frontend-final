@@ -177,6 +177,10 @@ body {
   font-size: 26px;
 }
 
+.red{
+  color: #d32929;
+}
+
 @media (max-width:600px)  {
   .social-thumbnail {
     height: 150px;

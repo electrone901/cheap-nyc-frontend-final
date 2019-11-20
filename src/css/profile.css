@@ -23,6 +23,15 @@
     padding-left: 10px;
 }
 
+.profile-icon{
+    font-size: 2rem !important;
+}
+
+.profile-dealName{
+    font-size: 1.4rem;
+    text-align: left;
+}
+
 .backgroundProfile {
     background-image: url("/images/b2.jpg");
     background-position: center; 
@@ -57,11 +66,14 @@
 .noActiveButton{
     background-color: blue;
     color: white;
+    padding: .3rem 1rem;
+    cursor: pointer;
 }
   
 .activeButton{
     background-color: white;
     color: black;
+    padding: .3rem 1rem;
 }
 
 .list-content {
