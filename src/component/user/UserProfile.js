@@ -113,6 +113,11 @@ class UserProfile extends Component{
             }
         })
     }
+
+    removeDealFromList(postId){
+        console.log(postId);
+    }
+
     render(){
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
@@ -144,10 +149,13 @@ class UserProfile extends Component{
                             <p className="col-2">
                                 <i className="fas fa-store profile-icon"></i>
                             </p>
-                            <p className="col-8 profile-dealName">{post.name}</p>
-                            <Link to={`/deal/${postId}`} className="col-2">
-                                <i className="fas fa-clipboard-list profile-icon"></i>
-                            </Link>
+                            <p className="col-7 profile-dealName">{post.name}</p>
+                            <div className="col-3">
+                                <Link to={`/deal/${postId}`}>
+                                    <i className="fas fa-clipboard-list profile-icon mr-2"></i>
+                                </Link>
+                                <i className="fas fa-trash-alt profile-icon profile-icon__remove" onClick={() => this.removeDealFromList(postId)}></i>
+                            </div>
                         </div>
                     </div>
                 )

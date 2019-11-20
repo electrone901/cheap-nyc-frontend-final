@@ -27,6 +27,11 @@
     font-size: 2rem !important;
 }
 
+.profile-icon__remove{
+    color: #6e6464;
+    cursor: pointer;
+  }
+
 .profile-dealName{
     font-size: 1.4rem;
     text-align: left;
