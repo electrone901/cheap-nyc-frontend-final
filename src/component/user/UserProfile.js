@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 import userImage from '../../img/userProfile.jpg'; 
-import { getUser } from '../../actions/authActions';
+import { getUser, removeUserDeal } from '../../actions/authActions';
 
 class UserProfile extends Component{
     constructor(){
@@ -115,10 +115,12 @@ class UserProfile extends Component{
     }
 
     removeDealFromList(postId){
-        console.log(postId);
+        const userId = this.props.match.params.id;
+        this.props.removeUserDeal(userId, postId);
     }
 
     render(){
+        console.log(this.state.dealsAdded)
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
@@ -154,7 +156,9 @@ class UserProfile extends Component{
                                 <Link to={`/deal/${postId}`}>
                                     <i className="fas fa-clipboard-list profile-icon mr-2"></i>
                                 </Link>
-                                <i className="fas fa-trash-alt profile-icon profile-icon__remove" onClick={() => this.removeDealFromList(postId)}></i>
+                                <i
+                                    className="fas fa-trash-alt profile-icon profile-icon__remove"
+                                    onClick={() => this.removeDealFromList(postId)}></i>
                             </div>
                         </div>
                     </div>
@@ -213,6 +217,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-
-export default connect(mapStateToProps, {getUser})(UserProfile);
-
+export default connect(mapStateToProps, { getUser, removeUserDeal })(UserProfile);

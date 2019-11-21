@@ -68,6 +68,10 @@ export const getUser = (userId) => dispatch => {
                   point
                   image
                   title
+                  listOfPosts {
+                    id
+                    name
+                  }
                 }
               }
           `
@@ -95,4 +99,20 @@ export const getUser = (userId) => dispatch => {
       .catch(err => {
           console.log(err);
       });
+};
+
+export const removeUserDeal = (userId, postId) => dispatch => {
+  axios.put(`/users/${userId}/removeDeal/${postId}`)
+    .then(data => {
+      dispatch({
+          type: GET_USER,
+          payload: data.data.user
+      });
+    })
+    .catch(err => 
+      dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+      })
+    );
 };
