@@ -320,7 +320,7 @@ class AllDealsWithFilter extends Component{
             <h2
               className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "name", searchImg: false})}>
-                Explore by Name<i class="fas fa-search"></i>
+                Explore by Name<i className="fas fa-search"></i>
             </h2>
           </div>
 

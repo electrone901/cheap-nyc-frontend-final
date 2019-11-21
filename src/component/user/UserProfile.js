@@ -14,6 +14,7 @@ class UserProfile extends Component{
             userDealsclass: true,
             userData: '',
             favoritesList: [],
+            dealsAdded: [],
             currentUser: "",
             err: {}
         };
@@ -116,11 +117,19 @@ class UserProfile extends Component{
 
     removeDealFromList(postId){
         const userId = this.props.match.params.id;
+        const newList = this.state.dealsAdded;
+
+        for(let i = 0; i < newList.length; i++){
+            if(newList[0].id === postId){
+                newList.splice(i, 1);
+            }
+        }
+
         this.props.removeUserDeal(userId, postId);
+        this.setState({dealsAdded: newList })
     }
 
     render(){
-        console.log(this.state.dealsAdded)
         const { userData } = this.props.auth;
         let btn_favorites = this.state.favoriteclass ? "noActiveButton": "activeButton";
         let btn_userDeals = this.state.userDealsclass ? "noActiveButton": "activeButton";
