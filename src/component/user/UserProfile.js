@@ -165,9 +165,11 @@ class UserProfile extends Component{
                                 <Link to={`/deal/${postId}`}>
                                     <i className="fas fa-clipboard-list profile-icon mr-2"></i>
                                 </Link>
-                                <i
-                                    className="fas fa-trash-alt profile-icon profile-icon__remove"
-                                    onClick={() => this.removeDealFromList(postId)}></i>
+                                { this.state.currentUser === this.props.match.params.id ? 
+                                    <i
+                                        className="fas fa-trash-alt profile-icon profile-icon__remove"
+                                        onClick={() => this.removeDealFromList(postId)}></i> 
+                                    : null }
                             </div>
                         </div>
                     </div>
