@@ -301,7 +301,8 @@ class AllDealsWithFilter extends Component{
           className="form-control"
           value={this.state.dealName}
           placeholder="Search Deal by Name"
-          onChange={this.onChange} />
+          onChange={this.onChange}
+          onKeyPress={e => e.key === "Enter" ? this.searchDealByName() : null} />
         <div className="input-group-append">
           <button className="btn btn-outline-secondary" type="button" onClick={this.searchDealByName.bind(this)}>Search</button>
         </div>
