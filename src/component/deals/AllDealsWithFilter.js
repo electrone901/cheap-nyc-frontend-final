@@ -5,6 +5,8 @@ import AllDeals from './AllDeals';
 import { getDeals } from '../../actions/addPostDeal';
 import ReactGA from 'react-ga';
 
+import SearchBar from '../common/SearchBar';
+
 export const initGA = () => {
   ReactGA.initialize('UA-142224072-1');
 }
@@ -294,19 +296,14 @@ class AllDealsWithFilter extends Component{
     );
 
     const searchBar = (
-      <div className="input-group my-3">
-        <input
-          type="text"
-          name="dealName"
-          className="form-control"
-          value={this.state.dealName}
-          placeholder="Search Deal by Name"
-          onChange={this.onChange}
-          onKeyPress={e => e.key === "Enter" ? this.searchDealByName() : null} />
-        <div className="input-group-append">
-          <button className="btn btn-outline-secondary" type="button" onClick={this.searchDealByName.bind(this)}>Search</button>
-        </div>
-      </div>
+      <SearchBar
+        name="dealName"
+        value={this.state.dealName}
+        placeholder="Search Deal by Name"
+        onChange={this.onChange}
+        onKeyPress={e => e.key === "Enter" ? this.searchDealByName() : null}
+        onClick={this.searchDealByName.bind(this)}
+        btnLabel="Search" />
     );
 
     return(
