@@ -280,11 +280,11 @@ class AllDealsWithFilter extends Component{
             >
               <option value="-1&-1">All Prices</option>
               <option value="0&0">Free</option>
-              <option value="0&1">under $ 1</option>
-              <option value="1&5">under $ 5</option>
-              <option value="5&10">under $ 10</option>
-              <option value="10&20">under $ 20</option>
-              <option value="20&30">under $ 30</option>
+              <option value="0&1">Under $1</option>
+              <option value="1&5">$1 to $5</option>
+              <option value="5&10">$5 to $10</option>
+              <option value="10&20">$10 to $20</option>
+              <option value="20&30">$20 to $30</option>
             </select>
           </div>
 
