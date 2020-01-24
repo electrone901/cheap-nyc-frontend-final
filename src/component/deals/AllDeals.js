@@ -25,7 +25,7 @@ class AllDeals extends Component {
                                         Details
                                     </Link>
                                 </div>
-                                <p className="m-0 text-l font-italic">
+                                <p className={"m-0 text-l font-italic " + (item.price === 0 ? "text-danger" : "text-success")}>
                                     {item.price === 0 ? "Free" : "$" + item.price.toFixed(2)}
                                 </p>
                             </div>
