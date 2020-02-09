@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-import logo from '../../img/l3.png';
+import logo from '../../img/logo.png';
 import { logoutUser } from '../../actions/authActions';
 
 class Navbar extends Component {
@@ -81,8 +81,8 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-light btn-light sticky-top">
         <div className="container">
-          <Link className="navbar-brand logo" to="/" onClick={() => this.onChangeLink("")}>
-            <img src={logo} alt="logo"/>
+          <Link to="/" onClick={() => this.onChangeLink("")}>
+            <img src={logo} alt="logo" className="logo"/>
           </Link>
 
           <button
