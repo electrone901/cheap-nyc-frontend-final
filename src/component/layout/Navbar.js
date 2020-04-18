@@ -44,27 +44,21 @@ class Navbar extends Component {
             Profile
           </Link>
         </li>
-        <li className="nav-item font-italic">
-          <Link to="/" onClick={this.onLogoutClick.bind(this)} className="nav-link">
-              Logout
+        <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <Link
+            to="/addDeal"
+            className={classnames("nav-link font-italic", 
+              this.state.currentLink === 'addDeal' ? 'active' : null
+            )}
+            onClick={() => this.onChangeLink("addDeal")}>
+            Add Deal
           </Link>
         </li>
       </ul>
     );
-
     
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-          <Link
-            to="/register"
-            className={classnames("nav-link font-italic", 
-              this.state.currentLink === 'register' ? 'active' : null
-            )}
-            onClick={() => this.onChangeLink("register")}>
-            Sign Up
-          </Link>
-        </li>
         <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
           <Link
             to="/login"
@@ -76,6 +70,18 @@ class Navbar extends Component {
           </Link>
         </li>
       </ul>
+    );
+
+    const getStarted = (
+      <Link to="/register" className="btn btn-primary">
+        Get Started
+      </Link>
+    );
+
+    const logout = (
+      <Link to="/" onClick={this.onLogoutClick.bind(this)} className="btn btn-primary">
+        Logout
+      </Link>
     );
 
     return (
@@ -145,9 +151,7 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="text-left" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/addDeal" className="btn btn-primary">
-                  Create a post
-                </Link>
+                {isAuthenticated ? logout : getStarted}
               </li>
             </ul>
           </div>
