@@ -71,25 +71,6 @@
     margin-bottom: 1.5rem;
 }
   
-.tParent__items__sign:link,
-.tParent__items__sign:visited {
-    background: #e95b73;
-    color: black;
-    align-items: center;
-    border-radius: 4px;
-    box-sizing: border-box;
-    display: inline-flex;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    padding: 8px 32px;
-    font-weight: 900;
-    text-decoration: none;
-}
-  
-.tParent__items__sign:hover{
-    opacity: .8;
-}
-  
 .title {
     font-size: 28px;
     margin-top: 14px;

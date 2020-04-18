@@ -223,3 +223,13 @@ body {
 .logo{
   width: 10rem;
 }
+
+.btn-primary{
+  background-color: #ED2929;
+  border: 1px solid #ED2929;
+}
+
+.btn-primary:hover{
+  background-color: rgb(189, 32, 32);
+  border: 1px solid #ED2929;
+}

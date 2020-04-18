@@ -30,7 +30,7 @@ class TextSlider extends Component {
                         <h1 className="textSliderTitle">Find the best NY deals</h1>
                         <h2 className="textSliderPara">Free or Under $30</h2>
                         {
-                            this.state.auth ? null:<Link to="/register" className="tParent__items__sign">Sign Up</Link>
+                            this.state.auth ? null:<Link to="/register" className="btn btn-primary btn-lg">Sign Up</Link>
                         }
                     </div>
                 </div>

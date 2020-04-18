@@ -17,7 +17,7 @@ const CheckBox = props => {
                 value={option}
                 className="checkbox-box"
                 checked={props.selectedOptions.indexOf(option) > -1}
-                type="checkbox"o
+                type="checkbox"
               />
               {option}
             </label>

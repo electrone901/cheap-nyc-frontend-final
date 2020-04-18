@@ -175,7 +175,7 @@ class Register extends Component{
                   error={errors.confirmPassword} />
                   {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
               </div>
-              <input type="submit" className="btn btn-info btn-block mt-4" />
+              <input type="submit" className="btn btn-primary btn-block mt-4" />
               <p className="agreement"> 
                 When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
               </p>
