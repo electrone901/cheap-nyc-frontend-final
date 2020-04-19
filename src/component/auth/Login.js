@@ -92,7 +92,7 @@ class Login extends Component{
         const { errors } = this.state;
 
         const socialMedia = (
-          <div className="d-flex flex-column align-items-center loginContainer space-top">
+          <div className="d-flex flex-column align-items-center jumbotron space-top">
             <GoogleLogin
               className="googleLogin"
               clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
@@ -112,7 +112,7 @@ class Login extends Component{
         );
 
         const form = (
-          <div className="loginContainer space-top">
+          <div className="jumbotron space-top">
             <form onSubmit={this.onSubmit}>
               <TextInput
                 label="Email"

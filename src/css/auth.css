@@ -25,11 +25,6 @@
     color: rgba(0,0,0,.54);
 }
 
-.loginContainer {
-    padding: 1rem;
-    background-color: #e9f1f273;
-}
-
 .facebookLogin {
     margin-top: 4px;
     font-family: Helvetica,sans-serif;

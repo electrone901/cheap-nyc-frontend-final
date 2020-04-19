@@ -233,7 +233,7 @@ class AddDeal extends Component{
                 <div className="col-md-8 m-auto">
                     <h1 className="display-4 text-center">Posting as Member</h1>
 
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={this.onSubmit} className="jumbotron">
                         <div className="form-group">
                             <label htmlFor="text">Company name</label>
                             <input

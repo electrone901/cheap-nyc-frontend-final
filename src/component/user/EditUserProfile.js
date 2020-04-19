@@ -130,7 +130,7 @@ class EditUserProfile extends Component{
                   <h1 className="title text-center">Edit Name & Interests</h1>
                   <div className="loginContainer space-top">
                     <div className="col-10 m-auto">
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} className="jumbotron">
                             <div className="form-group">
                                 <label htmlFor="text">Your Name</label>
                                 <input
@@ -185,7 +185,7 @@ class EditUserProfile extends Component{
                   <div className="loginContainer">
                   <h1 className="title text-center">Edit Image</h1>
                     <div className="col-md-10 m-auto">
-                        <form onSubmit={this.onSubmitImage}>
+                        <form onSubmit={this.onSubmitImage} className="jumbotron">
                             <label htmlFor="text">Upload an image</label>
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">

@@ -66,7 +66,7 @@ class AddReview extends Component {
                 <div className="row">
                     <div className="col-md-8 m-auto">
                         <h1>Add a review As Member</h1>
-                        <form onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit} className="jumbotron">
                             <div className="form-group">
                                 <label htmlFor="text">Rating</label>
                                 <div  className={classnames('form-control form-control-lg rating', {
