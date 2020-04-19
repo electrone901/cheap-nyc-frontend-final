@@ -116,8 +116,9 @@ class Register extends Component{
         const form = (
           <div className="loginContainer space-top">
             <form noValidate onSubmit={this.onSubmit}>
-              <div className="form-group heightForm">
+              <div className="heightForm">
                 <TextInput
+                  label="Name"
                   type="text"
                   placeholder="Name"
                   name="name"
@@ -144,37 +145,36 @@ class Register extends Component{
                   </div>
               </div>
 
-              <div className="form-group">
-                <TextInput
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email} />
-                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-              </div>
-              <div className="form-group">
-                <TextInput
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password} />
-                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-              </div>
+              <TextInput
+                label="Email"
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                error={errors.email} />
+                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
 
-              <div className="form-group">
-                <TextInput
-                  type="password"
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                  value={this.state.confirmPassword}
-                  onChange={this.onChange}
-                  error={errors.confirmPassword} />
-                  {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
-              </div>
+              <TextInput
+                label="Password"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+                error={errors.password} />
+                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
+
+              <TextInput
+                label="Confirm Password"
+                type="password"
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={this.state.confirmPassword}
+                onChange={this.onChange}
+                error={errors.confirmPassword} />
+                {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
+
               <input type="submit" className="btn btn-primary btn-block mt-4" />
               <p className="agreement"> 
                 When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
@@ -188,7 +188,7 @@ class Register extends Component{
                 <div className="container">
                   <h1 className="login__title">Sign Up</h1>
                   <div className="row">
-                    <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
+                    <div className="col-sm-12	col-md-5 col-lg-5 space-top">
                       <h2 className="title text-center">With Email</h2>
                       {form}
                     </div>

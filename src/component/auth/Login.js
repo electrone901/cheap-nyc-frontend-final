@@ -114,26 +114,24 @@ class Login extends Component{
         const form = (
           <div className="loginContainer space-top">
             <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <TextInput
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  error={errors.email} />
-                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-              </div>
-              <div className="form-group">
-                <TextInput
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  error={errors.password} />
-                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-              </div>
+              <TextInput
+                label="Email"
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+                error={errors.email} />
+                {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
+              <TextInput
+                label="Password"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+                error={errors.password} />
+                {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
               <input type="submit" className="btn btn-primary btn-block mt-4" />
             </form>
           </div>
@@ -145,7 +143,7 @@ class Login extends Component{
                 <h1 className="login__title">Log In</h1>
                 <ToastContainer />
                 <div className="row">
-                  <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
+                  <div className="col-sm-12	col-md-5 col-lg-5 space-top">
                     <h2 className="title text-center">With Email</h2>
                     {form}
                   </div>
