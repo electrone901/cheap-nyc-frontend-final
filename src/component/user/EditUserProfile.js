@@ -125,67 +125,57 @@ class EditUserProfile extends Component{
         const { err } = this.state;
         return(
             <div className="container">
+              <h1 className="pt-3 pb-2 text-center">Edit Profile</h1>
               <div className="row">
-                <div className="col-md-8 m-auto">
-                  <h1 className="title text-center">Edit Name & Interests</h1>
-                  <div className="loginContainer space-top">
-                    <div className="col-10 m-auto">
-                        <form onSubmit={this.onSubmit} className="jumbotron">
-                            <div className="form-group">
-                                <label htmlFor="text">Your Name</label>
-                                <input
-                                    type="text"
-                                    className={classnames('form-control form-control-lg', {
-                                        'is-invalid': err.name
-                                    })}
-                                    name="name"
-                                    value={this.state.name}
-                                    onChange={this.onChange}
-                                />
-                                {err.name && (<div className="invalid-feedback">{err.name}</div>)}
-                            </div>
-
-                            <CheckBox
-                                title={"Interests (select max 8)"}
-                                name={"interests"}
-                                options={this.state.interestOptions}
-                                selectedOptions={this.state.newUser.skills}
-                                handleChange={this.handleCheckBox}
-                            />             
-                            
-                            <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
-                        </form>
+                <div className="col-11 col-lg-5 jumbotron m-center">
+                  <h2 className="color-p">User Information</h2>
+                  <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="text">Your Name</label>
+                        <input
+                            type="text"
+                            className={classnames('form-control form-control-lg', {
+                                'is-invalid': err.name
+                            })}
+                            name="name"
+                            value={this.state.name}
+                            onChange={this.onChange}
+                        />
+                        {err.name && (<div className="invalid-feedback">{err.name}</div>)}
                     </div>
-                  </div>
-                  <hr className="space-top"/>
+                    <CheckBox
+                        title={"Interests (select max 8)"}
+                        name={"interests"}
+                        options={this.state.interestOptions}
+                        selectedOptions={this.state.newUser.skills}
+                        handleChange={this.handleCheckBox}
+                    />             
+                    <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
+                  </form>
+                </div>
 
-                  
-                  <div className="loginContainer">
-                  <h1 className="title text-center">Edit Image</h1>
-                    <div className="col-md-10 m-auto">
-                        <form onSubmit={this.onSubmitImage} className="jumbotron">
-                            <label htmlFor="text">Upload an image</label>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"></span>
-                                </div>
-                                <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="Preview User" />
-                            </div>
-                            <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
-                        </form>
+                <div className="col-11 col-lg-5 jumbotron m-center">
+                  <h2 className="color-p">User Image</h2>
+                  <form onSubmit={this.onSubmitImage}>
+                    <label htmlFor="text">Upload an image</label>
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text"></span>
+                        </div>
+                        <div className="custom-file">
+                            <input 
+                                type="file"
+                                className="custom-file-input"
+                                id="inputGroupFile01"
+                                onChange={this.fileSelectedHandler}/>
+                            <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
+                        </div>
                     </div>
-                  </div>
-
+                    <div className="text-center">
+                        <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="Preview User" />
+                    </div>
+                    <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
+                  </form>
                 </div>
               </div>
             </div>    
