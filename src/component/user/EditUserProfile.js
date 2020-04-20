@@ -151,30 +151,8 @@ class EditUserProfile extends Component{
                                 options={this.state.interestOptions}
                                 selectedOptions={this.state.newUser.skills}
                                 handleChange={this.handleCheckBox}
-                            />{" "}
-                
-
-                            <div className="checkbox">
-                                    {
-                                        this.state.interestArray ? this.state.interestArray.map((option, key)=> {
-                                            return (
-                                                <label htmlFor="text" className="checkbox-inline" key={key}>
-                                                    <input 
-                                                        type="checkbox"
-                                                        id="myInterest"
-                                                        name="myInterest"
-                                                        onChange={this.handleCheckBox(option)}
-                                                        value={option}
-                                                        checked={this.handleCheckBox(option)}
-                                                    >
-                                                    </input>
-                                                    {option}
-                                                </label>
-                                            )
-                                        }): ""
-
-                                    }
-                            </div>
+                            />             
+                            
                             <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
                         </form>
                     </div>
