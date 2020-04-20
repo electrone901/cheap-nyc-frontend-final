@@ -121,7 +121,7 @@ class Deals extends Component{
       return(
           <div className="container">
             <ToastContainer />
-            <div className="space-top">
+            <div className="">
                 <div className="text-right ">
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
@@ -138,7 +138,7 @@ class Deals extends Component{
                 <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
 
-            <div className="row space-top">
+            <div className="row ">
                 <div className="col-4 col-sm-4 col-md-4 text-center">
 
                     <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}> <i className="fa fa-heart" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i>  ({likes ? likes.length: '0'}) Likes</button>
@@ -202,7 +202,7 @@ class Deals extends Component{
             </div>
 
 
-            <div className="space-top">
+            <div className="">
                 <div className="row">
                     <button className="btn whenText field-name">When: </button>
                     <div className="col-4 text-center">

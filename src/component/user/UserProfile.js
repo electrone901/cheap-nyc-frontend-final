@@ -193,7 +193,7 @@ class UserProfile extends Component{
                     </span>
                     <img src={ userData.image ? userData.image : userImage } className="mt-4 thumbnail-user-profile" alt="Responsive" />
                     <h4>
-                        <i className="fas fa-medal space-top"></i> 
+                        <i className="fas fa-medal"></i> 
                         { userData.name }
                     </h4>
 

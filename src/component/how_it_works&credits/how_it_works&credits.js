@@ -7,13 +7,13 @@ class howItWorks extends Component{
       return(
           <div>
             <Slider />
-            <div className="container space-top">
+            <div className="container">
                 <div className="jumbotron">
                     <div className="tiptop">
                         <h1 className="display-4">Our Mission</h1>
                         <p className="lead">Whether you’re traveling or living in NYC, our mission is to provide the best deals based on price. Our aim is to build a community of people who want to find more accessible prices and new ways to save money while doing what they love. </p>
                     </div>
-                    <h3 className="how-works-title space-top">About Us</h3>
+                    <h3 className="how-works-title">About Us</h3>
                     <p>
                         CheapNy provides the best deals based on price and value. Do New York like a local: do more with less.
 

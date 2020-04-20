@@ -61,10 +61,6 @@
   font-size: 1.25rem;
 }
 
-.space-top {
-  padding-top: 35px;
-}
-
 .thumbnail-review{        
   width : 200px;
   height: 200px;
@@ -233,9 +229,6 @@ input:hover .hover-img span {
     margin-bottom: 0rem;
   }
 
-  .space-top {
-    padding-top: 10px;
-  }
   p {
     margin-top: 0;
     margin-bottom: 1px;

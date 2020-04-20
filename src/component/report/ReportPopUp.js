@@ -54,7 +54,7 @@ class ReportPopUp extends Component {
             <div className='popup_inner'>
             <ToastContainer />
                 <p className="font-content">{this.props.title}</p>
-                <div className="col-md-8 m-auto space-top">
+                <div className="col-md-8 m-auto">
                     <form onSubmit={this.onSubmit}>
                         <div className="dropdown col-lg-12 col-md-12 col-sm-12">
                             <select
@@ -74,7 +74,7 @@ class ReportPopUp extends Component {
                             </select>
                         </div>
 
-                        <div className="form-group space-top">
+                        <div className="form-group">
                             <label htmlFor="text">Other reason or comments</label>
                             <textarea 
                                 type="text" 

@@ -3,7 +3,7 @@ import React from 'react';
 const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
     return(
         <div className="container">
-            <div className="row text-center space-top">
+            <div className="row text-center">
                 <div className="col-12 col-sm-12 col-md-12">
                     <h2 className="title">Confirm the information below</h2>
                 </div>
@@ -15,7 +15,7 @@ const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
                     </div>
                 ): null
             }
-            <div className="space-top">
+            <div className="">
                 <p> <span className="field-name"> Company Name: </span>{dealData.company}</p>
                 <p> <span className="field-name"> Item name: </span>{dealData.name}</p>
                 <p> <span className="field-name"> Category: </span> {dealData.category}</p>

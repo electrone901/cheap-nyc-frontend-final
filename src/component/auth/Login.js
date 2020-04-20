@@ -92,7 +92,7 @@ class Login extends Component{
         const { errors } = this.state;
 
         const socialMedia = (
-          <div className="d-flex flex-column align-items-center jumbotron space-top">
+          <div className="d-flex flex-column align-items-center jumbotron">
             <GoogleLogin
               className="googleLogin"
               clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
@@ -112,7 +112,7 @@ class Login extends Component{
         );
 
         const form = (
-          <div className="jumbotron space-top">
+          <div className="jumbotron">
             <form onSubmit={this.onSubmit}>
               <TextInput
                 label="Email"
@@ -143,18 +143,18 @@ class Login extends Component{
                 <h1 className="login__title">Log In</h1>
                 <ToastContainer />
                 <div className="row">
-                  <div className="col-sm-12	col-md-5 col-lg-5 space-top">
+                  <div className="col-sm-12	col-md-5 col-lg-5">
                     <h2 className="title text-center">With Email</h2>
                     {form}
                   </div>
-                  <div className="col-sm-12	col-md-2 col-lg-2 text-center space-top">
+                  <div className="col-sm-12	col-md-2 col-lg-2 text-center">
                     <div className="d-flex flex-sm-row flex-md-column flex-sm-row justify-content-center align-items-center">
                       <div className="login__line"></div>
                       <p className="mt-3 mx-3">OR</p>
                       <div className="login__line"></div>
                     </div>
                   </div>
-                  <div className="col-sm-12	col-md-5 col-lg-5 text-center space-top">
+                  <div className="col-sm-12	col-md-5 col-lg-5 text-center">
                     <h2 className="title text-center">With Social Media</h2>
                     {socialMedia}
                   </div>

@@ -70,17 +70,8 @@
     color: black;
     margin-bottom: 1.5rem;
 }
-  
-.title {
-    font-size: 28px;
-    margin-top: 14px;
-    cursor: pointer;
-}
 
 @media(max-width: 600px){
-    .title{
-      font-size: 1.2rem;
-    }
   
     .textSliderTitle {
       font-size: 1.6rem;
