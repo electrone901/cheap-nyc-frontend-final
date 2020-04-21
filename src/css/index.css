@@ -76,17 +76,7 @@ body {
   width: 90%;
   height: 90vh;
 }
-.tiptop {
-  text-align: center;
-  width: 70%;
-  margin: 0 auto;
-}
-.how-works-title {
-  margin-bottom: 0;
-  color: #d86139;
-  font-size: 18px;
-  line-height: 30px;
-}
+
 .how-works-list {
   text-decoration: none;
   margin: 0 0 12px;
