@@ -56,7 +56,7 @@ export const getDeal = (url, history) => dispatch => {
     fetch(url)
         .then(res => {
             if (res.status === 404) {
-                history.push('/nodealfound');
+                return history.push('/nodealfound');
             }
             return res.json();
         })
