@@ -125,7 +125,7 @@ class EditUserProfile extends Component{
         const { err } = this.state;
         return(
             <div className="container">
-              <h1 className="pt-3 pb-2 text-center">Edit Profile</h1>
+              <h1 className="my-3 text-center">Edit Profile</h1>
               <div className="row">
                 <div className="col-11 col-lg-5 jumbotron m-center">
                   <h2 className="color-p">User Information</h2>

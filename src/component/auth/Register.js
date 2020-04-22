@@ -95,6 +95,7 @@ class Register extends Component{
 
         const socialMedia = (
           <div className="d-flex flex-column align-items-center jumbotron">
+            <h2 className="color-p text-center mb-3">With Social Media</h2>
             <GoogleLogin
               className="googleLogin"
               clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
@@ -115,6 +116,7 @@ class Register extends Component{
 
         const form = (
           <div className="jumbotron">
+            <h2 className="color-p mb-3">With Email</h2>
             <form noValidate onSubmit={this.onSubmit}>
               <div className="heightForm">
                 <TextInput
@@ -176,7 +178,7 @@ class Register extends Component{
                 {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
 
               <input type="submit" className="btn btn-primary btn-block mt-4" />
-              <p className="agreement"> 
+              <p className="agreement mt-2"> 
                 When you "Sign Up", you agree to <Link to='/howItWorks' className="author-name"> Real CheapNY's Terms of Service</Link>, Privacy Policy, and Cookie Policy.
               </p>
             </form>     
@@ -186,10 +188,9 @@ class Register extends Component{
         return(
             <div className="register">
                 <div className="container">
-                  <h1 className="login__title">Sign Up</h1>
+                  <h1 className="my-3 text-center">Sign Up</h1>
                   <div className="row">
                     <div className="col-sm-12	col-md-5 col-lg-5">
-                      <h2 className="text-center">With Email</h2>
                       {form}
                     </div>
                     <div className="col-sm-12	col-md-2 col-lg-2 text-center">
@@ -200,7 +201,6 @@ class Register extends Component{
                       </div>
                     </div>
                     <div className="col-sm-12	col-md-5 col-lg-5 text-center">
-                      <h2 className="title text-center">With Social Media</h2>
                       {socialMedia}
                     </div>
                   </div>

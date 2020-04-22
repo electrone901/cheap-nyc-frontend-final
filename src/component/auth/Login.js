@@ -93,6 +93,7 @@ class Login extends Component{
 
         const socialMedia = (
           <div className="d-flex flex-column align-items-center jumbotron">
+            <h2 className="color-p text-center mb-3">With Social Media</h2>
             <GoogleLogin
               className="googleLogin"
               clientId="184360858902-603v5ilaulroccoqu945ejg1vhrnvdnu.apps.googleusercontent.com"
@@ -113,6 +114,7 @@ class Login extends Component{
 
         const form = (
           <div className="jumbotron">
+            <h2 className="color-p mb-2">With Email</h2>
             <form onSubmit={this.onSubmit}>
               <TextInput
                 label="Email"
@@ -140,11 +142,10 @@ class Login extends Component{
         return(
             <div className="login">
               <div className="container">
-                <h1 className="login__title">Log In</h1>
+                <h1 className="my-3 text-center">Log In</h1>
                 <ToastContainer />
                 <div className="row">
                   <div className="col-sm-12	col-md-5 col-lg-5">
-                    <h2 className="title text-center">With Email</h2>
                     {form}
                   </div>
                   <div className="col-sm-12	col-md-2 col-lg-2 text-center">
@@ -155,7 +156,6 @@ class Login extends Component{
                     </div>
                   </div>
                   <div className="col-sm-12	col-md-5 col-lg-5 text-center">
-                    <h2 className="title text-center">With Social Media</h2>
                     {socialMedia}
                   </div>
                 </div>

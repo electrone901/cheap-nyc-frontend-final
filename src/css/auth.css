@@ -3,11 +3,6 @@
     min-height: 60vh;
 }
 
-.login__title{
-    font-size: 3rem;
-    text-align: center;
-}
-
 .login__line{
     width: 2px;
     height: 7.5rem;
