@@ -217,14 +217,6 @@ class AllDealsWithFilter extends Component{
   }
 
   render(){
-    const noDealMesage = (
-      <div>
-          <h5 className="text-center text-warning">
-              No Deal Found
-          </h5>
-      </div>
-    );
-
     const filterbutton = (
       <div className="filterbutton">
         <div className="dropdown col-lg-3 col-md-3 col-sm">
@@ -325,7 +317,6 @@ class AllDealsWithFilter extends Component{
           {this.state.filerMode === "category" ? filterbutton : searchBar}
           <div>
             <AllDeals data={this.state.data} />
-            { this.state.data.length > 0 ? null : noDealMesage }
             <div className="d-flex justify-content-center my-3">
               {(() => {
                 const rows = [];
