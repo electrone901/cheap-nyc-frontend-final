@@ -231,3 +231,8 @@ body {
 .m-center{
   margin: .7rem auto;
 }
+
+.spinner-size{
+  width: 5rem;
+  height: 5rem;
+}

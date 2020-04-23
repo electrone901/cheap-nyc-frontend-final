@@ -32,7 +32,11 @@ class AllDeals extends Component {
                         </div>
                     </div>
                 );
-            }): <Spinner />
+            }): (
+                <div className="col-12">
+                    <Spinner />
+                </div>
+            )
         }
       </div>
     }
