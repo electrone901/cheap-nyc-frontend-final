@@ -301,7 +301,7 @@ class AllDealsWithFilter extends Component{
     return(
         <div>
           
-          <div className="d-flex justify-content-around">
+          <div className="d-flex justify-content-around mt-3">
             <h2
               className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center"}
               onClick={() => this.setState({filerMode: "category"})}>

@@ -10,7 +10,7 @@ import store from './store';
 
 import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
-import Deals from './component/deals/Deals';
+import Deals from './component/deals/DealsContainer';
 import AddDeal from './component/deals/AddDeal';
 import EditDeal from './component/deals/EditDeal';
 
