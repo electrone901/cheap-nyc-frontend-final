@@ -12,7 +12,6 @@
   
 .start-img {
     height: 150px;
-
 }
 
 .profile-text {
@@ -30,11 +29,6 @@
 .profile-icon__remove{
     color: #6e6464;
     cursor: pointer;
-  }
-
-.profile-dealName{
-    font-size: 1.4rem;
-    text-align: left;
 }
 
 .backgroundProfile {
@@ -90,9 +84,8 @@
 .listPostUser {
     -webkit-box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
     box-shadow: 0 0 2px 0 rgba(46,62,72,.12), 0 2px 4px 0 rgba(46,62,72,.12);
-    width: 80%;
-    padding-top: 10px;
     background-color: white;
+    padding: .5rem 0;
 }
 
 .feedPostDescription {
@@ -133,11 +126,6 @@
         height: 200px;
         border-radius: 50%;
         margin-top: 50px;
-    }
-
-
-    .listPostUser {
-        width: 100%;
     }
 
     .start-img {

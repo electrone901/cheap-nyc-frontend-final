@@ -137,12 +137,9 @@ class UserProfile extends Component{
             this.state.favoritesList && this.state.favoritesList.length > 1 ? this.state.favoritesList.map((post, key) => {
                 let postId = post.id; 
                 return(
-                    <div className="container listPostUser" key={key}>
-                        <div className="row d-flex">
-                            <p className="col-2">
-                                <i className="fa fa-heart profile-icon red"></i>
-                            </p>
-                            <p className="col-8 profile-dealName">{post.name}</p>
+                    <div className="col-12 col-md-6 listPostUser my-1" key={key}>
+                        <div className="container d-flex justify-content-between align-items-center">
+                            <p className="h5">{post.name}</p>
                             <Link to={`/deal/${postId}`} className="col-2">
                                 <i className="fas fa-clipboard-list profile-icon"></i>
                             </Link>
@@ -155,12 +152,9 @@ class UserProfile extends Component{
             (this.state.dealsAdded && this.state.dealsAdded.length > 0 )? this.state.dealsAdded.map((post, key) => {
                 let postId = post.id; 
                 return(
-                    <div className="container listPostUser" key={key}>
-                        <div className="row ">
-                            <p className="col-2">
-                                <i className="fas fa-store profile-icon"></i>
-                            </p>
-                            <p className="col-7 profile-dealName">{post.name}</p>
+                    <div className="col-12 col-md-6 listPostUser my-1" key={key}>
+                        <div className="container d-flex justify-content-between align-items-center">
+                            <p className="h5">{post.name}</p>
                             <div className="col-3">
                                 <Link to={`/deal/${postId}`}>
                                     <i className="fas fa-clipboard-list profile-icon mr-2"></i>
@@ -214,9 +208,9 @@ class UserProfile extends Component{
 
                 {/* dealsLiked & dealsAdded */}
                 <div className="container list-content">
-                    {
-                        this.state.favoritesList && (!this.state.favoriteclass) ? dealsLiked : dealsAdded
-                    }
+                    <div className="row">
+                        { this.state.favoritesList && (!this.state.favoriteclass) ? dealsLiked : dealsAdded}
+                    </div>
                 </div>
             </div>        
         );
