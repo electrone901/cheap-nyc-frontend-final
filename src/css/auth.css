@@ -3,13 +3,6 @@
     min-height: 60vh;
 }
 
-.login__line{
-    width: 2px;
-    height: 7.5rem;
-    position: relative;
-    background-color: #000;
-}
-
 /* Sign Up */
 .noColor {
     border-color: #dc354500;
@@ -42,21 +35,3 @@
 .heightForm {
     line-height: 1;
 }
-
-.signup__line{
-    width: 2px;
-    height: 16.3rem;
-    position: relative;
-    background-color: #000;
-}
-
-@media(max-width: 767px){
-    .login__line{
-      width: 90%;
-      height: 2px;
-    }
-    .signup__line{
-      width: 90%;
-      height: 2px;
-    }
-  }

@@ -190,17 +190,10 @@ class Register extends Component{
                 <div className="container">
                   <h1 className="my-3 text-center">Sign Up</h1>
                   <div className="row">
-                    <div className="col-sm-12	col-md-5 col-lg-5">
+                    <div className="col-sm-12	col-md-6 col-lg-6">
                       {form}
                     </div>
-                    <div className="col-sm-12	col-md-2 col-lg-2 text-center">
-                      <div className="d-flex flex-sm-row flex-md-column flex-sm-row justify-content-center align-items-center">
-                        <div className="signup__line"></div>
-                        <p className="mt-3 mx-3">OR</p>
-                        <div className="signup__line"></div>
-                      </div>
-                    </div>
-                    <div className="col-sm-12	col-md-5 col-lg-5 text-center">
+                    <div className="col-sm-12	col-md-6 col-lg-6">
                       {socialMedia}
                     </div>
                   </div>
