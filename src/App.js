@@ -20,8 +20,8 @@ import Feedback from './component/how_it_works&credits/Feedback';
 import Contact from './component/how_it_works&credits/Contact';
 import Deal from './component/deals/Deal';
 import AddReview from './component/review/AddReview';
-import UserProfile from './component/user/UserProfile';
-import EditUserProfile from './component/user/EditUserProfile';
+import UserProfile from './component/profile/UserProfile';
+import EditUserProfile from './component/profile/EditUserProfile';
 
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';

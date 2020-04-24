@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 
+import TextInput from '../common/TextInput';
 import CheckBox from './CheckBox';
 import { getUser } from '../../actions/authActions';
 import { changeUserImage, updateTitle} from '../../actions/userActions';
@@ -130,19 +130,14 @@ class EditUserProfile extends Component{
                 <div className="col-11 col-lg-5 jumbotron m-center">
                   <h2 className="color-p">User Information</h2>
                   <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="text">Your Name</label>
-                        <input
-                            type="text"
-                            className={classnames('form-control form-control-lg', {
-                                'is-invalid': err.name
-                            })}
-                            name="name"
-                            value={this.state.name}
-                            onChange={this.onChange}
-                        />
-                        {err.name && (<div className="invalid-feedback">{err.name}</div>)}
-                    </div>
+                    <TextInput
+                      label="Name"
+                      type="text"
+                      error={err.name}
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.onChange} />
+                    {err.name && (<div className="invalid-feedback">{err.name}</div>)}
                     <CheckBox
                         title={"Interests (select max 8)"}
                         name={"interests"}
@@ -150,7 +145,7 @@ class EditUserProfile extends Component{
                         selectedOptions={this.state.newUser.skills}
                         handleChange={this.handleCheckBox}
                     />             
-                    <input type="submit" className="btn btn-info btn-block" value="Update Information"/>
+                    <input type="submit" className="btn btn-primary btn-block" value="Update Information"/>
                   </form>
                 </div>
 
@@ -174,7 +169,7 @@ class EditUserProfile extends Component{
                     <div className="text-center">
                         <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="Preview User" />
                     </div>
-                    <input type="submit" className="btn btn-info btn-block mt-4" value="Change Image"/>
+                    <input type="submit" className="btn btn-primary btn-block mt-4" value="Change Image"/>
                   </form>
                 </div>
               </div>
