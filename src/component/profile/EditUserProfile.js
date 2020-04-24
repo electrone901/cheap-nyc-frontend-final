@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import TextInput from '../common/TextInput';
+import FileInput from '../common/FileInput';
+
 import CheckBox from './CheckBox';
 import { getUser } from '../../actions/authActions';
 import { changeUserImage, updateTitle} from '../../actions/userActions';
@@ -152,20 +154,11 @@ class EditUserProfile extends Component{
                 <div className="col-11 col-lg-5 jumbotron m-center">
                   <h2 className="color-p">User Image</h2>
                   <form onSubmit={this.onSubmitImage}>
-                    <label htmlFor="text">Upload an image</label>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text"></span>
-                        </div>
-                        <div className="custom-file">
-                            <input 
-                                type="file"
-                                className="custom-file-input"
-                                id="inputGroupFile01"
-                                onChange={this.fileSelectedHandler}/>
-                            <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                        </div>
-                    </div>
+                    <FileInput
+                        label="Upload Image Profile"
+                        name="userImage"
+                        value={this.state.imageName}
+                        onChange={this.fileSelectedHandler} />
                     <div className="text-center">
                         <img src={this.state.imageFile ? this.state.imageFile : userImage} className="img-profile" alt="Preview User" />
                     </div>

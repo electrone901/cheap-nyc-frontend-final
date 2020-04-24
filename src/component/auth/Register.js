@@ -5,7 +5,9 @@ import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { registerUser } from '../../actions/authActions';
 import ReactGA from 'react-ga';
+
 import TextInput from '../common/TextInput';
+import FileInput from '../common/FileInput';
 
 export const initGA = () => {
   ReactGA.initialize('UA-142224072-1');
@@ -130,22 +132,11 @@ class Register extends Component{
                   {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
               </div>
 
-              <div className="form-group">
-                  <label htmlFor="text">Upload Image Profile <span className="small">(Optional but recommended)</span></label>
-                  <div className="input-group mb-3">
-                      <div className="input-group-prepend">
-                          <span className="input-group-text"></span>
-                      </div>
-                      <div className="custom-file">
-                          <input 
-                              type="file"
-                              className="custom-file-input"
-                              id="inputGroupFile01"
-                              onChange={this.fileSelectedHandler}/>
-                          <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                      </div>
-                  </div>
-              </div>
+              <FileInput
+                label="Upload Image Profile (Optional but recommended)"
+                name="userImage"
+                value={this.state.imageName}
+                onChange={this.fileSelectedHandler} />
 
               <TextInput
                 label="Email"
