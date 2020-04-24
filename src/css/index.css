@@ -220,8 +220,18 @@ body {
 }
 
 .btn-primary:hover{
-  background-color: rgb(189, 32, 32);
+  background-color: #bd2020;
   border: 1px solid #ED2929;
+}
+
+.btn-secondary{
+  background-color: #21bdc0;
+  border: 1px solid #21bdc0;
+}
+
+.btn-secondary:hover{
+  background-color: #2ba8aa;
+  border: 1px solid #2ba8aa;
 }
 
 .color-p{
