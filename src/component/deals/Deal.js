@@ -22,6 +22,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addLike } from '../../actions/addLikeActions';
 import { getDeal, removeADeal } from '../../actions/addPostDeal';
+
+import ConfirmModal from '../common/ConfirmModal';
  
 class Deals extends Component{
     constructor() {
@@ -115,7 +117,9 @@ class Deals extends Component{
         );
         
         const DeleteButton = (
-            <button className="btn btn-danger" onClick={this.removeDeal.bind(this, post._id)}>Delete</button>
+            <button className="btn btn-danger" data-toggle="modal" data-target="#confirmModal">
+                Delete
+            </button>
         );
 
       return(
@@ -303,7 +307,7 @@ class Deals extends Component{
             <div className="row justify-content-center">
                 <button className="btn-info-helpful">See more reviews</button>
             </div>
-                                
+            <ConfirmModal onClick={this.removeDeal.bind(this, post._id)} />            
           </div>
       );
     }
