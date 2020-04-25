@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import userImage from '../../img/userProfile.jpg'; 
 import { getUser, removeUserDeal } from '../../actions/authActions';
 
+import ConfirmModal from '../common/ConfirmModal';
+
 class UserProfile extends Component{
     constructor(){
         super();
@@ -162,10 +164,12 @@ class UserProfile extends Component{
                                 { this.state.currentUser === this.props.match.params.id ? 
                                     <i
                                         className="fas fa-trash-alt profile-icon profile-icon__remove"
-                                        onClick={() => this.removeDealFromList(postId)}></i> 
+                                        data-toggle="modal"
+                                        data-target="#confirmModal"></i> 
                                     : null }
                             </div>
                         </div>
+                        <ConfirmModal onClick={() => this.removeDealFromList(postId)} />
                     </div>
                 )
             }):  <p className="color-p col-12 text-center h4">You did not add any deals</p>

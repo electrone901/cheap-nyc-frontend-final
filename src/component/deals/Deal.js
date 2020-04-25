@@ -307,7 +307,7 @@ class Deals extends Component{
             <div className="row justify-content-center">
                 <button className="btn-info-helpful">See more reviews</button>
             </div>
-            <ConfirmModal onClick={this.removeDeal.bind(this, post._id)} />            
+            <ConfirmModal onClick={this.removeDeal.bind(this, post._id)} />
           </div>
       );
     }
