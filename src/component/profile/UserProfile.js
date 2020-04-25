@@ -146,7 +146,7 @@ class UserProfile extends Component{
                         </div>
                     </div>
                 )
-            }): "Post Liked: 0️⃣  0️⃣  😿 😿 "
+            }): <p className="color-p col-12 text-center h4">You did not have any favorite deals</p>
         );
         let  dealsAdded = (
             (this.state.dealsAdded && this.state.dealsAdded.length > 0 )? this.state.dealsAdded.map((post, key) => {
@@ -168,7 +168,7 @@ class UserProfile extends Component{
                         </div>
                     </div>
                 )
-            }):  "Post Added: 0️⃣  0️⃣  😿 😿 "
+            }):  <p className="color-p col-12 text-center h4">You did not add any deals</p>
         );
         let editBtn, editInterest;
         if(this.state.currentUser === this.props.match.params.id) {
