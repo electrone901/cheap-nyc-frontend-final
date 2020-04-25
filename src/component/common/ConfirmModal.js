@@ -14,7 +14,7 @@ const ConfirmModal = ({ onClick }) => {
                         <h3 className="text-center">Are you sure?</h3>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={onClick}>Yes</button>
+                        <button type="button" className="btn btn-primary" onClick={onClick} data-dismiss="modal">Yes</button>
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
                     </div>
                 </div>
