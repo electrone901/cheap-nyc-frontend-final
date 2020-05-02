@@ -303,12 +303,12 @@ class AllDealsWithFilter extends Component{
           
           <div className="d-flex justify-content-around mt-3">
             <h2
-              className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center"}
+              className={this.state.filerMode === "category" ? "title text-center text-primary underline" : "title text-center cursor-pointer"}
               onClick={() => this.setState({filerMode: "category"})}>
                 <span role="img" aria-label="sparkles">✨</span>Explore by Category
             </h2>
             <h2
-              className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center"}
+              className={this.state.filerMode === "name" ? "title text-center text-primary underline" : "title text-center cursor-pointer"}
               onClick={() => this.setState({filerMode: "name", searchImg: false})}>
                 Explore by Name<i className="fas fa-search"></i>
             </h2>
