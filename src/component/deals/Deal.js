@@ -142,18 +142,15 @@ class Deals extends Component{
                 <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
             </div>
 
-            <div className="row ">
+            <div className="row mt-3">
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-
                     <button className="btn-reaction disabled" onClick={this.addLike.bind(this)}> <i className="fa fa-heart" style={{"color":"red", "fontSize":"16px", "paddingRight": "5px"}}></i>  ({likes ? likes.length: '0'}) Likes</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center container2">
-                    
-                    <button className="btn-reaction"> Share</button>
                     <FacebookShareButton
                         url={shareUrl}
                         quote={title}
-                        className="btn-social">
+                        className="btn-social cursor-pointer">
                         <FacebookIcon
                         size={32}
                         round />
@@ -163,7 +160,7 @@ class Deals extends Component{
                         url={shareUrl}
                         title={title}
                         separator=":: "
-                        className="btn-social">
+                        className="btn-social cursor-pointer">
                         <WhatsappIcon size={32} round />
                     </WhatsappShareButton>
 
@@ -171,7 +168,7 @@ class Deals extends Component{
                         url={shareUrl}
                         subject={title}
                         body={post.description}
-                        className="btn-social">
+                        className="btn-social cursor-pointer">
                         <EmailIcon
                         size={32}
                         round />
@@ -180,12 +177,11 @@ class Deals extends Component{
                     <TwitterShareButton
                         url={shareUrl}
                         title={title}
-                        className="btn-social">
+                        className="btn-social cursor-pointer">
                         <TwitterIcon
                         size={32}
                         round />
                     </TwitterShareButton>
-
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
                     <button className="btn-reaction stylebutton" onClick={this.reportPopup.bind(this)}> Report</button>
