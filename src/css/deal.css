@@ -35,13 +35,6 @@
   border-radius: 0rem;
 }
 
-.deal-tittle {
-  color: #ec0000;
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.45;
-}
-
 /* FILTER */
 .btn-height {
   height: 35px;
@@ -221,12 +214,6 @@ input:hover .hover-img span {
   
   .direcions {
     font-size: 14px;
-  }
-  .deal-tittle {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 0rem;
   }
 
   p {

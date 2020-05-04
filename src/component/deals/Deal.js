@@ -130,16 +130,40 @@ class Deals extends Component{
                     <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
                 </div>
                 <div className="d-flex justify-content-between mt-1">
-                    <h2 className="deal-tittle mr-2">{post.name}  <span className="detail__price"> ${post.price}</span></h2>
                     <div className="d-flex mt-1">
                         {auth.user.id === post.userId ? DeleteButton : null}
                         {auth.user.id === post.userId ? EditButton : null}
                     </div>
                 </div>
             </div>
-            
-            <div className="text-center background">
-                <img src={post.image ? post.image: image2} className="img-thumbnail" alt="Responsive" />
+
+            <div className="row">
+                <div className="col-12 col-lg-7 text-center background">
+                    <img src={post.image ? post.image: image2} className="img-thumbnail mb-3" alt="Responsive" />
+                </div>
+
+                <div className="col-12 col-lg-5">
+                    <h1 className="color-p">{post.name}</h1>
+                    <div className="row">
+                        <button className="btn whenText field-name">When: </button>
+                        <div className="col-4 text-center">
+                            <button className="btn btn-block mt-4 eventDay">
+                                <span>Start day:<br/> {post.startDate ? <Moment format="MM/DD/YYYY">{post.startDate}</Moment> : "TBA"}</span>
+                            </button>
+                        </div>
+                        <div className="col-4 text-center">
+                            <button className="btn btn-block mt-4 eventDay">
+                                <span> End day:<br/> {post.endDate ? <Moment format="MM/DD/YYYY">{post.endDate}</Moment> : "TBA"}</span>
+                            </button>
+                        </div>
+                    </div><br/>
+                    <p> <span className="field-name"> Price: </span>${post.price}</p>
+                    <p> <span className="field-name"> Company Name: </span>{post.company}</p>
+                    <p> <span className="field-name"> Location: </span>{post.location}</p>
+                    <p> <span className="field-name"> Category: </span> {post.category}</p>
+                    <p> <span className="field-name"> Product Description: </span>{post.description}</p>
+                    <p> <span className="field-name"> Website: </span>{ post.website ? <a href={post.website} target="_blank">{post.website}</a> : "None"}</p>
+                </div>
             </div>
 
             <div className="row mt-3">
@@ -201,27 +225,6 @@ class Deals extends Component{
                 }
             </div>
 
-
-            <div className="">
-                <div className="row">
-                    <button className="btn whenText field-name">When: </button>
-                    <div className="col-4 text-center">
-                        <button className="btn btn-block mt-4 eventDay">
-                            <span>Start day:<br/> {post.startDate ? <Moment format="MM/DD/YYYY">{post.startDate}</Moment> : "TBA"}</span>
-                        </button>
-                    </div>
-                    <div className="col-4 text-center">
-                        <button className="btn btn-block mt-4 eventDay">
-                            <span> End day:<br/> {post.endDate ? <Moment format="MM/DD/YYYY">{post.endDate}</Moment> : "TBA"}</span>
-                        </button>
-                    </div>
-                </div><br/>
-                <p> <span className="field-name"> Company Name: </span>{post.company}</p>
-                <p> <span className="field-name"> Location: </span>{post.location}</p>
-                <p> <span className="field-name"> Category: </span> {post.category}</p>
-                <p> <span className="field-name"> Product Description: </span>{post.description}</p>
-                <p> <span className="field-name"> Website: </span>{ post.website ? <a href={post.website} target="_blank">{post.website}</a> : "None"}</p>
-            </div>
             <br/>
             {/* REVIEWS */}
             <div className="row">
