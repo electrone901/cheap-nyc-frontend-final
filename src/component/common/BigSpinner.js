@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Spinner = () => {
+const BigSpinner = () => {
     return(
         <div class="text-center my-5" >
             <div className="spinner-border text-danger spinner-size" role="status">
@@ -12,4 +12,4 @@ const Spinner = () => {
     );
 };
 
-export default Spinner;
+export default BigSpinner;

@@ -6,7 +6,7 @@ import Moment from 'react-moment';
 import image2 from '../../img/stocksNoAvailable.png'; 
 import userImage from '../../img/userProfile.jpg';
 
-import Spinner from '../common/Spinner';
+import Spinner from '../common/BigSpinner';
 import { 
     FacebookShareButton, 
     WhatsappShareButton,

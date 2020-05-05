@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Spinner from '../common/Spinner';
+import Spinner from '../common/BigSpinner';
 import noAvailable from '../../img/noAvailable.png';
 
 const AllDeals = ({ data }) => {
