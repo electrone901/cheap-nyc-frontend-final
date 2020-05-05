@@ -125,16 +125,9 @@ class Deals extends Component{
       return(
           <div className="container">
             <ToastContainer />
-            <div className="">
-                <div className="text-right ">
-                    <a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions"><i className="fa fa-map-marker" style={{"color":"red", "fontSize":"30px"}}></i> Get Directions</a>
-                </div>
-                <div className="d-flex justify-content-between mt-1">
-                    <div className="d-flex mt-1">
-                        {auth.user.id === post.userId ? DeleteButton : null}
-                        {auth.user.id === post.userId ? EditButton : null}
-                    </div>
-                </div>
+            <div className="mt-1">
+                {auth.user.id === post.userId ? DeleteButton : null}
+                {auth.user.id === post.userId ? EditButton : null}
             </div>
 
             <div className="row">
@@ -143,7 +136,7 @@ class Deals extends Component{
                 </div>
 
                 <div className="col-12 col-lg-5">
-                    <h1 className="color-p">{post.name}</h1>
+                    <h1 className="color-p h2">{post.name}</h1>
                     <div className="row">
                         <button className="btn whenText field-name">When: </button>
                         <div className="col-4 text-center">
@@ -159,7 +152,7 @@ class Deals extends Component{
                     </div><br/>
                     <p> <span className="field-name"> Price: </span>${post.price}</p>
                     <p> <span className="field-name"> Company Name: </span>{post.company}</p>
-                    <p> <span className="field-name"> Location: </span>{post.location}</p>
+                    <p> <span className="field-name"> Location: </span><a href={`http://maps.google.com/?q=`+ post.location} target="_blank" className="direcions">{post.location}</a></p>
                     <p> <span className="field-name"> Category: </span> {post.category}</p>
                     <p> <span className="field-name"> Product Description: </span>{post.description}</p>
                     <p> <span className="field-name"> Website: </span>{ post.website ? <a href={post.website} target="_blank">{post.website}</a> : "None"}</p>
