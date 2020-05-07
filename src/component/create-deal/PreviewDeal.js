@@ -23,8 +23,8 @@ const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
                     <p> <span className="field-name"> Website: </span>{dealData.website ? dealData.website : "none"}</p>
                 </div>
             </div>
-            
-            
+
+
             <br/>
             <div className="row mx-auto">
                 <div className="col-4 col-sm-4 col-md-4 text-center">

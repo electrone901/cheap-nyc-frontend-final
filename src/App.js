@@ -11,8 +11,8 @@ import store from './store';
 import Navbar from './component/layout/Navbar';
 import Footer from './component/layout/Footer';
 import Deals from './component/deals/DealsContainer';
-import AddDeal from './component/deals/AddDeal';
-import EditDeal from './component/deals/EditDeal';
+import AddDeal from './component/create-deal/AddDeal';
+import EditDeal from './component/create-deal/EditDeal';
 
 import howItWorks from './component/how_it_works&credits/how_it_works&credits';
 import Membership from './component/how_it_works&credits/Membership';
