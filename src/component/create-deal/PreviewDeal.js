@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Spinner from '../common/SmallSpinner';
+
 const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
     return(
         <div className="container">
@@ -31,7 +33,7 @@ const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
                     <button className="btn btn-info btn-block mt-4" onClick={edit}>Edit</button>
                 </div>
                 <div className="col-4 col-sm-4 col-md-4 text-center">
-                    { loading ? <p className="mt-4">Sending...</p> : 
+                    { loading ? <Spinner /> : 
                         <button className="btn btn-success btn-block mt-4" onClick={postDeal}>
                             Publish <i className="fa fa-check" aria-hidden="true"></i>
                         </button> }

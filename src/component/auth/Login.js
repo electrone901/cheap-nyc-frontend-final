@@ -4,8 +4,9 @@ import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { loginUser } from '../../actions/authActions';
 import ReactGA from 'react-ga';
+
+import { loginUser } from '../../actions/authActions';
 import TextInput from '../common/TextInput';
 
 export const initGA = () => {
@@ -23,6 +24,7 @@ class Login extends Component{
         this.state = {
             email: '',
             password: '',
+            loading: "false",
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
