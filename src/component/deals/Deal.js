@@ -112,12 +112,12 @@ class Deals extends Component{
         
         const EditButton = (
             <Link to={`/deal/${post._id}/edit`}>
-                <button className="btn btn-warning">Edit</button>
+                <button className="btn btn-outline-warning mr-1">Edit</button>
             </Link>
         );
         
         const DeleteButton = (
-            <button className="btn btn-danger" data-toggle="modal" data-target="#confirmModal">
+            <button className="btn btn-outline-danger" data-toggle="modal" data-target="#confirmModal">
                 Delete
             </button>
         );
@@ -125,11 +125,6 @@ class Deals extends Component{
       return(
           <div className="container">
             <ToastContainer />
-            <div className="mt-1">
-                {auth.user.id === post.userId ? DeleteButton : null}
-                {auth.user.id === post.userId ? EditButton : null}
-            </div>
-
             <div className="row mt-3">
                 <div className="col-12 col-lg-7 text-center background">
                     <img src={post.image ? post.image: noImage} className="img-thumbnail mb-3" alt="Responsive" />
@@ -137,6 +132,10 @@ class Deals extends Component{
 
                 <div className="col-12 col-lg-5">
                     <h1 className="color-p h2">{post.name}</h1>
+                    <div className="mt-1">
+                        {auth.user.id === post.userId ? EditButton : null}
+                        {auth.user.id === post.userId ? DeleteButton : null}
+                    </div>
                     <div className="row">
                         <button className="btn whenText field-name">When: </button>
                         <div className="col-4 text-center">
