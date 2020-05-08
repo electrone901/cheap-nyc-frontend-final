@@ -1,19 +1,16 @@
 import React from 'react';
 
 import Spinner from '../common/SmallSpinner';
+import noImage from '../../img/noImage.svg';
 
 const PreviewDeal = ({ dealData, edit, loading, postDeal }) => {
     return(
         <div className="container">
             <h1 className="color-p text-center mt-2">Confirm the information below</h1>
             <div className="row">
-                {
-                    dealData.image ? (
-                        <div className="col-12 col-md-7 text-center background">
-                            <img className="imagePreview" src={dealData.imageFile} alt="previewImage"/>
-                        </div>
-                    ): null
-                }
+                <div className="col-12 col-md-7 text-center background">
+                    <img className="imagePreview" src={dealData.imageFile || noImage} alt="Preview Deal"/>
+                </div>
                 <div className="col-12 col-md-5">
                     <p> <span className="field-name"> Item name: </span>{dealData.name}</p>
                     <p> <span className="field-name"> Company Name: </span>{dealData.company}</p>

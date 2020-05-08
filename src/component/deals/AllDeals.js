@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../common/BigSpinner';
-import noAvailable from '../../img/noAvailable.png';
+import noImage from '../../img/noImage.svg';
 
 const AllDeals = ({ data }) => {
     const noDealMesage = (
@@ -26,7 +26,7 @@ const AllDeals = ({ data }) => {
                                 <div className="flex-item flex-item--shrink"
                                     aria-label="Awesome Events" role="img">
                                     <Link to={`/deal/${item._id}`}>
-                                        <img src={item.image ? item.image : noAvailable} className="figure-img img-fluid rounded" alt="deal"/>
+                                        <img src={item.image ? item.image : noImage} className="figure-img img-fluid rounded" alt="deal"/>
                                     </Link>
                                 </div>
                                 <div className="space-all">

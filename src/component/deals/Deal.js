@@ -3,7 +3,7 @@ import  { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 
-import image2 from '../../img/stocksNoAvailable.png'; 
+import noImage from '../../img/noImage.svg';
 import userImage from '../../img/userProfile.jpg';
 
 import Spinner from '../common/BigSpinner';
@@ -130,9 +130,9 @@ class Deals extends Component{
                 {auth.user.id === post.userId ? EditButton : null}
             </div>
 
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col-12 col-lg-7 text-center background">
-                    <img src={post.image ? post.image: image2} className="img-thumbnail mb-3" alt="Responsive" />
+                    <img src={post.image ? post.image: noImage} className="img-thumbnail mb-3" alt="Responsive" />
                 </div>
 
                 <div className="col-12 col-lg-5">
