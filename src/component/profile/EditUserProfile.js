@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TextInput from '../common/TextInput';
 import FileInput from '../common/FileInput';
 
-import CheckBox from './CheckBox';
+import CheckBox from '../common/CheckBox';
 import { getUser } from '../../actions/authActions';
 import { changeUserImage, updateTitle} from '../../actions/userActions';
 import userImage from '../../img/userProfile.jpg'; 
