@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 
 import PreviewDeal from './PreviewDeal';
 import { postDeal } from '../../actions/addPostDeal';
-
+import FileInput from '../common/FileInput';
 
 export const initGA = () => {
   ReactGA.initialize('UA-142224072-1');
@@ -397,23 +397,12 @@ class AddDeal extends Component{
                             <div className="invalid-feedback">{this.state.formErrors.description}</div>
                             {serverErr.description && (<div className="invalid-feedback">{serverErr.description}</div>)}
                         </div>
-                        
-                        <div className="form-group">
-                            <label htmlFor="text">Upload an image <span className="small">(Optional but recommended)</span></label>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"></span>
-                                </div>
-                                <div className="custom-file">
-                                    <input 
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        onChange={this.fileSelectedHandler}/>
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">{this.state.imageName}</label>
-                                </div>
-                            </div>
-                        </div>
+
+                        <FileInput
+                            label="Upload Image Profile (Optional but recommended)"
+                            name="dealImage"
+                            value={this.state.imageName}
+                            onChange={this.fileSelectedHandler} />
 
                         <div className="form-group">
                             <label htmlFor="text">Company website <span className="small">(Optional but recommended)</span></label>
