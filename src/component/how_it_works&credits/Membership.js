@@ -10,9 +10,8 @@ class Contact extends Component{
             <br/>
             <div className="text-center">
               <h1 className="bg-danger text-light">Membership</h1>
-              <h4 className="my-5">Plans and Pricing Designed to meet Your Needs</h4>
+              <h4 className="my-4">Plans and Pricing Designed to meet Your Needs</h4>
               <div className="">
-                <hr className="bg-danger mb-4" />
                 <div className="row -row-social">
                   <div className="col-lg-4 col-md-6 col-sm-12 text-center">
                     <hr className="bg-danger mb-4 py-1" />
@@ -62,7 +61,6 @@ class Contact extends Component{
                     <hr className="bg-danger mb-4 pb-1" />
                   </div>
                 </div>
-                <hr className="bg-danger" />
               </div>
             </div>
           </div>
