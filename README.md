@@ -1,7 +1,7 @@
 # CheapNY
 A web app where anyone can find good deal in nyc
 
-- [Web App](https://www.realcheapny.com/)
+- [Web App](https://realcheapny.netlify.app/)
 - [Back End Code](https://github.com/ysongh/CheapNYC-Server)
 - [Mobile App Code](https://github.com/ysongh/CheapNYC-App)
 
