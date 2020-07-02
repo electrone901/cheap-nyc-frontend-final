@@ -34,6 +34,10 @@ body {
   color:hsla(0,0%,100%,.7);
 }
 
+.footer__icon{
+  color: black !important;
+}
+
 .spinner {
   width: 500px;
   margin: auto;

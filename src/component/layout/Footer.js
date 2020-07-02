@@ -18,18 +18,18 @@ export default() => {
                         <div className="col-sm col-md col-lg">
                             <h5>Quick links</h5>
                             <ul className="list-unstyled quick-links">
-                                <li ><Link to="/"><i className="fa fa-angle-double-right"></i>Home</Link></li>
-                                <li ><Link to="/addDeal"><i className="fa fa-angle-double-right"></i>Create Post</Link></li>
-                                <li ><Link to="/contact-us"><i className="fa fa-angle-double-right"></i>Contact Us</Link></li>
-                                <li ><Link to="/howItWorks"><i className="fa fa-angle-double-right"></i>How It Works</Link></li>
-                                <li ><Link to="/howItWorks"><i className="fa fa-angle-double-right"></i>FAQ</Link></li>
+                                <li ><Link to="/"><i className="fa fa-angle-double-right"></i> Home</Link></li>
+                                <li ><Link to="/addDeal"><i className="fa fa-angle-double-right"></i> Create Post</Link></li>
+                                <li ><Link to="/contact-us"><i className="fa fa-angle-double-right"></i> Contact Us</Link></li>
+                                <li ><Link to="/howItWorks"><i className="fa fa-angle-double-right"></i> How It Works</Link></li>
+                                <li ><Link to="/howItWorks"><i className="fa fa-angle-double-right"></i> FAQ</Link></li>
                             </ul>
                         </div>
 
                         <div className="col-sm col-md col-lg">
                             <h5>Sponsorships</h5>
                             <ul className="list-unstyled quick-links">
-                                <li><Link to="/contact-us"><i className="fa fa-angle-double-right"></i>Contact Us</Link></li>
+                                <li><Link to="/contact-us"><i className="fa fa-angle-double-right"></i> Contact Us</Link></li>
                             </ul>
                         </div>
 
@@ -46,11 +46,11 @@ export default() => {
 
                     <div className="social-section">
                             <ul className="social">
-                                <li className="list-inline-item"><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-facebook-square fa-2x"></i></a></li>
-                                <li className="list-inline-item"><a href="https://twitter.com/realcheapny" target="blank"><i className="fa fa-twitter fa-2x"></i></a></li>
-                                <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="fa fa-instagram fa-2x"></i></a></li>
-                                <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="google-plus-g fa fa-google-plus fa-2x"></i></a></li>
-                                <li className="list-inline-item"><a href="https://www.facebook.com/groups/YoAmoNuevaYork/" target="blank"><i className="fa fa-envelope fa-2x"></i></a></li>
+                                <li className="list-inline-item"><a href="https://www.facebook.com/realcheapny/" target="blank"><i className="fa fa-facebook-square fa-2x footer__icon"></i></a></li>
+                                <li className="list-inline-item"><a href="https://twitter.com/realcheapny" target="blank"><i className="fa fa-twitter fa-2x footer__icon"></i></a></li>
+                                <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="fa fa-instagram fa-2x footer__icon"></i></a></li>
+                                <li className="list-inline-item"><a href="https://www.instagram.com/realcheapny/" target="blank"><i className="google-plus-g fa fa-google-plus fa-2x footer__icon"></i></a></li>
+                                <li className="list-inline-item"><a href="https://www.facebook.com/groups/YoAmoNuevaYork/" target="blank"><i className="fa fa-envelope fa-2x footer__icon"></i></a></li>
                             </ul>
 
                     </div>	
@@ -58,7 +58,7 @@ export default() => {
 
                         <div className="">
                             <p className="footerDescription">
-                                Copyright & &#169;{new Date().getFullYear()} Inc. NY, U.S. © All right Reversed <a className="text-green ml-2" href="http://realcheapny.com" target="blank"> realcheapny.com</a>
+                                Copyright & &#169;{new Date().getFullYear()} Inc. NY, U.S. © All right Reversed <a className="text-dark ml-2" href="http://realcheapny.com" target="blank"> realcheapny.com</a>
                             </p>
                         </div>
                         
