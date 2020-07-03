@@ -5,9 +5,6 @@ const FileInput = ({ label, name, value, onChange }) => {
         <div className="form-group">
             <label htmlFor="text"><strong>{label}</strong></label>
             <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text"></span>
-                </div>
                 <div className="custom-file">
                     <input 
                         type="file"
