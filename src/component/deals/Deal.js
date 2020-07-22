@@ -103,6 +103,7 @@ class Deals extends Component{
 
     render(){
         const { auth } = this.props;
+        console.log(auth.isAuthenticated)
         const { post } = this.props.postDeal;
         
         let likes = post.likes;
@@ -223,9 +224,11 @@ class Deals extends Component{
                 <div className="col-8 col-sm-8 col-md-8">
                     <h3>Reviews</h3>
                 </div>
-                <div className="col-4 col-sm-4 col-md-4 text-right addReview">
-                    <button className="btn btn-info" onClick={this.togglePopup.bind(this)}>+ Add Review</button>
-                </div>
+                { auth.isAuthenticated ? (
+                     <div className="col-4 col-sm-4 col-md-4 text-right addReview">
+                        <button className="btn btn-info" onClick={this.togglePopup.bind(this)}>+ Add Review</button>
+                    </div>
+                ) : null }
             </div>
             <hr/>
              
