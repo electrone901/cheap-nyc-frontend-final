@@ -18,7 +18,7 @@ import howItWorks from './component/how_it_works&credits/how_it_works&credits';
 import Membership from './component/how_it_works&credits/Membership';
 import Feedback from './component/how_it_works&credits/Feedback';
 import Contact from './component/how_it_works&credits/Contact';
-import Deal from './component/deals/Deal';
+import Deal from './component/deal/Deal';
 import AddReview from './component/review/AddReview';
 import UserProfile from './component/profile/UserProfile';
 import EditUserProfile from './component/profile/EditUserProfile';

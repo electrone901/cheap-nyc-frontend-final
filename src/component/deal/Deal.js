@@ -103,7 +103,6 @@ class Deals extends Component{
 
     render(){
         const { auth } = this.props;
-        console.log(auth.isAuthenticated)
         const { post } = this.props.postDeal;
         
         let likes = post.likes;
